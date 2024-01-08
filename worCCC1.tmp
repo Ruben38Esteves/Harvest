@@ -240,28 +240,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1188, 0, -25.4039)
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -341.0
-offset_top = -229.0
-offset_right = -301.0
-offset_bottom = -189.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = -98.0
 offset_top = -87.0
-offset_right = 2644.0
-offset_bottom = 1897.0
+offset_right = 1268.0
+offset_bottom = 758.0
 mouse_filter = 2
 color = Color(0.843137, 0, 0.2, 0.211765)
-
-[node name="ColorRect2" type="ColorRect" parent="UI"]
-layout_mode = 0
-offset_left = 1290.0
-offset_top = 764.0
-offset_right = 1300.0
-offset_bottom = 774.0
-scale = Vector2(0.579651, 0.791938)
-mouse_filter = 2
 
 [node name="ZombieSpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
