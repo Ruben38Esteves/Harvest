@@ -193,7 +193,6 @@ transform = Transform3D(2.82843, 0, 0, 0, 2.82843, 0, 0, 0, 2.82843, -23.3704, 0
 
 [node name="Zombie" parent="map/NavigationRegion3D" instance=ExtResource("7_6hbec")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32263, 0.298721, -14.1095)
-player_path = NodePath("../../Player")
 
 [node name="Player" parent="map" instance=ExtResource("8_oukkc")]
 
@@ -205,6 +204,38 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="map"]
 environment = SubResource("Environment_eb27o")
+
+[node name="Spawns" type="Node3D" parent="map"]
+
+[node name="Spawn1" type="Node3D" parent="map/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.032, 0, 0)
+
+[node name="Spawn2" type="Node3D" parent="map/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4126, 0, 10.0395)
+
+[node name="Spawn3" type="Node3D" parent="map/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7689, 0, 23.0265)
+
+[node name="Spawn4" type="Node3D" parent="map/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.428382, 0, 23.3881)
+
+[node name="Spawn5" type="Node3D" parent="map/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.3049, 0, 13.8645)
+
+[node name="Spawn6" type="Node3D" parent="map/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.056, 0, 4.51027)
+
+[node name="Spawn7" type="Node3D" parent="map/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.3455, 0, -11.046)
+
+[node name="Spawn8" type="Node3D" parent="map/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47567, 0, -15.0119)
+
+[node name="Spawn9" type="Node3D" parent="map/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.65393, 0, -5.81547)
+
+[node name="Spawn10" type="Node3D" parent="map/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.1188, 0, -25.4039)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -222,5 +253,10 @@ offset_bottom = 758.0
 mouse_filter = 2
 color = Color(0.843137, 0, 0.2, 0.211765)
 
+[node name="ZombieSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
 [connection signal="player_hit" from="map/Player" to="." method="_on_player_player_hit"]
 [connection signal="player_hit" from="map/Player" to="map/Player" method="_on_player_hit"]
+[connection signal="timeout" from="ZombieSpawnTimer" to="." method="_on_zombie_spawn_timer_timeout"]

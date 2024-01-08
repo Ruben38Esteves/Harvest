@@ -9,7 +9,7 @@ const ATTACK_KNOCKBACK = 10.0
 
 var player = null
 
-@export var player_path : NodePath
+@export var player_path := "/root/world/map/Player"
 
 @onready var nav_agent =$NavigationAgent3D
 
