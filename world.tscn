@@ -100,6 +100,7 @@ material = SubResource("StandardMaterial3D_jrnjs")
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.02447, 0.29872, 6.97187)
 
 [node name="Walls" type="Node3D" parent="map/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.321468, 0)
 
 [node name="wall" type="CSGBox3D" parent="map/NavigationRegion3D/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.5204, 0.826718, -0.0787659)
@@ -128,6 +129,7 @@ size = Vector3(4.03662, 1, 4.41347)
 material = SubResource("StandardMaterial3D_urq43")
 
 [node name="Lightposts" type="Node3D" parent="map/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.321468, 0)
 
 [node name="lightpost-single2" parent="map/NavigationRegion3D/Lightposts" instance=ExtResource("5_stv0p")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3, 0, 3)
@@ -145,6 +147,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -4, 0, -9)
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -14.9143, 1.28158, -5.24462)
 
 [node name="Trees" type="Node3D" parent="map/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.321468, 0)
 
 [node name="pine2" parent="map/NavigationRegion3D/Trees" instance=ExtResource("6_uaubc")]
 transform = Transform3D(2.82843, 0, 0, 0, 2.82843, 0, 0, 0, 2.82843, 16.3293, 0.29872, -6.07886)
@@ -246,6 +249,7 @@ offset_right = -301.0
 offset_bottom = -189.0
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
+visible = false
 layout_mode = 0
 offset_left = -98.0
 offset_top = -87.0
@@ -256,9 +260,9 @@ color = Color(0.843137, 0, 0.2, 0.211765)
 
 [node name="ColorRect2" type="ColorRect" parent="UI"]
 layout_mode = 0
-offset_left = 1290.0
+offset_left = 1301.0
 offset_top = 764.0
-offset_right = 1300.0
+offset_right = 1311.0
 offset_bottom = 774.0
 scale = Vector2(0.579651, 0.791938)
 mouse_filter = 2

@@ -1,25 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bc0mp2isk8umx"]
+[gd_scene load_steps=14 format=3 uid="uid://bc0mp2isk8umx"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_d7cji"]
+[ext_resource type="Script" path="res://Scenes/CollisionZombie.gd" id="2_e5fcn"]
 [ext_resource type="Texture2D" uid="uid://clgplgssg3a8f" path="res://attack animt.png" id="2_wi47e"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0kvla"]
-
-[sub_resource type="Animation" id="Animation_n03yu"]
-resource_name = "walk"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 0]
-}
 
 [sub_resource type="Animation" id="Animation_xtqiq"]
 resource_name = "attack"
@@ -48,6 +33,22 @@ tracks/1/keys = {
 "args": [],
 "method": &"_attack_finished"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_n03yu"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_osnk2"]
@@ -84,7 +85,10 @@ transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition
 [node name="Zombie" type="CharacterBody3D"]
 script = ExtResource("1_d7cji")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["enemy"]]
+script = ExtResource("2_e5fcn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.459044, 0)
 shape = SubResource("CapsuleShape3D_0kvla")
 
@@ -95,7 +99,6 @@ transform = Transform3D(2.74663, 0, 0, 0, 3.09856, 0, 0, 0, 1, 0, 0.44666, 0)
 billboard = 2
 texture = ExtResource("2_wi47e")
 hframes = 5
-frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -110,3 +113,9 @@ tree_root = SubResource("AnimationNodeStateMachine_7ak86")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/attack = false
 parameters/conditions/walk = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.459044, 0)
+shape = SubResource("CapsuleShape3D_0kvla")
+
+[connection signal="body_hit" from="Area3D" to="." method="_on_area_3d_body_hit"]

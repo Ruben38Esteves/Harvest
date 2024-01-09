@@ -1,9 +1,11 @@
 extends CharacterBody3D
 
+#movement
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 7.5
 
+#fov
 const BASE_FOV = 75
 const FOV_CHANGE = 1.1
 
@@ -18,6 +20,9 @@ var t_bob = 0.0
 #signals
 signal player_hit
 
+#bullets
+var bullet = load("res://Scenes/bullet.tscn")
+var instance
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -25,6 +30,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var camera_3d = $Head/Camera3D
 @onready var head = $Head
+@onready var gun_anim = $Head/Camera3D/Gun/AnimationPlayer
+@onready var gun_barrel = $Head/Camera3D/Gun/gun_barrel
 
 
 func _ready():
@@ -44,7 +51,8 @@ func _physics_process(delta):
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		
+	
+	#sprint
 	if Input.is_action_pressed("sprint") and !Input.is_action_pressed("back"):
 		speed = SPRINT_SPEED
 	else:
@@ -55,13 +63,19 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var input_side_right = Input.is_action_pressed("right")
 	var input_side_left = Input.is_action_pressed("left")
+	
+	#head lean
 	if input_side_right:
-		head.rotation_degrees.z = lerp(head.rotation_degrees.z, -3.5, delta * 5)
+		head.rotation_degrees.z = lerp(head.rotation_degrees.z, -2.0, delta * 5)
 	elif input_side_left:
-		head.rotation_degrees.z = lerp(head.rotation_degrees.z, 3.5, delta * 5)
+		head.rotation_degrees.z = lerp(head.rotation_degrees.z, 2.0, delta * 5)
 	else:
 		head.rotation_degrees.z = lerp(head.rotation_degrees.z, 0.0, delta * 5)
+		
+	#head rotation
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	#movement
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
@@ -78,6 +92,14 @@ func _physics_process(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
 	
+	#attacking
+	if Input.is_action_pressed("attack"):
+		if !gun_anim.is_playing():
+			gun_anim.play("Shoot")
+			instance = bullet.instantiate()
+			instance.position = gun_barrel.global_position
+			instance.transform.basis = gun_barrel.global_transform.basis
+			get_parent().add_child(instance)
 
 	move_and_slide()
 	
@@ -90,4 +112,6 @@ func _head_bob(time) -> Vector3:
 func hit(dir,knockback):
 	emit_signal("player_hit")
 	velocity += dir * knockback
+	
+
 	

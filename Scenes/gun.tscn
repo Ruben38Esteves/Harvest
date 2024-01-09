@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cey0xgmjcnsye"]
+
+[ext_resource type="Texture2D" uid="uid://42jsxgdoh68" path="res://Sprites/gun1.png" id="1_xlmaa"]
+
+[sub_resource type="Animation" id="Animation_4do5i"]
+resource_name = "Shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.05, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1tcn7"]
+_data = {
+"Shoot": SubResource("Animation_4do5i")
+}
+
+[node name="Gun" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+texture = ExtResource("1_xlmaa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1tcn7")
+}
+
+[node name="gun_barrel" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.105579)
+target_position = Vector3(0, 0, -1)

@@ -4,6 +4,7 @@ extends CharacterBody3D
 const SPEED = 4.0
 const JUMP_VELOCITY = 4.5
 const ATTACK_RANGE = 2.5
+var health = 3
 
 const ATTACK_KNOCKBACK = 10.0
 
@@ -52,3 +53,8 @@ func _attack_finished():
 		player.hit(dir,ATTACK_KNOCKBACK)
 	
 		
+
+func _on_area_3d_body_hit(dmg):
+	health -= dmg
+	if health <= 0:
+		queue_free()
