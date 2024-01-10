@@ -4,12 +4,19 @@ extends Node3D
 @onready var zombie_spawn_points = $map/Spawns
 @onready var navigation_region = $map/NavigationRegion3D
 
+@onready var crossair = $UI/crossair
+@onready var crossair2 = $UI/crossair2
+
 var zombie = load("res://Scenes/zombie.tscn")
 var instance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	crossair.position.x = (get_viewport().size.x / 2) - 5
+	crossair.position.y = (get_viewport().size.y / 2) - 5
+	crossair2.position.x = (get_viewport().size.x / 2) - 5
+	crossair2.position.y = (get_viewport().size.y / 2) - 5
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,4 +38,10 @@ func _on_zombie_spawn_timer_timeout():
 	var spawn_point = _get_random_child(zombie_spawn_points).global_position
 	instance = zombie.instantiate() 
 	instance.global_position = spawn_point
+	instance.zombie_hit.connect(_on_zombie_zombie_hit)
 	navigation_region.add_child(instance)
+
+func _on_zombie_zombie_hit():
+	crossair2.visible = true
+	await get_tree().create_timer(0.1).timeout
+	crossair2.visible = false

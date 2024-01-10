@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc0mp2isk8umx"]
+[gd_scene load_steps=16 format=3 uid="uid://bc0mp2isk8umx"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_d7cji"]
 [ext_resource type="Script" path="res://Scenes/CollisionZombie.gd" id="2_e5fcn"]
@@ -82,10 +82,18 @@ states/walk/node = SubResource("AnimationNodeAnimation_6pjk8")
 states/walk/position = Vector2(350, 86)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_lh64m"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_d0for"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_f0ft4")]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wowr"]
+bg_color = Color(1, 0.345098, 0.254902, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_u3lrr"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Zombie" type="CharacterBody3D"]
 script = ExtResource("1_d7cji")
 
 [node name="Area3D" type="Area3D" parent="." groups=["enemy"]]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("2_e5fcn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -117,5 +125,21 @@ parameters/conditions/walk = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.459044, 0)
 shape = SubResource("CapsuleShape3D_0kvla")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(100, 512)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+offset_right = 121.0
+offset_bottom = 27.0
+mouse_filter = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_6wowr")
+max_value = 3.0
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194256, -0.937701, 0.0296445)
+billboard = 2
+texture = SubResource("ViewportTexture_u3lrr")
 
 [connection signal="body_hit" from="Area3D" to="." method="_on_area_3d_body_hit"]

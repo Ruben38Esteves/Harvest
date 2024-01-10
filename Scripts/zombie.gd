@@ -1,25 +1,31 @@
 extends CharacterBody3D
 
-
+#stats
 const SPEED = 4.0
 const JUMP_VELOCITY = 4.5
 const ATTACK_RANGE = 2.5
 var health = 3
-
 const ATTACK_KNOCKBACK = 10.0
+
+#signals
+signal zombie_hit
 
 var player = null
 
 @export var player_path := "/root/world/map/Player"
 
 @onready var nav_agent =$NavigationAgent3D
-
 @onready var anim_tree = $AnimationTree
+@onready var progress_bar = $SubViewport/ProgressBar
+
+
 var state_machine
 
 func _ready():
 	player = get_node(player_path)
 	state_machine = anim_tree.get("parameters/playback")
+	progress_bar.max_value = health
+	progress_bar.value = health
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -56,5 +62,7 @@ func _attack_finished():
 
 func _on_area_3d_body_hit(dmg):
 	health -= dmg
+	emit_signal("zombie_hit")
+	progress_bar.value = health
 	if health <= 0:
 		queue_free()

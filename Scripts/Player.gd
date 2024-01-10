@@ -4,13 +4,13 @@ extends CharacterBody3D
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 7.5
+const JUMP_VELOCITY = 7
+const SENSITIVITY = 0.003
+var doublejump = true
 
 #fov
 const BASE_FOV = 75
 const FOV_CHANGE = 1.1
-
-const JUMP_VELOCITY = 7
-const SENSITIVITY = 0.003
 
 #bob variables
 const BOB_FREQ = 2.0
@@ -23,6 +23,7 @@ signal player_hit
 #bullets
 var bullet = load("res://Scenes/bullet.tscn")
 var instance
+const firerate = 2.0
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -30,12 +31,24 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var camera_3d = $Head/Camera3D
 @onready var head = $Head
+
+#guns
+@onready var fire_rate = $fire_rate
+var can_fire = true
+@onready var gun_aim = $Head/Camera3D/gun_aim
+#pistol
 @onready var gun_anim = $Head/Camera3D/Gun/AnimationPlayer
 @onready var gun_barrel = $Head/Camera3D/Gun/gun_barrel
+#rifle
+@onready var rifle_anim = $Head/Camera3D/Rifle/AnimationPlayer
+@onready var rifle_barrel = $Head/Camera3D/Rifle/RayCast3D
+
 
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	fire_rate.wait_time = 1.0 / firerate
+	
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -49,8 +62,14 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta * 1.5
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
+			doublejump = true
+		elif doublejump:
+			velocity.y = JUMP_VELOCITY
+			doublejump = false
+	
 	
 	#sprint
 	if Input.is_action_pressed("sprint") and !Input.is_action_pressed("back"):
@@ -94,12 +113,8 @@ func _physics_process(delta):
 	
 	#attacking
 	if Input.is_action_pressed("attack"):
-		if !gun_anim.is_playing():
-			gun_anim.play("Shoot")
-			instance = bullet.instantiate()
-			instance.position = gun_barrel.global_position
-			instance.transform.basis = gun_barrel.global_transform.basis
-			get_parent().add_child(instance)
+		_shoot_rifle()
+		
 
 	move_and_slide()
 	
@@ -113,5 +128,29 @@ func hit(dir,knockback):
 	emit_signal("player_hit")
 	velocity += dir * knockback
 	
-
+func _shoot_gun():
+	if !gun_anim.is_playing() and can_fire:
+		can_fire = false
+		fire_rate.start()
+		gun_anim.play("Shoot")
+		instance = bullet.instantiate()
+		instance.position = gun_barrel.global_position
+		instance.transform.basis = gun_barrel.global_transform.basis
+		get_parent().add_child(instance)
+		
+func _shoot_rifle():
+	if !rifle_anim.is_playing():
+		rifle_anim.play("shoot")
+		"""
+		if gun_aim.is_colliding():
+			if gun_aim.get_collider().is_in_group("enemy"):
+				gun_aim.get_collider().hit()
+		"""
+		instance = bullet.instantiate()
+		instance.position = rifle_barrel.global_position
+		instance.transform.basis = rifle_barrel.global_transform.basis
+		get_parent().add_child(instance)
+				
+func _on_fire_rate_timeout():
+	can_fire = true
 	
