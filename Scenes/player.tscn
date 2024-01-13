@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d1y3no0s41hhe"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_snwi8"]
-[ext_resource type="PackedScene" uid="uid://cey0xgmjcnsye" path="res://Scenes/gun.tscn" id="2_62dcs"]
+[ext_resource type="PackedScene" uid="uid://dowt1ujjcq6dy" path="res://Scenes/gun.tscn" id="2_62dcs"]
 [ext_resource type="PackedScene" uid="uid://b0i77543v5a01" path="res://Scenes/rifle.tscn" id="3_1i27i"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m03d6"]
@@ -14,7 +14,6 @@ script = ExtResource("1_snwi8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.864163, 0)
-visible = false
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_m03d6")
 
@@ -29,10 +28,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47563, 0)
 
 [node name="Gun" parent="Head/Camera3D" instance=ExtResource("2_62dcs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.288733, -0.0935724, -0.357603)
-visible = false
 
 [node name="Rifle" parent="Head/Camera3D" instance=ExtResource("3_1i27i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181953, -0.0775713, -0.322308)
+visible = false
 
 [node name="gun_aim" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.800251)
@@ -42,4 +41,5 @@ collide_with_areas = true
 [node name="fire_rate" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="fire_gun" from="." to="Head/Camera3D/Gun" method="_on_player_fire_gun"]
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]

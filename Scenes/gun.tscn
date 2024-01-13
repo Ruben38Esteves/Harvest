@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cey0xgmjcnsye"]
+[gd_scene load_steps=5 format=3 uid="uid://dowt1ujjcq6dy"]
 
+[ext_resource type="Script" path="res://Scenes/gun.gd" id="1_ufxbd"]
 [ext_resource type="Texture2D" uid="uid://42jsxgdoh68" path="res://Sprites/gun1.png" id="1_xlmaa"]
 
 [sub_resource type="Animation" id="Animation_4do5i"]
@@ -25,6 +26,7 @@ _data = {
 }
 
 [node name="Gun" type="Node3D"]
+script = ExtResource("1_ufxbd")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
@@ -38,3 +40,9 @@ libraries = {
 [node name="gun_barrel" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.105579)
 target_position = Vector3(0, 0, -1)
+
+[node name="fire_rate" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
