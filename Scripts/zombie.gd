@@ -6,6 +6,7 @@ const JUMP_VELOCITY = 4.5
 const ATTACK_RANGE = 2.5
 var health = 3
 const ATTACK_KNOCKBACK = 10.0
+var damage = 10
 
 #signals
 signal zombie_hit
@@ -56,7 +57,7 @@ func _attack_finished():
 	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1:
 		var dir = global_position.direction_to(player.global_position).normalized()
 		dir.y = 0
-		player.hit(dir,ATTACK_KNOCKBACK)
+		player.hit(dir,ATTACK_KNOCKBACK,damage)
 	
 		
 

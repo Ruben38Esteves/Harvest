@@ -26,6 +26,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera_3d = $Head/Camera3D
 @onready var head = $Head
 
+#stats
+@onready var health_bar = $"../../UI/HealthBar"
+var maxHealth = 100
+var health = 100
+
 #guns
 var current_gun = "fire_rifle"
 #pistol
@@ -42,6 +47,8 @@ func _ready():
 	current_gun = "fire_rifle"
 	gun.visible = false
 	rifle.visible = true
+	health_bar.max_value = maxHealth
+	health_bar.value = health
 	
 	
 	
@@ -132,7 +139,14 @@ func _head_bob(time) -> Vector3:
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
 	
-func hit(dir,knockback):
+func hit(dir,knockback,damage):
 	emit_signal("player_hit")
 	velocity += dir * knockback
+	health -= damage
+	update_progress_bar()
+	
+func update_progress_bar():
+	health_bar.max_value = maxHealth
+	health_bar.value = health
+	
 	

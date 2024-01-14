@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cjyysejwq25n6"]
+[gd_scene load_steps=23 format=3 uid="uid://cjyysejwq25n6"]
 
 [ext_resource type="Texture2D" uid="uid://chaqe2ef4ymd0" path="res://696.jpg" id="1_d128w"]
 [ext_resource type="Script" path="res://world.gd" id="1_nwbrg"]
@@ -35,7 +35,7 @@ normal_texture = SubResource("NoiseTexture2D_t2e3u")
 uv1_triplanar = true
 uv1_triplanar_sharpness = 1.6818
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6wvga"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x28le"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_wb4wb")
@@ -70,7 +70,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_6wvga"),
+"material": SubResource("ShaderMaterial_x28le"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -88,6 +88,11 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.188235, 0.188235, 0.180392, 1)
 volumetric_fog_emission = Color(0.223529, 0.227451, 0.219608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5cnb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31hoy"]
+bg_color = Color(0.992157, 0.345098, 0.337255, 1)
 
 [node name="world" type="Node3D"]
 script = ExtResource("1_nwbrg")
@@ -379,6 +384,16 @@ offset_right = 2303.0
 offset_bottom = 1668.0
 mouse_filter = 2
 color = Color(0.843137, 0, 0.2, 0.211765)
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 1031.0
+offset_right = 520.0
+offset_bottom = 1054.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_y5cnb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_31hoy")
 
 [connection signal="zombie_hit" from="map/NavigationRegion3D/Zombie" to="." method="_on_zombie_zombie_hit"]
 [connection signal="player_hit" from="map/Player" to="." method="_on_player_player_hit"]
