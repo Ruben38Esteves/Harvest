@@ -38,8 +38,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.800251)
 target_position = Vector3(0, 0, -1)
 collide_with_areas = true
 
-[node name="fire_rate" type="Timer" parent="."]
-one_shot = true
-
 [connection signal="fire_gun" from="." to="Head/Camera3D/Gun" method="_on_player_fire_gun"]
-[connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
+[connection signal="fire_rifle" from="." to="Head/Camera3D/Rifle" method="_on_player_fire_rifle"]

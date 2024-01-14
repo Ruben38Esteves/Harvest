@@ -41,8 +41,9 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.105579)
 target_position = Vector3(0, 0, -1)
 
-[node name="fire_rate" type="Timer" parent="."]
+[node name="fire_rate_gun" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
-[connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]

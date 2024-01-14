@@ -20,13 +20,6 @@ var t_bob = 0.0
 #signals
 signal player_hit
 
-#bullets
-var bullet = load("res://Scenes/bullet.tscn")
-var pistola = load("res://Scenes/gun.tscn")
-var instance
-const firerate = 2.0
-
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -34,22 +27,21 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var head = $Head
 
 #guns
-@onready var fire_rate = $fire_rate
-var can_fire = true
-@onready var gun_aim = $Head/Camera3D/gun_aim
+var current_gun = "fire_rifle"
 #pistol
 signal fire_gun
+@onready var gun = $Head/Camera3D/Gun
 #rifle
-@onready var rifle_anim = $Head/Camera3D/Rifle/AnimationPlayer
-@onready var rifle_barrel = $Head/Camera3D/Rifle/RayCast3D
+signal fire_rifle
+@onready var rifle = $Head/Camera3D/Rifle
 
 
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	fire_rate.wait_time = 1.0 / firerate
-	#instance = pistola.instantiate()
-	#instance.position = Vector3(0.289,-0.094,-0.358)
+	current_gun = "fire_rifle"
+	gun.visible = false
+	rifle.visible = true
 	
 	
 	
@@ -115,9 +107,21 @@ func _physics_process(delta):
 	camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
 	
 	#attacking
-	if Input.is_action_pressed("attack"):
-		#_shoot_rifle()
-		emit_signal("fire_gun",gun_aim.global_position,gun_aim.global_transform.basis)
+	if Input.is_action_just_pressed("attack"):
+		if current_gun == "fire_rifle":
+			emit_signal("fire_rifle")
+		elif current_gun == "fire_gun":
+			emit_signal("fire_gun")
+		
+	#change weapon
+	if Input.is_action_just_pressed("primary"):
+		current_gun = "fire_rifle"
+		gun.visible = false
+		rifle.visible = true
+	elif Input.is_action_just_pressed("secondary"):
+		current_gun = "fire_gun"
+		gun.visible = true
+		rifle.visible = false
 		
 
 	move_and_slide()
@@ -131,20 +135,4 @@ func _head_bob(time) -> Vector3:
 func hit(dir,knockback):
 	emit_signal("player_hit")
 	velocity += dir * knockback
-		
-func _shoot_rifle():
-	if !rifle_anim.is_playing():
-		rifle_anim.play("shoot")
-		"""
-		if gun_aim.is_colliding():
-			if gun_aim.get_collider().is_in_group("enemy"):
-				gun_aim.get_collider().hit()
-		"""
-		instance = bullet.instantiate()
-		instance.position = rifle_barrel.global_position
-		instance.transform.basis = rifle_barrel.global_transform.basis
-		get_parent().add_child(instance)
-				
-func _on_fire_rate_timeout():
-	can_fire = true
 	
