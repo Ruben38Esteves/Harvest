@@ -130,6 +130,10 @@ func _physics_process(delta):
 		gun.visible = true
 		rifle.visible = false
 		
+	#menu
+	if Input.is_action_just_pressed("escape"):
+		player_die()
+		
 
 	move_and_slide()
 	
@@ -148,5 +152,12 @@ func hit(dir,knockback,damage):
 func update_progress_bar():
 	health_bar.max_value = maxHealth
 	health_bar.value = health
+	if health <= 0:
+		player_die()
+	
+func player_die():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	
 	
 	
