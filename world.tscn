@@ -35,7 +35,7 @@ normal_texture = SubResource("NoiseTexture2D_t2e3u")
 uv1_triplanar = true
 uv1_triplanar_sharpness = 1.6818
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_av1xy"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2a024"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_wb4wb")
@@ -70,7 +70,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_av1xy"),
+"material": SubResource("ShaderMaterial_2a024"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -385,7 +385,29 @@ offset_bottom = 1668.0
 mouse_filter = 2
 color = Color(0.843137, 0, 0.2, 0.211765)
 
-[node name="HealthBar" type="ProgressBar" parent="UI"]
+[node name="Hud" type="Control" parent="UI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Ammo" type="VBoxContainer" parent="UI/Hud"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 956.0
+offset_right = 76.0
+offset_bottom = 1006.0
+mouse_filter = 2
+
+[node name="Primary" type="Label" parent="UI/Hud/Ammo"]
+layout_mode = 2
+text = "Ammo"
+
+[node name="Secondary" type="Label" parent="UI/Hud/Ammo"]
+layout_mode = 2
+text = "Ammo"
+
+[node name="HealthBar" type="ProgressBar" parent="UI/Hud"]
 layout_mode = 0
 offset_left = 29.0
 offset_top = 1031.0
@@ -395,6 +417,7 @@ mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_y5cnb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_31hoy")
 
+[connection signal="add_ammo" from="." to="map/Player" method="_on_world_add_ammo"]
 [connection signal="zombie_hit" from="map/NavigationRegion3D/Zombie" to="." method="_on_zombie_zombie_hit"]
 [connection signal="player_hit" from="map/Player" to="." method="_on_player_player_hit"]
 [connection signal="player_hit" from="map/Player" to="map/Player" method="_on_player_hit"]

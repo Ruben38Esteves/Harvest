@@ -10,6 +10,8 @@ extends Node3D
 var zombie = load("res://Scenes/zombie.tscn")
 var instance
 
+signal add_ammo
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -39,9 +41,18 @@ func _on_zombie_spawn_timer_timeout():
 	instance = zombie.instantiate() 
 	instance.global_position = spawn_point
 	instance.zombie_hit.connect(_on_zombie_zombie_hit)
+	instance.zombie_killed.connect(_on_zombie_zombie_killed)
 	navigation_region.add_child(instance)
 
 func _on_zombie_zombie_hit():
 	crossair2.visible = true
 	await get_tree().create_timer(0.1).timeout
 	crossair2.visible = false
+
+func _on_zombie_zombie_killed():
+	var ammo_chance = randi() % 10
+	print(ammo_chance)
+	if ammo_chance >= 0 and ammo_chance < 6:
+		emit_signal("add_ammo", 2)
+	elif ammo_chance >= 6 and ammo_chance < 8:
+		emit_signal("add_ammo", 1)

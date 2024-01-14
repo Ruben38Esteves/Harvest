@@ -17,9 +17,6 @@ const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
 var t_bob = 0.0
 
-#signals
-signal player_hit
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -27,17 +24,22 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var head = $Head
 
 #stats
-@onready var health_bar = $"../../UI/HealthBar"
+@onready var health_bar = $"../../UI/Hud/HealthBar"
+signal player_hit
 var maxHealth = 100
 var health = 100
+
+
 
 #guns
 var current_gun = "fire_rifle"
 #pistol
 signal fire_gun
+signal increase_gun_ammo
 @onready var gun = $Head/Camera3D/Gun
 #rifle
 signal fire_rifle
+signal increase_rifle_ammo
 @onready var rifle = $Head/Camera3D/Rifle
 
 
@@ -47,8 +49,7 @@ func _ready():
 	current_gun = "fire_rifle"
 	gun.visible = false
 	rifle.visible = true
-	health_bar.max_value = maxHealth
-	health_bar.value = health
+	update_progress_bar()
 	
 	
 	
@@ -155,9 +156,17 @@ func update_progress_bar():
 	if health <= 0:
 		player_die()
 	
+	
 func player_die():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	
 	
 	
+
+
+func _on_world_add_ammo(type):
+	if type == 1:
+		emit_signal("increase_rifle_ammo")
+	elif type == 2:
+		emit_signal("increase_gun_ammo")

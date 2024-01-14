@@ -10,6 +10,7 @@ var damage = 10
 
 #signals
 signal zombie_hit
+signal zombie_killed
 
 var player = null
 
@@ -43,7 +44,6 @@ func _process(delta):
 		"attack":
 			pass
 	
-	
 	anim_tree.set("parameters/conditions/attack", _target_in_range())
 	anim_tree.set("parameters/conditions/walk", !_target_in_range())
 	
@@ -66,4 +66,5 @@ func _on_area_3d_body_hit(dmg):
 	emit_signal("zombie_hit")
 	progress_bar.value = health
 	if health <= 0:
+		emit_signal("zombie_killed")
 		queue_free()

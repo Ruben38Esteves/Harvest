@@ -40,3 +40,5 @@ collide_with_areas = true
 
 [connection signal="fire_gun" from="." to="Head/Camera3D/Gun" method="_on_player_fire_gun"]
 [connection signal="fire_rifle" from="." to="Head/Camera3D/Rifle" method="_on_player_fire_rifle"]
+[connection signal="increase_gun_ammo" from="." to="Head/Camera3D/Gun" method="_on_player_increase_gun_ammo"]
+[connection signal="increase_rifle_ammo" from="." to="Head/Camera3D/Rifle" method="_on_player_increase_rifle_ammo"]
