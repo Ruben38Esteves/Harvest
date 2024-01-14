@@ -7,6 +7,10 @@ extends Node3D
 @onready var aim = $"../../../Head/Camera3D/gun_aim"
 var can_fire = true
 
+#stats
+var damage = 1
+
+
 var bullet = load("res://Scenes/bullet.tscn")
 var instance
 
@@ -26,7 +30,7 @@ func _on_player_fire_gun(pos,dir):
 		fire_rate.start()
 		gun_anim.play("Shoot")
 		instance = bullet.instantiate()
-		instance.dano = 3
+		instance.dano = damage
 		instance.position = gun_barrel.global_position
 		instance.transform.basis = gun_barrel.global_transform.basis
 		print(gun_barrel.position)
