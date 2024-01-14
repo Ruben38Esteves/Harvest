@@ -3,7 +3,7 @@ extends Node3D
 @onready var hit_rect = $UI/ColorRect
 @onready var zombie_spawn_points = $map/Spawns
 @onready var navigation_region = $map/NavigationRegion3D
-
+@onready var zombie_spawn_timer = $ZombieSpawnTimer
 @onready var crossair = $UI/crossair
 @onready var crossair2 = $UI/crossair2
 
@@ -37,6 +37,8 @@ func _get_random_child(parent_node):
 
 
 func _on_zombie_spawn_timer_timeout():
+	if zombie_spawn_timer.wait_time > 1:
+		zombie_spawn_timer.wait_time -= 0.5
 	var spawn_point = _get_random_child(zombie_spawn_points).global_position
 	instance = zombie.instantiate() 
 	instance.global_position = spawn_point
