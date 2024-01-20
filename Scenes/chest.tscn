@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://v67fguycijs5"]
 
-[ext_resource type="Script" path="res://chest.gd" id="1_7ocra"]
-[ext_resource type="Script" path="res://Scenes/chest_body.gd" id="2_bsr3j"]
+[ext_resource type="Script" path="res://Scripts/chest.gd" id="1_50sm6"]
 [ext_resource type="Shader" path="res://Scenes/chest.gdshader" id="2_is3fd"]
+[ext_resource type="Script" path="res://Scripts/chest_body.gd" id="3_f3egu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5iiud"]
 render_priority = 0
@@ -14,13 +14,13 @@ next_pass = SubResource("ShaderMaterial_5iiud")
 albedo_color = Color(0.372549, 0.235294, 0.105882, 1)
 
 [node name="Node3D" type="Node3D" groups=["colectible"]]
-script = ExtResource("1_7ocra")
+script = ExtResource("1_50sm6")
 
 [node name="body" type="CSGBox3D" parent="." groups=["chest"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_c553v")
-script = ExtResource("2_bsr3j")
+script = ExtResource("3_f3egu")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
