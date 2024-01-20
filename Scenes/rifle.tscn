@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0i77543v5a01"]
 
-[ext_resource type="Texture2D" uid="uid://bc66jonpaw8ny" path="res://Scenes/rifle-sprite.png" id="1_a4x2r"]
-[ext_resource type="Script" path="res://Scenes/rifle.gd" id="1_n2a2e"]
+[ext_resource type="Script" path="res://Scripts/rifle.gd" id="1_vdyjj"]
+[ext_resource type="Texture2D" uid="uid://drn6pb508tn5f" path="res://Sprites/rifle-sprite.png" id="2_cnawx"]
 
 [sub_resource type="Animation" id="Animation_8ixup"]
 resource_name = "shoot"
@@ -34,11 +34,11 @@ _data = {
 
 [node name="Rifle" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00145085, 0)
-script = ExtResource("1_n2a2e")
+script = ExtResource("1_vdyjj")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-3.61999e-07, 0, -0.1, 0, 0.1, 0, 0.1, 0, -3.61999e-07, 0, 0.02, 0)
-texture = ExtResource("1_a4x2r")
+texture = ExtResource("2_cnawx")
 
 [node name="rifle_barrel" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.291308)

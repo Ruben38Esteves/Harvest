@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bi7afl2chd8p3"]
 
-[ext_resource type="Script" path="res://Scenes/bullet_rifle.gd" id="1_4gir3"]
+[ext_resource type="Script" path="res://Scripts/bullet_rifle.gd" id="1_r7xmt"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ccnav"]
 size = Vector3(0.05, 0.05, 0.05)
@@ -26,7 +26,7 @@ initial_velocity_max = 5.0
 size = Vector3(0.04, 0.04, 0.04)
 
 [node name="Bullet_rifle" type="Node3D"]
-script = ExtResource("1_4gir3")
+script = ExtResource("1_r7xmt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.36898, 0, 0, 0)

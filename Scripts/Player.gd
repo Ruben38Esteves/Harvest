@@ -22,6 +22,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var camera_3d = $Head/Camera3D
 @onready var head = $Head
+@onready var gun_aim = $Head/Camera3D/gun_aim
 
 #stats
 @onready var health_bar = $"../../UI/Hud/HealthBar"
@@ -42,6 +43,8 @@ signal fire_rifle
 signal increase_rifle_ammo
 @onready var rifle = $Head/Camera3D/Rifle
 
+#utils
+var looking_at = null
 
 
 func _ready():
@@ -135,7 +138,21 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("escape"):
 		player_die()
 		
-
+	#open chest
+	if Input.is_action_just_pressed("interact"):
+		if gun_aim.is_colliding():
+			if gun_aim.get_collider().is_in_group("chest"):
+				gun_aim.get_collider().used()
+	
+	#chest glow
+	var coll = gun_aim.get_collider()
+	if coll != looking_at:
+		if coll != null and coll.is_in_group("chest"):
+			coll.targeted = true
+		if looking_at != null and looking_at.is_in_group("chest"):
+			looking_at.targeted = false
+		looking_at = coll
+			
 	move_and_slide()
 	
 func _head_bob(time) -> Vector3:
@@ -161,12 +178,15 @@ func player_die():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	
-	
-	
-
-
 func _on_world_add_ammo(type):
 	if type == 1:
 		emit_signal("increase_rifle_ammo")
 	elif type == 2:
 		emit_signal("increase_gun_ammo")
+
+func glow_chest(target_chest):
+	target_chest.glow(true)
+	while gun_aim.get_collider() == target_chest:
+		pass
+	target_chest.glow(false)
+	

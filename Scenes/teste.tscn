@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dl7oeur4sc8j3"]
+
+[ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Scenes/player.tscn" id="1_5fy1l"]
+[ext_resource type="PackedScene" uid="uid://v67fguycijs5" path="res://Scenes/chest.tscn" id="2_ypbtj"]
+[ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://Scenes/ui.tscn" id="3_svbol"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bswi4"]
+albedo_color = Color(0.662745, 0.380392, 0.129412, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_bswi4")
+use_collision = true
+size = Vector3(30, 1, 30)
+
+[node name="Node3D" parent="." instance=ExtResource("2_ypbtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05471, 0)
+
+[node name="UI" parent="." instance=ExtResource("3_svbol")]
+
+[node name="Node3D2" type="Node3D" parent="."]
+
+[node name="Player" parent="Node3D2" instance=ExtResource("1_5fy1l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.17853, 1.57158, 0)

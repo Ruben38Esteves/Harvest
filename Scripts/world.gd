@@ -6,8 +6,10 @@ extends Node3D
 @onready var zombie_spawn_timer = $ZombieSpawnTimer
 @onready var crossair = $UI/crossair
 @onready var crossair2 = $UI/crossair2
+@onready var chest_spawns = $map/Chest_spawns
 
 var zombie = load("res://Scenes/zombie.tscn")
+var chest = load("res://Scenes/chest.tscn")
 var instance
 
 signal add_ammo
@@ -19,6 +21,12 @@ func _ready():
 	crossair.position.y = (get_viewport().size.y / 2) - 5
 	crossair2.position.x = (get_viewport().size.x / 2) - 5
 	crossair2.position.y = (get_viewport().size.y / 2) - 5
+	for i in 8:
+		var spawn_point = _get_random_child(chest_spawns).global_position
+		instance = chest.instantiate() 
+		instance.global_position = spawn_point
+		instance.chest_opened.connect(_on_chest_opened)
+		navigation_region.add_child(instance)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,7 +46,7 @@ func _get_random_child(parent_node):
 
 func _on_zombie_spawn_timer_timeout():
 	if zombie_spawn_timer.wait_time > 1:
-		zombie_spawn_timer.wait_time -= 0.5
+		zombie_spawn_timer.wait_time -= 0.05
 	var spawn_point = _get_random_child(zombie_spawn_points).global_position
 	instance = zombie.instantiate() 
 	instance.global_position = spawn_point
@@ -53,8 +61,10 @@ func _on_zombie_zombie_hit():
 
 func _on_zombie_zombie_killed():
 	var ammo_chance = randi() % 10
-	print(ammo_chance)
 	if ammo_chance >= 0 and ammo_chance < 6:
 		emit_signal("add_ammo", 2)
 	elif ammo_chance >= 6 and ammo_chance < 8:
 		emit_signal("add_ammo", 1)
+		
+func _on_chest_opened():
+	print("abriu")
