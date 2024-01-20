@@ -45,5 +45,5 @@ target_position = Vector3(0, 0, -1)
 wait_time = 0.5
 one_shot = true
 
-[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]
+[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]

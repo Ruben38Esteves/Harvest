@@ -34,8 +34,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181953, -0.0775713, -0.3223
 visible = false
 
 [node name="gun_aim" type="RayCast3D" parent="Head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.800251)
-target_position = Vector3(0, 0, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4)
+target_position = Vector3(0, 0, -2)
 collide_with_areas = true
 
 [connection signal="fire_gun" from="." to="Head/Camera3D/Gun" method="_on_player_fire_gun"]

@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfdgyti3y6c3w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5cnb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31hoy"]
+bg_color = Color(0.992157, 0.345098, 0.337255, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="crossair" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+mouse_filter = 2
+
+[node name="crossair2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+mouse_filter = 2
+color = Color(0.909804, 0, 0.141176, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -439.0
+offset_top = -316.0
+offset_right = 2303.0
+offset_bottom = 1668.0
+mouse_filter = 2
+color = Color(0.843137, 0, 0.2, 0.211765)
+
+[node name="Hud" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Ammo" type="VBoxContainer" parent="Hud"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 956.0
+offset_right = 76.0
+offset_bottom = 1006.0
+mouse_filter = 2
+
+[node name="Primary" type="Label" parent="Hud/Ammo"]
+layout_mode = 2
+text = "Ammo"
+
+[node name="Secondary" type="Label" parent="Hud/Ammo"]
+layout_mode = 2
+text = "Ammo"
+
+[node name="HealthBar" type="ProgressBar" parent="Hud"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 1031.0
+offset_right = 520.0
+offset_bottom = 1054.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_y5cnb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_31hoy")
