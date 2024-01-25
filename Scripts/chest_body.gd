@@ -9,7 +9,7 @@ var targeted = false : set = set_targeted
 func set_targeted(val):
 	targeted = val
 	if targeted:
-		shader.set_shader_parameter("strength", 1.0)
+		shader.set_shader_parameter("strength", 3.0)
 	else:
 		shader.set_shader_parameter("strength", 0.0)
 

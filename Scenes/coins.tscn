@@ -100,6 +100,10 @@ collision_mask = 8
 transform = Transform3D(1.0271, 0, 0, 0, 1.0271, 0, 0, 0, 1.0271, 0, 0, 0)
 shape = SubResource("SphereShape3D_pao22")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0, 1)
+omni_range = 0.751793
+
 [connection signal="area_entered" from="Collectible" to="." method="_on_collectible_area_entered"]
 [connection signal="area_shape_entered" from="Collectible" to="." method="_on_collectible_area_shape_entered"]
 [connection signal="body_entered" from="Collectible" to="." method="_on_collectible_body_entered"]

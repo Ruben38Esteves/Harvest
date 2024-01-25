@@ -17,8 +17,9 @@ albedo_color = Color(0.372549, 0.235294, 0.105882, 1)
 script = ExtResource("1_50sm6")
 
 [node name="body" type="CSGBox3D" parent="." groups=["chest"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(0.684472, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.386683, 0)
 use_collision = true
+size = Vector3(1, 0.697144, 1)
 material = SubResource("StandardMaterial3D_c553v")
 script = ExtResource("3_f3egu")
 

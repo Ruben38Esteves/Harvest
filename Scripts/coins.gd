@@ -4,6 +4,8 @@ extends Node3D
 @onready var coins_anim_player = $AnimationPlayer
 @onready var collectible = $Collectible
 @onready var collectible_range = $Collectible/CollectibleRange
+@onready var static_body_3d = $StaticBody3D
+var has_spawned = false
 
 #money
 var value = 10
