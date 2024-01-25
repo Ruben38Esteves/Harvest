@@ -30,6 +30,8 @@ signal player_hit
 var maxHealth = 100
 var health = 100
 
+#money
+var money = 0
 
 
 #guns

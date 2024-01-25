@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdp1mtf8ldgtp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ps5wm"]
+albedo_color = Color(0.823529, 0.694118, 0.141176, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3bn77"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uj4l2"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[node name="Coins" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Node3D" type="Node3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0935739, 0)
+
+[node name="1" type="MeshInstance3D" parent="StaticBody3D/Node3D"]
+transform = Transform3D(0.0538825, 0, 0, 0, 0.00604691, 0, 0, 0, 0.0538825, 0, 0.0347116, 0)
+material_override = SubResource("StandardMaterial3D_ps5wm")
+mesh = SubResource("CylinderMesh_3bn77")
+skeleton = NodePath("../../..")
+
+[node name="2" type="MeshInstance3D" parent="StaticBody3D/Node3D"]
+transform = Transform3D(0.0538825, 0, 0, 0, 0.00604691, 0, 0, 0, 0.0538825, 0, 0.0189673, 0.0318943)
+material_override = SubResource("StandardMaterial3D_ps5wm")
+mesh = SubResource("CylinderMesh_3bn77")
+skeleton = NodePath("../../..")
+
+[node name="3" type="MeshInstance3D" parent="StaticBody3D/Node3D"]
+transform = Transform3D(0.0538825, 0, 0, 0, 0.00604691, 0, 0, 0, 0.0538825, 0.0469607, 0.0195242, -0.0010549)
+material_override = SubResource("StandardMaterial3D_ps5wm")
+mesh = SubResource("CylinderMesh_3bn77")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188106, 0.127566, 0.0251352)
+shape = SubResource("BoxShape3D_uj4l2")

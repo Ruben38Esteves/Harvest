@@ -1,18 +1,29 @@
 extends Node3D
 
+#childs
 @onready var hit_rect = $UI/ColorRect
 @onready var zombie_spawn_points = $map/Spawns
 @onready var navigation_region = $map/NavigationRegion3D
 @onready var zombie_spawn_timer = $ZombieSpawnTimer
 @onready var crossair = $UI/crossair
 @onready var crossair2 = $UI/crossair2
+@onready var time = $UI/Hud/timer/Time
 @onready var chest_spawns = $map/Chest_spawns
+@onready var word_clock = $WordClock
 
+#loads
 var zombie = load("res://Scenes/zombie.tscn")
 var chest = load("res://Scenes/chest.tscn")
 var instance
 
+#variables
+var time_seconds = 0
+var time_minutes = 0
+var time_hours = 0
+
+#signals
 signal add_ammo
+signal add_money
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -68,3 +79,17 @@ func _on_zombie_zombie_killed():
 		
 func _on_chest_opened():
 	print("abriu")
+	
+func calc_money():
+	pass
+
+func _on_word_clock_timeout():
+	time_seconds += 1
+	if time_seconds == 61:
+		time_seconds = 0
+		time_minutes += 1
+	update_timer()
+		
+func update_timer():
+	var value =  str(time_minutes) + ":" + str(time_seconds)
+	time.text = value

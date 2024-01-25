@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfdgyti3y6c3w"]
+[gd_scene load_steps=5 format=3 uid="uid://dfdgyti3y6c3w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5cnb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31hoy"]
 bg_color = Color(0.992157, 0.345098, 0.337255, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_o2crb"]
+subpixel_positioning = 0
+
+[sub_resource type="Theme" id="Theme_g043x"]
+default_font = SubResource("SystemFont_o2crb")
+default_font_size = 50
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -67,3 +74,15 @@ offset_bottom = 1054.0
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_y5cnb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_31hoy")
+
+[node name="timer" type="VBoxContainer" parent="Hud"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 44.0
+offset_right = 177.0
+offset_bottom = 150.0
+
+[node name="Time" type="Label" parent="Hud/timer"]
+layout_mode = 2
+theme = SubResource("Theme_g043x")
+text = "Time"
