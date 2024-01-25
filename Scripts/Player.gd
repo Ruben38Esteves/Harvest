@@ -192,3 +192,6 @@ func glow_chest(target_chest):
 		pass
 	target_chest.glow(false)
 	
+func get_money(value):
+	print(value)
+	

@@ -20,6 +20,9 @@ var player = null
 @onready var anim_tree = $AnimationTree
 @onready var progress_bar = $SubViewport/ProgressBar
 
+#coins utils
+const COINS = preload("res://Scenes/coins.tscn")
+var instance
 
 var state_machine
 
@@ -67,4 +70,7 @@ func _on_area_3d_body_hit(dmg):
 	progress_bar.value = health
 	if health <= 0:
 		emit_signal("zombie_killed")
+		instance = COINS.instantiate()
+		instance.position = self.global_position
+		self.get_parent().add_child(instance)
 		queue_free()
