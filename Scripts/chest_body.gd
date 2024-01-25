@@ -4,6 +4,7 @@ signal chest_used
 @onready var timer = $"../Timer"
 @onready var shader = $".".material.next_pass
 @onready var shader1 = self.material.next_pass
+@onready var chest = $".."
 var targeted = false : set = set_targeted
 
 func set_targeted(val):
@@ -22,8 +23,8 @@ func _ready():
 func _process(delta):
 	pass
 
-func used():
-	emit_signal("chest_used")
+func used(money):
+	return chest.open_chest(money)
 
 func shader_value(boolean):
 	if boolean:

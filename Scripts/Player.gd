@@ -145,7 +145,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if gun_aim.is_colliding():
 			if gun_aim.get_collider().is_in_group("chest"):
-				gun_aim.get_collider().used()
+				money = gun_aim.get_collider().used(money)
+				money_value.text = str(money)
 	
 	#chest glow
 	var coll = gun_aim.get_collider()

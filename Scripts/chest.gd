@@ -15,6 +15,14 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func open_chest(money):
+	if money >= price:
+		shader.set_shader_parameter("strength", 0.0)
+		queue_free()
+		return money - price
+	else:
+		return money
 
 func _on_body_chest_used():
 	shader.set_shader_parameter("strength", 0.0)
