@@ -32,6 +32,7 @@ var health = 100
 
 #money
 var money = 0
+@onready var money_value = $"../../UI/Hud/Money/MoneyValue"
 
 
 #guns
@@ -193,5 +194,5 @@ func glow_chest(target_chest):
 	target_chest.glow(false)
 	
 func get_money(value):
-	print(value)
-	
+	money += value
+	money_value.text = str(money)

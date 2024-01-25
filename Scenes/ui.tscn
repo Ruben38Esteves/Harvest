@@ -51,10 +51,10 @@ mouse_filter = 2
 
 [node name="Ammo" type="VBoxContainer" parent="Hud"]
 layout_mode = 0
-offset_left = 36.0
-offset_top = 956.0
-offset_right = 76.0
-offset_bottom = 1006.0
+offset_left = 1837.0
+offset_top = 988.0
+offset_right = 1888.0
+offset_bottom = 1038.0
 mouse_filter = 2
 
 [node name="Primary" type="Label" parent="Hud/Ammo"]
@@ -86,3 +86,19 @@ offset_bottom = 150.0
 layout_mode = 2
 theme = SubResource("Theme_g043x")
 text = "Time"
+
+[node name="Money" type="HBoxContainer" parent="Hud"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 964.0
+offset_right = 87.0
+offset_bottom = 1004.0
+
+[node name="MoneyLabel" type="Label" parent="Hud/Money"]
+layout_mode = 2
+text = "COINS: "
+
+[node name="MoneyValue" type="Label" parent="Hud/Money"]
+layout_mode = 2
+text = "0
+"

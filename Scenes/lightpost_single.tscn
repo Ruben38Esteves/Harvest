@@ -52,8 +52,8 @@ emission_energy_multiplier = 2.44
 
 [sub_resource type="BoxMesh" id="BoxMesh_bygp0"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_30tft"]
-points = PackedVector3Array(0.0726233, 0.995221, 0.311267, -0.0732886, 0.995221, 0.311267, 0.0726233, 0.958562, 0.311267, 0.0726233, 0.995221, 0.165339, 0.0686528, 1.20253, 0.307268, -0.0732886, 0.995221, 0.165339, -0.0732886, 0.958562, 0.311267, -0.0693323, 1.20253, 0.307268, 0.0726233, 0.958562, 0.165339, 0.0646679, 0, 0.0646655, 0.0704952, 0.0468567, 0.0704951, 0.0704952, 0.0468567, -0.0705, 0.0686528, 1.20253, 0.1693, 0.0306751, 1.30089, 0.26448, -0.0705035, 0.0468567, -0.0705, -0.0732886, 0.958562, 0.165339, -0.0693323, 1.20253, 0.1693, -0.0705035, 0.0468567, 0.0704951, -0.0646905, 0, 0.0646655, -0.0313689, 1.30089, 0.26448, 0.0646679, 0, -0.0647077, 0.0309464, 1.2286, -0.0310004, 0.0221055, 1.31857, -0.0221439, 0.0306751, 1.30089, 0.212088, 0.0221055, 1.31857, 0.0221016, -0.0646905, 0, -0.0647077, -0.030969, 1.2286, -0.0310004, -0.0313689, 1.30089, 0.212088, -0.022128, 1.31857, -0.0221439, -0.022128, 1.31857, 0.0221016)
+[sub_resource type="BoxShape3D" id="BoxShape3D_hbsjj"]
+size = Vector3(0.180634, 1.3147, 0.449829)
 
 [node name="lightpost-single2" type="StaticBody3D"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
@@ -69,7 +69,8 @@ material_override = SubResource("StandardMaterial3D_qm77n")
 mesh = SubResource("BoxMesh_bygp0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_30tft")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00605774, 0.659546, 0.100891)
+shape = SubResource("BoxShape3D_hbsjj")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.333333, 0, 0, 0, -1.45705e-08, 0.333333, 0, -0.333333, -1.45705e-08, 0, 1.06762, 0.241432)
