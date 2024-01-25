@@ -1,0 +1,110 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdp1mtf8ldgtp"]
+
+[ext_resource type="Script" path="res://Scripts/coins.gd" id="1_ln2lg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ps5wm"]
+albedo_color = Color(0.823529, 0.694118, 0.141176, 1)
+metallic = 1.0
+emission_enabled = true
+emission = Color(0.411765, 0.313726, 0, 1)
+emission_energy_multiplier = 2.8
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3bn77"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uj4l2"]
+size = Vector3(0.25, 0.410156, 0.25)
+
+[sub_resource type="Animation" id="Animation_0n7l6"]
+resource_name = "float"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D/Visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.125, 0), Vector3(0, 0, 0), Vector3(0, 0.125, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_oimu4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StaticBody3D/Visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.125, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gjean"]
+_data = {
+"RESET": SubResource("Animation_oimu4"),
+"float": SubResource("Animation_0n7l6")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pao22"]
+radius = 0.401252
+
+[node name="Coins" type="Node3D"]
+script = ExtResource("1_ln2lg")
+
+[node name="StaticBody3D" type="RigidBody3D" parent="."]
+collision_layer = 0
+
+[node name="Visual" type="Node3D" parent="StaticBody3D"]
+transform = Transform3D(2.67795, 0, 0, 0, 2.67795, 0, 0, 0, 2.67795, 0, -0.125, 0)
+
+[node name="1" type="MeshInstance3D" parent="StaticBody3D/Visual"]
+transform = Transform3D(0.0538825, 0, 0, 0, 0.00604691, 0, 0, 0, 0.0538825, 0, 0.0347116, 0)
+material_override = SubResource("StandardMaterial3D_ps5wm")
+mesh = SubResource("CylinderMesh_3bn77")
+skeleton = NodePath("../../..")
+
+[node name="2" type="MeshInstance3D" parent="StaticBody3D/Visual"]
+transform = Transform3D(0.0538825, 0, 0, 0, 0.00604691, 0, 0, 0, 0.0538825, 0, 0.0189673, 0.0318943)
+material_override = SubResource("StandardMaterial3D_ps5wm")
+mesh = SubResource("CylinderMesh_3bn77")
+skeleton = NodePath("../../..")
+
+[node name="3" type="MeshInstance3D" parent="StaticBody3D/Visual"]
+transform = Transform3D(0.0538825, 0, 0, 0, 0.00604691, 0, 0, 0, 0.0538825, 0.0469607, 0.0195242, -0.0010549)
+material_override = SubResource("StandardMaterial3D_ps5wm")
+mesh = SubResource("CylinderMesh_3bn77")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188106, 0.0474875, 0.0251352)
+shape = SubResource("BoxShape3D_uj4l2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gjean")
+}
+
+[node name="Collectible" type="Area3D" parent="."]
+transform = Transform3D(1.81716, 0, 0, 0, 1.81716, 0, 0, 0, 1.81716, 0, 0, 0)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollectibleRange" type="CollisionShape3D" parent="Collectible"]
+transform = Transform3D(1.0271, 0, 0, 0, 1.0271, 0, 0, 0, 1.0271, 0, 0, 0)
+shape = SubResource("SphereShape3D_pao22")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0, 1)
+omni_range = 0.751793
+
+[connection signal="area_entered" from="Collectible" to="." method="_on_collectible_area_entered"]
+[connection signal="area_shape_entered" from="Collectible" to="." method="_on_collectible_area_shape_entered"]
+[connection signal="body_entered" from="Collectible" to="." method="_on_collectible_body_entered"]
+[connection signal="body_shape_entered" from="Collectible" to="." method="_on_collectible_body_shape_entered"]

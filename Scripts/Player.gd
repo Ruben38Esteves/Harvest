@@ -30,6 +30,9 @@ signal player_hit
 var maxHealth = 100
 var health = 100
 
+#money
+var money = 0
+@onready var money_value = $"../../UI/Hud/Money/MoneyValue"
 
 
 #guns
@@ -142,7 +145,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("interact"):
 		if gun_aim.is_colliding():
 			if gun_aim.get_collider().is_in_group("chest"):
-				gun_aim.get_collider().used()
+				money = gun_aim.get_collider().used(money)
+				money_value.text = str(money)
 	
 	#chest glow
 	var coll = gun_aim.get_collider()
@@ -190,3 +194,6 @@ func glow_chest(target_chest):
 		pass
 	target_chest.glow(false)
 	
+func get_money(value):
+	money += value
+	money_value.text = str(money)
