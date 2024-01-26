@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dowt1ujjcq6dy"]
 
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="1_hgbk1"]
-[ext_resource type="Texture2D" uid="uid://42jsxgdoh68" path="res://Sprites/gun1.png" id="1_xlmaa"]
+[ext_resource type="Texture2D" uid="uid://cniwd8je12q7b" path="res://Sprites/gun.png" id="2_fxdpu"]
 
 [sub_resource type="Animation" id="Animation_4do5i"]
 resource_name = "Shoot"
@@ -17,7 +17,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.02, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.05, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0.05), Vector3(0.05, 0, 0.05), Vector3(0, 0, 0.05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1tcn7"]
@@ -29,8 +29,8 @@ _data = {
 script = ExtResource("1_hgbk1")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-texture = ExtResource("1_xlmaa")
+transform = Transform3D(-1.735e-09, 0, -0.0396922, 0, 0.0396922, 0, 0.0396922, 0, -1.735e-09, 0, 0, 0)
+texture = ExtResource("2_fxdpu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -45,5 +45,5 @@ target_position = Vector3(0, 0, -1)
 wait_time = 0.5
 one_shot = true
 
-[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]
 [connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]
