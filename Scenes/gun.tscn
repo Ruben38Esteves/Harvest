@@ -1,8 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://dowt1ujjcq6dy"]
+[gd_scene load_steps=8 format=3 uid="uid://dowt1ujjcq6dy"]
 
 [ext_resource type="Script" path="res://Scripts/gun.gd" id="1_hgbk1"]
 [ext_resource type="Texture2D" uid="uid://cniwd8je12q7b" path="res://Sprites/gun.png" id="2_fxdpu"]
 [ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="3_8tppc"]
+[ext_resource type="PackedScene" uid="uid://6fmadp4jv4mf" path="res://Models/Gun/gun_3d.glb" id="3_ej8ns"]
+
+[sub_resource type="Animation" id="Animation_eboqw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gun_3d/muzzle:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gun_3d:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00122786, -0.11337, 0.0683658)]
+}
 
 [sub_resource type="Animation" id="Animation_4do5i"]
 resource_name = "Shoot"
@@ -23,7 +51,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D/muzzle:visible")
+tracks/1/path = NodePath("gun_3d/muzzle:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -32,20 +60,17 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
-
-[sub_resource type="Animation" id="Animation_eboqw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D/muzzle:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("gun_3d:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.00122786, -0.11337, 0.0240935), Vector3(-0.00122786, -0.11337, 0.0683658), Vector3(-0.001, -0.113, 0.024)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1tcn7"]
@@ -58,13 +83,9 @@ _data = {
 script = ExtResource("1_hgbk1")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-1.735e-09, 0, -0.0396922, 0, 0.0396922, 0, 0.0396922, 0, -1.735e-09, 0.05, 0, 0.05)
+transform = Transform3D(-1.735e-09, 0, -0.0396922, 0, 0.0396922, 0, 0.0396922, 0, -1.735e-09, 0, 0, 0.05)
+visible = false
 texture = ExtResource("2_fxdpu")
-
-[node name="muzzle" type="Sprite3D" parent="Sprite3D"]
-transform = Transform3D(1.36621, 0, -1.42109e-14, 0, 1.36621, 0, 1.42109e-14, 0, 1.36621, -3.27139, 0, 1.19209e-07)
-billboard = 1
-texture = ExtResource("3_8tppc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -76,8 +97,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.105579)
 target_position = Vector3(0, 0, -1)
 
 [node name="fire_rate_gun" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 one_shot = true
 
-[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
+[node name="gun_3d" parent="." instance=ExtResource("3_ej8ns")]
+transform = Transform3D(0.0638868, 0, 0, 0, 0.0638868, 0, 0, 0, 0.0638868, -0.00122786, -0.11337, 0.0683658)
+
+[node name="muzzle" type="Sprite3D" parent="gun_3d"]
+transform = Transform3D(-3.71027e-08, 0, -0.848812, 0, 0.848812, 0, 0.848812, 0, -3.71027e-08, -0.0231189, 1.77454, -1.62697)
+billboard = 1
+texture = ExtResource("3_8tppc")
+
 [connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]
+[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
