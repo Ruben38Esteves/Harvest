@@ -3,12 +3,12 @@ extends Node3D
 #childs
 @onready var hit_rect = $UI/ColorRect
 @onready var zombie_spawn_points = $map/Spawns
+@onready var chest_spawns = $map/Chest_spawns
 @onready var navigation_region = $map/NavigationRegion3D
 @onready var zombie_spawn_timer = $ZombieSpawnTimer
 @onready var crossair = $UI/crossair
 @onready var crossair2 = $UI/crossair2
 @onready var time = $UI/Hud/timer/Time
-@onready var chest_spawns = $map/Chest_spawns
 @onready var word_clock = $WordClock
 
 #loads
@@ -91,5 +91,9 @@ func _on_word_clock_timeout():
 	update_timer()
 		
 func update_timer():
-	var value =  str(time_minutes) + ":" + str(time_seconds)
+	var value
+	if time_seconds < 10:
+		value =  str(time_minutes) + ":0" + str(time_seconds)
+	else:
+		value =  str(time_minutes) + ":" + str(time_seconds)
 	time.text = value

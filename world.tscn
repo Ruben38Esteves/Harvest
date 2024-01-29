@@ -394,11 +394,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7366, -3.8147e-06, 25.157
 [node name="chest_spawn14" type="Node3D" parent="map/Chest_spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7441, -3.8147e-06, 26.0712)
 
+[node name="UI" parent="." instance=ExtResource("12_exc3c")]
+
 [node name="ZombieSpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
-
-[node name="UI" parent="." instance=ExtResource("12_exc3c")]
 
 [node name="WordClock" type="Timer" parent="."]
 autostart = true
