@@ -25,7 +25,7 @@ func _ready():
 func _process(delta):
 	pass
 	
-func shoot():
+func shoot(aim):
 	if !rifle_anim.is_playing() and can_fire and rifleAmmo > 0:
 		rifleAmmo -= 1
 		update_rifle_ammo_display()
@@ -33,8 +33,8 @@ func shoot():
 		fire_rate.start()
 		rifle_anim.play("shoot")
 		instance = bullet.instantiate()
-		instance.position = rifle_barrel.global_position
-		instance.transform.basis = rifle_barrel.global_transform.basis
+		instance.position = aim.global_position
+		instance.transform.basis = aim.global_transform.basis
 		player.get_parent().add_child(instance)
 
 

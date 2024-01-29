@@ -47,7 +47,5 @@ visible = false
 [node name="Gun" parent="Head/Camera3D/Hands/Secondary" instance=ExtResource("2_62dcs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.288733, -0.0935724, -0.357603)
 
-[connection signal="fire_gun" from="." to="Head/Camera3D/Hands/Secondary/Gun" method="_on_player_fire_gun"]
-[connection signal="fire_rifle" from="." to="Head/Camera3D/Hands/Primary/Rifle" method="_on_player_fire_rifle"]
 [connection signal="increase_gun_ammo" from="." to="Head/Camera3D/Hands/Secondary/Gun" method="_on_player_increase_gun_ammo"]
 [connection signal="increase_rifle_ammo" from="." to="Head/Camera3D/Hands/Primary/Rifle" method="_on_player_increase_rifle_ammo"]

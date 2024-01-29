@@ -14,7 +14,6 @@ var default_hands_position
 var weapon_sways = 5.0
 var weapon_rotation = 1
 
-
 #fov
 const BASE_FOV = 75
 const FOV_CHANGE = 1.1
@@ -45,12 +44,10 @@ var money = 0
 #guns
 var current_gun = "primary"
 #rifle
-signal fire_rifle
 signal increase_rifle_ammo
 @onready var primary = $Head/Camera3D/Hands/Primary
 var primary_weapon 
 #pistol
-signal fire_gun
 signal increase_gun_ammo
 @onready var secondary = $Head/Camera3D/Hands/Secondary
 var secondary_weapon 
@@ -83,12 +80,12 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta * 1.5
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_pressed("jump"):
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
 			doublejump = true
 		elif doublejump:
-			velocity.y = JUMP_VELOCITY
+			#velocity.y = JUMP_VELOCITY
 			doublejump = false
 	
 	
@@ -132,15 +129,12 @@ func _physics_process(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
 	
-	#hand movement
-	
-	
 	#attacking
 	if Input.is_action_just_pressed("attack"):
 		if current_gun == "primary":
-			primary_weapon.shoot()
+			primary_weapon.shoot(gun_aim)
 		elif current_gun == "secondary":
-			secondary_weapon.shoot()
+			secondary_weapon.shoot(gun_aim)
 		
 	#change weapon
 	if Input.is_action_just_pressed("primary"):
