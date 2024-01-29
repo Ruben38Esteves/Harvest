@@ -74,3 +74,14 @@ func _on_area_3d_body_hit(dmg):
 		instance.position = self.global_position
 		self.get_parent().add_child(instance)
 		queue_free()
+
+func attacked(dmg):
+	health -= dmg
+	emit_signal("zombie_hit")
+	progress_bar.value = health
+	if health <= 0:
+		emit_signal("zombie_killed")
+		instance = COINS.instantiate()
+		instance.position = self.global_position
+		self.get_parent().add_child(instance)
+		queue_free()

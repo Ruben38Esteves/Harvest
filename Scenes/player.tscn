@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1y3no0s41hhe"]
+[gd_scene load_steps=7 format=3 uid="uid://d1y3no0s41hhe"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_mh2q7"]
 [ext_resource type="PackedScene" uid="uid://dowt1ujjcq6dy" path="res://Scenes/gun.tscn" id="2_62dcs"]
 [ext_resource type="PackedScene" uid="uid://b0i77543v5a01" path="res://Scenes/rifle.tscn" id="3_1i27i"]
+[ext_resource type="PackedScene" uid="uid://bs0au2owlfhwh" path="res://Scenes/axe.tscn" id="4_2pj8t"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m03d6"]
 
@@ -46,6 +47,12 @@ visible = false
 
 [node name="Gun" parent="Head/Camera3D/Hands/Secondary" instance=ExtResource("2_62dcs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.288733, -0.0935724, -0.357603)
+
+[node name="Meelee" type="Node3D" parent="Head/Camera3D/Hands"]
+visible = false
+
+[node name="Axe" parent="Head/Camera3D/Hands/Meelee" instance=ExtResource("4_2pj8t")]
+transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0, 1, 0.595, -0.295, -0.52)
 
 [connection signal="increase_gun_ammo" from="." to="Head/Camera3D/Hands/Secondary/Gun" method="_on_player_increase_gun_ammo"]
 [connection signal="increase_rifle_ammo" from="." to="Head/Camera3D/Hands/Primary/Rifle" method="_on_player_increase_rifle_ammo"]

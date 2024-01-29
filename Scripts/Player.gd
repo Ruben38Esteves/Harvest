@@ -43,14 +43,18 @@ var money = 0
 
 #guns
 var current_gun = "primary"
-#rifle
+#primary
 signal increase_rifle_ammo
 @onready var primary = $Head/Camera3D/Hands/Primary
 var primary_weapon 
-#pistol
+#secondary
 signal increase_gun_ammo
 @onready var secondary = $Head/Camera3D/Hands/Secondary
-var secondary_weapon 
+var secondary_weapon
+#meelee
+@onready var meelee = $Head/Camera3D/Hands/Meelee
+var meelee_weapon
+
 
 #utils
 var looking_at = null
@@ -61,6 +65,7 @@ func _ready():
 	current_gun = "primary"
 	primary_weapon = primary.get_child(0)
 	secondary_weapon = secondary.get_child(0)
+	meelee_weapon = meelee.get_child(0)
 	update_progress_bar()
 	default_hands_position = hands.position
 	
@@ -135,16 +140,25 @@ func _physics_process(delta):
 			primary_weapon.shoot(gun_aim)
 		elif current_gun == "secondary":
 			secondary_weapon.shoot(gun_aim)
+		elif current_gun == "meelee":
+			meelee_weapon.shoot()
 		
 	#change weapon
 	if Input.is_action_just_pressed("primary"):
 		current_gun = "primary"
-		secondary.visible = false
 		primary.visible = true
+		secondary.visible = false
+		meelee.visible = false
 	elif Input.is_action_just_pressed("secondary"):
 		current_gun = "secondary"
-		secondary.visible = true
 		primary.visible = false
+		secondary.visible = true
+		meelee.visible = false
+	elif Input.is_action_just_pressed("meelee"):
+		current_gun = "meelee"
+		primary.visible = false
+		secondary.visible = false
+		meelee.visible = true
 		
 	#menu
 	if Input.is_action_just_pressed("escape"):

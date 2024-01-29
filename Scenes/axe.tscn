@@ -1,0 +1,150 @@
+[gd_scene load_steps=7 format=3 uid="uid://bs0au2owlfhwh"]
+
+[ext_resource type="PackedScene" uid="uid://rd5tx5akfnvj" path="res://Models/Axe/axe.glb" id="1_63tgp"]
+[ext_resource type="Script" path="res://Scenes/axe.gd" id="1_bf5gl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_130fe"]
+size = Vector3(1, 4.73969, 5.3045)
+
+[sub_resource type="Animation" id="Animation_lq0at"]
+resource_name = "attack"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("axe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.4, 0.063, 0), Vector3(-0.4, -0.126, -0.277), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("axe:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(-0.151146, -3.14159, -2.29977e-08), Vector3(1.5708, -3.14159, 0), Vector3(0, -3.14159, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("axe/Area3D/axe_hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.15, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("axe/Area3D:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("axe/Area3D:monitorable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.15, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_mgq53"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("axe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0627055, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("axe:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.151146, -3.14159, -2.29977e-08)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("axe/Area3D/axe_hitbox:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("axe/Area3D:monitorable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xdoi6"]
+_data = {
+"RESET": SubResource("Animation_mgq53"),
+"attack": SubResource("Animation_lq0at")
+}
+
+[node name="Axe" type="Node3D"]
+script = ExtResource("1_bf5gl")
+
+[node name="axe" parent="." instance=ExtResource("1_63tgp")]
+transform = Transform3D(-0.101305, -2.65608e-11, -1.51222e-08, -2.30322e-09, 0.10015, 0.0152535, 1.49458e-08, 0.0152535, -0.10015, 0, 0.0627055, 0)
+
+[node name="Area3D" type="Area3D" parent="axe"]
+collision_mask = 2
+monitorable = false
+
+[node name="axe_hitbox" type="CollisionShape3D" parent="axe/Area3D"]
+transform = Transform3D(1, 1.77636e-15, 4.26326e-14, 0, 1, 0, -4.26326e-14, -7.57306e-29, 1, 1.98952e-13, 4.4484, 2.15225)
+shape = SubResource("BoxShape3D_130fe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xdoi6")
+}
+
+[connection signal="body_entered" from="axe/Area3D" to="." method="_on_area_3d_body_entered"]
