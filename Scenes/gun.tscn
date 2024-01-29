@@ -31,6 +31,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-0.00122786, -0.11337, 0.0683658)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("gun_3d/Cube:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.83342, 0.407683)]
+}
 
 [sub_resource type="Animation" id="Animation_4do5i"]
 resource_name = "Shoot"
@@ -72,6 +84,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(-0.00122786, -0.11337, 0.0240935), Vector3(-0.00122786, -0.11337, 0.0683658), Vector3(-0.001, -0.113, 0.024)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("gun_3d/Cube:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.83342, 0), Vector3(0, 1.83342, 0.407683), Vector3(0, 1.833, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1tcn7"]
 _data = {
@@ -103,6 +127,9 @@ one_shot = true
 [node name="gun_3d" parent="." instance=ExtResource("3_ej8ns")]
 transform = Transform3D(0.0638868, 0, 0, 0, 0.0638868, 0, 0, 0, 0.0638868, -0.00122786, -0.11337, 0.0683658)
 
+[node name="Cube" parent="gun_3d" index="0"]
+transform = Transform3D(0.228145, 0, 0, 0, 0.20411, 0, 0, 0, 1.30004, 0, 1.83342, 0.407683)
+
 [node name="muzzle" type="Sprite3D" parent="gun_3d"]
 transform = Transform3D(-3.71027e-08, 0, -0.848812, 0, 0.848812, 0, 0.848812, 0, -3.71027e-08, -0.0231189, 1.77454, -1.62697)
 billboard = 1
@@ -110,3 +137,5 @@ texture = ExtResource("3_8tppc")
 
 [connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]
 [connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
+
+[editable path="gun_3d"]
