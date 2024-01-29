@@ -4,6 +4,7 @@ extends CharacterBody3D
 const SPEED = 4.0
 const JUMP_VELOCITY = 4.5
 const ATTACK_RANGE = 2.5
+var max_health = 100
 var health = 100
 const ATTACK_KNOCKBACK = 10.0
 var damage = 10
@@ -20,6 +21,7 @@ var player = null
 @onready var anim_tree = $AnimationTree
 @onready var progress_bar = $SubViewport/ProgressBar
 @onready var sprite = $Sprite3D
+@onready var health_bar = $health_bar
 
 #coins utils
 const COINS = preload("res://Scenes/coins.tscn")
@@ -66,6 +68,8 @@ func _attack_finished():
 		
 
 func _on_area_3d_body_hit(dmg):
+	if health == max_health:
+		health_bar.visible = true
 	health -= dmg
 	emit_signal("zombie_hit")
 	progress_bar.value = health
@@ -80,6 +84,8 @@ func _on_area_3d_body_hit(dmg):
 	sprite.modulate = Color.WHITE
 
 func attacked(dmg):
+	if health == max_health:
+		health_bar.visible = true
 	health -= dmg
 	emit_signal("zombie_hit")
 	progress_bar.value = health

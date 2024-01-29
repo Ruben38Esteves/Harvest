@@ -106,6 +106,7 @@ shape = SubResource("CapsuleShape3D_0kvla")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2.74663, 0, 0, 0, 3.09856, 0, 0, 0, 1, 0, 0.44666, 0)
 billboard = 2
+shaded = true
 texture = ExtResource("2_wi47e")
 hframes = 5
 
@@ -132,14 +133,16 @@ transparent_bg = true
 size = Vector2i(100, 512)
 
 [node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
-offset_right = 121.0
-offset_bottom = 27.0
+offset_right = 100.0
+offset_bottom = 15.0
 mouse_filter = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_6wowr")
 max_value = 3.0
+show_percentage = false
 
-[node name="Sprite3D2" type="Sprite3D" parent="."]
+[node name="health_bar" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194256, -0.937701, 0.0296445)
+visible = false
 billboard = 2
 texture = SubResource("ViewportTexture_u3lrr")
 
