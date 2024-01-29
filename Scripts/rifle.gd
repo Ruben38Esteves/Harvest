@@ -58,4 +58,11 @@ func update_rifle_ammo_display():
 	primaryAmmoDisplay.text = str(rifleAmmo)
 
 func _on_player_increase_rifle_ammo():
-	rifleAmmo += 2
+	rifleAmmo += 4
+	update_rifle_ammo_display()
+	print("rifle ammo")
+	
+func increase_ammo():
+	rifleAmmo += 4
+	update_rifle_ammo_display()
+	print("rifle ammo")

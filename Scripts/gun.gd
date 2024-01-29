@@ -59,5 +59,11 @@ func update_gun_ammo_display():
 
 
 func _on_player_increase_gun_ammo():
-	gunAmmo += 4
+	gunAmmo += 8
 	update_gun_ammo_display()
+	print("gun ammo")
+	
+func increase_ammo():
+	gunAmmo += 8
+	update_gun_ammo_display()
+	print("gun ammo")

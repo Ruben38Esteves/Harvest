@@ -71,14 +71,19 @@ func _on_zombie_zombie_hit():
 	crossair2.visible = false
 
 func _on_zombie_zombie_killed():
+	"""
 	var ammo_chance = randi() % 10
 	if ammo_chance >= 0 and ammo_chance < 6:
 		emit_signal("add_ammo", 2)
 	elif ammo_chance >= 6 and ammo_chance < 8:
 		emit_signal("add_ammo", 1)
+	"""
+	pass
 		
 func _on_chest_opened():
-	print("abriu")
+	emit_signal("add_ammo", 1)
+	emit_signal("add_ammo", 2)
+	print("abriu chest")
 	
 func calc_money():
 	pass

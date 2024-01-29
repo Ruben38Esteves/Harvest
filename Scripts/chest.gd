@@ -20,6 +20,7 @@ func open_chest(money):
 	if money >= price:
 		shader.set_shader_parameter("strength", 0.0)
 		queue_free()
+		emit_signal("chest_opened")
 		return money - price
 	else:
 		return money
