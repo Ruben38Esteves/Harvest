@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0i77543v5a01"]
+[gd_scene load_steps=8 format=3 uid="uid://b0i77543v5a01"]
 
 [ext_resource type="Script" path="res://Scripts/rifle.gd" id="1_vdyjj"]
 [ext_resource type="Texture2D" uid="uid://3u4ajdn7cxmv" path="res://Sprites/Rifle2.png" id="2_eydyr"]
 [ext_resource type="PackedScene" uid="uid://carwtwbycchat" path="res://Scenes/rifle_3d.tscn" id="3_et6hm"]
+[ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="4_28m72"]
 
 [sub_resource type="Animation" id="Animation_44h3y"]
 length = 0.001
@@ -29,6 +30,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.299182, -0.110593, -0.0327179)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("rifle-3d/muzzle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_8ixup"]
@@ -78,6 +91,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector3(0, -0.105661, 0), Vector3(0.299182, -0.110593, -0.0327179), Vector3(0, -0.109956, 0)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("rifle-3d/muzzle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.02),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhx6u"]
 _data = {
@@ -90,7 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00145085, 0)
 script = ExtResource("1_vdyjj")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-1.03457e-07, 0, -0.0285793, 0, 0.0285793, 0, 0.0285793, 0, -1.03457e-07, 0, 0.02, 0)
+transform = Transform3D(-1.00108e-07, -2.61122e-08, -0.0285793, -0.00729853, 0.0276316, 3.19033e-10, 0.0276316, 0.00729853, -1.03457e-07, 0, 0.02, 0.2)
 visible = false
 texture = ExtResource("2_eydyr")
 
@@ -108,5 +133,10 @@ one_shot = true
 
 [node name="rifle-3d" parent="." instance=ExtResource("3_et6hm")]
 transform = Transform3D(0.160132, 0, -0.0169831, -0.00503363, 0.153793, -0.0474619, 0.0162199, 0.0477275, 0.152937, 0, -0.055322, 0.185649)
+
+[node name="muzzle" type="Sprite3D" parent="rifle-3d"]
+transform = Transform3D(1, 0, 1.41561e-07, 0, 1, 0, -1.49012e-08, 0, 1, 0.00145813, 0.414139, -2.37135)
+billboard = 1
+texture = ExtResource("4_28m72")
 
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
