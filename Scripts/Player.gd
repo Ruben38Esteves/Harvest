@@ -8,6 +8,13 @@ const JUMP_VELOCITY = 7
 const SENSITIVITY = 0.003
 var doublejump = true
 
+#gun movement
+@onready var hands = $Head/Camera3D/Hands
+var default_hands_position
+var weapon_sways = 5.0
+var weapon_rotation = 1
+
+
 #fov
 const BASE_FOV = 75
 const FOV_CHANGE = 1.1
@@ -36,28 +43,33 @@ var money = 0
 
 
 #guns
-var current_gun = "fire_rifle"
-#pistol
-signal fire_gun
-signal increase_gun_ammo
-@onready var gun = $Head/Camera3D/Gun
+var current_gun = "primary"
 #rifle
 signal fire_rifle
 signal increase_rifle_ammo
-@onready var rifle = $Head/Camera3D/Rifle
+@onready var primary = $Head/Camera3D/Hands/Primary
+var primary_weapon 
+#pistol
+signal fire_gun
+signal increase_gun_ammo
+@onready var secondary = $Head/Camera3D/Hands/Secondary
+var secondary_weapon 
 
 #utils
 var looking_at = null
-
+var mouse_input
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	current_gun = "fire_rifle"
-	gun.visible = false
-	rifle.visible = true
+	current_gun = "primary"
+	primary_weapon = primary.get_child(0)
+	secondary_weapon = secondary.get_child(0)
 	update_progress_bar()
+	default_hands_position = hands.position
 	
-	
+func _input(event):
+	if event is InputEventMouseMotion:
+		mouse_input = event.relative
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -120,22 +132,25 @@ func _physics_process(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
 	
+	#hand movement
+	
+	
 	#attacking
 	if Input.is_action_just_pressed("attack"):
-		if current_gun == "fire_rifle":
-			emit_signal("fire_rifle")
-		elif current_gun == "fire_gun":
-			emit_signal("fire_gun")
+		if current_gun == "primary":
+			primary_weapon.shoot()
+		elif current_gun == "secondary":
+			secondary_weapon.shoot()
 		
 	#change weapon
 	if Input.is_action_just_pressed("primary"):
-		current_gun = "fire_rifle"
-		gun.visible = false
-		rifle.visible = true
+		current_gun = "primary"
+		secondary.visible = false
+		primary.visible = true
 	elif Input.is_action_just_pressed("secondary"):
-		current_gun = "fire_gun"
-		gun.visible = true
-		rifle.visible = false
+		current_gun = "secondary"
+		secondary.visible = true
+		primary.visible = false
 		
 	#menu
 	if Input.is_action_just_pressed("escape"):
@@ -156,7 +171,8 @@ func _physics_process(delta):
 		if looking_at != null and looking_at.is_in_group("chest"):
 			looking_at.targeted = false
 		looking_at = coll
-			
+		
+	weapon_sway(delta)
 	move_and_slide()
 	
 func _head_bob(time) -> Vector3:
@@ -164,6 +180,13 @@ func _head_bob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+	
+func weapon_sway(delta):
+	mouse_input = lerp(mouse_input, Vector2.ZERO, 5 * delta)
+	hands.rotation.x = lerp(hands.rotation.x, (mouse_input.y / 100) * weapon_rotation, 5 * delta)
+	hands.rotation.y = lerp(hands.rotation.y, (mouse_input.x / 100) * weapon_rotation, 5 * delta)
+	#hands.position.x = lerp(hands.position.x, default_hands_position.x + (hands / 75), 5 * delta)
+	#hands.position.z = lerp(hands.position.z, default_hands_position.z + (hands.velocity.z / 75), 5 * delta)
 	
 func hit(dir,knockback,damage):
 	emit_signal("player_hit")

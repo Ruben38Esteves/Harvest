@@ -3,8 +3,8 @@ extends Node3D
 @onready var rifle_anim = $AnimationPlayerRifle
 @onready var rifle_barrel = $rifle_barrel
 @onready var fire_rate = $fire_rate
-@onready var player = $"../../.."
-@onready var primaryAmmoDisplay = $"../../../../../UI/Hud/Ammo/Primary"
+@onready var player = $"../../../../.."
+@onready var primaryAmmoDisplay = $"../../../../../../../UI/Hud/Ammo/Primary"
 var rifleAmmo = 10
 var can_fire = true
 
@@ -17,13 +17,25 @@ var instance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player.fire_rifle.connect(_on_player_fire_rifle)
+	#player.fire_rifle.connect(_on_player_fire_rifle)
 	update_rifle_ammo_display()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+func shoot():
+	if !rifle_anim.is_playing() and can_fire and rifleAmmo > 0:
+		rifleAmmo -= 1
+		update_rifle_ammo_display()
+		can_fire = false
+		fire_rate.start()
+		rifle_anim.play("shoot")
+		instance = bullet.instantiate()
+		instance.position = rifle_barrel.global_position
+		instance.transform.basis = rifle_barrel.global_transform.basis
+		player.get_parent().add_child(instance)
 
 
 func _on_player_fire_rifle():
