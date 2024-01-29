@@ -83,7 +83,6 @@ func _on_zombie_zombie_killed():
 func _on_chest_opened():
 	emit_signal("add_ammo", 1)
 	emit_signal("add_ammo", 2)
-	print("abriu chest")
 	
 func calc_money():
 	pass

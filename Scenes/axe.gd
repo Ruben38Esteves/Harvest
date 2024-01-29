@@ -1,7 +1,7 @@
 extends Node3D
 @onready var axe_animation_player = $AnimationPlayer
 @onready var axe_hitbox = $axe/Area3D/axe_hitbox
-var damage = 3
+var damage = 70
 
 
 # Called when the node enters the scene tree for the first time.

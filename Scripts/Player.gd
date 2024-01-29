@@ -214,8 +214,6 @@ func player_die():
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 	
 func _on_world_add_ammo(type):
-	print("chegou ao player")
-	print(type)
 	if type == 1:
 		primary_weapon.increase_ammo()
 	elif type == 2:
