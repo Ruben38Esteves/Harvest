@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_mh2q7"]
 [ext_resource type="PackedScene" uid="uid://dowt1ujjcq6dy" path="res://Scenes/gun.tscn" id="2_62dcs"]
-[ext_resource type="PackedScene" uid="uid://b0i77543v5a01" path="res://Scenes/rifle.tscn" id="3_1i27i"]
+[ext_resource type="PackedScene" uid="uid://vcny7tfi5ybi" path="res://Scenes/shotgun.tscn" id="2_ufddl"]
 [ext_resource type="PackedScene" uid="uid://bs0au2owlfhwh" path="res://Scenes/axe.tscn" id="4_2pj8t"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m03d6"]
@@ -37,10 +37,9 @@ collide_with_areas = true
 [node name="Hands" type="Node3D" parent="Head/Camera3D"]
 
 [node name="Primary" type="Node3D" parent="Head/Camera3D/Hands"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.47563, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17, -0.096, -0.19)
 
-[node name="Rifle" parent="Head/Camera3D/Hands/Primary" instance=ExtResource("3_1i27i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.106081, 1.39806, -0.322308)
+[node name="shotgun" parent="Head/Camera3D/Hands/Primary" instance=ExtResource("2_ufddl")]
 
 [node name="Secondary" type="Node3D" parent="Head/Camera3D/Hands"]
 visible = false
@@ -55,4 +54,3 @@ visible = false
 transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0, 1, 0.595, -0.295, -0.52)
 
 [connection signal="increase_gun_ammo" from="." to="Head/Camera3D/Hands/Secondary/Gun" method="_on_player_increase_gun_ammo"]
-[connection signal="increase_rifle_ammo" from="." to="Head/Camera3D/Hands/Primary/Rifle" method="_on_player_increase_rifle_ammo"]

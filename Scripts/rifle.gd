@@ -17,7 +17,6 @@ var instance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#player.fire_rifle.connect(_on_player_fire_rifle)
 	update_rifle_ammo_display()
 
 
@@ -60,9 +59,7 @@ func update_rifle_ammo_display():
 func _on_player_increase_rifle_ammo():
 	rifleAmmo += 4
 	update_rifle_ammo_display()
-	print("rifle ammo")
 	
 func increase_ammo():
 	rifleAmmo += 4
 	update_rifle_ammo_display()
-	print("rifle ammo")
