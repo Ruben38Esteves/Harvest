@@ -4,6 +4,45 @@
 [ext_resource type="PackedScene" uid="uid://bwtnayq7yv0sp" path="res://Models/Shotgun/shotgun_3d.glb" id="2_qgm13"]
 [ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="3_4gxn1"]
 
+[sub_resource type="Animation" id="Animation_q0w82"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shotgun_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shotgun_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shotgun_model/muzzle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_3m8hw"]
 resource_name = "shoot"
 step = 0.01
@@ -44,45 +83,6 @@ tracks/2/keys = {
 "values": [false, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_q0w82"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shotgun_model:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("shotgun_model:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.14159, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("shotgun_model/muzzle:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_galwg"]
 _data = {
 "RESET": SubResource("Animation_q0w82"),
@@ -93,7 +93,7 @@ _data = {
 script = ExtResource("1_v20ut")
 
 [node name="shotgun_model" parent="." instance=ExtResource("2_qgm13")]
-transform = Transform3D(-0.123953, 0, -1.08363e-08, 0, 0.123953, 0, 1.08363e-08, 0, -0.123953, 0, 0, 0)
+transform = Transform3D(-0.123953, 0, 3.14243e-07, 0, 0.123953, 0, -3.14243e-07, 0, -0.123953, 0, 0, 0)
 
 [node name="muzzle" type="Sprite3D" parent="shotgun_model"]
 transform = Transform3D(1.19273, 0, -5.68434e-14, 0, 1.19273, 0, 5.68434e-14, 0, 1.19273, -2.14618e-07, 0.177091, 2.45495)

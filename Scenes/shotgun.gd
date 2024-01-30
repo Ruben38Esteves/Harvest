@@ -23,7 +23,6 @@ func _process(delta):
 	pass
 
 func shoot(aim):
-	print("shotgun shoot")
 	if !animation_player.is_playing() and can_fire and ammo > 0:
 		ammo -= 1
 		can_fire = false

@@ -142,7 +142,16 @@ func _physics_process(delta):
 			secondary_weapon.shoot(gun_aim)
 		elif current_gun == "meelee":
 			meelee_weapon.shoot()
-		
+	
+	#reload
+	if Input.is_action_just_pressed("reload"):
+		if current_gun == "primary":
+			primary_weapon.shoot(gun_aim)
+		elif current_gun == "secondary":
+			secondary_weapon.reload()
+		elif current_gun == "meelee":
+			meelee_weapon.shoot()
+	
 	#change weapon
 	if Input.is_action_just_pressed("primary"):
 		current_gun = "primary"
