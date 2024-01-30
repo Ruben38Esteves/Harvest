@@ -10,7 +10,9 @@ var instance
 
 var can_fire = true
 var ammo = 10
-var bullet_amount = 3
+var magazineAmmo = 6
+var magazineAmmoMax = 6
+var bullet_amount = 4
 const spread = deg_to_rad(8)
 
 # Called when the node enters the scene tree for the first time.
@@ -23,12 +25,26 @@ func _process(delta):
 	pass
 
 func shoot(aim):
-	if !animation_player.is_playing() and can_fire and ammo > 0:
-		ammo -= 1
+	if !animation_player.is_playing() and can_fire and magazineAmmo > 0:
+		magazineAmmo -= 1
 		can_fire = false
 		fire_rate.start()
 		animation_player.play("shoot")
 		shoot_bullets(aim)
+	if magazineAmmo <= 0:
+		reload()
+		
+func reload():
+	if !animation_player.is_playing():
+		animation_player.play("reload")
+		var ammoNeeded = magazineAmmoMax - magazineAmmo
+		if ammo < ammoNeeded:
+			magazineAmmo += ammo
+			ammo = 0
+		else:
+			ammo -= magazineAmmoMax - magazineAmmo
+			magazineAmmo = magazineAmmoMax
+		update_ammo_display()
 
 func _on_fire_rate_timeout():
 	can_fire = true
@@ -49,7 +65,7 @@ func shoot_bullets(aim):
 	update_ammo_display()
 
 func update_ammo_display():
-	primaryAmmoDisplay.text = str(ammo)
+	primaryAmmoDisplay.text = str(magazineAmmo) + "/" + str(ammo)
 	
 func increase_ammo():
 	ammo += 4
