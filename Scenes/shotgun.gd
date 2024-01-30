@@ -35,7 +35,7 @@ func shoot(aim):
 		reload()
 		
 func reload():
-	if !animation_player.is_playing():
+	if !animation_player.is_playing() and magazineAmmo < magazineAmmoMax:
 		animation_player.play("reload")
 		var ammoNeeded = magazineAmmoMax - magazineAmmo
 		if ammo < ammoNeeded:

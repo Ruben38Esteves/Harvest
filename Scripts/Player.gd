@@ -32,9 +32,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 #stats
 @onready var health_bar = $"../../UI/Hud/HealthBar"
+@onready var timer = $Timer
 signal player_hit
-var maxHealth = 100
-var health = 100
+var maxHealth = 100.0
+var health = 100.0
 
 #money
 var money = 0
@@ -235,3 +236,9 @@ func glow_chest(target_chest):
 func get_money(value):
 	money += value
 	money_value.text = str(money)
+
+
+func _on_timer_timeout():
+	if health < maxHealth:
+		health += 0.5
+		update_progress_bar()

@@ -53,4 +53,9 @@ visible = false
 [node name="Axe" parent="Head/Camera3D/Hands/Meelee" instance=ExtResource("4_2pj8t")]
 transform = Transform3D(0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 0, 0, 1, 0.595, -0.295, -0.52)
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
 [connection signal="increase_gun_ammo" from="." to="Head/Camera3D/Hands/Secondary/Gun" method="_on_player_increase_gun_ammo"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
