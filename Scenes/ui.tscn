@@ -51,10 +51,11 @@ mouse_filter = 2
 
 [node name="Ammo" type="VBoxContainer" parent="Hud"]
 layout_mode = 0
-offset_left = 1837.0
-offset_top = 988.0
-offset_right = 1888.0
-offset_bottom = 1038.0
+offset_left = 1788.0
+offset_top = 959.0
+offset_right = 1839.0
+offset_bottom = 1009.0
+scale = Vector2(2.34706, 2.05216)
 mouse_filter = 2
 
 [node name="Primary" type="Label" parent="Hud/Ammo"]
@@ -86,6 +87,19 @@ offset_bottom = 150.0
 layout_mode = 2
 theme = SubResource("Theme_g043x")
 text = "Time"
+
+[node name="Kills" type="HBoxContainer" parent="Hud/timer"]
+layout_mode = 2
+
+[node name="kill_label" type="Label" parent="Hud/timer/Kills"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Kills:"
+
+[node name="KillAmount" type="Label" parent="Hud/timer/Kills"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
 
 [node name="Money" type="HBoxContainer" parent="Hud"]
 layout_mode = 0

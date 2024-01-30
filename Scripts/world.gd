@@ -10,7 +10,7 @@ extends Node3D
 @onready var crossair2 = $UI/crossair2
 @onready var time = $UI/Hud/timer/Time
 @onready var word_clock = $WordClock
-
+@onready var kill_amount_display = $UI/Hud/timer/Kills/KillAmount
 #loads
 var zombie = load("res://Scenes/zombie.tscn")
 var chest = load("res://Scenes/chest.tscn")
@@ -20,6 +20,7 @@ var instance
 var time_seconds = 0
 var time_minutes = 0
 var time_hours = 0
+var kill_amount = 0
 
 #signals
 signal add_ammo
@@ -78,7 +79,8 @@ func _on_zombie_zombie_killed():
 	elif ammo_chance >= 6 and ammo_chance < 8:
 		emit_signal("add_ammo", 1)
 	"""
-	pass
+	kill_amount += 1
+	kill_amount_display.text = str(kill_amount)
 		
 func _on_chest_opened():
 	emit_signal("add_ammo", 1)

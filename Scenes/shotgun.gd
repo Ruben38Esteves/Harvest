@@ -10,6 +10,7 @@ var instance
 
 var can_fire = true
 var ammo = 10
+var bullet_amount = 3
 const spread = deg_to_rad(8)
 
 # Called when the node enters the scene tree for the first time.
@@ -34,15 +35,18 @@ func _on_fire_rate_timeout():
 	can_fire = true
 	
 func shoot_bullets(aim):
-	var dir
-	for i in 5:
-		dir = aim
+	var dir = aim
+	var old_rot_x = dir.rotation.x
+	var old_rot_y = dir.rotation.y
+	for i in bullet_amount:
 		instance = bullet.instantiate()
 		instance.position = dir.global_position
 		dir.rotation.x = randf_range(spread, -spread)
 		dir.rotation.y = randf_range(spread, -spread)
 		instance.transform.basis = dir.global_transform.basis
 		player.get_parent().add_child(instance)
+		dir.rotation.x = old_rot_x
+		dir.rotation.y = old_rot_y
 	update_ammo_display()
 
 func update_ammo_display():
