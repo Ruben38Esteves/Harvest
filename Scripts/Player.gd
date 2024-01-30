@@ -226,6 +226,14 @@ func _on_world_add_ammo(type):
 		primary_weapon.increase_ammo()
 	elif type == 2:
 		secondary_weapon.increase_ammo()
+		
+func recieve_ammo():
+	if current_gun == "primary":
+		primary_weapon.increase_ammo()
+	elif current_gun == "secondary":
+		secondary_weapon.increase_ammo()
+	elif current_gun == "meelee":
+		pass
 
 func glow_chest(target_chest):
 	target_chest.glow(true)

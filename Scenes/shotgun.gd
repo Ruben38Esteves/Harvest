@@ -4,7 +4,7 @@ var bullet = load("res://Scenes/bullet_shotgun.tscn")
 var instance
 
 @onready var animation_player = $AnimationPlayer
-@onready var fire_rate = $fire_rate
+@onready var fire_rate_timer = $fire_rate
 @onready var player = $"../../../../.."
 @onready var primaryAmmoDisplay = $"../../../../../../../UI/Hud/Ammo/Primary"
 
@@ -14,10 +14,12 @@ var magazineAmmo = 6
 var magazineAmmoMax = 6
 var bullet_amount = 4
 const spread = deg_to_rad(8)
+var fire_rate = 0.8
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_ammo_display()
+	fire_rate_timer.wait_time = 1 / 0.8
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,7 +30,7 @@ func shoot(aim):
 	if !animation_player.is_playing() and can_fire and magazineAmmo > 0:
 		magazineAmmo -= 1
 		can_fire = false
-		fire_rate.start()
+		fire_rate_timer.start()
 		animation_player.play("shoot")
 		shoot_bullets(aim)
 	if magazineAmmo <= 0:

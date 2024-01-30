@@ -12,6 +12,7 @@ extends Node3D
 @onready var word_clock = $WordClock
 @onready var kill_amount_display = $UI/Hud/timer/Kills/KillAmount
 @onready var info = $UI/Info
+@onready var player = $map/Player
 
 #loads
 var zombie = load("res://Scenes/zombie.tscn")
@@ -85,8 +86,9 @@ func _on_zombie_zombie_killed():
 	kill_amount_display.text = str(kill_amount)
 		
 func _on_chest_opened():
-	emit_signal("add_ammo", 1)
-	emit_signal("add_ammo", 2)
+	#emit_signal("add_ammo", 1)
+	#emit_signal("add_ammo", 2)
+	player.recieve_ammo()
 	info.text = "You found ammo"
 	info.visible = true
 	
