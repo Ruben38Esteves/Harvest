@@ -38,8 +38,7 @@ func shoot(aim):
 		instance.position = aim.global_position
 		instance.transform.basis = aim.global_transform.basis
 		player.get_parent().add_child(instance)
-	if magazineAmmo <= 0:
-		reload()
+	
 		
 func reload():
 	if !gun_anim.is_playing() and gunAmmo > 0 and magazineAmmo < magazineAmmoMax:
@@ -63,3 +62,8 @@ func update_gun_ammo_display():
 func increase_ammo():
 	gunAmmo += 8
 	update_gun_ammo_display()
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Shoot" and magazineAmmo == 0 and gunAmmo > 0:
+		reload()

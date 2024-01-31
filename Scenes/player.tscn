@@ -27,7 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47563, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
 [node name="gun_aim" type="RayCast3D" parent="Head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.288346)
 target_position = Vector3(0, 0, -2)
 collide_with_areas = true
 
@@ -37,11 +37,11 @@ collide_with_areas = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17, -0.096, -0.19)
 
 [node name="Secondary" type="Node3D" parent="Head/Camera3D/Hands"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.085, -0.065, -0.25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100708, -0.0650001, -0.25)
 visible = false
 
 [node name="Meelee" type="Node3D" parent="Head/Camera3D/Hands"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.353851, -0.287582, -0.34927)
+transform = Transform3D(0.982574, 0.185872, 0, -0.185872, 0.982574, 0, 0, 0, 1, 0.375439, -0.287582, -0.34927)
 visible = false
 
 [node name="Timer" type="Timer" parent="."]

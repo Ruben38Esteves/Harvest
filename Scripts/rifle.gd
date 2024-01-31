@@ -27,10 +27,10 @@ func _process(delta):
 func shoot(aim):
 	if !rifle_anim.is_playing() and can_fire and rifleAmmo > 0:
 		rifleAmmo -= 1
+		rifle_anim.play("shoot")
 		update_rifle_ammo_display()
 		can_fire = false
 		fire_rate.start()
-		rifle_anim.play("shoot")
 		instance = bullet.instantiate()
 		instance.position = aim.global_position
 		instance.transform.basis = aim.global_transform.basis
