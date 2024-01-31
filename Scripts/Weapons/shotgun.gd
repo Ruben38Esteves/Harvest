@@ -1,6 +1,6 @@
 extends Node3D
 
-var bullet = load("res://Scenes/bullet_shotgun.tscn")
+var bullet = load("res://Scenes/Bullets/bullet_shotgun.tscn")
 var instance
 
 @onready var animation_player = $AnimationPlayer

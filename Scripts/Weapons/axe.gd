@@ -20,8 +20,8 @@ func shoot():
 
 
 func _on_area_3d_body_entered(body):
-	if body.is_in_group("enemy"):
-		axe_animation_player.pause()
-		body.attacked(damage)
-		await get_tree().create_timer(0.05).timeout
-		axe_animation_player.play()
+	#if body.is_in_group("enemy"):
+	axe_animation_player.pause()
+	body.attacked(damage)
+	await get_tree().create_timer(0.05).timeout
+	axe_animation_player.play()

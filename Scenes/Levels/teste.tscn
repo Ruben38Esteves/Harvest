@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dl7oeur4sc8j3"]
 
 [ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Scenes/player.tscn" id="1_5fy1l"]
-[ext_resource type="PackedScene" uid="uid://v67fguycijs5" path="res://Scenes/chest.tscn" id="2_ypbtj"]
+[ext_resource type="PackedScene" uid="uid://v67fguycijs5" path="res://Scenes/Interactables/chest.tscn" id="2_ypbtj"]
 [ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://Scenes/ui.tscn" id="3_svbol"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bswi4"]

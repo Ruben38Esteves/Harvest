@@ -12,7 +12,7 @@ var can_fire = true
 var damage := 2
 
 
-var bullet = load("res://Scenes/bullet_rifle.tscn")
+var bullet = load("res://Scenes/Bullets/bullet_rifle.tscn")
 var instance
 
 # Called when the node enters the scene tree for the first time.

@@ -21,11 +21,11 @@ func set_corsair_location():
 
 func _on_play_shotgun_body_entered(body):
 	if body.name == "Player":
-		global.primary_weapon_path = "res://Scenes/shotgun.tscn"
+		global.primary_weapon_path = "res://Scenes/Weapons/shotgun.tscn"
 		get_tree().change_scene_to_file("res://world.tscn")
 
 
 func _on_play_rifle_body_entered(body):
 	if body.name == "Player":
-		global.primary_weapon_path = "res://Scenes/rifle.tscn"
+		global.primary_weapon_path = "res://Scenes/Weapons/rifle.tscn"
 		get_tree().change_scene_to_file("res://world.tscn")

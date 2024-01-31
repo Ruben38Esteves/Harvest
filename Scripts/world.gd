@@ -19,7 +19,7 @@ extends Node3D
 
 #loads
 var zombie = load("res://Scenes/zombie.tscn")
-var chest = load("res://Scenes/chest.tscn")
+var chest = load("res://Scenes/Interactables/chest.tscn")
 var instance
 
 #variables
