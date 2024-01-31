@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var death_screen = $"../../UI/Player_death_screen"
+
 #movement
 var speed
 const WALK_SPEED = 5.0
@@ -64,11 +66,14 @@ var mouse_input
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_gun = "primary"
+	update_progress_bar()
+	default_hands_position = hands.position
+	
+func load_weapon_variables():
 	primary_weapon = primary.get_child(0)
 	secondary_weapon = secondary.get_child(0)
 	meelee_weapon = meelee.get_child(0)
-	update_progress_bar()
-	default_hands_position = hands.position
+	
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -218,14 +223,11 @@ func update_progress_bar():
 	
 	
 func player_die():
+	death_screen.visible = true
+	await get_tree().create_timer(3.0).timeout
+	death_screen.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-	
-func _on_world_add_ammo(type):
-	if type == 1:
-		primary_weapon.increase_ammo()
-	elif type == 2:
-		secondary_weapon.increase_ammo()
 		
 func recieve_ammo():
 	if current_gun == "primary":
@@ -233,7 +235,7 @@ func recieve_ammo():
 	elif current_gun == "secondary":
 		secondary_weapon.increase_ammo()
 	elif current_gun == "meelee":
-		pass
+		primary_weapon.increase_ammo()
 
 func glow_chest(target_chest):
 	target_chest.glow(true)
@@ -244,7 +246,6 @@ func glow_chest(target_chest):
 func get_money(value):
 	money += value
 	money_value.text = str(money)
-
 
 func _on_timer_timeout():
 	if health < maxHealth:

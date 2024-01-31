@@ -55,46 +55,6 @@ tracks/3/keys = {
 "values": [Vector3(0.3, 0.113615, 1.30687)]
 }
 
-[sub_resource type="Animation" id="Animation_3m8hw"]
-resource_name = "shoot"
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("shotgun_model:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.103284), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("shotgun_model:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 3.14159, 0), Vector3(-0.462512, 3.14159, 0), Vector3(0, 3.14159, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("shotgun_model/muzzle:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.14),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-
 [sub_resource type="Animation" id="Animation_fcpqn"]
 resource_name = "reload"
 length = 1.25
@@ -136,6 +96,46 @@ tracks/2/keys = {
 "values": [Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.3, 0.113615, 1.30687)]
 }
 
+[sub_resource type="Animation" id="Animation_3m8hw"]
+resource_name = "shoot"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shotgun_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.103284), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shotgun_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(-0.462512, 3.14159, 0), Vector3(0, 3.14159, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shotgun_model/muzzle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.14),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_galwg"]
 _data = {
 "RESET": SubResource("Animation_q0w82"),
@@ -147,7 +147,7 @@ _data = {
 script = ExtResource("1_v20ut")
 
 [node name="shotgun_model" parent="." instance=ExtResource("2_qgm13")]
-transform = Transform3D(-0.123953, 0, 3.14243e-07, 0, 0.123953, 0, -3.14244e-07, 0, -0.123953, 0, 0, 0)
+transform = Transform3D(-0.123953, 0, 3.14243e-07, 0, 0.123953, 0, -3.14243e-07, 0, -0.123953, 0, 0, 0)
 
 [node name="Cylinder_003" parent="shotgun_model" index="5"]
 transform = Transform3D(0.0616953, 9.31323e-10, 2.04891e-08, -6.51926e-09, -1.95578e-08, -0.0616953, 7.45058e-09, 0.0265868, 1.49012e-08, 0.3, 0.113615, 1.30687)

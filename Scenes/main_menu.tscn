@@ -17,18 +17,22 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = -98.0
+offset_top = -150.0
 offset_right = 332.0
-offset_bottom = 52.0
 grow_vertical = 0
 
 [node name="Button_start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Start Game"
+text = "Start Game with shotgun"
 
 [node name="Button_quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Quit Game"
 
+[node name="Button_start_rifle" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start with rifle"
+
 [connection signal="pressed" from="VBoxContainer/Button_start" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Button_quit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button_start_rifle" to="." method="_on_button_start_rifle_pressed"]

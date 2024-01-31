@@ -53,30 +53,12 @@ func reload():
 			magazineAmmo = magazineAmmoMax
 		update_gun_ammo_display()
 
-func _on_player_fire_gun():
-	if !gun_anim.is_playing() and can_fire_gun and gunAmmo > 0:
-		gunAmmo -= 1
-		update_gun_ammo_display()
-		can_fire_gun = false
-		fire_rate.start()
-		gun_anim.play("Shoot")
-		instance = bullet.instantiate()
-		instance.position = gun_barrel.global_position
-		instance.transform.basis = gun_barrel.global_transform.basis
-		print(gun_barrel.position)
-		player.get_parent().add_child(instance)
-
 
 func _on_fire_rate_gun_timeout():
 	can_fire_gun = true
 	
 func update_gun_ammo_display():
 	secondaryAmmoDisplay.text = str(magazineAmmo) + "/" + str(gunAmmo)
-
-
-func _on_player_increase_gun_ammo():
-	gunAmmo += 8
-	update_gun_ammo_display()
 	
 func increase_ammo():
 	gunAmmo += 8

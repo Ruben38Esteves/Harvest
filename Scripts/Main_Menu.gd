@@ -12,8 +12,14 @@ func _process(delta):
 
 
 func _on_button_start_pressed():
+	global.primary_weapon_path = "res://Scenes/shotgun.tscn"
 	get_tree().change_scene_to_file("res://world.tscn")
 
 
 func _on_button_quit_pressed():
 	get_tree().quit()
+
+
+func _on_button_start_rifle_pressed():
+	global.primary_weapon_path = "res://Scenes/rifle.tscn"
+	get_tree().change_scene_to_file("res://world.tscn")

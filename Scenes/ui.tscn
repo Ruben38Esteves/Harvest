@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfdgyti3y6c3w"]
+[gd_scene load_steps=8 format=3 uid="uid://dfdgyti3y6c3w"]
 
 [ext_resource type="Script" path="res://Scripts/ui.gd" id="1_6lsb7"]
 
@@ -13,6 +13,12 @@ subpixel_positioning = 0
 [sub_resource type="Theme" id="Theme_g043x"]
 default_font = SubResource("SystemFont_o2crb")
 default_font_size = 50
+
+[sub_resource type="SystemFont" id="SystemFont_oe83k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0usem"]
+font = SubResource("SystemFont_oe83k")
+font_size = 10
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -129,5 +135,26 @@ offset_right = 1099.0
 offset_bottom = 1050.0
 theme_override_font_sizes/font_size = 40
 text = "Nothing to Display"
+
+[node name="Player_death_screen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48.2834, 27.1266)
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player_death_screen"]
+layout_mode = 0
+offset_left = 15.4504
+offset_top = 17.3262
+offset_right = 63.4504
+offset_bottom = 57.3262
+scale = Vector2(0.167306, 0.235069)
+
+[node name="Label" type="Label" parent="Player_death_screen/VBoxContainer"]
+layout_mode = 2
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_0usem")
 
 [connection signal="visibility_changed" from="Info" to="." method="_on_info_visibility_changed"]

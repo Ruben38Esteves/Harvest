@@ -36,18 +36,8 @@ func shoot(aim):
 		instance.transform.basis = aim.global_transform.basis
 		player.get_parent().add_child(instance)
 
-
-func _on_player_fire_rifle():
-	if !rifle_anim.is_playing() and can_fire and rifleAmmo > 0:
-		rifleAmmo -= 1
-		update_rifle_ammo_display()
-		can_fire = false
-		fire_rate.start()
-		rifle_anim.play("shoot")
-		instance = bullet.instantiate()
-		instance.position = rifle_barrel.global_position
-		instance.transform.basis = rifle_barrel.global_transform.basis
-		player.get_parent().add_child(instance)
+func reload():
+	pass
 
 
 func _on_fire_rate_timeout():
@@ -55,10 +45,6 @@ func _on_fire_rate_timeout():
 	
 func update_rifle_ammo_display():
 	primaryAmmoDisplay.text = str(rifleAmmo)
-
-func _on_player_increase_rifle_ammo():
-	rifleAmmo += 4
-	update_rifle_ammo_display()
 	
 func increase_ammo():
 	rifleAmmo += 4

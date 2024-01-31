@@ -35,21 +35,6 @@ func shoot(aim):
 		shoot_bullets(aim)
 	if magazineAmmo <= 0:
 		reload()
-		
-func reload():
-	if !animation_player.is_playing() and magazineAmmo < magazineAmmoMax:
-		animation_player.play("reload")
-		var ammoNeeded = magazineAmmoMax - magazineAmmo
-		if ammo < ammoNeeded:
-			magazineAmmo += ammo
-			ammo = 0
-		else:
-			ammo -= magazineAmmoMax - magazineAmmo
-			magazineAmmo = magazineAmmoMax
-		update_ammo_display()
-
-func _on_fire_rate_timeout():
-	can_fire = true
 	
 func shoot_bullets(aim):
 	var dir = aim
@@ -65,6 +50,21 @@ func shoot_bullets(aim):
 		dir.rotation.x = old_rot_x
 		dir.rotation.y = old_rot_y
 	update_ammo_display()
+	
+func reload():
+	if !animation_player.is_playing() and magazineAmmo < magazineAmmoMax:
+		animation_player.play("reload")
+		var ammoNeeded = magazineAmmoMax - magazineAmmo
+		if ammo < ammoNeeded:
+			magazineAmmo += ammo
+			ammo = 0
+		else:
+			ammo -= magazineAmmoMax - magazineAmmo
+			magazineAmmo = magazineAmmoMax
+		update_ammo_display()
+
+func _on_fire_rate_timeout():
+	can_fire = true
 
 func update_ammo_display():
 	primaryAmmoDisplay.text = str(magazineAmmo) + "/" + str(ammo)
