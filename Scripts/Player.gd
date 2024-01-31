@@ -143,18 +143,23 @@ func _physics_process(delta):
 	#attacking
 	if Input.is_action_just_pressed("attack"):
 		if current_gun == "primary":
-			primary_weapon.shoot(gun_aim)
+			if primary_weapon:
+				primary_weapon.shoot(gun_aim)
 		elif current_gun == "secondary":
-			secondary_weapon.shoot(gun_aim)
+			if secondary_weapon:
+				secondary_weapon.shoot(gun_aim)
 		elif current_gun == "meelee":
-			meelee_weapon.shoot()
+			if meelee_weapon:
+				meelee_weapon.shoot()
 	
 	#reload
 	if Input.is_action_just_pressed("reload"):
 		if current_gun == "primary":
-			primary_weapon.reload()
+			if primary_weapon:
+				primary_weapon.reload()
 		elif current_gun == "secondary":
-			secondary_weapon.reload()
+			if secondary_weapon:
+				secondary_weapon.reload()
 	
 	#change weapon
 	if Input.is_action_just_pressed("primary"):
@@ -203,11 +208,12 @@ func _head_bob(time) -> Vector3:
 	return pos
 	
 func weapon_sway(delta):
-	mouse_input = lerp(mouse_input, Vector2.ZERO, 5 * delta)
-	hands.rotation.x = lerp(hands.rotation.x, (mouse_input.y / 100) * weapon_rotation, 5 * delta)
-	hands.rotation.y = lerp(hands.rotation.y, (mouse_input.x / 100) * weapon_rotation, 5 * delta)
-	#hands.position.x = lerp(hands.position.x, default_hands_position.x + (hands / 75), 5 * delta)
-	#hands.position.z = lerp(hands.position.z, default_hands_position.z + (hands.velocity.z / 75), 5 * delta)
+	if mouse_input:
+		mouse_input = lerp(mouse_input, Vector2.ZERO, 5 * delta)
+		hands.rotation.x = lerp(hands.rotation.x, (mouse_input.y / 100) * weapon_rotation, 5 * delta)
+		hands.rotation.y = lerp(hands.rotation.y, (mouse_input.x / 100) * weapon_rotation, 5 * delta)
+		#hands.position.x = lerp(hands.position.x, default_hands_position.x + (hands / 75), 5 * delta)
+		#hands.position.z = lerp(hands.position.z, default_hands_position.z + (hands.velocity.z / 75), 5 * delta)
 	
 func hit(dir,knockback,damage):
 	emit_signal("player_hit")
