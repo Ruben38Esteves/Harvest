@@ -233,7 +233,7 @@ func player_die():
 	await get_tree().create_timer(3.0).timeout
 	death_screen.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Levels/main_menu.tscn")
 		
 func recieve_ammo():
 	if current_gun == "primary":

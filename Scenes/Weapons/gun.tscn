@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://dowt1ujjcq6dy"]
 
-[ext_resource type="Script" path="res://Scripts/gun.gd" id="1_hgbk1"]
-[ext_resource type="Texture2D" uid="uid://cniwd8je12q7b" path="res://Sprites/gun.png" id="2_fxdpu"]
-[ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="3_8tppc"]
-[ext_resource type="PackedScene" uid="uid://6fmadp4jv4mf" path="res://Models/Gun/gun_3d.glb" id="3_ej8ns"]
+[ext_resource type="Script" path="res://Scripts/Weapons/gun.gd" id="1_vmlyg"]
+[ext_resource type="Texture2D" uid="uid://cniwd8je12q7b" path="res://Sprites/gun.png" id="2_pbdy4"]
+[ext_resource type="PackedScene" uid="uid://6fmadp4jv4mf" path="res://Models/Gun/gun_3d.glb" id="3_6tpj4"]
+[ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="4_a2vg2"]
 
 [sub_resource type="Animation" id="Animation_eboqw"]
 length = 0.001
@@ -146,12 +146,12 @@ _data = {
 }
 
 [node name="Gun" type="Node3D"]
-script = ExtResource("1_hgbk1")
+script = ExtResource("1_vmlyg")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-1.735e-09, 0, -0.0396922, 0, 0.0396922, 0, 0.0396922, 0, -1.735e-09, 0, 0, 0.05)
 visible = false
-texture = ExtResource("2_fxdpu")
+texture = ExtResource("2_pbdy4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -166,7 +166,7 @@ target_position = Vector3(0, 0, -1)
 wait_time = 0.1
 one_shot = true
 
-[node name="gun_3d" parent="." instance=ExtResource("3_ej8ns")]
+[node name="gun_3d" parent="." instance=ExtResource("3_6tpj4")]
 transform = Transform3D(0.0638868, 0, 0, 0, 0.0638868, 0, 0, 0, 0.0638868, -0.001, -0.113, 0.024)
 
 [node name="Cube" parent="gun_3d" index="0"]
@@ -176,10 +176,10 @@ transform = Transform3D(0.228145, 0, 0, 0, 0.20411, 0, 0, 0, 1.30004, 0, 1.833, 
 transform = Transform3D(-3.71027e-08, 0, -0.848812, 0, 0.848812, 0, 0.848812, 0, -3.71027e-08, -0.0231189, 1.77454, -1.62697)
 visible = false
 billboard = 1
-texture = ExtResource("3_8tppc")
+texture = ExtResource("4_a2vg2")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]
+[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
 
 [editable path="gun_3d"]

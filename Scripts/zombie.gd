@@ -24,7 +24,7 @@ var player = null
 @onready var health_bar = $health_bar
 
 #coins utils
-const COINS = preload("res://Scenes/coins.tscn")
+const COINS = preload("res://Scenes/Interactables/coins.tscn")
 var instance
 
 var state_machine

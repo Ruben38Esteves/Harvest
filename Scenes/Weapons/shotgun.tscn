@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://vcny7tfi5ybi"]
 
-[ext_resource type="Script" path="res://Scripts/shotgun.gd" id="1_v20ut"]
+[ext_resource type="Script" path="res://Scripts/Weapons/shotgun.gd" id="1_v20ut"]
 [ext_resource type="PackedScene" uid="uid://bwtnayq7yv0sp" path="res://Models/Shotgun/shotgun_3d.glb" id="2_qgm13"]
 [ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="3_4gxn1"]
 

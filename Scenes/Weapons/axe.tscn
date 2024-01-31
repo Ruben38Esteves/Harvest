@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bs0au2owlfhwh"]
 
 [ext_resource type="PackedScene" uid="uid://rd5tx5akfnvj" path="res://Models/Axe/axe.glb" id="1_63tgp"]
-[ext_resource type="Script" path="res://Scripts/axe.gd" id="1_bf5gl"]
+[ext_resource type="Script" path="res://Scripts/Weapons/axe.gd" id="1_bf5gl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_130fe"]
 size = Vector3(1, 4.73969, 5.3045)
