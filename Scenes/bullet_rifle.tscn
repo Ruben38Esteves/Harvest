@@ -11,10 +11,9 @@ emission_enabled = true
 emission = Color(0.933333, 0.686275, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2h8lo"]
-albedo_color = Color(0.992157, 0.847059, 0, 1)
-emission_enabled = true
-emission = Color(0.662745, 0.756863, 0, 1)
-emission_energy_multiplier = 8.0
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(0.992157, 0, 0, 1)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_prrxs"]
 direction = Vector3(0, 0, 1)

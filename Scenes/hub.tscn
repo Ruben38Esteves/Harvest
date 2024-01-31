@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bx2loysi17l6q"]
+
+[ext_resource type="Script" path="res://Scripts/hub.gd" id="1_p5eo4"]
+[ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://Scenes/ui.tscn" id="1_xpgdx"]
+[ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Scenes/player.tscn" id="2_w2b36"]
+[ext_resource type="PackedScene" uid="uid://bwtnayq7yv0sp" path="res://Models/Shotgun/shotgun_3d.glb" id="3_raeva"]
+[ext_resource type="PackedScene" uid="uid://c523b5442lwar" path="res://Models/Rifle/rifle-3d.glb" id="4_6tymq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0x4m"]
+albedo_color = Color(0.752941, 0.282353, 0.203922, 1)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4ytk3"]
+height = 6.25493
+radius = 1.26003
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_470cm"]
+height = 6.42112
+radius = 1.38664
+
+[node name="Hub" type="Node3D"]
+script = ExtResource("1_p5eo4")
+
+[node name="map" type="Node3D" parent="."]
+
+[node name="Player" parent="map" instance=ExtResource("2_w2b36")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.419956, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="map"]
+transform = Transform3D(31.3772, 0, 0, 0, 1, 0, 0, 0, 38.5199, 0, -0.344727, 0)
+use_collision = true
+size = Vector3(1, 0.310547, 1)
+material = SubResource("StandardMaterial3D_l0x4m")
+
+[node name="play_shotgun" type="Area3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.07458, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/play_shotgun"]
+shape = SubResource("CylinderShape3D_4ytk3")
+
+[node name="shotgun_3d" parent="map/play_shotgun" instance=ExtResource("3_raeva")]
+transform = Transform3D(0.536103, 0, 0, 0, -2.34338e-08, 0.536103, 0, -0.536103, -2.34338e-08, 0, 1.39864, 0)
+
+[node name="play_rifle" type="Area3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.74753, 0, 3.67877)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/play_rifle"]
+shape = SubResource("CylinderShape3D_470cm")
+
+[node name="rifle-3d" parent="map/play_rifle" instance=ExtResource("4_6tymq")]
+transform = Transform3D(0.452443, 0, 0, 0, -1.97769e-08, -0.452443, 0, 0.452443, -1.97769e-08, 0, 1.3029, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="map"]
+
+[node name="UI" parent="." instance=ExtResource("1_xpgdx")]
+
+[connection signal="body_entered" from="map/play_shotgun" to="." method="_on_play_shotgun_body_entered"]
+[connection signal="body_entered" from="map/play_rifle" to="." method="_on_play_rifle_body_entered"]
+
+[editable path="UI"]

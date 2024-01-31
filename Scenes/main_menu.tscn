@@ -17,9 +17,8 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 32.0
-offset_top = -98.0
+offset_top = -150.0
 offset_right = 332.0
-offset_bottom = 52.0
 grow_vertical = 0
 
 [node name="Button_start" type="Button" parent="VBoxContainer"]

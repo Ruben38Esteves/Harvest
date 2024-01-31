@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfdgyti3y6c3w"]
+[gd_scene load_steps=8 format=3 uid="uid://dfdgyti3y6c3w"]
+
+[ext_resource type="Script" path="res://Scripts/ui.gd" id="1_6lsb7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5cnb"]
 
@@ -12,12 +14,19 @@ subpixel_positioning = 0
 default_font = SubResource("SystemFont_o2crb")
 default_font_size = 50
 
+[sub_resource type="SystemFont" id="SystemFont_oe83k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0usem"]
+font = SubResource("SystemFont_oe83k")
+font_size = 10
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+script = ExtResource("1_6lsb7")
 
 [node name="crossair" type="ColorRect" parent="."]
 layout_mode = 0
@@ -51,10 +60,11 @@ mouse_filter = 2
 
 [node name="Ammo" type="VBoxContainer" parent="Hud"]
 layout_mode = 0
-offset_left = 1837.0
-offset_top = 988.0
-offset_right = 1888.0
-offset_bottom = 1038.0
+offset_left = 1788.0
+offset_top = 959.0
+offset_right = 1839.0
+offset_bottom = 1009.0
+scale = Vector2(2.34706, 2.05216)
 mouse_filter = 2
 
 [node name="Primary" type="Label" parent="Hud/Ammo"]
@@ -87,6 +97,19 @@ layout_mode = 2
 theme = SubResource("Theme_g043x")
 text = "Time"
 
+[node name="Kills" type="HBoxContainer" parent="Hud/timer"]
+layout_mode = 2
+
+[node name="kill_label" type="Label" parent="Hud/timer/Kills"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Kills:"
+
+[node name="KillAmount" type="Label" parent="Hud/timer/Kills"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+
 [node name="Money" type="HBoxContainer" parent="Hud"]
 layout_mode = 0
 offset_left = 47.0
@@ -102,3 +125,36 @@ text = "COINS: "
 layout_mode = 2
 text = "0
 "
+
+[node name="Info" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 746.0
+offset_top = 995.0
+offset_right = 1099.0
+offset_bottom = 1050.0
+theme_override_font_sizes/font_size = 40
+text = "Nothing to Display"
+
+[node name="Player_death_screen" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48.2834, 27.1266)
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Player_death_screen"]
+layout_mode = 0
+offset_left = 15.4504
+offset_top = 17.3262
+offset_right = 63.4504
+offset_bottom = 57.3262
+scale = Vector2(0.167306, 0.235069)
+
+[node name="Label" type="Label" parent="Player_death_screen/VBoxContainer"]
+layout_mode = 2
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_0usem")
+
+[connection signal="visibility_changed" from="Info" to="." method="_on_info_visibility_changed"]

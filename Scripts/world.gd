@@ -10,6 +10,12 @@ extends Node3D
 @onready var crossair2 = $UI/crossair2
 @onready var time = $UI/Hud/timer/Time
 @onready var word_clock = $WordClock
+@onready var kill_amount_display = $UI/Hud/timer/Kills/KillAmount
+@onready var info = $UI/Info
+@onready var player = $map/Player
+@onready var player_primary = $map/Player/Head/Camera3D/Hands/Primary
+@onready var player_secondary = $map/Player/Head/Camera3D/Hands/Secondary
+@onready var player_meelee = $map/Player/Head/Camera3D/Hands/Meelee
 
 #loads
 var zombie = load("res://Scenes/zombie.tscn")
@@ -20,6 +26,7 @@ var instance
 var time_seconds = 0
 var time_minutes = 0
 var time_hours = 0
+var kill_amount = 0
 
 #signals
 signal add_ammo
@@ -28,22 +35,32 @@ signal add_money
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	crossair.position.x = (get_viewport().size.x / 2) - 5
-	crossair.position.y = (get_viewport().size.y / 2) - 5
-	crossair2.position.x = (get_viewport().size.x / 2) - 5
-	crossair2.position.y = (get_viewport().size.y / 2) - 5
-	for i in 8:
-		var spawn_point = _get_random_child(chest_spawns).global_position
-		instance = chest.instantiate() 
-		instance.global_position = spawn_point
-		instance.chest_opened.connect(_on_chest_opened)
-		navigation_region.add_child(instance)
+	set_corsair_location()
+	spawn_player_weapons()
+	spawn_chests(8)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+func set_corsair_location():
+	crossair.position.x = (get_viewport().size.x / 2) - 5
+	crossair.position.y = (get_viewport().size.y / 2) - 5
+	crossair2.position.x = (get_viewport().size.x / 2) - 5
+	crossair2.position.y = (get_viewport().size.y / 2) - 5
+	
+func spawn_player_weapons():
+	var primary_weapon = load(global.primary_weapon_path)
+	var secondary_weapon = load(global.secondary_weapon_path)
+	var meelee_weapon = load(global.meelee_weapon_path)
+	instance = primary_weapon.instantiate()
+	player.primary.add_child(instance)
+	instance = secondary_weapon.instantiate()
+	player.secondary.add_child(instance)
+	instance = meelee_weapon.instantiate()
+	player.meelee.add_child(instance)
+	player.load_weapon_variables()
 
 func _on_player_player_hit():
 	hit_rect.visible = true
@@ -54,6 +71,13 @@ func _get_random_child(parent_node):
 	var child_node_id = randi() % parent_node.get_child_count()
 	return parent_node.get_child(child_node_id)
 
+func spawn_chests(amount):
+	for i in amount:
+		var spawn_point = _get_random_child(chest_spawns).global_position
+		instance = chest.instantiate() 
+		instance.global_position = spawn_point
+		instance.chest_opened.connect(_on_chest_opened)
+		navigation_region.add_child(instance)
 
 func _on_zombie_spawn_timer_timeout():
 	if zombie_spawn_timer.wait_time > 1:
@@ -71,14 +95,13 @@ func _on_zombie_zombie_hit():
 	crossair2.visible = false
 
 func _on_zombie_zombie_killed():
-	var ammo_chance = randi() % 10
-	if ammo_chance >= 0 and ammo_chance < 6:
-		emit_signal("add_ammo", 2)
-	elif ammo_chance >= 6 and ammo_chance < 8:
-		emit_signal("add_ammo", 1)
+	kill_amount += 1
+	kill_amount_display.text = str(kill_amount)
 		
 func _on_chest_opened():
-	print("abriu")
+	player.recieve_ammo()
+	info.text = "You found ammo"
+	info.visible = true
 	
 func calc_money():
 	pass

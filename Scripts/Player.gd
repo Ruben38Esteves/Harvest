@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var death_screen = $"../../UI/Player_death_screen"
+
 #movement
 var speed
 const WALK_SPEED = 5.0
@@ -32,9 +34,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 #stats
 @onready var health_bar = $"../../UI/Hud/HealthBar"
+@onready var timer = $Timer
 signal player_hit
-var maxHealth = 100
-var health = 100
+var maxHealth = 100.0
+var health = 100.0
 
 #money
 var money = 0
@@ -43,14 +46,18 @@ var money = 0
 
 #guns
 var current_gun = "primary"
-#rifle
+#primary
 signal increase_rifle_ammo
 @onready var primary = $Head/Camera3D/Hands/Primary
 var primary_weapon 
-#pistol
+#secondary
 signal increase_gun_ammo
 @onready var secondary = $Head/Camera3D/Hands/Secondary
-var secondary_weapon 
+var secondary_weapon
+#meelee
+@onready var meelee = $Head/Camera3D/Hands/Meelee
+var meelee_weapon
+
 
 #utils
 var looking_at = null
@@ -59,10 +66,14 @@ var mouse_input
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_gun = "primary"
-	primary_weapon = primary.get_child(0)
-	secondary_weapon = secondary.get_child(0)
 	update_progress_bar()
 	default_hands_position = hands.position
+	
+func load_weapon_variables():
+	primary_weapon = primary.get_child(0)
+	secondary_weapon = secondary.get_child(0)
+	meelee_weapon = meelee.get_child(0)
+	
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -132,19 +143,40 @@ func _physics_process(delta):
 	#attacking
 	if Input.is_action_just_pressed("attack"):
 		if current_gun == "primary":
-			primary_weapon.shoot(gun_aim)
+			if primary_weapon:
+				primary_weapon.shoot(gun_aim)
 		elif current_gun == "secondary":
-			secondary_weapon.shoot(gun_aim)
-		
+			if secondary_weapon:
+				secondary_weapon.shoot(gun_aim)
+		elif current_gun == "meelee":
+			if meelee_weapon:
+				meelee_weapon.shoot()
+	
+	#reload
+	if Input.is_action_just_pressed("reload"):
+		if current_gun == "primary":
+			if primary_weapon:
+				primary_weapon.reload()
+		elif current_gun == "secondary":
+			if secondary_weapon:
+				secondary_weapon.reload()
+	
 	#change weapon
 	if Input.is_action_just_pressed("primary"):
 		current_gun = "primary"
-		secondary.visible = false
 		primary.visible = true
+		secondary.visible = false
+		meelee.visible = false
 	elif Input.is_action_just_pressed("secondary"):
 		current_gun = "secondary"
-		secondary.visible = true
 		primary.visible = false
+		secondary.visible = true
+		meelee.visible = false
+	elif Input.is_action_just_pressed("meelee"):
+		current_gun = "meelee"
+		primary.visible = false
+		secondary.visible = false
+		meelee.visible = true
 		
 	#menu
 	if Input.is_action_just_pressed("escape"):
@@ -176,11 +208,12 @@ func _head_bob(time) -> Vector3:
 	return pos
 	
 func weapon_sway(delta):
-	mouse_input = lerp(mouse_input, Vector2.ZERO, 5 * delta)
-	hands.rotation.x = lerp(hands.rotation.x, (mouse_input.y / 100) * weapon_rotation, 5 * delta)
-	hands.rotation.y = lerp(hands.rotation.y, (mouse_input.x / 100) * weapon_rotation, 5 * delta)
-	#hands.position.x = lerp(hands.position.x, default_hands_position.x + (hands / 75), 5 * delta)
-	#hands.position.z = lerp(hands.position.z, default_hands_position.z + (hands.velocity.z / 75), 5 * delta)
+	if mouse_input:
+		mouse_input = lerp(mouse_input, Vector2.ZERO, 5 * delta)
+		hands.rotation.x = lerp(hands.rotation.x, (mouse_input.y / 100) * weapon_rotation, 5 * delta)
+		hands.rotation.y = lerp(hands.rotation.y, (mouse_input.x / 100) * weapon_rotation, 5 * delta)
+		#hands.position.x = lerp(hands.position.x, default_hands_position.x + (hands / 75), 5 * delta)
+		#hands.position.z = lerp(hands.position.z, default_hands_position.z + (hands.velocity.z / 75), 5 * delta)
 	
 func hit(dir,knockback,damage):
 	emit_signal("player_hit")
@@ -196,14 +229,19 @@ func update_progress_bar():
 	
 	
 func player_die():
+	death_screen.visible = true
+	await get_tree().create_timer(3.0).timeout
+	death_screen.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
-	
-func _on_world_add_ammo(type):
-	if type == 1:
-		emit_signal("increase_rifle_ammo")
-	elif type == 2:
-		emit_signal("increase_gun_ammo")
+		
+func recieve_ammo():
+	if current_gun == "primary":
+		primary_weapon.increase_ammo()
+	elif current_gun == "secondary":
+		secondary_weapon.increase_ammo()
+	elif current_gun == "meelee":
+		primary_weapon.increase_ammo()
 
 func glow_chest(target_chest):
 	target_chest.glow(true)
@@ -214,3 +252,8 @@ func glow_chest(target_chest):
 func get_money(value):
 	money += value
 	money_value.text = str(money)
+
+func _on_timer_timeout():
+	if health < maxHealth:
+		health += 0.5
+		update_progress_bar()
