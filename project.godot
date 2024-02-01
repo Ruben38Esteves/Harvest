@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 global="*res://Scripts/Globals/gloabl.gd"
+Inventory="*res://Scripts/Globals/inventory.gd"
 
 [display]
 

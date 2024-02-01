@@ -9,17 +9,22 @@ var instance
 @onready var primaryAmmoDisplay = $"../../../../../../../UI/Hud/Ammo/Primary"
 
 var can_fire = true
+
+#stats
 var ammo = 10
 var magazineAmmo = 6
 var magazineAmmoMax = 6
 var bullet_amount = 4
 const spread = deg_to_rad(8)
+var base_fire_rate = 0.8
 var fire_rate = 0.8
+var base_damage = 20.0
+var damage = 20.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	update_ammo_display()
-	fire_rate_timer.wait_time = 1 / 0.8
+	fire_rate_timer.wait_time = 1.0 / 0.8
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,6 +50,7 @@ func shoot_bullets(aim):
 		dir.rotation.x = randf_range(spread, -spread)
 		dir.rotation.y = randf_range(spread, -spread)
 		instance.transform.basis = dir.global_transform.basis
+		instance.damage = damage
 		player.get_parent().add_child(instance)
 		dir.rotation.x = old_rot_x
 		dir.rotation.y = old_rot_y
@@ -76,3 +82,6 @@ func increase_ammo():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "shoot" and magazineAmmo == 0 and ammo > 0:
 		reload()
+		
+func update_stats():
+	damage = base_damage + (base_damage * (Inventory.gun_damage / 10))

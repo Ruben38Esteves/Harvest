@@ -100,6 +100,8 @@ func _on_zombie_zombie_killed():
 		
 func _on_chest_opened():
 	player.recieve_ammo()
+	Inventory.gun_damage += 1.0
+	player.update_items()
 	info.text = "You found ammo"
 	info.visible = true
 	

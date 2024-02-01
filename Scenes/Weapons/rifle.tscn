@@ -103,11 +103,11 @@ libraries = {
 "": SubResource("AnimationLibrary_bhx6u")
 }
 
-[node name="fire_rate" type="Timer" parent="."]
+[node name="fire_rate_timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="rifle-3d" parent="." instance=ExtResource("3_ghh4j")]
-transform = Transform3D(0.160058, 0, -0.0176706, 0, 0.161029, 0, 0.0176705, 0, 0.160058, 0, -0.055322, 0.185649)
+transform = Transform3D(0.160058, 0, -0.0176706, 0, 0.161029, 0, 0.0176706, 0, 0.160058, 0, -0.055322, 0.185649)
 
 [node name="muzzle" type="Sprite3D" parent="rifle-3d"]
 transform = Transform3D(1, 0, 1.41561e-07, 0, 1, 0, -1.49012e-08, 0, 1, 0.00145813, 0.414139, -2.37135)
@@ -115,4 +115,5 @@ visible = false
 billboard = 1
 texture = ExtResource("4_nj24n")
 
-[connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="fire_rate_timer" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="fire_rate_timer" to="." method="_on_fire_rate_timer_timeout"]

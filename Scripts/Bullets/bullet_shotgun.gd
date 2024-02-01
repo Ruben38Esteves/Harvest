@@ -5,7 +5,7 @@ extends Node3D
 @onready var particles = $GPUParticles3D
 
 const speed = 30.0
-var damage = 20.0
+var damage = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

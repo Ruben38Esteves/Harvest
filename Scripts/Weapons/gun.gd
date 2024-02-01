@@ -2,16 +2,19 @@ extends Node3D
 
 @onready var gun_anim = $AnimationPlayer
 @onready var gun_barrel = $gun_barrel
-@onready var fire_rate = $fire_rate_gun
+@onready var fire_rate_timer = $fire_rate_gun
 @onready var player = $"../../../../.."
 @onready var secondaryAmmoDisplay = $"../../../../../../../UI/Hud/Ammo/Secondary"
+
+#stats
 var gunAmmo = 20
 var magazineAmmo = 8
 var magazineAmmoMax = 8
 var can_fire_gun = true
-
-#stats
-var damage := 1
+var damage = 25.0
+var base_damage = 25.0
+var fire_rate = 10.0
+var base_fire_rate = 10.0
 
 
 var bullet = load("res://Scenes/Bullets/bullet.tscn")
@@ -19,7 +22,7 @@ var instance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#player.fire_gun.connect(_on_player_fire_gun)
+	fire_rate_timer.wait_time = 1.0 / fire_rate
 	update_gun_ammo_display()
 
 
@@ -32,7 +35,7 @@ func shoot(aim):
 		magazineAmmo -= 1
 		update_gun_ammo_display()
 		can_fire_gun = false
-		fire_rate.start()
+		fire_rate_timer.start()
 		gun_anim.play("Shoot")
 		instance = bullet.instantiate()
 		instance.position = aim.global_position
@@ -67,3 +70,6 @@ func increase_ammo():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Shoot" and magazineAmmo == 0 and gunAmmo > 0:
 		reload()
+		
+func update_stats():
+	damage = base_damage * (1.0 + (Inventory.gun_damage / 10.0))

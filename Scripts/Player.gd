@@ -257,3 +257,7 @@ func _on_timer_timeout():
 	if health < maxHealth:
 		health += 0.5
 		update_progress_bar()
+
+func update_items():
+	primary_weapon.update_stats()
+	secondary_weapon.update_stats()
