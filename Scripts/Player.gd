@@ -49,7 +49,7 @@ var current_gun = "primary"
 #primary
 signal increase_rifle_ammo
 @onready var primary = $Head/Camera3D/Hands/Primary
-var primary_weapon 
+var primary_weapon
 #secondary
 signal increase_gun_ammo
 @onready var secondary = $Head/Camera3D/Hands/Secondary

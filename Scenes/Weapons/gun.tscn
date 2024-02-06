@@ -167,7 +167,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="gun_3d" parent="." instance=ExtResource("3_6tpj4")]
-transform = Transform3D(0.0638868, 0, 0, 0, 0.0638868, 0, 0, 0, 0.0638868, -0.001, -0.113, 0.024)
+transform = Transform3D(0.0514216, 0, 0, 0, 0.0514216, 0, 0, 0, 0.0514216, -0.001, -0.113, 0.024)
 
 [node name="Cube" parent="gun_3d" index="0"]
 transform = Transform3D(0.228145, 0, 0, 0, 0.20411, 0, 0, 0, 1.30004, 0, 1.833, 0)
