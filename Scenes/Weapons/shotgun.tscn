@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://vcny7tfi5ybi"]
+[gd_scene load_steps=9 format=3 uid="uid://vcny7tfi5ybi"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/shotgun.gd" id="1_v20ut"]
 [ext_resource type="PackedScene" uid="uid://bwtnayq7yv0sp" path="res://Models/Shotgun/shotgun_3d.glb" id="2_qgm13"]
 [ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="3_4gxn1"]
+[ext_resource type="PackedScene" uid="uid://cormo2l6nbica" path="res://Scenes/Models/muzzle_flash.tscn" id="4_6fb7e"]
 
 [sub_resource type="Animation" id="Animation_q0w82"]
 length = 0.001
@@ -157,6 +158,9 @@ transform = Transform3D(1.19273, 0, -5.68434e-14, 0, 1.19273, 0, 5.68434e-14, 0,
 visible = false
 billboard = 1
 texture = ExtResource("3_4gxn1")
+
+[node name="muzzle_flash" parent="shotgun_model/muzzle" instance=ExtResource("4_6fb7e")]
+transform = Transform3D(6.76396, 0, -1.81899e-12, 0, 6.76396, 0, 1.81899e-12, 0, 6.76396, 0, 0, 0)
 
 [node name="fire_rate" type="Timer" parent="."]
 wait_time = 0.75

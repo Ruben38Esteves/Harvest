@@ -30,7 +30,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var camera_3d = $Head/Camera3D
 @onready var head = $Head
-@onready var gun_aim = $Head/Camera3D/gun_aim
+@onready var interact_aim = $Head/Camera3D/interact_aim
 
 #stats
 @onready var health_bar = $"../../UI/Hud/HealthBar"
@@ -46,6 +46,7 @@ var money = 0
 
 #guns
 var current_gun = "primary"
+@onready var gun_aim = $Head/Camera3D/gun_aim
 #primary
 signal increase_rifle_ammo
 @onready var primary = $Head/Camera3D/Hands/Primary
@@ -184,13 +185,13 @@ func _physics_process(delta):
 		
 	#open chest
 	if Input.is_action_just_pressed("interact"):
-		if gun_aim.is_colliding():
-			if gun_aim.get_collider().is_in_group("chest"):
-				money = gun_aim.get_collider().used(money)
+		if interact_aim.is_colliding():
+			if interact_aim.get_collider().is_in_group("chest"):
+				money = interact_aim.get_collider().used(money)
 				money_value.text = str(money)
 	
 	#chest glow
-	var coll = gun_aim.get_collider()
+	var coll = interact_aim.get_collider()
 	if coll != looking_at:
 		if coll != null and coll.is_in_group("chest"):
 			coll.targeted = true
@@ -245,7 +246,7 @@ func recieve_ammo():
 
 func glow_chest(target_chest):
 	target_chest.glow(true)
-	while gun_aim.get_collider() == target_chest:
+	while interact_aim.get_collider() == target_chest:
 		pass
 	target_chest.glow(false)
 	

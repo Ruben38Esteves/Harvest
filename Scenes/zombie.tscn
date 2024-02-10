@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc0mp2isk8umx"]
+[gd_scene load_steps=17 format=3 uid="uid://bc0mp2isk8umx"]
 
 [ext_resource type="Script" path="res://Scripts/zombie.gd" id="1_d7cji"]
 [ext_resource type="Script" path="res://Scripts/CollisionZombie.gd" id="2_e5fcn"]
 [ext_resource type="Texture2D" uid="uid://clgplgssg3a8f" path="res://Sprites/attack animt.png" id="2_wi47e"]
+[ext_resource type="PackedScene" uid="uid://creq00vrl663f" path="res://Scenes/Models/blood_particles.tscn" id="4_l3le8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0kvla"]
 
@@ -88,7 +89,7 @@ bg_color = Color(1, 0.345098, 0.254902, 1)
 [sub_resource type="ViewportTexture" id="ViewportTexture_u3lrr"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Zombie" type="CharacterBody3D"]
+[node name="Zombie" type="CharacterBody3D" groups=["enemy"]]
 collision_layer = 3
 script = ExtResource("1_d7cji")
 
@@ -145,5 +146,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194256, -0.937701, 0.0296
 visible = false
 billboard = 2
 texture = SubResource("ViewportTexture_u3lrr")
+
+[node name="blood_particles" parent="." instance=ExtResource("4_l3le8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+one_shot = false
 
 [connection signal="body_hit" from="Area3D" to="." method="_on_area_3d_body_hit"]

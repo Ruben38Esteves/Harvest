@@ -22,6 +22,7 @@ var player = null
 @onready var progress_bar = $SubViewport/ProgressBar
 @onready var sprite = $Sprite3D
 @onready var health_bar = $health_bar
+const blood_particles = preload("res://Scenes/Models/blood_particles.tscn")
 
 #coins utils
 const COINS = preload("res://Scenes/Interactables/coins.tscn")
@@ -82,18 +83,28 @@ func _on_area_3d_body_hit(dmg):
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color.WHITE
 
-func attacked(dmg):
+func attacked(dmg, hit_location):
 	if health == max_health:
 		health_bar.visible = true
 	health -= dmg
 	emit_signal("zombie_hit")
 	progress_bar.value = health
+	spawn_blood(hit_location)
 	if health <= 0:
 		emit_signal("zombie_killed")
 		instance = COINS.instantiate()
 		instance.position = self.global_position
 		self.get_parent().add_child(instance)
 		queue_free()
+	sprite.modulate = Color.DARK_RED
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = Color.WHITE
+
+func spawn_blood(hit_location):
+	var blood = blood_particles.instantiate()
+	add_child(blood)
+	blood.global_transform.origin = hit_location
+	blood.emitting = true
 
 func pushed(dir, knockback):
 	velocity += dir * knockback

@@ -41,12 +41,13 @@ background_color = Color(0.109804, 0, 0.811765, 1)
 ambient_light_source = 1
 ambient_light_color = Color(0.152941, 0.247059, 0.792157, 1)
 ambient_light_energy = 0.24
+glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.188235, 0.188235, 0.180392, 1)
 volumetric_fog_emission = Color(0.223529, 0.227451, 0.219608, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgdw6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qraq"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_wb4wb")
@@ -81,7 +82,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_wgdw6"),
+"material": SubResource("ShaderMaterial_6qraq"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,

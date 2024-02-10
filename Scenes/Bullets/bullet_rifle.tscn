@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi7afl2chd8p3"]
+[gd_scene load_steps=5 format=3 uid="uid://bi7afl2chd8p3"]
 
 [ext_resource type="Script" path="res://Scripts/Bullets/bullet_rifle.gd" id="1_hsyfi"]
+[ext_resource type="PackedScene" uid="uid://creq00vrl663f" path="res://Scenes/Models/blood_particles.tscn" id="2_ndinf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ccnav"]
 size = Vector3(0.05, 0.05, 0.05)
@@ -9,20 +10,6 @@ size = Vector3(0.05, 0.05, 0.05)
 albedo_color = Color(1, 0.831373, 0.176471, 1)
 emission_enabled = true
 emission = Color(0.933333, 0.686275, 0, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2h8lo"]
-shading_mode = 0
-disable_ambient_light = true
-albedo_color = Color(0.992157, 0, 0, 1)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_prrxs"]
-direction = Vector3(0, 0, 1)
-spread = 36.325
-initial_velocity_min = 3.0
-initial_velocity_max = 5.0
-
-[sub_resource type="BoxMesh" id="BoxMesh_6di4k"]
-size = Vector3(0.04, 0.04, 0.04)
 
 [node name="Bullet_rifle" type="Node3D"]
 script = ExtResource("1_hsyfi")
@@ -38,14 +25,7 @@ target_position = Vector3(0, 0, -1)
 collision_mask = 2
 collide_with_areas = true
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000468493, -1.19209e-07, -0.07733)
-material_override = SubResource("StandardMaterial3D_2h8lo")
-emitting = false
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_prrxs")
-draw_pass_1 = SubResource("BoxMesh_6di4k")
+[node name="GPUParticles3D" parent="." instance=ExtResource("2_ndinf")]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
