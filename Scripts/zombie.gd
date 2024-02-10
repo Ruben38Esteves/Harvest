@@ -83,7 +83,7 @@ func _on_area_3d_body_hit(dmg):
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color.WHITE
 
-func attacked(dmg, hit_location):
+func attacked(dmg, hit_location = position):
 	if health == max_health:
 		health_bar.visible = true
 	health -= dmg

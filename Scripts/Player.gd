@@ -141,6 +141,7 @@ func _physics_process(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
 	
+	
 	#attacking
 	if Input.is_action_just_pressed("attack"):
 		if current_gun == "primary":
@@ -161,6 +162,7 @@ func _physics_process(delta):
 		elif current_gun == "secondary":
 			if secondary_weapon:
 				secondary_weapon.reload()
+	
 	
 	#change weapon
 	if Input.is_action_just_pressed("primary"):

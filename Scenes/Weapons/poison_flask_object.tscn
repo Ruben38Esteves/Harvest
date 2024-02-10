@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://duo7mt1v23ms3"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/poison_flask_object.gd" id="1_l7d8b"]
+[ext_resource type="PackedScene" uid="uid://2p2f5hrqtc7f" path="res://Models/PoisonFlask/poison_flask.glb" id="1_ojg4d"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jx23v"]
+radius = 0.0677424
+
+[node name="poison_flask_object" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00152779, 5.96046e-08, 0.000834584)
+collision_layer = 0
+lock_rotation = true
+script = ExtResource("1_l7d8b")
+
+[node name="poison_flask" parent="." instance=ExtResource("1_ojg4d")]
+transform = Transform3D(0.419644, 0, 0, 0, 0.419644, 0, 0, 0, 0.419644, 0, 0, 0)
+
+[node name="Sphere" parent="poison_flask" index="0"]
+cast_shadow = 0
+gi_mode = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_jx23v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="poison_flask"]
