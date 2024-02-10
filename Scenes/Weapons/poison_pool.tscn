@@ -10,7 +10,7 @@ size = Vector3(4.18452, 0.471558, 4.18622)
 script = ExtResource("1_p2gl1")
 
 [node name="poison_pool" type="Sprite3D" parent="."]
-transform = Transform3D(0.16, 0, 0, 0, -6.99382e-09, -0.16, 0, 0.16, -6.99382e-09, 0, 0.100908, 0)
+transform = Transform3D(0.121546, 0, 0, 0, -5.31293e-09, -0.121546, 0, 0.121546, -5.31293e-09, 0, 0.100908, 0)
 texture = ExtResource("2_o1qpr")
 
 [node name="timer" type="Timer" parent="."]
@@ -18,6 +18,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.715998, 0, 0, 0, 0.715998, 0, 0, 0, 0.715998, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0511093, 0.264221, -0.0758362)
