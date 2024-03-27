@@ -15,10 +15,14 @@ var ammo = 10
 var magazineAmmo = 4
 var magazineAmmoMax = 6
 var bullet_amount = 4
-var reload_finished = false
-var is_reloading = false
 const spread = deg_to_rad(8)
 var fire_rate = 0.8
+var aim_value = null
+
+# animation tree conditions
+var reload_finished = false
+var is_reloading = false
+var is_shooting = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,21 +32,28 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	animation_tree.set("parameters/conditions/is_shooting", is_shooting)
 	animation_tree.set("parameters/conditions/reload_finished", reload_finished)
 	animation_tree.set("parameters/conditions/reload_not_finished", !(reload_finished))
 	animation_tree.set("parameters/conditions/reload_finished_2", reload_finished)
 	animation_tree.set("parameters/conditions/reload_not_finished_2", !(reload_finished))
 	animation_tree.set("parameters/conditions/is_reloading", is_reloading)
 	animation_tree.get("parameters/playback")
+	is_shooting = false
 
 func shoot(aim):
 	if !animation_player.is_playing() and can_fire and magazineAmmo > 0:
-		magazineAmmo -= 1
-		can_fire = false
-		fire_rate_timer.start()
-		animation_player.play("shoot")
-		shoot_bullets(aim)
+		is_shooting = true
+		aim_value = aim
 		
+		
+func shoot_aux():
+	magazineAmmo -= 1
+	can_fire = false
+	fire_rate_timer.start()
+	shoot_bullets(aim_value)
+	if magazineAmmo == 0:
+		reload()
 	
 func shoot_bullets(aim):
 	var dir = aim
@@ -60,18 +71,6 @@ func shoot_bullets(aim):
 	update_ammo_display()
 	
 func reload():
-	"""
-	if !animation_player.is_playing() and magazineAmmo < magazineAmmoMax and ammo > 0:
-		animation_player.play("reload")
-		var ammoNeeded = magazineAmmoMax - magazineAmmo
-		if ammo < ammoNeeded:
-			magazineAmmo += ammo
-			ammo = 0
-		else:
-			ammo -= magazineAmmoMax - magazineAmmo
-			magazineAmmo = magazineAmmoMax
-		update_ammo_display()
-	"""
 	if !animation_player.is_playing() and magazineAmmo < magazineAmmoMax and ammo > 0:
 		is_reloading = true
 		reload_finished = false
