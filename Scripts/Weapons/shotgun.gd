@@ -3,16 +3,20 @@ extends Node3D
 var bullet = load("res://Scenes/Bullets/bullet_shotgun.tscn")
 var instance
 
+@onready var animation_tree = $AnimationTree
 @onready var animation_player = $AnimationPlayer
 @onready var fire_rate_timer = $fire_rate
 @onready var player = $"../../../../.."
 @onready var primaryAmmoDisplay = $"../../../../../../../UI/Hud/Ammo/Primary"
 
+
 var can_fire = true
 var ammo = 10
-var magazineAmmo = 6
+var magazineAmmo = 4
 var magazineAmmoMax = 6
 var bullet_amount = 4
+var reload_finished = false
+var is_reloading = false
 const spread = deg_to_rad(8)
 var fire_rate = 0.8
 
@@ -24,7 +28,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	animation_tree.set("parameters/conditions/reload_finished", reload_finished)
+	animation_tree.set("parameters/conditions/reload_not_finished", !(reload_finished))
+	animation_tree.set("parameters/conditions/reload_finished_2", reload_finished)
+	animation_tree.set("parameters/conditions/reload_not_finished_2", !(reload_finished))
+	animation_tree.set("parameters/conditions/is_reloading", is_reloading)
+	animation_tree.get("parameters/playback")
 
 func shoot(aim):
 	if !animation_player.is_playing() and can_fire and magazineAmmo > 0:
@@ -51,6 +60,7 @@ func shoot_bullets(aim):
 	update_ammo_display()
 	
 func reload():
+	"""
 	if !animation_player.is_playing() and magazineAmmo < magazineAmmoMax and ammo > 0:
 		animation_player.play("reload")
 		var ammoNeeded = magazineAmmoMax - magazineAmmo
@@ -61,6 +71,19 @@ func reload():
 			ammo -= magazineAmmoMax - magazineAmmo
 			magazineAmmo = magazineAmmoMax
 		update_ammo_display()
+	"""
+	if !animation_player.is_playing() and magazineAmmo < magazineAmmoMax and ammo > 0:
+		is_reloading = true
+		reload_finished = false
+		
+func add_bullet():
+	if magazineAmmo < magazineAmmoMax and ammo > 0:
+		ammo -= 1
+		magazineAmmo += 1
+		update_ammo_display()
+	if magazineAmmo >= magazineAmmoMax or ammo <= 0:
+		reload_finished = true
+		is_reloading = false
 
 func _on_fire_rate_timeout():
 	can_fire = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://vcny7tfi5ybi"]
+[gd_scene load_steps=28 format=3 uid="uid://vcny7tfi5ybi"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/shotgun.gd" id="1_v20ut"]
 [ext_resource type="PackedScene" uid="uid://bwtnayq7yv0sp" path="res://Models/Shotgun/shotgun_3d.glb" id="2_qgm13"]
@@ -97,6 +97,143 @@ tracks/2/keys = {
 "values": [Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687), Vector3(0.3, 0.113615, 1.30687)]
 }
 
+[sub_resource type="Animation" id="Animation_us7pd"]
+resource_name = "reload_add_bullet"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shotgun_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0817773, 0, 0), Vector3(-0.0817773, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shotgun_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.750492, 3.35103, -0.806342), Vector3(-0.750492, 3.35103, -0.806342)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shotgun_model/Cylinder_003:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.3, 0.113615, 1.30687), Vector3(0.2995, 0.125404, 1.09648), Vector3(0.3, 0.113615, 1.30687)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"add_bullet"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_0orss"]
+resource_name = "reload_end"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shotgun_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0817773, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shotgun_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.750492, 3.35103, -0.806342), Vector3(0, 3.14159, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shotgun_model/Cylinder_003:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.3, 0.113615, 1.30687)]
+}
+
+[sub_resource type="Animation" id="Animation_efdfj"]
+resource_name = "reload_start"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shotgun_model:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.0817773, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shotgun_model:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(-1.6665e-06, 3.14159, -0.717295), Vector3(0, 3.35103, -0.71733), Vector3(-0.750492, 3.35103, -0.806342)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shotgun_model/Cylinder_003:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
 [sub_resource type="Animation" id="Animation_3m8hw"]
 resource_name = "shoot"
 step = 0.01
@@ -141,8 +278,85 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_q0w82"),
 "reload": SubResource("Animation_fcpqn"),
+"reload_add_bullet": SubResource("Animation_us7pd"),
+"reload_end": SubResource("Animation_0orss"),
+"reload_start": SubResource("Animation_efdfj"),
 "shoot": SubResource("Animation_3m8hw")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_estow"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gqfh7"]
+animation = &"reload_add_bullet"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oyqnm"]
+animation = &"reload_add_bullet"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iq7e5"]
+animation = &"reload_end"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8tel8"]
+animation = &"reload_start"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6n73s"]
+animation = &"shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1f42i"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gdele"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_81ub6"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"reload_finished"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rwxbr"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_51efm"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y3cgp"]
+advance_mode = 2
+advance_condition = &"is_reloading"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ve8f0"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"reload_not_finished"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g7hf1"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"reload_not_finished_2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i7rif"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"reload_finished_2"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_a6s43"]
+states/RESET/node = SubResource("AnimationNodeAnimation_estow")
+states/RESET/position = Vector2(257, 111)
+states/Start/position = Vector2(152, 119)
+states/reload_add_bullet/node = SubResource("AnimationNodeAnimation_oyqnm")
+states/reload_add_bullet/position = Vector2(543, -1)
+"states/reload_add_bullet 2/node" = SubResource("AnimationNodeAnimation_gqfh7")
+"states/reload_add_bullet 2/position" = Vector2(773, -73)
+states/reload_end/node = SubResource("AnimationNodeAnimation_iq7e5")
+states/reload_end/position = Vector2(744, 92)
+states/reload_start/node = SubResource("AnimationNodeAnimation_8tel8")
+states/reload_start/position = Vector2(288, -41)
+states/shoot/node = SubResource("AnimationNodeAnimation_6n73s")
+states/shoot/position = Vector2(633, 169)
+transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_1f42i"), "reload_start", "reload_add_bullet", SubResource("AnimationNodeStateMachineTransition_gdele"), "reload_add_bullet", "reload_end", SubResource("AnimationNodeStateMachineTransition_81ub6"), "reload_end", "RESET", SubResource("AnimationNodeStateMachineTransition_rwxbr"), "shoot", "RESET", SubResource("AnimationNodeStateMachineTransition_51efm"), "RESET", "reload_start", SubResource("AnimationNodeStateMachineTransition_y3cgp"), "reload_add_bullet", "reload_add_bullet 2", SubResource("AnimationNodeStateMachineTransition_ve8f0"), "reload_add_bullet 2", "reload_add_bullet", SubResource("AnimationNodeStateMachineTransition_g7hf1"), "reload_add_bullet 2", "reload_end", SubResource("AnimationNodeStateMachineTransition_i7rif")]
+graph_offset = Vector2(64, -97)
 
 [node name="shotgun" type="Node3D"]
 script = ExtResource("1_v20ut")
@@ -170,6 +384,18 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_galwg")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_galwg")
+}
+tree_root = SubResource("AnimationNodeStateMachine_a6s43")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_reloading = false
+parameters/conditions/reload_finished = false
+parameters/conditions/reload_finished_2 = false
+parameters/conditions/reload_not_finished = false
+parameters/conditions/reload_not_finished_2 = false
 
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
