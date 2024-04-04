@@ -9,6 +9,7 @@ radius = 0.0677424
 [node name="poison_flask_object" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00152779, 5.96046e-08, 0.000834584)
 collision_layer = 0
+can_sleep = false
 lock_rotation = true
 script = ExtResource("1_l7d8b")
 
@@ -22,6 +23,15 @@ gi_mode = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_jx23v")
 
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.5, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="poison_flask"]

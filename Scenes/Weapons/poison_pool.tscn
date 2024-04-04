@@ -16,6 +16,7 @@ texture = ExtResource("2_o1qpr")
 [node name="timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+autostart = true
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(0.715998, 0, 0, 0, 0.715998, 0, 0, 0, 0.715998, 0, 0, 0)
