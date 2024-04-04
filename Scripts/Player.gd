@@ -102,10 +102,16 @@ func _physics_process(delta):
 	
 	
 	#sprint
-	if Input.is_action_pressed("sprint") and !Input.is_action_pressed("back"):
+	if Input.is_action_pressed("sprint") and !Input.is_action_pressed("back") and !Input.is_action_pressed("crouch"):
 		speed = SPRINT_SPEED
 	else:
 		speed = WALK_SPEED
+		
+	#couch
+	if Input.is_action_pressed("crouch"):
+		scale.y = lerp(scale.y,0.4,delta*5)
+	else:
+		scale.y = lerp(scale.y,1.0,delta*5)
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
