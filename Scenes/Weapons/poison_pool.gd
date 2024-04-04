@@ -24,3 +24,5 @@ func _on_damage_timer_timeout():
 	for i in area_3d.get_overlapping_bodies():
 		if i.is_in_group("enemy"):
 			i.attacked(damage)
+			if i.has_node("StatusEffects"):
+				i.status_effects.get_poisoned()

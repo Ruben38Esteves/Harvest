@@ -16,7 +16,7 @@ signal zombie_killed
 var player = null
 
 @export var player_path := "/root/world/map/Player"
-
+@onready var status_effects = $StatusEffects
 @onready var nav_agent =$NavigationAgent3D
 @onready var anim_tree = $AnimationTree
 @onready var progress_bar = $SubViewport/ProgressBar
