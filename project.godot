@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 global="*res://Scripts/Globals/gloabl.gd"
+SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 
 [display]
 

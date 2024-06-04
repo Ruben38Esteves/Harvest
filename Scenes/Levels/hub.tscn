@@ -116,9 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44904, 0)
 
 [connection signal="body_entered" from="map/primaries/play_rifle" to="." method="_on_play_rifle_body_entered"]
 [connection signal="body_entered" from="map/primaries/play_shotgun" to="." method="_on_play_shotgun_body_entered"]
-[connection signal="body_entered" from="map/secondaries/play_gun" to="." method="_on_play_shotgun_body_entered"]
 [connection signal="body_entered" from="map/secondaries/play_gun" to="." method="_on_play_gun_body_entered"]
-[connection signal="body_entered" from="map/secondaries/play_poison" to="." method="_on_play_shotgun_body_entered"]
 [connection signal="body_entered" from="map/secondaries/play_poison" to="." method="_on_play_poison_body_entered"]
 
 [editable path="UI"]
