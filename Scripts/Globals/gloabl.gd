@@ -1,5 +1,7 @@
 extends Node
 
+var player
+var debug
 var primary_weapon_path = "res://Scenes/Weapons/shotgun.tscn"
 var secondary_weapon_path = "res://Scenes/Weapons/gun.tscn"
 var meelee_weapon_path = "res://Scenes/Weapons/axe.tscn"

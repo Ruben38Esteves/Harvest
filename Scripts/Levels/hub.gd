@@ -28,7 +28,6 @@ func set_corsair_location():
 
 func primary_picked():
 	primary_picked_bool = true
-	print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 	primaries.position.y = -10
 	if secondary_picked_bool:
 		get_tree().change_scene_to_file("res://world.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cjyysejwq25n6"]
+[gd_scene load_steps=22 format=4 uid="uid://cjyysejwq25n6"]
 
 [ext_resource type="Texture2D" uid="uid://chaqe2ef4ymd0" path="res://Sprites/696.jpg" id="1_d128w"]
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_m3k4x"]
@@ -47,7 +47,7 @@ volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.188235, 0.188235, 0.180392, 1)
 volumetric_fog_emission = Color(0.223529, 0.227451, 0.219608, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r054g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2kl0h"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_wb4wb")
@@ -78,15 +78,15 @@ shader_parameter/texture_albedo = ExtResource("9_humg3")
 [sub_resource type="ArrayMesh" id="ArrayMesh_cl6td"]
 _surfaces = [{
 "aabb": AABB(-0.5, 0, -0.5, 1, 1.00001, 1),
-"attribute_data": PackedByteArray(255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 128, 63, 255, 0, 0, 255, 0, 0, 128, 63, 0, 0, 0, 0, 255, 0, 0, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 255, 0, 0, 0, 0, 0, 0, 128, 63, 255, 0, 0, 255, 0, 0, 128, 63, 0, 0, 0, 0),
+"attribute_data": PackedByteArray("/wAA/wAAAAAAAAAAAAAA/wAAgD8AAIA/AAAA/wAAAAAAAIA//wAA/wAAgD8AAAAA/wAA/wAAAAAAAAAAAAAA/wAAgD8AAIA/AAAA/wAAAAAAAIA//wAA/wAAgD8AAAAA"),
 "format": 34359742495,
 "index_count": 12,
-"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 3, 0, 1, 0, 0, 0, 4, 0, 5, 0, 6, 0, 7, 0, 5, 0, 4, 0),
-"material": SubResource("ShaderMaterial_r054g"),
+"index_data": PackedByteArray("AAABAAIAAwABAAAABAAFAAYABwAFAAQA"),
+"material": SubResource("ShaderMaterial_2kl0h"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
-"vertex_data": PackedByteArray(0, 0, 0, 191, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 63, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 255, 127, 255, 127, 255, 255, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191, 0, 0, 255, 127, 255, 127, 255, 191)
+"vertex_data": PackedByteArray("AAAAvwAAgD8AAAAAAAAAPwAAAAAAAAAAAAAAvwAAAAAAAAAAAAAAPwAAgD8AAAAAAAAAAAAAgD8AAAC/AAAAAAAAAAAAAAA/AAAAAAAAAAAAAAC/AAAAAAAAgD8AAAA//3//f////7//f/9/////v/9//3////+//3//f////78AAP9//3//vwAA/3//f/+/AAD/f/9//78AAP9//3//vw==")
 }]
 
 [sub_resource type="MultiMesh" id="MultiMesh_w3ufm"]

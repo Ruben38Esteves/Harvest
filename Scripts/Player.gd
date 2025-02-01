@@ -3,12 +3,19 @@ extends CharacterBody3D
 @onready var death_screen = $"../../UI/Player_death_screen"
 
 #movement
-var speed
+@onready var slide_check: RayCast3D = $slide_check
+
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 7.5
+var speed = WALK_SPEED
 const JUMP_VELOCITY = 7
 const SENSITIVITY = 0.003
 var doublejump = true
+var fall_distance = 0
+var slide_speed = 0
+var can_slide = false
+var sliding = false
+var falling = false
 
 #gun movement
 @onready var hands = $Head/Camera3D/Hands
@@ -65,6 +72,7 @@ var looking_at = null
 var mouse_input
 
 func _ready():
+	global.player = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_gun = "primary"
 	update_progress_bar()
@@ -87,13 +95,23 @@ func _unhandled_input(event):
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _physics_process(delta):
+	global.debug.add_debug_property("MovementSpeed", velocity.length(), 1)
+	"""
+	if falling and is_on_floor() and sliding:
+		slide_speed += fall_distance / 10
+	fall_distance = -gravity
+	"""
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta * 1.5
-
+		falling = true
+	else:
+		falling = false
 	# Handle jump.
 	if Input.is_action_pressed("jump"):
 		if is_on_floor():
+			if sliding:
+				slide_speed -= 1
 			velocity.y = JUMP_VELOCITY
 			doublejump = true
 		elif doublejump:
@@ -101,23 +119,43 @@ func _physics_process(delta):
 			doublejump = false
 	
 	
-	#sprint
-	if Input.is_action_pressed("sprint") and !Input.is_action_pressed("back") and !Input.is_action_pressed("crouch"):
-		speed = SPRINT_SPEED
-	else:
-		speed = WALK_SPEED
-		
-	#couch
-	if Input.is_action_pressed("crouch"):
-		scale.y = lerp(scale.y,0.4,delta*5)
-	else:
-		scale.y = lerp(scale.y,1.0,delta*5)
+	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
 	var input_side_right = Input.is_action_pressed("right")
 	var input_side_left = Input.is_action_pressed("left")
+	
+	#sprint
+	"""
+	if Input.is_action_pressed("sprint") and !Input.is_action_pressed("back") and !Input.is_action_pressed("crouch"):
+		speed = SPRINT_SPEED
+	else:
+		speed = WALK_SPEED
+	"""
+	#couch
+	"""
+	if Input.is_action_just_pressed("crouch") and velocity.length() > 3:
+		print("player can now slide")
+		can_slide = true
+	"""	
+	
+	if Input.is_action_pressed("crouch"):
+		scale.y = lerp(scale.y,0.4,delta*5)
+		print("crouching")
+		"""
+		print(velocity.length())
+		if is_on_floor() and Input.is_action_pressed("forward") and can_slide:
+			print("sliding")
+			slide()
+		"""
+	else:
+		scale.y = lerp(scale.y,1.0,delta*5)
+		
+	if Input.is_action_just_released("crouch"):
+		can_slide = false
+		sliding = false
 	
 	#head lean
 	if input_side_right:
@@ -135,8 +173,12 @@ func _physics_process(delta):
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 	else:
-		velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-		velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+		#velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+		#velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+		velocity.x = 0
+		velocity.z = 0
+		
+	
 		
 	#head bob
 	t_bob += delta * velocity.length() * float(is_on_floor())
@@ -189,7 +231,9 @@ func _physics_process(delta):
 		
 	#menu
 	if Input.is_action_just_pressed("escape"):
-		player_die()
+		#player_die()
+		
+		get_tree().quit()
 		
 	#open chest
 	if Input.is_action_just_pressed("interact"):
@@ -266,3 +310,24 @@ func _on_timer_timeout():
 	if health < maxHealth:
 		health += 0.5
 		update_progress_bar()
+		
+func slide():
+	if not sliding:
+		if slide_check.is_colliding() or get_floor_angle() < 0.2:
+			slide_speed = 5
+			slide_speed += fall_distance/10
+		else:
+			slide_speed = 2
+	sliding = true
+	
+	if slide_check.is_colliding():
+		slide_speed += get_floor_angle() / 10
+	else:
+		slide_speed -= (get_floor_angle() / 5) + 0.03
+	
+	if slide_speed < 0:
+		slide_speed = 0
+		can_slide = false
+		sliding = false
+	speed = slide_speed	* 3
+	print(slide_speed)
