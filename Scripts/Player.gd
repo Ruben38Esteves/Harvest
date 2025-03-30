@@ -1,14 +1,19 @@
 extends CharacterBody3D
 
 @onready var death_screen = $"../../UI/Player_death_screen"
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #movement
 @onready var slide_check: RayCast3D = $slide_check
+@onready var head_collision: RayCast3D = $Head/HeadCollision
 
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 7.5
+const CROUCH_SPEED = 3.0
 var speed = WALK_SPEED
 const JUMP_VELOCITY = 7
+
+
 const SENSITIVITY = 0.003
 var doublejump = true
 var fall_distance = 0
@@ -308,3 +313,12 @@ func slide():
 		sliding = false
 	speed = slide_speed	* 3
 	print(slide_speed)
+	
+func can_stand() -> bool:
+	return not head_collision.is_colliding()
+
+func crouch() -> void:
+	animation_player.play("crouch")
+	
+func uncrouch() -> void:
+	animation_player.play("uncrouch")
