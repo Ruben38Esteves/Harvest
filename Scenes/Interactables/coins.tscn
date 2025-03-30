@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdp1mtf8ldgtp"]
 
-[ext_resource type="Script" path="res://Scripts/Interactables/coins.gd" id="1_ln2lg"]
+[ext_resource type="Script" uid="uid://b6vit2efdl3ii" path="res://Scripts/Interactables/coins.gd" id="1_ln2lg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ps5wm"]
 albedo_color = Color(0.823529, 0.694118, 0.141176, 1)
@@ -48,8 +48,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gjean"]
 _data = {
-"RESET": SubResource("Animation_oimu4"),
-"float": SubResource("Animation_0n7l6")
+&"RESET": SubResource("Animation_oimu4"),
+&"float": SubResource("Animation_0n7l6")
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pao22"]

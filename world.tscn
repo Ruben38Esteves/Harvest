@@ -1,16 +1,16 @@
 [gd_scene load_steps=22 format=4 uid="uid://cjyysejwq25n6"]
 
 [ext_resource type="Texture2D" uid="uid://chaqe2ef4ymd0" path="res://Sprites/696.jpg" id="1_d128w"]
-[ext_resource type="Script" path="res://Scripts/world.gd" id="1_m3k4x"]
+[ext_resource type="Script" uid="uid://6y71g52thvpt" path="res://Scripts/world.gd" id="1_m3k4x"]
 [ext_resource type="PackedScene" uid="uid://b2o1n3ynoql8x" path="res://Scenes/Models/crypt_2.tscn" id="3_y3fge"]
 [ext_resource type="PackedScene" uid="uid://itto8gqfi4lb" path="res://Scenes/Models/road.tscn" id="4_6q3wp"]
 [ext_resource type="PackedScene" uid="uid://bm7uiecsg61vl" path="res://Scenes/Models/lightpost_single.tscn" id="5_stv0p"]
 [ext_resource type="PackedScene" uid="uid://b1ugcaxyvkpcx" path="res://Scenes/Models/Pine_tree.tscn" id="6_uaubc"]
 [ext_resource type="PackedScene" uid="uid://bc0mp2isk8umx" path="res://Scenes/zombie.tscn" id="7_6hbec"]
 [ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Scenes/player.tscn" id="8_oukkc"]
-[ext_resource type="Shader" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="8_wb4wb"]
+[ext_resource type="Shader" uid="uid://btt2ymfmcwcva" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="8_wb4wb"]
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="9_humg3"]
-[ext_resource type="Script" path="res://addons/simplegrasstextured/grass.gd" id="10_rko6k"]
+[ext_resource type="Script" uid="uid://ck23d2qrf5wng" path="res://addons/simplegrasstextured/grass.gd" id="10_rko6k"]
 [ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://Scenes/ui.tscn" id="12_exc3c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8gs4"]
@@ -47,11 +47,12 @@ volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.188235, 0.188235, 0.180392, 1)
 volumetric_fog_emission = Color(0.223529, 0.227451, 0.219608, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2kl0h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k3n1d"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_wb4wb")
 shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/texture_albedo = ExtResource("9_humg3")
 shader_parameter/texture_frames = Vector2(1, 1)
 shader_parameter/light_mode = 1
 shader_parameter/alpha_scissor_threshold = 0.5
@@ -73,7 +74,6 @@ shader_parameter/grass_size_y = 1.0
 shader_parameter/interactive_mode = true
 shader_parameter/interactive_level_xz = 3.0
 shader_parameter/interactive_level_y = 0.3
-shader_parameter/texture_albedo = ExtResource("9_humg3")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cl6td"]
 _surfaces = [{
@@ -82,7 +82,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray("AAABAAIAAwABAAAABAAFAAYABwAFAAQA"),
-"material": SubResource("ShaderMaterial_2kl0h"),
+"material": SubResource("ShaderMaterial_k3n1d"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,

@@ -2,7 +2,17 @@ class_name IdleMovementState
 
 extends State
 
+@onready var player: CharacterBody3D = $"../.."
+@onready var state_machine: StateMachine = $".."
 
 func update(delta):
-	if global.player.velocity.length() > 0.0 and global.player.is_on_floor():
-		transition.emit("WalkingMovementState")
+	if not player.is_on_floor():
+		state_machine.change_state("FallingMovementState")
+	if player.velocity.length() > 0.0 and player.is_on_floor():
+		state_machine.change_state("WalkingMovementState")
+		pass
+	if Input.is_action_just_pressed("jump"):
+		state_machine.change_state("JumpMovementState")
+
+func exit() -> void:
+	print("leaving idle")

@@ -96,31 +96,10 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	global.debug.add_debug_property("MovementSpeed", velocity.length(), 1)
-	"""
-	if falling and is_on_floor() and sliding:
-		slide_speed += fall_distance / 10
-	fall_distance = -gravity
-	"""
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta * 1.5
-		falling = true
-	else:
-		falling = false
-	# Handle jump.
-	if Input.is_action_pressed("jump"):
-		if is_on_floor():
-			if sliding:
-				slide_speed -= 1
-			velocity.y = JUMP_VELOCITY
-			doublejump = true
-		elif doublejump:
-			#velocity.y = JUMP_VELOCITY
-			doublejump = false
-	
-	
-	
-
+		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
@@ -141,21 +120,21 @@ func _physics_process(delta):
 		can_slide = true
 	"""	
 	
-	if Input.is_action_pressed("crouch"):
-		scale.y = lerp(scale.y,0.4,delta*5)
-		print("crouching")
-		"""
-		print(velocity.length())
-		if is_on_floor() and Input.is_action_pressed("forward") and can_slide:
-			print("sliding")
-			slide()
-		"""
-	else:
-		scale.y = lerp(scale.y,1.0,delta*5)
+	#if Input.is_action_pressed("crouch"):
+		#scale.y = lerp(scale.y,0.4,delta*5)
+		#print("crouching")
+		#"""
+		#print(velocity.length())
+		#if is_on_floor() and Input.is_action_pressed("forward") and can_slide:
+			#print("sliding")
+			#slide()
+		#"""
+	#else:
+		#scale.y = lerp(scale.y,1.0,delta*5)
 		
-	if Input.is_action_just_released("crouch"):
-		can_slide = false
-		sliding = false
+	#if Input.is_action_just_released("crouch"):
+		#can_slide = false
+		#sliding = false
 	
 	#head lean
 	if input_side_right:
@@ -231,8 +210,6 @@ func _physics_process(delta):
 		
 	#menu
 	if Input.is_action_just_pressed("escape"):
-		#player_die()
-		
 		get_tree().quit()
 		
 	#open chest

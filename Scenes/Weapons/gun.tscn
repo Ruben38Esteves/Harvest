@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dowt1ujjcq6dy"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/gun.gd" id="1_vmlyg"]
+[ext_resource type="Script" uid="uid://d0imd2hwlhvly" path="res://Scripts/Weapons/gun.gd" id="1_vmlyg"]
 [ext_resource type="Texture2D" uid="uid://cniwd8je12q7b" path="res://Sprites/gun.png" id="2_pbdy4"]
 [ext_resource type="PackedScene" uid="uid://6fmadp4jv4mf" path="res://Models/Gun/gun_3d.glb" id="3_6tpj4"]
 [ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="4_a2vg2"]
@@ -141,9 +141,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1tcn7"]
 _data = {
-"RESET": SubResource("Animation_eboqw"),
-"Shoot": SubResource("Animation_4do5i"),
-"reload": SubResource("Animation_sivg7")
+&"RESET": SubResource("Animation_eboqw"),
+&"Shoot": SubResource("Animation_4do5i"),
+&"reload": SubResource("Animation_sivg7")
 }
 
 [node name="Gun" type="Node3D"]

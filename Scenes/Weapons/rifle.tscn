@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b0i77543v5a01"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/rifle.gd" id="1_8vn0w"]
+[ext_resource type="Script" uid="uid://certvqr66aia4" path="res://Scripts/Weapons/rifle.gd" id="1_8vn0w"]
 [ext_resource type="PackedScene" uid="uid://carwtwbycchat" path="res://Scenes/Models/rifle_3d.tscn" id="3_ghh4j"]
 [ext_resource type="PackedScene" uid="uid://cormo2l6nbica" path="res://Scenes/Models/muzzle_flash.tscn" id="4_g4uem"]
 [ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="4_nj24n"]
@@ -87,8 +87,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhx6u"]
 _data = {
-"RESET": SubResource("Animation_44h3y"),
-"shoot": SubResource("Animation_8ixup")
+&"RESET": SubResource("Animation_44h3y"),
+&"shoot": SubResource("Animation_8ixup")
 }
 
 [node name="Rifle" type="Node3D"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bi7afl2chd8p3"]
 
-[ext_resource type="Script" path="res://Scripts/Bullets/bullet_rifle.gd" id="1_hsyfi"]
+[ext_resource type="Script" uid="uid://caah3iggcs0kf" path="res://Scripts/Bullets/bullet_rifle.gd" id="1_hsyfi"]
 [ext_resource type="PackedScene" uid="uid://creq00vrl663f" path="res://Scenes/Models/blood_particles.tscn" id="2_ndinf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ccnav"]

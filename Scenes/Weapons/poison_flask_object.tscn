@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://duo7mt1v23ms3"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/poison_flask_object.gd" id="1_l7d8b"]
+[ext_resource type="Script" uid="uid://c4s2uyx4ghhvy" path="res://Scripts/Weapons/poison_flask_object.gd" id="1_l7d8b"]
 [ext_resource type="PackedScene" uid="uid://2p2f5hrqtc7f" path="res://Models/PoisonFlask/poison_flask.glb" id="1_ojg4d"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jx23v"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://vcny7tfi5ybi"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/shotgun.gd" id="1_v20ut"]
+[ext_resource type="Script" uid="uid://b4rl2o5oudjma" path="res://Scripts/Weapons/shotgun.gd" id="1_v20ut"]
 [ext_resource type="PackedScene" uid="uid://bwtnayq7yv0sp" path="res://Models/Shotgun/shotgun_3d.glb" id="2_qgm13"]
 [ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="3_4gxn1"]
 [ext_resource type="PackedScene" uid="uid://cormo2l6nbica" path="res://Scenes/Models/muzzle_flash.tscn" id="4_6fb7e"]
@@ -330,13 +330,13 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_galwg"]
 _data = {
-"RESET": SubResource("Animation_q0w82"),
-"reload": SubResource("Animation_fcpqn"),
-"reload_add_bullet": SubResource("Animation_us7pd"),
-"reload_end": SubResource("Animation_0orss"),
-"reload_start": SubResource("Animation_efdfj"),
-"shoot": SubResource("Animation_3m8hw"),
-"shoot_2": SubResource("Animation_vxtui")
+&"RESET": SubResource("Animation_q0w82"),
+&"reload": SubResource("Animation_fcpqn"),
+&"reload_add_bullet": SubResource("Animation_us7pd"),
+&"reload_end": SubResource("Animation_0orss"),
+&"reload_start": SubResource("Animation_efdfj"),
+&"shoot": SubResource("Animation_3m8hw"),
+&"shoot_2": SubResource("Animation_vxtui")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_estow"]

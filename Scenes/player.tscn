@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1y3no0s41hhe"]
+[gd_scene load_steps=10 format=3 uid="uid://d1y3no0s41hhe"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_mh2q7"]
-[ext_resource type="Script" path="res://Scripts/Player/movement_state_machine.gd" id="2_lsekj"]
-[ext_resource type="Script" path="res://Scripts/Player/idle_movement_state.gd" id="3_laixl"]
-[ext_resource type="Script" path="res://Scripts/Player/walking_movement_state.gd" id="4_bv8s6"]
-[ext_resource type="Script" path="res://Scripts/Player/sprint_movement_state.gd" id="5_kma33"]
+[ext_resource type="Script" uid="uid://bp3mljhyqo5fr" path="res://Scripts/Player.gd" id="1_mh2q7"]
+[ext_resource type="Script" uid="uid://cb4b366htrngw" path="res://Scripts/Player/movement_state_machine.gd" id="2_lsekj"]
+[ext_resource type="Script" uid="uid://cqlnw1f3fumtd" path="res://Scripts/Player/idle_movement_state.gd" id="3_laixl"]
+[ext_resource type="Script" uid="uid://b5o4qduoc4vtn" path="res://Scripts/Player/walking_movement_state.gd" id="4_bv8s6"]
+[ext_resource type="Script" uid="uid://dyb3sw4w01jhw" path="res://Scripts/Player/sprint_movement_state.gd" id="5_kma33"]
+[ext_resource type="Script" uid="uid://bry66vvmy45sb" path="res://Scenes/jump_movement_state.gd" id="6_5c7xo"]
+[ext_resource type="Script" uid="uid://vw4sbw0c23uo" path="res://Scenes/falling_movement_state.gd" id="7_3smsa"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m03d6"]
 
@@ -71,5 +73,12 @@ script = ExtResource("4_bv8s6")
 
 [node name="SprintMovementState" type="Node" parent="MovementStateMachine"]
 script = ExtResource("5_kma33")
+
+[node name="JumpMovementState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("6_5c7xo")
+
+[node name="FallingMovementState" type="Node" parent="MovementStateMachine"]
+script = ExtResource("7_3smsa")
+metadata/_custom_type_script = "uid://bqkpobfjdvsye"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
