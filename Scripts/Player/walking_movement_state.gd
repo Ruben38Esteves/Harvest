@@ -5,7 +5,7 @@ extends State
 @onready var player: CharacterBody3D = $"../.."
 @onready var state_machine: StateMachine = $".."
 
-func enter() -> void:
+func enter(last_state: String) -> void:
 	player.speed = player.WALK_SPEED
 
 func update(delta):

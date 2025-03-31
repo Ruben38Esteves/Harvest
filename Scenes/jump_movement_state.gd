@@ -6,7 +6,7 @@ extends State
 @onready var state_machine: StateMachine = $".."
 
 # Called when the node enters the scene tree for the first time.
-func enter() -> void:
+func enter(last_state: String) -> void:
 	player.velocity.y = player.JUMP_VELOCITY
 
 func update(delta) -> void:

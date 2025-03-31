@@ -13,7 +13,7 @@ func _ready() -> void:
 			#child.transition.connect(on_child_transition)
 		else:
 			push_warning("State machine contains invalid child node")
-	CURRENT_STATE.enter()
+	CURRENT_STATE.enter("IdleMovementState")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +30,7 @@ func change_state(new_state_name: StringName) -> void:
 	if new_state != null:
 		if new_state != CURRENT_STATE:
 			CURRENT_STATE.exit()
-			new_state.enter()
+			new_state.enter(CURRENT_STATE.name)
 			CURRENT_STATE = new_state
 		else:
 			print("same state")

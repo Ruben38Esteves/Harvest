@@ -5,11 +5,11 @@ extends State
 @onready var player: CharacterBody3D = $"../.."
 @onready var state_machine: StateMachine = $".."
 var leaving_crouch: bool
-
 # Called when the node enters the scene tree for the first time.
-func enter() -> void:
+func enter(last_state: String) -> void:
 	leaving_crouch = false
-	player.crouch()
+	if last_state != "SlideMovementState":
+		player.crouch()
 	player.speed = player.CROUCH_SPEED
 	
 func update(delta) -> void:
