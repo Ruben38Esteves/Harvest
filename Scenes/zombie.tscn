@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bc0mp2isk8umx"]
+[gd_scene load_steps=19 format=3 uid="uid://bc0mp2isk8umx"]
 
 [ext_resource type="Script" uid="uid://d1geni2y2h8vb" path="res://Scripts/zombie.gd" id="1_d7cji"]
 [ext_resource type="Script" uid="uid://hop0kprny4f4" path="res://Scripts/CollisionZombie.gd" id="2_e5fcn"]
@@ -36,6 +36,18 @@ tracks/1/keys = {
 "method": &"_attack_finished"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:attacking")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_n03yu"]
 resource_name = "walk"
@@ -53,8 +65,24 @@ tracks/0/keys = {
 "values": [0, 0]
 }
 
+[sub_resource type="Animation" id="Animation_w2xga"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:attacking")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_osnk2"]
 _data = {
+&"RESET": SubResource("Animation_w2xga"),
 &"attack": SubResource("Animation_xtqiq"),
 &"walk": SubResource("Animation_n03yu")
 }
@@ -111,6 +139,7 @@ billboard = 2
 shaded = true
 texture = ExtResource("2_wi47e")
 hframes = 5
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

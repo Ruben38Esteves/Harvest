@@ -13,9 +13,6 @@ var damage = 10
 signal zombie_hit
 signal zombie_killed
 
-var player = null
-
-@export var player_path := "/root/world/map/Player"
 @onready var status_effects = $StatusEffects
 @onready var nav_agent =$NavigationAgent3D
 @onready var anim_tree = $AnimationTree
@@ -29,9 +26,9 @@ const COINS = preload("res://Scenes/Interactables/coins.tscn")
 var instance
 
 var state_machine
+@export var attacking: bool = false
 
 func _ready():
-	player = get_node(player_path)
 	state_machine = anim_tree.get("parameters/playback")
 	progress_bar.max_value = health
 	progress_bar.value = health
@@ -44,11 +41,11 @@ func _process(delta):
 	velocity
 	match state_machine.get_current_node():
 		"walk":
-			nav_agent.set_target_position(player.global_transform.origin)
+			nav_agent.set_target_position(global.player.global_transform.origin)
 			var next_nav_point = nav_agent.get_next_path_position()
 			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 		"attack":
-			pass
+			velocity = Vector3.ZERO
 	
 	anim_tree.set("parameters/conditions/attack", _target_in_range())
 	anim_tree.set("parameters/conditions/walk", !_target_in_range())
@@ -57,13 +54,13 @@ func _process(delta):
 	move_and_slide()
 	
 func _target_in_range():
-	return global_position.distance_to(player.global_position) < ATTACK_RANGE
+	return global_position.distance_to(global.player.global_position) < ATTACK_RANGE
 	
 func _attack_finished():
-	if global_position.distance_to(player.global_position) < ATTACK_RANGE + 1.0:
-		var dir = global_position.direction_to(player.global_position).normalized()
+	if global_position.distance_to(global.player.global_position) < ATTACK_RANGE + 1.0:
+		var dir = global_position.direction_to(global.player.global_position).normalized()
 		dir.y = 0
-		player.hit(dir,ATTACK_KNOCKBACK,damage)
+		global.player.hit(dir,ATTACK_KNOCKBACK,damage)
 	
 		
 

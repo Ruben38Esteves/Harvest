@@ -133,9 +133,9 @@ func _physics_process(delta):
 	
 	#movement
 	if sliding:
-		var cenas = slide(delta)
-		velocity.x = last_direction.x * cenas
-		velocity.z = last_direction.z * cenas
+		var current_speed = slide(delta)
+		velocity.x = last_direction.x * current_speed
+		velocity.z = last_direction.z * current_speed
 	else:
 		if direction:
 			velocity.x = direction.x * speed
