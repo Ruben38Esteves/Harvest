@@ -8,6 +8,7 @@ extends State
 # Called when the node enters the scene tree for the first time.
 func enter() -> void:
 	player.speed = player.SPRINT_SPEED
+	player.TARGET_FOV = player.SPRINT_FOV
 	
 func update(delta) -> void:
 	# jump
@@ -18,8 +19,9 @@ func update(delta) -> void:
 		state_machine.change_state("WalkingMovementState")
 	# crouch
 	if Input.is_action_just_pressed("crouch"):
-		state_machine.change_state("CrouchMovementState")
+		state_machine.change_state("SlideMovementState")
 	
 
 func exit() -> void:
+	player.TARGET_FOV = player.BASE_FOV
 	print("leaving sprint")

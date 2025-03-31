@@ -17,10 +17,10 @@ albedo_color = Color(0.662745, 0.380392, 0.129412, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.17853, 0.62822, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Node3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.58386, 0, 6.97919)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.88887, 0, -11.9741)
 material_override = SubResource("StandardMaterial3D_bswi4")
 use_collision = true
-size = Vector3(73.3464, 1, 67.601)
+size = Vector3(110.292, 1, 105.508)
 
 [node name="Node3D" parent="Node3D2" instance=ExtResource("2_ypbtj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05471, 0)
@@ -45,6 +45,11 @@ use_collision = true
 size = Vector3(3.79346, 0.924378, 3.91943)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Node3D2"]
-transform = Transform3D(0.988604, -0.150536, 0, 0.150536, 0.988604, 0, 0, 0, 1, 2.86803, 4.04802, -9.89924)
+transform = Transform3D(0.988604, -0.150536, 0, 0.150536, 0.988604, 0, 0, 0, 1, -5.74946, 2.73582, -9.20774)
 use_collision = true
-size = Vector3(17.3186, 0.788513, 9.01343)
+size = Vector3(34.7523, 0.788513, 7.63043)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Node3D2"]
+transform = Transform3D(0.952177, -0.305546, 0, 0.305546, 0.952177, 0, 0, 0, 1, 3.38598, 2.69376, -16.5861)
+use_collision = true
+size = Vector3(17.1803, 0.788513, 7.63043)
