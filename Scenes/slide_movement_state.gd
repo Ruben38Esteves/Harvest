@@ -17,7 +17,7 @@ func update(delta) -> void:
 	if Input.is_action_just_released("crouch"):
 		state_machine.change_state("IdleMovementState")
 	# jump
-	if Input.is_action_just_released("jump"):
+	if Input.is_action_just_pressed("jump"):
 		state_machine.change_state("JumpMovementState")
 		
 	if player.velocity.length() <= player.CROUCH_SPEED:
