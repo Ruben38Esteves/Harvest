@@ -262,7 +262,9 @@ wait_time = 0.5
 autostart = true
 
 [node name="slide_check" type="RayCast3D" parent="."]
-target_position = Vector3(0, 0, 1)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0802073, 0)
+target_position = Vector3(-1, 0, 0)
+debug_shape_thickness = 5
 
 [node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("2_lsekj")

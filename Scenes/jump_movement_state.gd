@@ -12,5 +12,5 @@ func enter() -> void:
 func update(delta) -> void:
 	state_machine.change_state("FallingMovementState")
 
-func exit() -> void:
-	print("leaving jump")
+#func exit() -> void:
+	#print("leaving jump")

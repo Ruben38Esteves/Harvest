@@ -13,5 +13,5 @@ func update(delta) -> void:
 	if global.player.is_on_floor():
 		state_machine.change_state("IdleMovementState")
 
-func exit() -> void:
-	print("leaving falling")
+#func exit() -> void:
+	#print("leaving falling")

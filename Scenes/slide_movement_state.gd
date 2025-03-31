@@ -14,9 +14,12 @@ func enter() -> void:
 func update(delta) -> void:
 	if Input.is_action_just_released("crouch"):
 		state_machine.change_state("IdleMovementState")
-	#player.speed = lerp(player.speed, player.CROUCH_SPEED, 0.01 * delta)
-	if player.velocity.length() <= player.CROUCH_SPEED:
-		state_machine.change_state("CrouchMovementState")
+	# jump
+	if Input.is_action_just_released("jump"):
+		state_machine.change_state("JumpMovementState")
+		
+	#if player.velocity.length() <= player.CROUCH_SPEED:
+		#state_machine.change_state("CrouchMovementState")
 
 func exit() -> void:
 	player.TARGET_FOV = player.BASE_FOV

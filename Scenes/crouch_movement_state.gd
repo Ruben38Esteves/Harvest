@@ -25,4 +25,4 @@ func update(delta) -> void:
 
 func exit() -> void:
 	player.uncrouch()
-	print("leaving falling")
+	#print("leaving falling")

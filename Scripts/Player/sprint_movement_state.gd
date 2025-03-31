@@ -24,4 +24,4 @@ func update(delta) -> void:
 
 func exit() -> void:
 	player.TARGET_FOV = player.BASE_FOV
-	print("leaving sprint")
+	#print("leaving sprint")

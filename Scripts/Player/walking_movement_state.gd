@@ -25,5 +25,5 @@ func update(delta):
 	if Input.is_action_just_pressed("crouch"):
 		state_machine.change_state("CrouchMovementState")
 
-func exit() -> void:
-	print("leaving walking")
+#func exit() -> void:
+	#print("leaving walking")

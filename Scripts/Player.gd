@@ -14,6 +14,7 @@ const SLIDE_SPEED = 10.0
 var speed = WALK_SPEED
 const JUMP_VELOCITY = 7
 var last_direction: Vector3
+var downhill: bool = false
 
 const SENSITIVITY = 0.003
 var doublejump = true
@@ -34,7 +35,7 @@ var TARGET_FOV: float = 75
 const BASE_FOV: float = 75
 const SPRINT_FOV: float = 90
 const SLIDE_FOV: float = 100
-const FOV_CHANGE = 1.1
+const FOV_CHANGE = 1.3
 
 #bob variables
 const BOB_FREQ = 2.0
@@ -100,12 +101,12 @@ func _input(event):
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
+		slide_check.rotate_y(-event.relative.x * SENSITIVITY)
 		camera_3d.rotate_x(-event.relative.y * SENSITIVITY)
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _physics_process(delta):
 	global.debug.add_debug_property("MovementSpeed", velocity.length(), 1)
-	global.debug.add_debug_property("Slope", get_floor_angle(), 3)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta * 1.5
@@ -140,6 +141,7 @@ func _physics_process(delta):
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
 			last_direction = direction
+			downhill = slide_check.is_colliding()
 		else:
 			#velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
 			#velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
@@ -149,16 +151,13 @@ func _physics_process(delta):
 		t_bob += delta * velocity.length() * float(is_on_floor())
 		camera_3d.transform.origin = _head_bob(t_bob)
 	
-	
-	
-		
-	
-	
 	#fov changer
 	#var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	#var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	#camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
-	camera_3d.fov = lerp(camera_3d.fov,TARGET_FOV, delta * 8.0)
+	var target_fov = BASE_FOV + FOV_CHANGE * velocity.length()
+	camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
+	#camera_3d.fov = lerp(camera_3d.fov,TARGET_FOV, delta * 8.0)
 	
 	#attacking
 	if Input.is_action_just_pressed("attack"):
@@ -280,26 +279,15 @@ func _on_timer_timeout():
 		update_progress_bar()
 		
 func slide(delta):
-	#if not sliding:
-		#if slide_check.is_colliding() or get_floor_angle() < 0.2:
-			#slide_speed = 12.5
-			#slide_speed += fall_distance/10
-		#else:
-			#slide_speed = 2
 	if get_floor_angle() < 0.1:
-		#slide_speed = lerp(slide_speed, 3.0, 2 * delta)
-		slide_speed -= 10 * delta
+		if slide_speed > 0.5:
+			slide_speed -= 20 * delta
 	else:
-		slide_speed += get_floor_angle() * delta * 10
-	#if slide_check.is_colliding():
-		#
-	#else:
-		#slide_speed -= (get_floor_angle() / 5) + 0.03
-	#
-	#if slide_speed < 0:
-		#slide_speed = 0
-		#can_slide = false
-		#sliding = false
+		if downhill:
+			slide_speed += get_floor_angle() * delta * 10
+		else:
+			if slide_speed > 0.5:
+				slide_speed -= get_floor_angle() * delta * 100
 	return slide_speed
 	
 func can_stand() -> bool:

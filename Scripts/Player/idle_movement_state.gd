@@ -19,5 +19,5 @@ func update(delta):
 		state_machine.change_state("CrouchMovementState")
 		
 
-func exit() -> void:
-	print("leaving idle")
+#func exit() -> void:
+	#print("leaving idle")
