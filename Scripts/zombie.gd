@@ -63,7 +63,7 @@ func _attack_finished():
 		global.player.hit(dir,ATTACK_KNOCKBACK,damage)
 	
 		
-
+# zombie was attacked
 func _on_area_3d_body_hit(dmg):
 	if health == max_health:
 		health_bar.visible = true
@@ -79,7 +79,8 @@ func _on_area_3d_body_hit(dmg):
 	sprite.modulate = Color.DARK_RED
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = Color.WHITE
-
+	
+# zombie attacks
 func attacked(dmg, hit_location = position):
 	if health == max_health:
 		health_bar.visible = true

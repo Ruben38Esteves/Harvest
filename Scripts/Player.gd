@@ -152,12 +152,8 @@ func _physics_process(delta):
 		camera_3d.transform.origin = _head_bob(t_bob)
 	
 	#fov changer
-	#var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
-	#var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
-	#camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity.length()
 	camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
-	#camera_3d.fov = lerp(camera_3d.fov,TARGET_FOV, delta * 8.0)
 	
 	#attacking
 	if Input.is_action_just_pressed("attack"):
@@ -281,7 +277,7 @@ func _on_timer_timeout():
 func slide(delta):
 	if get_floor_angle() < 0.1:
 		if slide_speed > 0.5:
-			slide_speed -= 20 * delta
+			slide_speed -= 10 * delta
 	else:
 		if downhill:
 			slide_speed += get_floor_angle() * delta * 10
