@@ -7,7 +7,7 @@ var instance
 @onready var animation_player = $AnimationPlayer
 @onready var fire_rate_timer = $fire_rate
 @onready var player = $"../../../../.."
-@onready var primaryAmmoDisplay = $"../../../../../../../UI/Hud/Ammo/Primary"
+@onready var primaryAmmoDisplay = $"../../../../../UI/Hud/Ammo/Primary"
 
 
 var can_fire = true

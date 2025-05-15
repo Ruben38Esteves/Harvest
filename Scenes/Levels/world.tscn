@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cjyysejwq25n6"]
+[gd_scene load_steps=20 format=4 uid="uid://cjyysejwq25n6"]
 
 [ext_resource type="Texture2D" uid="uid://chaqe2ef4ymd0" path="res://Sprites/696.jpg" id="1_d128w"]
 [ext_resource type="Script" uid="uid://6y71g52thvpt" path="res://Scripts/Levels/world.gd" id="1_m3k4x"]
@@ -6,12 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://itto8gqfi4lb" path="res://Scenes/Models/road.tscn" id="4_6q3wp"]
 [ext_resource type="PackedScene" uid="uid://bm7uiecsg61vl" path="res://Scenes/Models/lightpost_single.tscn" id="5_stv0p"]
 [ext_resource type="PackedScene" uid="uid://b1ugcaxyvkpcx" path="res://Scenes/Models/Pine_tree.tscn" id="6_uaubc"]
-[ext_resource type="PackedScene" uid="uid://bc0mp2isk8umx" path="res://Scenes/zombie.tscn" id="7_6hbec"]
 [ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Scenes/player.tscn" id="8_oukkc"]
 [ext_resource type="Shader" uid="uid://btt2ymfmcwcva" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="8_wb4wb"]
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="9_humg3"]
 [ext_resource type="Script" uid="uid://ck23d2qrf5wng" path="res://addons/simplegrasstextured/grass.gd" id="10_rko6k"]
-[ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://Scenes/ui.tscn" id="12_exc3c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8gs4"]
 albedo_color = Color(1, 1, 0, 1)
@@ -47,7 +45,7 @@ volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.188235, 0.188235, 0.180392, 1)
 volumetric_fog_emission = Color(0.223529, 0.227451, 0.219608, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5i7js"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1kpqf"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_wb4wb")
@@ -82,7 +80,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray("AAABAAIAAwABAAAABAAFAAYABwAFAAQA"),
-"material": SubResource("ShaderMaterial_5i7js"),
+"material": SubResource("ShaderMaterial_1kpqf"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -292,9 +290,6 @@ transform = Transform3D(2.82843, 0, 0, 0, 2.82843, 0, 0, 0, 2.82843, -23.3704, 0
 [node name="pine16" parent="map/NavigationRegion3D/Trees" instance=ExtResource("6_uaubc")]
 transform = Transform3D(2.82843, 0, 0, 0, 2.82843, 0, 0, 0, 2.82843, -23.3704, 0.298718, -17.4794)
 
-[node name="Zombie" parent="map/NavigationRegion3D" instance=ExtResource("7_6hbec")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32263, 0.298721, -14.1095)
-
 [node name="Player" parent="map" instance=ExtResource("8_oukkc")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="map"]
@@ -397,8 +392,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7366, -3.8147e-06, 25.157
 [node name="chest_spawn14" type="Node3D" parent="map/Chest_spawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.7441, -3.8147e-06, 26.0712)
 
-[node name="UI" parent="." instance=ExtResource("12_exc3c")]
-
 [node name="ZombieSpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
@@ -407,10 +400,7 @@ autostart = true
 autostart = true
 
 [connection signal="add_ammo" from="." to="map/Player" method="_on_world_add_ammo"]
-[connection signal="zombie_hit" from="map/NavigationRegion3D/Zombie" to="." method="_on_zombie_zombie_hit"]
 [connection signal="player_hit" from="map/Player" to="." method="_on_player_player_hit"]
 [connection signal="player_hit" from="map/Player" to="map/Player" method="_on_player_hit"]
 [connection signal="timeout" from="ZombieSpawnTimer" to="." method="_on_zombie_spawn_timer_timeout"]
 [connection signal="timeout" from="WordClock" to="." method="_on_word_clock_timeout"]
-
-[editable path="UI"]

@@ -4,7 +4,7 @@ extends Node3D
 @onready var gun_barrel = $gun_barrel
 @onready var fire_rate = $fire_rate_gun
 @onready var player = $"../../../../.."
-@onready var secondaryAmmoDisplay = $"../../../../../../../UI/Hud/Ammo/Secondary"
+@onready var secondaryAmmoDisplay = $"../../../../../UI/Hud/Ammo/Secondary"
 var damage = 25
 var gunAmmo = 20
 var magazineAmmo = 8

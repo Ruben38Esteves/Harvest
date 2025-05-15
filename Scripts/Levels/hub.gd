@@ -1,7 +1,5 @@
 extends Node3D
 
-@onready var crossair = $UI/crossair
-@onready var crossair2 = $UI/crossair2
 var primary_picked_bool : bool
 var secondary_picked_bool : bool
 @onready var primaries = $map/primaries
@@ -9,7 +7,6 @@ var secondary_picked_bool : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_corsair_location()
 	primary_picked_bool = false
 	secondary_picked_bool = false
 	print(primary_picked_bool)
@@ -19,12 +16,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
-func set_corsair_location():
-	crossair.position.x = (get_viewport().size.x / 2) - 5
-	crossair.position.y = (get_viewport().size.y / 2) - 5
-	crossair2.position.x = (get_viewport().size.x / 2) - 5
-	crossair2.position.y = (get_viewport().size.y / 2) - 5
 
 func primary_picked():
 	primary_picked_bool = true

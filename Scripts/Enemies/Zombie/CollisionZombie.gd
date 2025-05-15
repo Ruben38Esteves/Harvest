@@ -14,3 +14,4 @@ func _process(delta):
 
 func hit(dano):
 	emit_signal("body_hit", dano)
+	
