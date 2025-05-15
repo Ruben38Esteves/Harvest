@@ -1,9 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://ciia7yn2x5t7h"]
+[gd_scene load_steps=7 format=3 uid="uid://ciia7yn2x5t7h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_usniv"]
 size = Vector3(0.4, 0.4, 0.4)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_usniv"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_usniv"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_tmqn1"]
+resource_name = "float"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.0944191, 0), Vector3(0, 0, 0), Vector3(0, -0.094, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_drru2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h8l6w"]
+_data = {
+&"RESET": SubResource("Animation_drru2"),
+&"float": SubResource("Animation_tmqn1")
+}
 
 [node name="Item" type="StaticBody3D"]
 
@@ -14,3 +55,14 @@ shape = SubResource("BoxShape3D_usniv")
 
 [node name="CollectibleCollision" type="CollisionShape3D" parent="CollectibleArea"]
 shape = SubResource("SphereShape3D_usniv")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Visual"]
+mesh = SubResource("BoxMesh_usniv")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_h8l6w")
+}
