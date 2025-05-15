@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciia7yn2x5t7h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_usniv"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_usniv"]
+
+[node name="Item" type="StaticBody3D"]
+
+[node name="BodyCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_usniv")
+
+[node name="CollectibleArea" type="Area3D" parent="."]
+
+[node name="CollectibleCollision" type="CollisionShape3D" parent="CollectibleArea"]
+shape = SubResource("SphereShape3D_usniv")

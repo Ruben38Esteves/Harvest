@@ -59,7 +59,8 @@ radius = 0.401252
 script = ExtResource("1_ln2lg")
 
 [node name="StaticBody3D" type="RigidBody3D" parent="."]
-collision_layer = 0
+collision_layer = 8
+collision_mask = 6
 
 [node name="Visual" type="Node3D" parent="StaticBody3D"]
 transform = Transform3D(2.67795, 0, 0, 0, 2.67795, 0, 0, 0, 2.67795, 0, -0.125, 0)
@@ -88,13 +89,12 @@ shape = SubResource("BoxShape3D_uj4l2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_gjean")
+&"": SubResource("AnimationLibrary_gjean")
 }
 
 [node name="Collectible" type="Area3D" parent="."]
 transform = Transform3D(1.81716, 0, 0, 0, 1.81716, 0, 0, 0, 1.81716, 0, 0, 0)
 collision_layer = 0
-collision_mask = 8
 
 [node name="CollectibleRange" type="CollisionShape3D" parent="Collectible"]
 transform = Transform3D(1.0271, 0, 0, 0, 1.0271, 0, 0, 0, 1.0271, 0, 0, 0)

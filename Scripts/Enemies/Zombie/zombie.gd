@@ -22,7 +22,7 @@ signal zombie_killed
 const blood_particles = preload("res://Scenes/Models/blood_particles.tscn")
 
 #coins utils
-const COINS = preload("res://Scenes/Interactables/coins.tscn")
+const COINS = preload("res://Scenes/Interactables/Items/coins.tscn")
 var instance
 
 var state_machine

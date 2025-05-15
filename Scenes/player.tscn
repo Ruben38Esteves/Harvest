@@ -214,7 +214,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-collision_layer = 8
+collision_mask = 6
 script = ExtResource("1_mh2q7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -231,6 +231,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47563, 0)
 
 [node name="HeadCollision" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 1.25, 0)
+collision_mask = 6
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
@@ -242,6 +243,7 @@ collide_with_areas = true
 [node name="interact_aim" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.288346)
 target_position = Vector3(0, 0, -2)
+collision_mask = 4
 collide_with_areas = true
 
 [node name="Hands" type="Node3D" parent="Head/Camera3D"]
@@ -264,6 +266,7 @@ autostart = true
 [node name="slide_check" type="RayCast3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0802073, 0)
 target_position = Vector3(-1, 0, 0)
+collision_mask = 2
 debug_shape_thickness = 5
 
 [node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]

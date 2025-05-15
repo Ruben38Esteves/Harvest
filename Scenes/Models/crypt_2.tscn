@@ -163,6 +163,7 @@ _data = {
 
 [node name="crypt2" type="StaticBody3D"]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+collision_layer = 2
 
 [node name="crypt" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_ttbbc")

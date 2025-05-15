@@ -49,6 +49,7 @@ albedo_color = Color(0.505882, 0.301961, 0.0509804, 1)
 
 [node name="pine2" type="StaticBody3D"]
 transform = Transform3D(2.82843, 0, 0, 0, 2.82843, 0, 0, 0, 2.82843, 0, 0, 0)
+collision_layer = 2
 
 [node name="pine" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_d7m62")
