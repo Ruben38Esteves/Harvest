@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckp8ad3mjiytd"]
+
+[ext_resource type="Script" uid="uid://cxhoevuvn0c7i" path="res://Scenes/Weapons/poison_pool.gd" id="1_p2gl1"]
+[ext_resource type="Texture2D" uid="uid://jop24v2hcfes" path="res://Models/PoisonFlask/poison_pool.png" id="2_o1qpr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_enpxg"]
+size = Vector3(4.18452, 0.471558, 4.18622)
+
+[node name="PoisonPool" type="Node3D"]
+script = ExtResource("1_p2gl1")
+
+[node name="poison_pool" type="Sprite3D" parent="."]
+transform = Transform3D(0.121546, 0, 0, 0, -5.31293e-09, -0.121546, 0, 0.121546, -5.31293e-09, 0, 0.100908, 0)
+texture = ExtResource("2_o1qpr")
+
+[node name="timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.715998, 0, 0, 0, 0.715998, 0, 0, 0, 0.715998, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0511093, 0.264221, -0.0758362)
+shape = SubResource("BoxShape3D_enpxg")
+
+[node name="damage_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="damage_timer" to="." method="_on_damage_timer_timeout"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://creq00vrl663f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2h8lo"]
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(0.992157, 0, 0, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_prrxs"]
+direction = Vector3(0, 0, 1)
+spread = 36.325
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_6di4k"]
+size = Vector3(0.04, 0.04, 0.04)
+
+[node name="GPUParticles3D" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 0.000471191, 1, 0, -1, 0.000471191, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_2h8lo")
+emitting = false
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_prrxs")
+draw_pass_1 = SubResource("BoxMesh_6di4k")

@@ -1,14 +1,28 @@
 extends CharacterBody3D
 
 @onready var death_screen = $"../../UI/Player_death_screen"
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 #movement
-var speed
+@onready var slide_check: RayCast3D = $slide_check
+@onready var head_collision: RayCast3D = $Head/HeadCollision
+
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 7.5
+const CROUCH_SPEED = 3.0
+const SLIDE_SPEED = 10.0
+var speed = WALK_SPEED
 const JUMP_VELOCITY = 7
+var last_direction: Vector3
+var downhill: bool = false
+
 const SENSITIVITY = 0.003
 var doublejump = true
+var fall_distance = 0
+var slide_speed = 0
+var can_slide = false
+var sliding = false
+var falling = false
 
 #gun movement
 @onready var hands = $Head/Camera3D/Hands
@@ -17,8 +31,11 @@ var weapon_sways = 5.0
 var weapon_rotation = 1
 
 #fov
-const BASE_FOV = 75
-const FOV_CHANGE = 1.1
+var TARGET_FOV: float = 75
+const BASE_FOV: float = 75
+const SPRINT_FOV: float = 90
+const SLIDE_FOV: float = 100
+const FOV_CHANGE = 1.3
 
 #bob variables
 const BOB_FREQ = 2.0
@@ -30,7 +47,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var camera_3d = $Head/Camera3D
 @onready var head = $Head
-@onready var gun_aim = $Head/Camera3D/gun_aim
+@onready var interact_aim = $Head/Camera3D/interact_aim
 
 #stats
 @onready var health_bar = $"../../UI/Hud/HealthBar"
@@ -46,6 +63,7 @@ var money = 0
 
 #guns
 var current_gun = "primary"
+@onready var gun_aim = $Head/Camera3D/gun_aim
 #primary
 signal increase_rifle_ammo
 @onready var primary = $Head/Camera3D/Hands/Primary
@@ -64,6 +82,7 @@ var looking_at = null
 var mouse_input
 
 func _ready():
+	global.player = self
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_gun = "primary"
 	update_progress_bar()
@@ -82,30 +101,19 @@ func _input(event):
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
+		slide_check.rotate_y(-event.relative.x * SENSITIVITY)
 		camera_3d.rotate_x(-event.relative.y * SENSITIVITY)
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 
 func _physics_process(delta):
+	global.debug.add_debug_property("MovementSpeed", velocity.length(), 1)
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta * 1.5
-
-	# Handle jump.
-	if Input.is_action_pressed("jump"):
-		if is_on_floor():
-			velocity.y = JUMP_VELOCITY
-			doublejump = true
-		elif doublejump:
-			#velocity.y = JUMP_VELOCITY
-			doublejump = false
-	
-	
-	#sprint
-	if Input.is_action_pressed("sprint") and !Input.is_action_pressed("back"):
-		speed = SPRINT_SPEED
+		falling = true
 	else:
-		speed = WALK_SPEED
-
+		falling = false
+		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "back")
@@ -124,20 +132,27 @@ func _physics_process(delta):
 	var direction = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	#movement
-	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+	if sliding:
+		var current_speed = slide(delta)
+		velocity.x = last_direction.x * current_speed
+		velocity.z = last_direction.z * current_speed
 	else:
-		velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-		velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
-		
-	#head bob
-	t_bob += delta * velocity.length() * float(is_on_floor())
-	camera_3d.transform.origin = _head_bob(t_bob)
+		if direction:
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+			last_direction = direction
+			downhill = slide_check.is_colliding()
+		else:
+			#velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+			#velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+			velocity.x = 0
+			velocity.z = 0
+		#head bob
+		t_bob += delta * velocity.length() * float(is_on_floor())
+		camera_3d.transform.origin = _head_bob(t_bob)
 	
 	#fov changer
-	var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
-	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
+	var target_fov = BASE_FOV + FOV_CHANGE * velocity.length()
 	camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
 	
 	#attacking
@@ -161,6 +176,7 @@ func _physics_process(delta):
 			if secondary_weapon:
 				secondary_weapon.reload()
 	
+	
 	#change weapon
 	if Input.is_action_just_pressed("primary"):
 		current_gun = "primary"
@@ -180,17 +196,17 @@ func _physics_process(delta):
 		
 	#menu
 	if Input.is_action_just_pressed("escape"):
-		player_die()
+		get_tree().quit()
 		
 	#open chest
 	if Input.is_action_just_pressed("interact"):
-		if gun_aim.is_colliding():
-			if gun_aim.get_collider().is_in_group("chest"):
-				money = gun_aim.get_collider().used(money)
+		if interact_aim.is_colliding():
+			if interact_aim.get_collider().is_in_group("chest"):
+				money = interact_aim.get_collider().used(money)
 				money_value.text = str(money)
 	
 	#chest glow
-	var coll = gun_aim.get_collider()
+	var coll = interact_aim.get_collider()
 	if coll != looking_at:
 		if coll != null and coll.is_in_group("chest"):
 			coll.targeted = true
@@ -245,7 +261,7 @@ func recieve_ammo():
 
 func glow_chest(target_chest):
 	target_chest.glow(true)
-	while gun_aim.get_collider() == target_chest:
+	while interact_aim.get_collider() == target_chest:
 		pass
 	target_chest.glow(false)
 	
@@ -257,3 +273,24 @@ func _on_timer_timeout():
 	if health < maxHealth:
 		health += 0.5
 		update_progress_bar()
+		
+func slide(delta):
+	if get_floor_angle() < 0.1:
+		if slide_speed > 0.5:
+			slide_speed -= 10 * delta
+	else:
+		if downhill:
+			slide_speed += get_floor_angle() * delta * 10
+		else:
+			if slide_speed > 0.5:
+				slide_speed -= get_floor_angle() * delta * 100
+	return slide_speed
+	
+func can_stand() -> bool:
+	return not head_collision.is_colliding()
+
+func crouch() -> void:
+	animation_player.play("crouch")
+	
+func uncrouch() -> void:
+	animation_player.play("uncrouch")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0i77543v5a01"]
+[gd_scene load_steps=8 format=3 uid="uid://b0i77543v5a01"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/rifle.gd" id="1_8vn0w"]
+[ext_resource type="Script" uid="uid://certvqr66aia4" path="res://Scripts/Weapons/rifle.gd" id="1_8vn0w"]
 [ext_resource type="PackedScene" uid="uid://carwtwbycchat" path="res://Scenes/Models/rifle_3d.tscn" id="3_ghh4j"]
+[ext_resource type="PackedScene" uid="uid://cormo2l6nbica" path="res://Scenes/Models/muzzle_flash.tscn" id="4_g4uem"]
 [ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="4_nj24n"]
 
 [sub_resource type="Animation" id="Animation_44h3y"]
@@ -86,8 +87,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhx6u"]
 _data = {
-"RESET": SubResource("Animation_44h3y"),
-"shoot": SubResource("Animation_8ixup")
+&"RESET": SubResource("Animation_44h3y"),
+&"shoot": SubResource("Animation_8ixup")
 }
 
 [node name="Rifle" type="Node3D"]
@@ -107,12 +108,14 @@ libraries = {
 one_shot = true
 
 [node name="rifle-3d" parent="." instance=ExtResource("3_ghh4j")]
-transform = Transform3D(0.160058, 0, -0.0176706, 0, 0.161029, 0, 0.0176705, 0, 0.160058, 0, -0.055322, 0.185649)
+transform = Transform3D(0.160058, 0, -0.0176706, 0, 0.161029, 0, 0.0176706, 0, 0.160058, 0, -0.055322, 0.185649)
 
 [node name="muzzle" type="Sprite3D" parent="rifle-3d"]
 transform = Transform3D(1, 0, 1.41561e-07, 0, 1, 0, -1.49012e-08, 0, 1, 0.00145813, 0.414139, -2.37135)
 visible = false
 billboard = 1
 texture = ExtResource("4_nj24n")
+
+[node name="muzzle_flash" parent="rifle-3d/muzzle" instance=ExtResource("4_g4uem")]
 
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8uq503ln1r01"]
+
+[ext_resource type="PackedScene" uid="uid://2p2f5hrqtc7f" path="res://Models/PoisonFlask/poison_flask.glb" id="1_copwl"]
+[ext_resource type="Script" uid="uid://c5nxplug34d8" path="res://Scripts/Weapons/poison_flask.gd" id="1_im7gk"]
+
+[node name="PoisonFlask" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00028266, 0, -0.000386924)
+script = ExtResource("1_im7gk")
+
+[node name="fire_rate" type="Timer" parent="."]
+one_shot = true
+
+[node name="poison_flask" parent="." instance=ExtResource("1_copwl")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]

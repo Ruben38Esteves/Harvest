@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cormo2l6nbica"]
+
+[node name="muzzle_flash" type="OmniLight3D"]
+transform = Transform3D(1, 0, 4.96212e-15, 0, 1, 0, -4.96212e-15, 0, 1, 0, 0, 0)
+light_color = Color(0.941176, 0.823529, 0, 1)
+light_energy = 6.678
+light_indirect_energy = 6.949
+light_volumetric_fog_energy = 6.949
+light_size = 0.414
+distance_fade_begin = 0.0
+distance_fade_length = 0.05
+omni_range = 0.042255

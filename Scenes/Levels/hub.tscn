@@ -1,25 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx2loysi17l6q"]
+[gd_scene load_steps=12 format=3 uid="uid://bx2loysi17l6q"]
 
-[ext_resource type="Script" path="res://Scripts/Levels/hub.gd" id="1_p5eo4"]
+[ext_resource type="Script" uid="uid://bha80u38rfic" path="res://Scripts/Levels/hub.gd" id="1_p5eo4"]
 [ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://Scenes/ui.tscn" id="1_xpgdx"]
 [ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Scenes/player.tscn" id="2_w2b36"]
 [ext_resource type="PackedScene" uid="uid://bwtnayq7yv0sp" path="res://Models/Shotgun/shotgun_3d.glb" id="3_raeva"]
 [ext_resource type="PackedScene" uid="uid://c523b5442lwar" path="res://Models/Rifle/rifle-3d.glb" id="4_6tymq"]
+[ext_resource type="PackedScene" uid="uid://6fmadp4jv4mf" path="res://Models/Gun/gun_3d.glb" id="5_vtacp"]
+[ext_resource type="PackedScene" uid="uid://2p2f5hrqtc7f" path="res://Models/PoisonFlask/poison_flask.glb" id="6_ix4sj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0x4m"]
 albedo_color = Color(0.752941, 0.282353, 0.203922, 1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_4ytk3"]
-height = 6.25493
-radius = 1.26003
+[sub_resource type="Environment" id="Environment_vx3nq"]
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1658
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_470cm"]
 height = 6.42112
 radius = 1.38664
 
-[sub_resource type="Environment" id="Environment_vx3nq"]
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.1658
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4ytk3"]
+height = 6.25493
+radius = 1.26003
 
 [node name="Hub" type="Node3D"]
 script = ExtResource("1_p5eo4")
@@ -35,44 +37,86 @@ use_collision = true
 size = Vector3(1, 0.310547, 1)
 material = SubResource("StandardMaterial3D_l0x4m")
 
-[node name="play_shotgun" type="Area3D" parent="map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -7)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="map"]
+environment = SubResource("Environment_vx3nq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="map/play_shotgun"]
-shape = SubResource("CylinderShape3D_4ytk3")
+[node name="primaries" type="Node3D" parent="map"]
 
-[node name="shotgun_3d" parent="map/play_shotgun" instance=ExtResource("3_raeva")]
-transform = Transform3D(0.536103, 0, 0, 0, -2.34338e-08, 0.536103, 0, -0.536103, -2.34338e-08, 0, 1.39864, 0)
-
-[node name="SpotLight3D" type="SpotLight3D" parent="map/play_shotgun"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.25637, 0)
-light_color = Color(0.913725, 0.745098, 0, 1)
-light_energy = 10.0
-spot_range = 6.56156
-spot_angle = 16.27
-
-[node name="play_rifle" type="Area3D" parent="map"]
+[node name="play_rifle" type="Area3D" parent="map/primaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -7)
+collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="map/play_rifle"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/primaries/play_rifle"]
 shape = SubResource("CylinderShape3D_470cm")
 
-[node name="rifle-3d" parent="map/play_rifle" instance=ExtResource("4_6tymq")]
+[node name="rifle-3d" parent="map/primaries/play_rifle" instance=ExtResource("4_6tymq")]
 transform = Transform3D(0.452443, 0, 0, 0, -1.97769e-08, -0.452443, 0, 0.452443, -1.97769e-08, 0, 1.3029, 0)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="map/play_rifle"]
+[node name="SpotLight3D2" type="SpotLight3D" parent="map/primaries/play_rifle"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.256, 0)
 light_color = Color(0.913725, 0.745098, 0, 1)
 light_energy = 10.0
 spot_range = 6.56156
 spot_angle = 16.27
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="map"]
-environment = SubResource("Environment_vx3nq")
+[node name="play_shotgun" type="Area3D" parent="map/primaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -7)
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/primaries/play_shotgun"]
+shape = SubResource("CylinderShape3D_4ytk3")
+
+[node name="shotgun_3d" parent="map/primaries/play_shotgun" instance=ExtResource("3_raeva")]
+transform = Transform3D(0.536103, 0, 0, 0, -2.34338e-08, 0.536103, 0, -0.536103, -2.34338e-08, 0, 1.39864, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="map/primaries/play_shotgun"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.25637, 0)
+light_color = Color(0.913725, 0.745098, 0, 1)
+light_energy = 10.0
+spot_range = 6.56156
+spot_angle = 16.27
+
+[node name="secondaries" type="Node3D" parent="map"]
+
+[node name="play_gun" type="Area3D" parent="map/secondaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 7)
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/secondaries/play_gun"]
+shape = SubResource("CylinderShape3D_4ytk3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="map/secondaries/play_gun"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.25637, 0)
+light_color = Color(0.913725, 0.745098, 0, 1)
+light_energy = 10.0
+spot_range = 6.56156
+spot_angle = 16.27
+
+[node name="gun_3d" parent="map/secondaries/play_gun" instance=ExtResource("5_vtacp")]
+transform = Transform3D(-1.13331e-08, 0.259271, -1.13331e-08, 0, -1.13331e-08, -0.259271, -0.259271, -1.13331e-08, 4.95385e-16, -0.297067, 1.32773, -0.224807)
+
+[node name="play_poison" type="Area3D" parent="map/secondaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/secondaries/play_poison"]
+shape = SubResource("CylinderShape3D_4ytk3")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="map/secondaries/play_poison"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.25637, 0)
+light_color = Color(0.913725, 0.745098, 0, 1)
+light_energy = 10.0
+spot_range = 6.56156
+spot_angle = 16.27
+
+[node name="poison_flask" parent="map/secondaries/play_poison" instance=ExtResource("6_ix4sj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44904, 0)
 
 [node name="UI" parent="." instance=ExtResource("1_xpgdx")]
 
-[connection signal="body_entered" from="map/play_shotgun" to="." method="_on_play_shotgun_body_entered"]
-[connection signal="body_entered" from="map/play_rifle" to="." method="_on_play_rifle_body_entered"]
+[connection signal="body_entered" from="map/primaries/play_rifle" to="." method="_on_play_rifle_body_entered"]
+[connection signal="body_entered" from="map/primaries/play_shotgun" to="." method="_on_play_shotgun_body_entered"]
+[connection signal="body_entered" from="map/secondaries/play_gun" to="." method="_on_play_gun_body_entered"]
+[connection signal="body_entered" from="map/secondaries/play_poison" to="." method="_on_play_poison_body_entered"]
 
 [editable path="UI"]

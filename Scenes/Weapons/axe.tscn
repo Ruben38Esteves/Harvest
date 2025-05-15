@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bs0au2owlfhwh"]
 
 [ext_resource type="PackedScene" uid="uid://rd5tx5akfnvj" path="res://Models/Axe/axe.glb" id="1_63tgp"]
-[ext_resource type="Script" path="res://Scripts/Weapons/axe.gd" id="1_bf5gl"]
+[ext_resource type="Script" uid="uid://djg8675w76hpu" path="res://Scripts/Weapons/axe.gd" id="1_bf5gl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_130fe"]
 size = Vector3(1, 4.73969, 5.3045)
@@ -112,8 +112,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xdoi6"]
 _data = {
-"RESET": SubResource("Animation_mgq53"),
-"attack": SubResource("Animation_lq0at")
+&"RESET": SubResource("Animation_mgq53"),
+&"attack": SubResource("Animation_lq0at")
 }
 
 [node name="Axe" type="Node3D"]
@@ -133,7 +133,7 @@ shape = SubResource("BoxShape3D_130fe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xdoi6")
+&"": SubResource("AnimationLibrary_xdoi6")
 }
 
 [connection signal="body_entered" from="axe/Area3D" to="." method="_on_area_3d_body_entered"]

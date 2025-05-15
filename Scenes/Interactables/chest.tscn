@@ -1,13 +1,13 @@
 [gd_scene load_steps=8 format=3 uid="uid://v67fguycijs5"]
 
-[ext_resource type="Script" path="res://Scripts/Interactables/chest.gd" id="1_50sm6"]
-[ext_resource type="Shader" path="res://Shaders/chest.gdshader" id="2_is3fd"]
-[ext_resource type="Script" path="res://Scripts/Interactables/chest_body.gd" id="3_f3egu"]
+[ext_resource type="Script" uid="uid://cdymjxgvij7jf" path="res://Scripts/Interactables/chest.gd" id="1_50sm6"]
+[ext_resource type="Shader" uid="uid://dmjeoob41oulq" path="res://Shaders/chest.gdshader" id="2_is3fd"]
+[ext_resource type="Script" uid="uid://7ht5s3x5hki7" path="res://Scripts/Interactables/chest_body.gd" id="3_f3egu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5iiud"]
 render_priority = 0
 shader = ExtResource("2_is3fd")
-shader_parameter/strength = null
+shader_parameter/strength = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c553v"]
 next_pass = SubResource("ShaderMaterial_5iiud")
