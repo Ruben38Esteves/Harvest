@@ -162,6 +162,7 @@ libraries = {
 [node name="gun_barrel" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.105579)
 target_position = Vector3(0, 0, -1)
+collision_mask = 16
 
 [node name="fire_rate_gun" type="Timer" parent="."]
 wait_time = 0.1
@@ -182,7 +183,7 @@ texture = ExtResource("4_a2vg2")
 [node name="muzzle_flash" parent="gun_3d/muzzle" instance=ExtResource("5_s778g")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]
 [connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]
 
 [editable path="gun_3d"]

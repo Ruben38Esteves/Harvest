@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ciia7yn2x5t7h"]
+[gd_scene load_steps=8 format=3 uid="uid://ciia7yn2x5t7h"]
+
+[ext_resource type="Script" uid="uid://djvqjp68nh763" path="res://Scripts/Interactables/Items/item.gd" id="1_tmqn1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_usniv"]
-size = Vector3(0.4, 0.4, 0.4)
+size = Vector3(0.4, 0.501758, 0.4)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_usniv"]
 
@@ -46,12 +48,17 @@ _data = {
 &"float": SubResource("Animation_tmqn1")
 }
 
-[node name="Item" type="StaticBody3D"]
+[node name="Item" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 6
+script = ExtResource("1_tmqn1")
 
 [node name="BodyCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0508789, 0)
 shape = SubResource("BoxShape3D_usniv")
 
 [node name="CollectibleArea" type="Area3D" parent="."]
+collision_layer = 8
 
 [node name="CollectibleCollision" type="CollisionShape3D" parent="CollectibleArea"]
 shape = SubResource("SphereShape3D_usniv")
@@ -70,3 +77,9 @@ libraries = {
 [node name="Glow" type="OmniLight3D" parent="."]
 light_color = Color(1, 1, 0, 1)
 omni_range = 0.751793
+
+[node name="GroundChecker" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.3, 0)
+collision_mask = 6
+
+[connection signal="body_entered" from="CollectibleArea" to="." method="_on_collectible_area_body_entered"]

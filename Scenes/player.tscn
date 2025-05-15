@@ -238,6 +238,7 @@ collision_mask = 6
 [node name="gun_aim" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.288346)
 target_position = Vector3(0, 0, -100)
+collision_mask = 16
 collide_with_areas = true
 
 [node name="interact_aim" type="RayCast3D" parent="Head/Camera3D"]

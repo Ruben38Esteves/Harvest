@@ -2,3 +2,4 @@ layer 1 - player
 layer 2 - terrain
 layer 3 - interactibles
 layer 4 - items
+layer 5 - enemies

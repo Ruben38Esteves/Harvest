@@ -269,6 +269,9 @@ func get_money(value):
 	money += value
 	money_value.text = str(money)
 
+func get_item(item: String) -> void:
+	print("got: " + item)
+
 func _on_timer_timeout():
 	if health < maxHealth:
 		health += 0.5
