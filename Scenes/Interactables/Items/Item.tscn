@@ -66,3 +66,7 @@ skeleton = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_h8l6w")
 }
+
+[node name="Glow" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0, 1)
+omni_range = 0.751793
