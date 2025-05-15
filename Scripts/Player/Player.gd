@@ -271,6 +271,9 @@ func get_money(value):
 
 func get_item(item: String) -> void:
 	print("got: " + item)
+	match item:
+		"coins":
+			get_money(10)
 
 func _on_timer_timeout():
 	if health < maxHealth:

@@ -10,7 +10,7 @@ func _process(delta):
 		freeze = true
 		animation_player.play("float")
 
-
 func _on_collectible_area_body_entered(body):
 	if body.is_in_group("player"):
-		body.get_item("cenas")
+		body.get_item(get_parent().item_type)
+		get_parent().queue_free()
