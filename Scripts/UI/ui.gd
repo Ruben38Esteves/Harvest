@@ -6,6 +6,7 @@ extends Control
 @onready var kill_amount_display: Label = $Hud/timer/Kills/KillAmount
 @onready var world_timer: Timer = $WorldTimer
 @onready var time_label: Label = $Hud/timer/Time
+@onready var money_value: Label = $Hud/Money/MoneyValue
 
 var time = 0
 var kill_amount: int = 0
@@ -47,3 +48,6 @@ func _on_world_timer_timeout() -> void:
 	var minutes = str(time / 60)
 	var seconds = str(time % 60)
 	time_label.text= minutes + ":" + seconds
+	
+func update_money(amount: int) -> void:
+	money_value.text = str(amount)
