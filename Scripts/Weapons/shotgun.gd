@@ -7,7 +7,7 @@ var instance
 @onready var animation_player = $AnimationPlayer
 @onready var fire_rate_timer = $fire_rate
 @onready var player = $"../../../../.."
-@onready var primaryAmmoDisplay = $"../../../../../../../UI/Hud/Ammo/Primary"
+@onready var primaryAmmoDisplay = $"../../../../../UI/Hud/Ammo/Primary"
 
 
 var can_fire = true
@@ -28,7 +28,6 @@ var is_shooting = false
 func _ready():
 	update_ammo_display()
 	fire_rate_timer.wait_time = 1 / 0.8
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

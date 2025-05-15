@@ -8,6 +8,7 @@ var max_health = 100
 var health = 100
 const ATTACK_KNOCKBACK = 10.0
 var damage = 10
+var dead: bool = false
 
 #signals
 signal zombie_hit
@@ -22,7 +23,7 @@ signal zombie_killed
 const blood_particles = preload("res://Scenes/Models/blood_particles.tscn")
 
 #coins utils
-const COINS = preload("res://Scenes/Interactables/coins.tscn")
+const COINS = preload("res://Scenes/Interactables/Items/coins.tscn")
 var instance
 
 var state_machine
@@ -64,21 +65,22 @@ func _attack_finished():
 	
 		
 # zombie was attacked
-func _on_area_3d_body_hit(dmg):
-	if health == max_health:
-		health_bar.visible = true
-	health -= dmg
-	emit_signal("zombie_hit")
-	progress_bar.value = health
-	if health <= 0:
-		emit_signal("zombie_killed")
-		instance = COINS.instantiate()
-		instance.position = self.global_position
-		self.get_parent().add_child(instance)
-		queue_free()
-	sprite.modulate = Color.DARK_RED
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = Color.WHITE
+#func _on_area_3d_body_hit(dmg):
+	#if health == max_health:
+		#health_bar.visible = true
+	#health -= dmg
+	#emit_signal("zombie_hit")
+	#progress_bar.value = health
+	#if health <= 0:
+		#print("i died B")
+		#emit_signal("zombie_killed")
+		#instance = COINS.instantiate()
+		#instance.position = self.global_position
+		#self.get_parent().add_child(instance)
+		#queue_free()
+	#sprite.modulate = Color.DARK_RED
+	#await get_tree().create_timer(0.1).timeout
+	#sprite.modulate = Color.WHITE
 	
 # zombie attacks
 func attacked(dmg, hit_location = position):
@@ -89,14 +91,18 @@ func attacked(dmg, hit_location = position):
 	progress_bar.value = health
 	spawn_blood(hit_location)
 	if health <= 0:
-		emit_signal("zombie_killed")
-		instance = COINS.instantiate()
-		instance.position = self.global_position
-		self.get_parent().add_child(instance)
-		queue_free()
-	sprite.modulate = Color.DARK_RED
-	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = Color.WHITE
+		if !dead:
+			dead = true
+			print("i died")
+			emit_signal("zombie_killed")
+			instance = COINS.instantiate()
+			instance.position = self.global_position
+			self.get_parent().add_child(instance)
+			queue_free()
+	else:
+		sprite.modulate = Color.DARK_RED
+		await get_tree().create_timer(0.1).timeout
+		sprite.modulate = Color.WHITE
 
 func spawn_blood(hit_location):
 	var blood = blood_particles.instantiate()

@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
-@onready var death_screen = $"../../UI/Player_death_screen"
+@onready var death_screen = $"UI/Player_death_screen"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var ui: Control = $UI
 
 #movement
 @onready var slide_check: RayCast3D = $slide_check
@@ -50,7 +51,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var interact_aim = $Head/Camera3D/interact_aim
 
 #stats
-@onready var health_bar = $"../../UI/Hud/HealthBar"
+@onready var health_bar = $"UI/Hud/HealthBar"
 @onready var timer = $Timer
 signal player_hit
 var maxHealth = 100.0
@@ -58,7 +59,7 @@ var health = 100.0
 
 #money
 var money = 0
-@onready var money_value = $"../../UI/Hud/Money/MoneyValue"
+@onready var money_value = $"UI/Hud/Money/MoneyValue"
 
 
 #guns
@@ -269,6 +270,12 @@ func get_money(value):
 	money += value
 	money_value.text = str(money)
 
+func get_item(item: String) -> void:
+	print("got: " + item)
+	match item:
+		"coins":
+			get_money(10)
+
 func _on_timer_timeout():
 	if health < maxHealth:
 		health += 0.5
@@ -294,3 +301,9 @@ func crouch() -> void:
 	
 func uncrouch() -> void:
 	animation_player.play("uncrouch")
+	
+func _on_zombie_zombie_hit() -> void:
+	ui.enemy_hit()
+	
+func _on_zombie_zombie_killed() -> void:
+	ui.enemy_killed()

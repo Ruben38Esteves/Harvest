@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://d1y3no0s41hhe"]
+[gd_scene load_steps=18 format=3 uid="uid://d1y3no0s41hhe"]
 
-[ext_resource type="Script" uid="uid://bp3mljhyqo5fr" path="res://Scripts/Player.gd" id="1_mh2q7"]
+[ext_resource type="Script" uid="uid://bp3mljhyqo5fr" path="res://Scripts/Player/Player.gd" id="1_mh2q7"]
+[ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://Scenes/ui.tscn" id="2_gymyn"]
 [ext_resource type="Script" uid="uid://cb4b366htrngw" path="res://Scripts/Player/movement_state_machine.gd" id="2_lsekj"]
 [ext_resource type="Script" uid="uid://cqlnw1f3fumtd" path="res://Scripts/Player/idle_movement_state.gd" id="3_laixl"]
 [ext_resource type="Script" uid="uid://b5o4qduoc4vtn" path="res://Scripts/Player/walking_movement_state.gd" id="4_bv8s6"]
 [ext_resource type="Script" uid="uid://dyb3sw4w01jhw" path="res://Scripts/Player/sprint_movement_state.gd" id="5_kma33"]
-[ext_resource type="Script" uid="uid://bry66vvmy45sb" path="res://Scenes/jump_movement_state.gd" id="6_5c7xo"]
-[ext_resource type="Script" uid="uid://vw4sbw0c23uo" path="res://Scenes/falling_movement_state.gd" id="7_3smsa"]
-[ext_resource type="Script" uid="uid://dbmtghy6pqwlc" path="res://Scenes/crouch_movement_state.gd" id="8_8erm5"]
-[ext_resource type="Script" uid="uid://dtmmoap0qa2uk" path="res://Scenes/slide_movement_state.gd" id="9_f1ek2"]
+[ext_resource type="Script" uid="uid://bry66vvmy45sb" path="res://Scripts/Player/jump_movement_state.gd" id="6_5c7xo"]
+[ext_resource type="Script" uid="uid://vw4sbw0c23uo" path="res://Scripts/Player/falling_movement_state.gd" id="7_3smsa"]
+[ext_resource type="Script" uid="uid://dbmtghy6pqwlc" path="res://Scripts/Player/crouch_movement_state.gd" id="8_8erm5"]
+[ext_resource type="Script" uid="uid://dtmmoap0qa2uk" path="res://Scripts/Player/slide_movement_state.gd" id="9_f1ek2"]
+[ext_resource type="Script" uid="uid://c6cnd3xdum2cx" path="res://Scripts/Player/inventory.gd" id="11_pu2lt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_m03d6"]
 
@@ -214,8 +216,10 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
-collision_layer = 8
+collision_mask = 6
 script = ExtResource("1_mh2q7")
+
+[node name="UI" parent="." instance=ExtResource("2_gymyn")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.864163, 0)
@@ -231,17 +235,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47563, 0)
 
 [node name="HeadCollision" type="RayCast3D" parent="Head"]
 target_position = Vector3(0, 1.25, 0)
+collision_mask = 6
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
 [node name="gun_aim" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.288346)
 target_position = Vector3(0, 0, -100)
+collision_mask = 16
 collide_with_areas = true
 
 [node name="interact_aim" type="RayCast3D" parent="Head/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.288346)
 target_position = Vector3(0, 0, -2)
+collision_mask = 4
 collide_with_areas = true
 
 [node name="Hands" type="Node3D" parent="Head/Camera3D"]
@@ -264,6 +271,7 @@ autostart = true
 [node name="slide_check" type="RayCast3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0802073, 0)
 target_position = Vector3(-1, 0, 0)
+collision_mask = 2
 debug_shape_thickness = 5
 
 [node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
@@ -298,5 +306,8 @@ metadata/_custom_type_script = "uid://bqkpobfjdvsye"
 libraries = {
 &"": SubResource("AnimationLibrary_tx1dd")
 }
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("11_pu2lt")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

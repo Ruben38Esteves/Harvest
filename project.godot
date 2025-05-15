@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="LearnFps"
+config/name="Harvest"
 run/main_scene="res://Scenes/Levels/main_menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://bmheylxku8ond"
 
 [autoload]
 

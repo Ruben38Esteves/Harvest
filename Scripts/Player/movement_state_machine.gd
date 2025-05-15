@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 	CURRENT_STATE.physics_process(delta)
 
 func change_state(new_state_name: StringName) -> void:
-	print(new_state_name)
 	var new_state = states.get(new_state_name)
 	if new_state != null:
 		if new_state != CURRENT_STATE:

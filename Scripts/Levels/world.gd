@@ -1,17 +1,18 @@
 extends Node3D
 
 #childs
-@onready var hit_rect = $UI/ColorRect
+
 @onready var zombie_spawn_points = $map/Spawns
 @onready var chest_spawns = $map/Chest_spawns
 @onready var navigation_region = $map/NavigationRegion3D
 @onready var zombie_spawn_timer = $ZombieSpawnTimer
-@onready var crossair = $UI/crossair
-@onready var crossair2 = $UI/crossair2
-@onready var time = $UI/Hud/timer/Time
+#@onready var hit_rect = $UI/ColorRect
+#@onready var crossair = $UI/crossair
+#@onready var crossair2 = $UI/crossair2
+#@onready var time = $UI/Hud/timer/Time
+#@onready var kill_amount_display = $UI/Hud/timer/Kills/KillAmount
+#@onready var info = $UI/Info
 @onready var word_clock = $WordClock
-@onready var kill_amount_display = $UI/Hud/timer/Kills/KillAmount
-@onready var info = $UI/Info
 @onready var player = $map/Player
 @onready var player_primary = $map/Player/Head/Camera3D/Hands/Primary
 @onready var player_secondary = $map/Player/Head/Camera3D/Hands/Secondary
@@ -35,7 +36,7 @@ signal add_money
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	set_corsair_location()
+	# set_corsair_location()
 	spawn_player_weapons()
 	spawn_chests(8)
 
@@ -44,11 +45,6 @@ func _ready():
 func _process(delta):
 	pass
 
-func set_corsair_location():
-	crossair.position.x = (get_viewport().size.x / 2) - 5
-	crossair.position.y = (get_viewport().size.y / 2) - 5
-	crossair2.position.x = (get_viewport().size.x / 2) - 5
-	crossair2.position.y = (get_viewport().size.y / 2) - 5
 	
 func spawn_player_weapons():
 	var primary_weapon = load(global.primary_weapon_path)
@@ -62,10 +58,10 @@ func spawn_player_weapons():
 	player.meelee.add_child(instance)
 	player.load_weapon_variables()
 
-func _on_player_player_hit():
-	hit_rect.visible = true
-	await get_tree().create_timer(0.3).timeout
-	hit_rect.visible = false
+#func _on_player_player_hit():
+	#hit_rect.visible = true
+	#await get_tree().create_timer(0.3).timeout
+	#hit_rect.visible = false
 	
 func _get_random_child(parent_node):
 	var child_node_id = randi() % parent_node.get_child_count()
@@ -90,33 +86,16 @@ func _on_zombie_spawn_timer_timeout():
 	navigation_region.add_child(instance)
 
 func _on_zombie_zombie_hit():
-	crossair2.visible = true
-	await get_tree().create_timer(0.1).timeout
-	crossair2.visible = false
+	global.player._on_zombie_zombie_hit()
 
 func _on_zombie_zombie_killed():
-	kill_amount += 1
-	kill_amount_display.text = str(kill_amount)
+	print("he died")
+	global.player._on_zombie_zombie_killed()
 		
 func _on_chest_opened():
 	player.recieve_ammo()
-	info.text = "You found ammo"
-	info.visible = true
+	#info.text = "You found ammo"
+	#info.visible = true
 	
 func calc_money():
 	pass
-
-func _on_word_clock_timeout():
-	time_seconds += 1
-	if time_seconds == 61:
-		time_seconds = 0
-		time_minutes += 1
-	update_timer()
-		
-func update_timer():
-	var value
-	if time_seconds < 10:
-		value =  str(time_minutes) + ":0" + str(time_seconds)
-	else:
-		value =  str(time_minutes) + ":" + str(time_seconds)
-	time.text = value

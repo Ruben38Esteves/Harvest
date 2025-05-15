@@ -1,7 +1,7 @@
-extends Control
+extends Area3D
 
+signal body_hit(delta)
 
-@onready var info = $Info
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +12,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_info_visibility_changed():
-	await get_tree().create_timer(2.0).timeout
-	info.visible = false
+func hit(dano):
+	emit_signal("body_hit", dano)
+	

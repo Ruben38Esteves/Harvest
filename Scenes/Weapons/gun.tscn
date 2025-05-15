@@ -156,12 +156,13 @@ texture = ExtResource("2_pbdy4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_1tcn7")
+&"": SubResource("AnimationLibrary_1tcn7")
 }
 
 [node name="gun_barrel" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.105579)
 target_position = Vector3(0, 0, -1)
+collision_mask = 16
 
 [node name="fire_rate_gun" type="Timer" parent="."]
 wait_time = 0.1
