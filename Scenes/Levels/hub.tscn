@@ -114,6 +114,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44904, 0)
 
 [node name="UI" parent="." instance=ExtResource("1_xpgdx")]
 
+[node name="Ammo" parent="UI/Hud" index="0"]
+offset_left = 1408.0
+offset_top = 709.0
+offset_right = 1459.0
+offset_bottom = 759.0
+
+[node name="HealthBar" parent="UI/Hud" index="1"]
+offset_left = 48.0
+offset_top = 821.0
+offset_right = 539.0
+offset_bottom = 844.0
+
+[node name="Money" parent="UI/Hud" index="3"]
+offset_left = 56.0
+offset_top = 725.0
+offset_right = 128.0
+offset_bottom = 774.0
+
 [connection signal="body_entered" from="map/primaries/play_rifle" to="." method="_on_play_rifle_body_entered"]
 [connection signal="body_entered" from="map/primaries/play_shotgun" to="." method="_on_play_shotgun_body_entered"]
 [connection signal="body_entered" from="map/secondaries/play_gun" to="." method="_on_play_gun_body_entered"]
