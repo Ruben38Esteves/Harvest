@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bc0mp2isk8umx"]
 
-[ext_resource type="Script" uid="uid://d1geni2y2h8vb" path="res://Scripts/zombie.gd" id="1_d7cji"]
-[ext_resource type="Script" uid="uid://hop0kprny4f4" path="res://Scripts/CollisionZombie.gd" id="2_e5fcn"]
+[ext_resource type="Script" uid="uid://d1geni2y2h8vb" path="res://Scripts/Enemies/Zombie/zombie.gd" id="1_d7cji"]
+[ext_resource type="Script" uid="uid://hop0kprny4f4" path="res://Scripts/Enemies/Zombie/CollisionZombie.gd" id="2_e5fcn"]
 [ext_resource type="Texture2D" uid="uid://clgplgssg3a8f" path="res://Sprites/attack animt.png" id="2_wi47e"]
 [ext_resource type="PackedScene" uid="uid://creq00vrl663f" path="res://Scenes/Models/blood_particles.tscn" id="4_l3le8"]
 [ext_resource type="PackedScene" uid="uid://d05y8uyhor4cm" path="res://Scenes/Status_Effects.tscn" id="5_437ox"]

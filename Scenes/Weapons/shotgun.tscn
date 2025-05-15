@@ -441,13 +441,10 @@ one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_galwg")
+&"": SubResource("AnimationLibrary_galwg")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_galwg")
-}
 tree_root = SubResource("AnimationNodeStateMachine_a6s43")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_reloading = false

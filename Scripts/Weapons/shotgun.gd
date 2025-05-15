@@ -29,7 +29,6 @@ func _ready():
 	update_ammo_display()
 	fire_rate_timer.wait_time = 1 / 0.8
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	animation_tree.set("parameters/conditions/is_shooting", is_shooting)

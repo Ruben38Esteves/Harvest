@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=4 uid="uid://cjyysejwq25n6"]
 
 [ext_resource type="Texture2D" uid="uid://chaqe2ef4ymd0" path="res://Sprites/696.jpg" id="1_d128w"]
-[ext_resource type="Script" uid="uid://6y71g52thvpt" path="res://Scripts/world.gd" id="1_m3k4x"]
+[ext_resource type="Script" uid="uid://6y71g52thvpt" path="res://Scripts/Levels/world.gd" id="1_m3k4x"]
 [ext_resource type="PackedScene" uid="uid://b2o1n3ynoql8x" path="res://Scenes/Models/crypt_2.tscn" id="3_y3fge"]
 [ext_resource type="PackedScene" uid="uid://itto8gqfi4lb" path="res://Scenes/Models/road.tscn" id="4_6q3wp"]
 [ext_resource type="PackedScene" uid="uid://bm7uiecsg61vl" path="res://Scenes/Models/lightpost_single.tscn" id="5_stv0p"]

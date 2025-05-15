@@ -30,13 +30,13 @@ func primary_picked():
 	primary_picked_bool = true
 	primaries.position.y = -10
 	if secondary_picked_bool:
-		get_tree().change_scene_to_file("res://world.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Levels/world.tscn")
 		
 func secondary_picked():
 	secondary_picked_bool = true
 	secondaries.position.y = -10
 	if primary_picked_bool:
-		get_tree().change_scene_to_file("res://world.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Levels/world.tscn")
 		
 	
 
