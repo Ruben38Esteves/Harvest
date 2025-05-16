@@ -45,7 +45,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_8ixup"]
-resource_name = "shoot"
+resource_name = "Shoot"
 length = 0.4
 step = 0.01
 tracks/0/type = "value"
@@ -88,11 +88,10 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhx6u"]
 _data = {
 &"RESET": SubResource("Animation_44h3y"),
-&"shoot": SubResource("Animation_8ixup")
+&"Shoot": SubResource("Animation_8ixup")
 }
 
 [node name="Rifle" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00145085, 0)
 script = ExtResource("1_8vn0w")
 
 [node name="rifle_barrel" type="RayCast3D" parent="."]
@@ -101,7 +100,7 @@ target_position = Vector3(0, 0, -1)
 
 [node name="AnimationPlayerRifle" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bhx6u")
+&"": SubResource("AnimationLibrary_bhx6u")
 }
 
 [node name="fire_rate" type="Timer" parent="."]

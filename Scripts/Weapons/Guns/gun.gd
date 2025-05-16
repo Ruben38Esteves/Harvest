@@ -1,23 +1,22 @@
+class_name gun
+
 extends Node3D
 
 @onready var gun_anim = $AnimationPlayer
-@onready var gun_barrel = $gun_barrel
 @onready var fire_rate = $fire_rate_gun
-@onready var player = $"../../../../.."
-@onready var secondaryAmmoDisplay = $"../../../../../UI/Hud/Ammo/Secondary"
-var damage = 25
-var gunAmmo = 20
-var magazineAmmo = 8
-var magazineAmmoMax = 8
+var player = null
+@export var type = "primary"
+@export var damage = 25
+@export var range = 100
+@export var gunAmmo = 20
+@export var magazineAmmo = 8
+@export var magazineAmmoMax = 8
 var can_fire_gun = true
 
 
-var bullet = load("res://Scenes/Bullets/bullet.tscn")
-var instance
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#player.fire_gun.connect(_on_player_fire_gun)
+	player = global.player
 	update_gun_ammo_display()
 
 
@@ -36,13 +35,7 @@ func shoot(aim):
 			var target = aim.get_collider()
 			if target.is_in_group("enemy"):
 				target.attacked(damage,aim.get_collision_point())
-				
-		"""
-		instance = bullet.instantiate()
-		instance.position = aim.global_position
-		instance.transform.basis = aim.global_transform.basis
-		player.get_parent().add_child(instance)
-		"""
+
 		
 func reload():
 	if !gun_anim.is_playing() and gunAmmo > 0 and magazineAmmo < magazineAmmoMax:
@@ -61,7 +54,7 @@ func _on_fire_rate_gun_timeout():
 	can_fire_gun = true
 	
 func update_gun_ammo_display():
-	secondaryAmmoDisplay.text = str(magazineAmmo) + "/" + str(gunAmmo)
+	global.player.ui.update_ammo_display(type, magazineAmmo, gunAmmo)
 	
 func increase_ammo():
 	gunAmmo += 8

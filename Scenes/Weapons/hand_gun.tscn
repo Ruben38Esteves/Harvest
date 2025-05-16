@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dowt1ujjcq6dy"]
+[gd_scene load_steps=9 format=3 uid="uid://n3mnabfrg2eo"]
 
-[ext_resource type="Script" uid="uid://d0imd2hwlhvly" path="res://Scripts/Weapons/hand_gun.gd" id="1_vmlyg"]
-[ext_resource type="Texture2D" uid="uid://cniwd8je12q7b" path="res://Sprites/gun.png" id="2_pbdy4"]
-[ext_resource type="PackedScene" uid="uid://6fmadp4jv4mf" path="res://Models/Gun/gun_3d.glb" id="3_6tpj4"]
-[ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="4_a2vg2"]
-[ext_resource type="PackedScene" uid="uid://cormo2l6nbica" path="res://Scenes/Models/muzzle_flash.tscn" id="5_s778g"]
+[ext_resource type="Script" uid="uid://d0imd2hwlhvly" path="res://Scripts/Weapons/hand_gun.gd" id="1_ls1vf"]
+[ext_resource type="PackedScene" uid="uid://6fmadp4jv4mf" path="res://Models/Gun/gun_3d.glb" id="3_nmilv"]
+[ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="4_edikr"]
+[ext_resource type="PackedScene" uid="uid://cormo2l6nbica" path="res://Scenes/Models/muzzle_flash.tscn" id="5_72c5n"]
 
 [sub_resource type="Animation" id="Animation_eboqw"]
 length = 0.001
@@ -64,46 +63,34 @@ step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/path = NodePath("gun_3d/muzzle:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.02, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0.05), Vector3(0.05, 0, 0.05), Vector3(0, 0, 0.05)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("gun_3d/muzzle:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.02),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("gun_3d:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gun_3d:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.02, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, -0.113, 0.024), Vector3(-0.00122786, -0.11337, 0.0683658), Vector3(-0.001, -0.113, 0.024)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("gun_3d/Cube:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("gun_3d/Cube:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.02, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -146,13 +133,9 @@ _data = {
 &"reload": SubResource("Animation_sivg7")
 }
 
-[node name="Gun" type="Node3D"]
-script = ExtResource("1_vmlyg")
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-1.735e-09, 0, -0.0396922, 0, 0.0396922, 0, 0.0396922, 0, -1.735e-09, 0, 0, 0.05)
-visible = false
-texture = ExtResource("2_pbdy4")
+[node name="HandGun" type="Node3D"]
+script = ExtResource("1_ls1vf")
+type = "secondary"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -168,7 +151,7 @@ collision_mask = 16
 wait_time = 0.1
 one_shot = true
 
-[node name="gun_3d" parent="." instance=ExtResource("3_6tpj4")]
+[node name="gun_3d" parent="." instance=ExtResource("3_nmilv")]
 transform = Transform3D(0.0514216, 0, 0, 0, 0.0514216, 0, 0, 0, 0.0514216, -0.001, -0.113, 0.024)
 
 [node name="Cube" parent="gun_3d" index="0"]
@@ -178,9 +161,9 @@ transform = Transform3D(0.228145, 0, 0, 0, 0.20411, 0, 0, 0, 1.30004, 0, 1.833, 
 transform = Transform3D(-3.71027e-08, 0, -0.848812, 0, 0.848812, 0, 0.848812, 0, -3.71027e-08, -0.0231189, 1.77454, -1.62697)
 visible = false
 billboard = 1
-texture = ExtResource("4_a2vg2")
+texture = ExtResource("4_edikr")
 
-[node name="muzzle_flash" parent="gun_3d/muzzle" instance=ExtResource("5_s778g")]
+[node name="muzzle_flash" parent="gun_3d/muzzle" instance=ExtResource("5_72c5n")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]

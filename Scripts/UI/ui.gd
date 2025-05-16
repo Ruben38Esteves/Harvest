@@ -7,6 +7,8 @@ extends Control
 @onready var world_timer: Timer = $WorldTimer
 @onready var time_label: Label = $Hud/timer/Time
 @onready var money_value: Label = $Hud/Money/MoneyValue
+@onready var primary_ammo_label: Label = $Hud/Ammo/Primary
+@onready var secondary_ammo_label: Label = $Hud/Ammo/Secondary
 
 var time = 0
 var kill_amount: int = 0
@@ -51,3 +53,12 @@ func _on_world_timer_timeout() -> void:
 	
 func update_money(amount: int) -> void:
 	money_value.text = str(amount)
+	
+func update_ammo_display(type: String, magazine: int, total: int) -> void:
+	match type:
+		"primary":
+			primary_ammo_label.text = str(magazine) + "/" + str(total)
+		"secondary":
+			secondary_ammo_label.text = str(magazine) + "/" + str(total)
+		_:
+			print(type + " is not a weapon type")

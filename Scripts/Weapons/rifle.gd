@@ -1,7 +1,6 @@
 extends Node3D
 
 @onready var rifle_anim = $AnimationPlayerRifle
-@onready var rifle_barrel = $rifle_barrel
 @onready var fire_rate = $fire_rate
 @onready var player = $"../../../../.."
 @onready var primaryAmmoDisplay = $"../../../../../../../UI/Hud/Ammo/Primary"
