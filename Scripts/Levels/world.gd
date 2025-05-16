@@ -89,7 +89,6 @@ func _on_zombie_zombie_hit():
 	global.player._on_zombie_zombie_hit()
 
 func _on_zombie_zombie_killed():
-	print("he died")
 	global.player._on_zombie_zombie_killed()
 		
 func _on_chest_opened():

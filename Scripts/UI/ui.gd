@@ -34,13 +34,11 @@ func set_corsair_location():
 	crossair2.position.y = (get_viewport().size.y / 2) - crossair2.size.y / 2
 	
 func enemy_hit() -> void:
-	print("UI A")
 	crossair2.visible = true
 	await get_tree().create_timer(0.1).timeout
 	crossair2.visible = false
 	
 func enemy_killed() -> void:
-	print("UI B")
 	kill_amount += 1
 	kill_amount_display.text = str(kill_amount)
 

@@ -93,7 +93,6 @@ func attacked(dmg, hit_location = position):
 	if health <= 0:
 		if !dead:
 			dead = true
-			print("i died")
 			emit_signal("zombie_killed")
 			instance = COINS.instantiate()
 			instance.position = self.global_position
