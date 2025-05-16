@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://b0i77543v5a01"]
 
-[ext_resource type="Script" uid="uid://certvqr66aia4" path="res://Scripts/Weapons/rifle.gd" id="1_8vn0w"]
+[ext_resource type="Script" uid="uid://bpk6vehreo1u0" path="res://Scripts/Weapons/rifle.gd" id="1_8vn0w"]
 [ext_resource type="PackedScene" uid="uid://carwtwbycchat" path="res://Scenes/Models/rifle_3d.tscn" id="3_ghh4j"]
 [ext_resource type="PackedScene" uid="uid://cormo2l6nbica" path="res://Scenes/Models/muzzle_flash.tscn" id="4_g4uem"]
 [ext_resource type="Texture2D" uid="uid://bc5ggv06olf5w" path="res://Sprites/muzzle_fire.png" id="4_nj24n"]
@@ -93,17 +93,16 @@ _data = {
 
 [node name="Rifle" type="Node3D"]
 script = ExtResource("1_8vn0w")
+damage = 100
+magazineAmmo = 1
+magazineAmmoMax = 1
 
-[node name="rifle_barrel" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.291308)
-target_position = Vector3(0, 0, -1)
-
-[node name="AnimationPlayerRifle" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_bhx6u")
 }
 
-[node name="fire_rate" type="Timer" parent="."]
+[node name="fire_rate_gun" type="Timer" parent="."]
 one_shot = true
 
 [node name="rifle-3d" parent="." instance=ExtResource("3_ghh4j")]
@@ -117,4 +116,6 @@ texture = ExtResource("4_nj24n")
 
 [node name="muzzle_flash" parent="rifle-3d/muzzle" instance=ExtResource("4_g4uem")]
 
-[connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]

@@ -3,7 +3,7 @@ class_name gun
 extends Node3D
 
 @onready var gun_anim = $AnimationPlayer
-@onready var fire_rate = $fire_rate_gun
+@onready var fire_rate_timer = $fire_rate_gun
 var player = null
 @export var type = "primary"
 @export var damage = 25
@@ -11,11 +11,13 @@ var player = null
 @export var gunAmmo = 20
 @export var magazineAmmo = 8
 @export var magazineAmmoMax = 8
+@export var fire_rate = 1
 var can_fire_gun = true
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	fire_rate_timer.wait_time = 1 / fire_rate
 	player = global.player
 	update_gun_ammo_display()
 
@@ -29,7 +31,7 @@ func shoot(aim):
 		magazineAmmo -= 1
 		update_gun_ammo_display()
 		can_fire_gun = false
-		fire_rate.start()
+		fire_rate_timer.start()
 		gun_anim.play("Shoot")
 		if aim.is_colliding():
 			var target = aim.get_collider()
