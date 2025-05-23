@@ -11,7 +11,7 @@ var player = null
 @export var gunAmmo = 20
 @export var magazineAmmo = 8
 @export var magazineAmmoMax = 8
-@export var fire_rate = 1
+@export var fire_rate: float = 1
 var can_fire_gun = true
 
 

@@ -136,7 +136,7 @@ _data = {
 [node name="HandGun" type="Node3D"]
 script = ExtResource("1_ls1vf")
 type = "secondary"
-fire_rate = 2
+fire_rate = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -167,7 +167,7 @@ texture = ExtResource("4_edikr")
 [node name="muzzle_flash" parent="gun_3d/muzzle" instance=ExtResource("5_72c5n")]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_gun_timeout"]
+[connection signal="timeout" from="fire_rate_gun" to="." method="_on_fire_rate_timeout"]
 
 [editable path="gun_3d"]
