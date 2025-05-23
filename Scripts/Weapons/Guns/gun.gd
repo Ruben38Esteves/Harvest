@@ -36,7 +36,7 @@ func shoot(aim):
 		if aim.is_colliding():
 			var target = aim.get_collider()
 			if target.is_in_group("enemy"):
-				target.attacked(damage,aim.get_collision_point())
+				target.hit(damage,aim.get_collision_point())
 
 		
 func reload():

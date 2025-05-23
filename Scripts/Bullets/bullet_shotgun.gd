@@ -20,7 +20,7 @@ func _process(delta):
 		mesh.visible = false
 		particles.emitting = true
 		if ray.get_collider().is_in_group("enemy") :
-			ray.get_collider().attacked(damage,ray.get_collision_point())
+			ray.get_collider().hit(damage,ray.get_collision_point())
 		#await get_tree().create_timer(1.0).timeout
 		queue_free()
 

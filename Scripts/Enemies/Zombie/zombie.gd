@@ -82,8 +82,8 @@ func _attack_finished():
 	#await get_tree().create_timer(0.1).timeout
 	#sprite.modulate = Color.WHITE
 	
-# zombie attacks
-func attacked(dmg, hit_location = position):
+# zombie attacked
+func hit(dmg, hit_location):
 	if health == max_health:
 		health_bar.visible = true
 	health -= dmg

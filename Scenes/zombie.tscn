@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bc0mp2isk8umx"]
+[gd_scene load_steps=21 format=3 uid="uid://bc0mp2isk8umx"]
 
 [ext_resource type="Script" uid="uid://d1geni2y2h8vb" path="res://Scripts/Enemies/Zombie/zombie.gd" id="1_d7cji"]
 [ext_resource type="Script" uid="uid://hop0kprny4f4" path="res://Scripts/Enemies/Zombie/CollisionZombie.gd" id="2_e5fcn"]
@@ -6,7 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://creq00vrl663f" path="res://Scenes/Models/blood_particles.tscn" id="4_l3le8"]
 [ext_resource type="PackedScene" uid="uid://d05y8uyhor4cm" path="res://Scenes/Status_Effects.tscn" id="5_437ox"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0kvla"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_w2xga"]
+height = 1.14014
+radius = 0.370117
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4slyf"]
+radius = 0.290644
 
 [sub_resource type="Animation" id="Animation_w2xga"]
 length = 0.001
@@ -112,26 +117,41 @@ states/walk/node = SubResource("AnimationNodeAnimation_6pjk8")
 states/walk/position = Vector2(350, 86)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_lh64m"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_d0for"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_f0ft4")]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0kvla"]
+radius = 0.396249
+height = 1.70049
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wowr"]
 bg_color = Color(1, 0.345098, 0.254902, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_u3lrr"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Zombie" type="CharacterBody3D" groups=["enemy"]]
-collision_layer = 18
+[node name="Zombie" type="CharacterBody3D"]
+collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_d7cji")
 
 [node name="Hitbox" type="Area3D" parent="." groups=["enemy"]]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
-collision_layer = 0
+collision_layer = 16
 collision_mask = 0
 script = ExtResource("2_e5fcn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0.459044, 0)
-shape = SubResource("CapsuleShape3D_0kvla")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109131, 0)
+shape = SubResource("CylinderShape3D_w2xga")
+
+[node name="WeakPoint" type="Area3D" parent="." groups=["enemy"]]
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_e5fcn")
+dmg_scaling = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WeakPoint"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936911, 0)
+shape = SubResource("SphereShape3D_4slyf")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -154,7 +174,7 @@ parameters/conditions/attack = false
 parameters/conditions/walk = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.459044, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302943, 0)
 shape = SubResource("CapsuleShape3D_0kvla")
 
 [node name="SubViewport" type="SubViewport" parent="."]
@@ -182,3 +202,4 @@ one_shot = false
 [node name="StatusEffects" parent="." instance=ExtResource("5_437ox")]
 
 [connection signal="body_hit" from="Hitbox" to="." method="_on_area_3d_body_hit"]
+[connection signal="body_hit" from="WeakPoint" to="." method="_on_area_3d_body_hit"]
