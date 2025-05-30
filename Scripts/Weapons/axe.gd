@@ -19,10 +19,21 @@ func shoot():
 		axe_animation_player.play("attack")
 
 
-func _on_area_3d_body_entered(body):
-	if body.is_in_group("enemy"):
+#func _on_area_3d_body_entered(body):
+	#if body.is_in_group("enemy"):
+		#axe_animation_player.pause()
+		#var hit_point = axe_hitbox.global_position
+		#body.attacked(damage, hit_point)
+		#await get_tree().create_timer(0.05).timeout
+		#axe_animation_player.play()
+
+
+func _on_area_3d_area_entered(area):
+	print(area)
+	if area.is_in_group("enemy"):
+		print("IS ENEMY")
 		axe_animation_player.pause()
 		var hit_point = axe_hitbox.global_position
-		body.attacked(damage, hit_point)
+		area.melee_hit(damage, hit_point)
 		await get_tree().create_timer(0.05).timeout
 		axe_animation_player.play()

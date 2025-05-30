@@ -63,24 +63,6 @@ func _attack_finished():
 		dir.y = 0
 		global.player.hit(dir,ATTACK_KNOCKBACK,damage)
 	
-		
-# zombie was attacked
-#func _on_area_3d_body_hit(dmg):
-	#if health == max_health:
-		#health_bar.visible = true
-	#health -= dmg
-	#emit_signal("zombie_hit")
-	#progress_bar.value = health
-	#if health <= 0:
-		#print("i died B")
-		#emit_signal("zombie_killed")
-		#instance = COINS.instantiate()
-		#instance.position = self.global_position
-		#self.get_parent().add_child(instance)
-		#queue_free()
-	#sprite.modulate = Color.DARK_RED
-	#await get_tree().create_timer(0.1).timeout
-	#sprite.modulate = Color.WHITE
 	
 # zombie attacked
 func hit(dmg, hit_location):

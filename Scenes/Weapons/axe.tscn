@@ -123,7 +123,8 @@ script = ExtResource("1_bf5gl")
 transform = Transform3D(-0.101305, 3.63409e-08, -2.53898e-07, -2.30322e-09, 0.10015, 0.0152536, 2.56476e-07, 0.0152536, -0.10015, 0, 0.0627055, 0)
 
 [node name="Area3D" type="Area3D" parent="axe"]
-collision_mask = 2
+collision_layer = 0
+collision_mask = 16
 monitoring = false
 monitorable = false
 
@@ -136,4 +137,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_xdoi6")
 }
 
+[connection signal="area_entered" from="axe/Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="axe/Area3D" to="." method="_on_area_3d_body_entered"]
