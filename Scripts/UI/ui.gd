@@ -6,6 +6,9 @@ extends Control
 @onready var kill_amount_display: Label = $Hud/timer/Kills/KillAmount
 @onready var world_timer: Timer = $WorldTimer
 @onready var time_label: Label = $Hud/timer/Time
+@onready var money_value: Label = $Hud/Money/MoneyValue
+@onready var primary_ammo_label: Label = $Hud/Ammo/Primary
+@onready var secondary_ammo_label: Label = $Hud/Ammo/Secondary
 
 var time = 0
 var kill_amount: int = 0
@@ -31,13 +34,11 @@ func set_corsair_location():
 	crossair2.position.y = (get_viewport().size.y / 2) - crossair2.size.y / 2
 	
 func enemy_hit() -> void:
-	print("UI A")
 	crossair2.visible = true
 	await get_tree().create_timer(0.1).timeout
 	crossair2.visible = false
 	
 func enemy_killed() -> void:
-	print("UI B")
 	kill_amount += 1
 	kill_amount_display.text = str(kill_amount)
 
@@ -47,3 +48,15 @@ func _on_world_timer_timeout() -> void:
 	var minutes = str(time / 60)
 	var seconds = str(time % 60)
 	time_label.text= minutes + ":" + seconds
+	
+func update_money(amount: int) -> void:
+	money_value.text = str(amount)
+	
+func update_ammo_display(type: String, magazine: int, total: int) -> void:
+	match type:
+		"primary":
+			primary_ammo_label.text = str(magazine) + "/" + str(total)
+		"secondary":
+			secondary_ammo_label.text = str(magazine) + "/" + str(total)
+		_:
+			print(type + " is not a weapon type")

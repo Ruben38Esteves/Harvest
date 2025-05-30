@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var death_screen = $"UI/Player_death_screen"
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var ui: Control = $UI
+@onready var inventory: Node = $Inventory
 
 #movement
 @onready var slide_check: RayCast3D = $slide_check
@@ -271,10 +272,12 @@ func get_money(value):
 	money_value.text = str(money)
 
 func get_item(item: String) -> void:
-	print("got: " + item)
-	match item:
-		"coins":
-			get_money(10)
+	#print("got: " + item)
+	#match item:
+		#"coins":
+			#get_money(10)
+	inventory.get_item(item)
+	
 
 func _on_timer_timeout():
 	if health < maxHealth:

@@ -5,6 +5,9 @@ extends RigidBody3D
 @onready var ground_checker = $GroundChecker
 @onready var animation_player = $AnimationPlayer
 
+func _ready() -> void:
+	apply_impulse(Vector3((randf()*2)-1,2,(randf()*2)-1),position)
+
 func _process(delta):
 	if ground_checker.is_colliding():
 		freeze = true

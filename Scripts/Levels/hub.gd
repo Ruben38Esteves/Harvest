@@ -44,7 +44,7 @@ func _on_play_rifle_body_entered(body):
 
 func _on_play_gun_body_entered(body):
 	if body.name == "Player":
-		global.secondary_weapon_path = "res://Scenes/Weapons/gun.tscn"
+		global.secondary_weapon_path = "res://Scenes/Weapons/hand_gun.tscn"
 		print(primary_picked_bool)
 		print(secondary_picked_bool)
 		secondary_picked()
