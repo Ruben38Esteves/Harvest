@@ -3,6 +3,7 @@ extends Node3D
 @onready var axe_hitbox = $axe/Area3D/axe_hitbox
 var damage = 70
 
+var enemies_hit = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +11,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 
@@ -19,21 +20,16 @@ func shoot():
 		axe_animation_player.play("attack")
 
 
-#func _on_area_3d_body_entered(body):
-	#if body.is_in_group("enemy"):
-		#axe_animation_player.pause()
-		#var hit_point = axe_hitbox.global_position
-		#body.attacked(damage, hit_point)
-		#await get_tree().create_timer(0.05).timeout
-		#axe_animation_player.play()
-
-
 func _on_area_3d_area_entered(area):
-	print(area)
 	if area.is_in_group("enemy"):
-		print("IS ENEMY")
+		if enemies_hit.has(area.parent):
+			return
 		axe_animation_player.pause()
 		var hit_point = axe_hitbox.global_position
-		area.melee_hit(damage, hit_point)
+		var enemy_hit = area.melee_hit(damage, hit_point)
+		enemies_hit[enemy_hit] = true
 		await get_tree().create_timer(0.05).timeout
 		axe_animation_player.play()
+		
+func clear_enemies_hit() -> void:
+	enemies_hit.clear()
