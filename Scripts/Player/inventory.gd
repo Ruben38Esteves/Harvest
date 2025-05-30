@@ -18,3 +18,7 @@ func get_item(item: String) -> void:
 func get_money(amount: int) -> void:
 	items["coins"] = items["coins"] + amount
 	ui.update_money(items["coins"])
+	
+func spend_money(amount: int) -> void:
+	items["coins"] = items["coins"] - amount
+	ui.update_money(items["coins"])

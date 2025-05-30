@@ -1,31 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://v67fguycijs5"]
+[gd_scene load_steps=7 format=4 uid="uid://cveediuxpkbtu"]
 
-[ext_resource type="Script" uid="uid://cdymjxgvij7jf" path="res://Scripts/Interactables/chest.gd" id="1_50sm6"]
-[ext_resource type="Shader" uid="uid://dmjeoob41oulq" path="res://Shaders/chest.gdshader" id="2_is3fd"]
-[ext_resource type="Script" uid="uid://7ht5s3x5hki7" path="res://Scripts/Interactables/chest_body.gd" id="3_f3egu"]
-[ext_resource type="Shader" uid="uid://dw1i043dfd7on" path="res://Shaders/outline_shader.gdshader" id="4_iritj"]
+[ext_resource type="Script" uid="uid://cwf4k1aafeeji" path="res://Scripts/Interactables/chest.gd" id="1_50sm6"]
 [ext_resource type="Texture2D" uid="uid://chd8qpf5fm3xo" path="res://Models/Chest/Chest_Closed_Atlas.png" id="5_sdkk4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5iiud"]
-render_priority = 0
-shader = ExtResource("2_is3fd")
-shader_parameter/strength = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c553v"]
-next_pass = SubResource("ShaderMaterial_5iiud")
-albedo_color = Color(0.372549, 0.235294, 0.105882, 1)
-
-[sub_resource type="Theme" id="Theme_l624c"]
-default_font_size = 40
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_nvm8h"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo4en"]
-render_priority = 0
-shader = ExtResource("4_iritj")
-shader_parameter/outline_color = Color(1, 1, 0, 1)
-shader_parameter/outline_width = 4.0
+[sub_resource type="BoxShape3D" id="BoxShape3D_i3o06"]
+size = Vector3(0.622314, 0.652283, 0.653564)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a51m4"]
 resource_name = "Atlas"
@@ -49,7 +28,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_o48rw"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_iritj"]
 resource_name = "Chest_Closed_Cube_090"
 _surfaces = [{
 "aabb": AABB(-0.918076, -0.00307322, -0.960783, 1.83615, 1.90532, 1.99135),
@@ -68,47 +47,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w156t")
 
-[node name="Node3D" type="Node3D" groups=["colectible"]]
-script = ExtResource("1_50sm6")
-
-[node name="body" type="CSGBox3D" parent="." groups=["chest"]]
-transform = Transform3D(0.684472, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.386683, 0)
-visible = false
-use_collision = true
+[node name="Chest" type="StaticBody3D" groups=["interactible"]]
 collision_layer = 4
-size = Vector3(1, 0.697144, 1)
-material = SubResource("StandardMaterial3D_c553v")
-script = ExtResource("3_f3egu")
+collision_mask = 0
+script = ExtResource("1_50sm6")
+type = "chest"
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207, 0.326141, -0.00012207)
+shape = SubResource("BoxShape3D_i3o06")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-size = Vector2i(100, 60)
-
-[node name="Label" type="Label" parent="SubViewport"]
-offset_right = 40.0
-offset_bottom = 23.0
-size_flags_horizontal = 4
-theme = SubResource("Theme_l624c")
-text = "Price"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00300006, 1.09483, 0)
-visibility_range_end = 4.0
-visibility_range_end_margin = 6.0
-visibility_range_fade_mode = 1
-billboard = 1
-texture = SubResource("ViewportTexture_nvm8h")
-
-[node name="Chest_Closed" type="MeshInstance3D" parent="."]
+[node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.369567, 0, 0, 0, 0.369567, 0, 0, 0, 0.369567, 0, 0, 0)
-material_overlay = SubResource("ShaderMaterial_qo4en")
-mesh = SubResource("ArrayMesh_o48rw")
+mesh = SubResource("ArrayMesh_iritj")
 skeleton = NodePath("")
 
-[connection signal="chest_used" from="body" to="." method="_on_body_chest_used"]
-[connection signal="timeout" from="Timer" to="body" method="_on_timer_timeout"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

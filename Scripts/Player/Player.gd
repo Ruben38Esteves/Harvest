@@ -58,10 +58,6 @@ signal player_hit
 var maxHealth = 100.0
 var health = 100.0
 
-#money
-var money = 0
-@onready var money_value = $"UI/Hud/Money/MoneyValue"
-
 
 #guns
 var current_gun = "primary"
@@ -203,17 +199,18 @@ func _physics_process(delta):
 	#open chest
 	if Input.is_action_just_pressed("interact"):
 		if interact_aim.is_colliding():
-			if interact_aim.get_collider().is_in_group("chest"):
-				money = interact_aim.get_collider().used(money)
-				money_value.text = str(money)
+			var inter_coll = interact_aim.get_collider()
+			if inter_coll and inter_coll.is_in_group("interactible"):
+				inter_coll.interact()
+					
 	
 	#chest glow
 	var coll = interact_aim.get_collider()
 	if coll != looking_at:
-		if coll != null and coll.is_in_group("chest"):
-			coll.targeted = true
-		if looking_at != null and looking_at.is_in_group("chest"):
-			looking_at.targeted = false
+		if coll != null and coll.is_in_group("interactible"):
+			coll.set_targetted()
+		if looking_at != null and looking_at.is_in_group("interactible"):
+			looking_at.set_untargetted()
 		looking_at = coll
 		
 	weapon_sway(delta)
@@ -267,9 +264,9 @@ func glow_chest(target_chest):
 		pass
 	target_chest.glow(false)
 	
-func get_money(value):
-	money += value
-	money_value.text = str(money)
+#func get_money(value):
+	#money += value
+	#money_value.text = str(money)
 
 func get_item(item: String) -> void:
 	#print("got: " + item)

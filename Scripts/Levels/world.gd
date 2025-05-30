@@ -72,7 +72,8 @@ func spawn_chests(amount):
 		var spawn_point = _get_random_child(chest_spawns).global_position
 		instance = chest.instantiate() 
 		instance.global_position = spawn_point
-		instance.chest_opened.connect(_on_chest_opened)
+		instance.cost = 10
+		#instance.chest_opened.connect(_on_chest_opened)
 		navigation_region.add_child(instance)
 
 func _on_zombie_spawn_timer_timeout():
