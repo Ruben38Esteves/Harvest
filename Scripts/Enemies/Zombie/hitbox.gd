@@ -11,7 +11,7 @@ var parent = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	parent = get_parent()
-	self.area_entered.connect(_on_area_entered)
+	#self.area_entered.connect(_on_area_entered)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,6 +24,9 @@ func hit(dmg, hit_location = position):
 func melee_hit(dmg, hit_location = position):
 	parent.hit(dmg, hit_location)
 	return parent
+	
+func calculate_damage(dmg) -> float:
+	return 0.0
 
-func _on_area_entered(area):
-	print(area)
+#func _on_area_entered(area):
+	#print(area)

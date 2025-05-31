@@ -23,7 +23,7 @@ func _on_timer_timeout():
 	instance.global_position = position
 	get_parent().add_child(instance)
 	instance.global_position.y = instance.global_position.y +1
-	instance.get_child(0).apply_impulse(Vector3(0,2,0))
+	instance.get_child(0).apply_impulse(Vector3(0,1,0))
 	queue_free()
 
 func get_random_item():

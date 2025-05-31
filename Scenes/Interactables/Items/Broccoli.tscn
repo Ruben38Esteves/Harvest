@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" uid="uid://d3axqq4yiswjx" path="res://Scripts/Interactables/Items/broccoli.gd" id="1_mih0y"]
 [ext_resource type="PackedScene" uid="uid://ciia7yn2x5t7h" path="res://Scenes/Interactables/Items/Item.tscn" id="2_3lobp"]
-[ext_resource type="PackedScene" uid="uid://dpv6wwok7v5u1" path="res://Models/Items/Broccoli.fbx" id="3_ykoa2"]
+[ext_resource type="ArrayMesh" uid="uid://cp6tx6w34hrxc" path="res://Models/Items/broccoli.tres" id="3_mih0y"]
 
 [node name="Boccoli" type="Node3D"]
 script = ExtResource("1_mih0y")
 
 [node name="Item" parent="." instance=ExtResource("2_3lobp")]
+light = Color(1, 1, 1, 1)
 
-[node name="Broccoli" parent="Item/Visual" index="0" instance=ExtResource("3_ykoa2")]
-transform = Transform3D(0.537869, 0, 0, 0, 0.537869, 0, 0, 0, 0.537869, 0, -0.304087, 0)
+[node name="Mesh" type="MeshInstance3D" parent="Item/Visual" index="0"]
+transform = Transform3D(35, 0, 0, 0, -1.5299e-06, 35, 0, -35, -1.5299e-06, 0, 0, 0)
+mesh = ExtResource("3_mih0y")
 
 [editable path="Item"]

@@ -81,6 +81,7 @@ var mouse_input
 
 func _ready():
 	global.player = self
+	global.inventory = inventory
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_gun = "primary"
 	update_progress_bar()
