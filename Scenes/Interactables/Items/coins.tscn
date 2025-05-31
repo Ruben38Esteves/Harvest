@@ -17,6 +17,9 @@ script = ExtResource("1_x2ay6")
 
 [node name="Item" parent="." instance=ExtResource("1_vr541")]
 
+[node name="Visual" parent="Item" index="2"]
+transform = Transform3D(3.27943, 0, 0, 0, 3.27943, 0, 0, 0, 3.27943, 0, 0, 0)
+
 [node name="1" type="MeshInstance3D" parent="Item/Visual" index="0"]
 transform = Transform3D(0.0538825, 0, 0, 0, 0.00604691, 0, 0, 0, 0.0538825, 0, 0.0347116, 0)
 material_override = SubResource("StandardMaterial3D_23lc5")

@@ -6,12 +6,6 @@ extends Node3D
 @onready var chest_spawns = $map/Chest_spawns
 @onready var navigation_region = $map/NavigationRegion3D
 @onready var zombie_spawn_timer = $ZombieSpawnTimer
-#@onready var hit_rect = $UI/ColorRect
-#@onready var crossair = $UI/crossair
-#@onready var crossair2 = $UI/crossair2
-#@onready var time = $UI/Hud/timer/Time
-#@onready var kill_amount_display = $UI/Hud/timer/Kills/KillAmount
-#@onready var info = $UI/Info
 @onready var word_clock = $WordClock
 @onready var player = $map/Player
 @onready var player_primary = $map/Player/Head/Camera3D/Hands/Primary
