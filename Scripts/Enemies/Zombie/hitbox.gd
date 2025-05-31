@@ -19,14 +19,16 @@ func _process(delta):
 	pass
 
 func hit(dmg, hit_location = position):
-	parent.hit(dmg * dmg_scaling, hit_location)
+	parent.hit(calculate_damage(dmg), hit_location)
 	
 func melee_hit(dmg, hit_location = position):
 	parent.hit(dmg, hit_location)
 	return parent
 	
 func calculate_damage(dmg) -> float:
-	return 0.0
+	var broccolis = global.inventory.items["broccoli"]
+	var final_dmg = dmg * (1.0 + (0.1 * broccolis)) * dmg_scaling
+	return final_dmg
 
 #func _on_area_entered(area):
 	#print(area)
