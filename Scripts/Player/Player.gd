@@ -55,6 +55,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var health_bar = $"UI/Hud/BottomLeft/HealthBar"
 @onready var timer = $Timer
 signal player_hit
+const base_health = 100.0
 var maxHealth = 100.0
 var health = 100.0
 
@@ -259,21 +260,8 @@ func recieve_ammo():
 	elif current_gun == "meelee":
 		primary_weapon.increase_ammo()
 
-func glow_chest(target_chest):
-	target_chest.glow(true)
-	while interact_aim.get_collider() == target_chest:
-		pass
-	target_chest.glow(false)
-	
-#func get_money(value):
-	#money += value
-	#money_value.text = str(money)
 
 func get_item(item: String) -> void:
-	#print("got: " + item)
-	#match item:
-		#"coins":
-			#get_money(10)
 	inventory.get_item(item)
 	
 
@@ -302,6 +290,10 @@ func crouch() -> void:
 	
 func uncrouch() -> void:
 	animation_player.play("uncrouch")
+	
+func update_max_health() -> void:
+	maxHealth = base_health * ( 1.0 + 0.05 * inventory.items["suspicious_mushroom"])
+	update_progress_bar()
 	
 func _on_zombie_zombie_hit() -> void:
 	ui.enemy_hit()

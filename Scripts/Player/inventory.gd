@@ -12,12 +12,18 @@ func _ready() -> void:
 	pass
 	
 func get_item(item: String) -> void:
-	if item == "coins":
-		items["coins"] = items["coins"] + 10 # hardcoded to always provide 10 coins
-		ui.update_money(items["coins"])
-	else:
-		items[item] = items[item] + 1
-		ui.update_item_display(item)
+	
+	match item:
+		"coins":
+			items["coins"] = items["coins"] + 10 # hardcoded to always provide 10 coins
+			ui.update_money(items["coins"])
+		"suspicious_mushroom":
+			items["suspicious_mushroom"] = items["suspicious_mushroom"] + 1
+			ui.update_item_display("suspicious_mushroom")
+			global.player.update_max_health()
+		_:
+			items[item] = items[item] + 1
+			ui.update_item_display(item)
 	print("got: " + item , " and now have: ", items[item])
 	
 func spend_money(amount: int) -> void:
