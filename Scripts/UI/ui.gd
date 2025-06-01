@@ -6,12 +6,15 @@ extends Control
 @onready var kill_amount_display: Label = $Hud/timer/Kills/KillAmount
 @onready var world_timer: Timer = $WorldTimer
 @onready var time_label: Label = $Hud/timer/Time
-@onready var money_value: Label = $Hud/Money/MoneyValue
-@onready var primary_ammo_label: Label = $Hud/Ammo/Primary
-@onready var secondary_ammo_label: Label = $Hud/Ammo/Secondary
+@onready var money_value: Label = $Hud/BottomLeft/Money/MoneyValue
+@onready var primary_ammo_label: Label = $Hud/BottomRight/Primary
+@onready var secondary_ammo_label: Label = $Hud/BottomRight/Secondary
 
 var time = 0
 var kill_amount: int = 0
+
+var seconds_str = ""
+var minutes_str = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,9 +48,18 @@ func enemy_killed() -> void:
 
 func _on_world_timer_timeout() -> void:
 	time += 1
-	var minutes = str(time / 60)
-	var seconds = str(time % 60)
-	time_label.text= minutes + ":" + seconds
+	var minutes: int = time / 60
+	var seconds: int = time % 60
+	if seconds < 10:
+		seconds_str = "0" + str(seconds)
+	else:
+		seconds_str = str(seconds)
+	if minutes < 10:
+		minutes_str = "0" + str(minutes)
+	else:
+		minutes_str = str(minutes)
+		
+	time_label.text= minutes_str + ":" + seconds_str
 	
 func update_money(amount: int) -> void:
 	money_value.text = str(amount)

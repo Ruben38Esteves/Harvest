@@ -52,7 +52,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var interact_aim = $Head/Camera3D/interact_aim
 
 #stats
-@onready var health_bar = $"UI/Hud/HealthBar"
+@onready var health_bar = $"UI/Hud/BottomLeft/HealthBar"
 @onready var timer = $Timer
 signal player_hit
 var maxHealth = 100.0
