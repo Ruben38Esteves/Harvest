@@ -9,6 +9,13 @@ extends Control
 @onready var money_value: Label = $Hud/BottomLeft/Money/MoneyValue
 @onready var primary_ammo_label: Label = $Hud/BottomRight/Primary
 @onready var secondary_ammo_label: Label = $Hud/BottomRight/Secondary
+@onready var item_inventory_container: HBoxContainer = $Hud/ItemInventoryContainer
+
+const ITEM_UI = preload("res://Scenes/UI/item_ui.tscn")
+var item_dict = {}
+var item_textures = {
+	"broccoli": "res://Textures/broccoli_sprite.png"
+}
 
 var time = 0
 var kill_amount: int = 0
@@ -72,3 +79,11 @@ func update_ammo_display(type: String, magazine: int, total: int) -> void:
 			secondary_ammo_label.text = str(magazine) + "/" + str(total)
 		_:
 			print(type + " is not a weapon type")
+			
+func update_item_display(item: String) -> void:
+	if item_dict.has(item):
+		item_dict[item].increment_amount()
+	else:
+		var new_item = ITEM_UI.instantiate()
+		item_dict[item] = new_item
+		item_inventory_container.add_child(new_item)

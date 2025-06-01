@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfgnt3w0u5nbp"]
+
+[ext_resource type="Script" uid="uid://clyfguq130qek" path="res://Scripts/UI/item_ui.gd" id="1_fxgll"]
+[ext_resource type="Texture2D" uid="uid://p7upq4ery1ga" path="res://Textures/broccoli_sprite.png" id="2_jga5b"]
+[ext_resource type="LabelSettings" uid="uid://03530xa8loou" path="res://Textures/label_settings.tres" id="3_ytgoh"]
+
+[node name="ItemUI" type="PanelContainer"]
+custom_minimum_size = Vector2(50, 50)
+offset_right = 50.0
+offset_bottom = 50.0
+script = ExtResource("1_fxgll")
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_jga5b")
+expand_mode = 1
+
+[node name="Amount" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "1"
+label_settings = ExtResource("3_ytgoh")
+horizontal_alignment = 2

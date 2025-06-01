@@ -5,5 +5,5 @@ font_names = PackedStringArray("Agency FB")
 
 [resource]
 font = SubResource("SystemFont_qnnsj")
-font_size = 33
+font_size = 20
 outline_color = Color(0, 0, 0, 1)

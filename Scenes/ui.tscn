@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfdgyti3y6c3w"]
+[gd_scene load_steps=10 format=3 uid="uid://dfdgyti3y6c3w"]
 
 [ext_resource type="Script" uid="uid://cr5npxp108dhq" path="res://Scripts/UI/ui.gd" id="1_6lsb7"]
 [ext_resource type="LabelSettings" uid="uid://03530xa8loou" path="res://Textures/label_settings.tres" id="2_nf4gj"]
 [ext_resource type="Script" uid="uid://b7uc05lnrelap" path="res://Scripts/UI/debug.gd" id="2_pn51r"]
-[ext_resource type="Texture2D" uid="uid://p7upq4ery1ga" path="res://Textures/broccoli_sprite.png" id="3_2246s"]
 
 [sub_resource type="SystemFont" id="SystemFont_o2crb"]
 subpixel_positioning = 0
@@ -150,9 +149,6 @@ offset_right = 500.0
 offset_bottom = 90.0
 grow_horizontal = 2
 alignment = 1
-
-[node name="Sprite2D" type="Sprite2D" parent="Hud/ItemInventoryContainer"]
-texture = ExtResource("3_2246s")
 
 [node name="BottomLeft" type="VBoxContainer" parent="Hud"]
 layout_mode = 1

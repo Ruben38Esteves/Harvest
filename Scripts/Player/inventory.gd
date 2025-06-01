@@ -16,6 +16,7 @@ func get_item(item: String) -> void:
 		ui.update_money(items["coins"])
 	else:
 		items[item] = items[item] + 1
+		ui.update_item_display(item)
 	print("got: " + item , " and now have: ", items[item])
 	
 func spend_money(amount: int) -> void:
