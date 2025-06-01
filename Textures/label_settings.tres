@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://03530xa8loou"]
+
+[sub_resource type="SystemFont" id="SystemFont_qnnsj"]
+font_names = PackedStringArray("Agency FB")
+
+[resource]
+font = SubResource("SystemFont_qnnsj")
+font_size = 33
+outline_color = Color(0, 0, 0, 1)

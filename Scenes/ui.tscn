@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfdgyti3y6c3w"]
+[gd_scene load_steps=10 format=3 uid="uid://dfdgyti3y6c3w"]
 
 [ext_resource type="Script" uid="uid://cr5npxp108dhq" path="res://Scripts/UI/ui.gd" id="1_6lsb7"]
+[ext_resource type="LabelSettings" uid="uid://03530xa8loou" path="res://Textures/label_settings.tres" id="2_nf4gj"]
 [ext_resource type="Script" uid="uid://b7uc05lnrelap" path="res://Scripts/UI/debug.gd" id="2_pn51r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5cnb"]
@@ -80,20 +81,22 @@ mouse_filter = 2
 
 [node name="Ammo" type="VBoxContainer" parent="Hud"]
 layout_mode = 0
-offset_left = 1416.0
-offset_top = 738.0
-offset_right = 1467.0
-offset_bottom = 788.0
+offset_left = 1419.0
+offset_top = 682.0
+offset_right = 1483.0
+offset_bottom = 766.0
 scale = Vector2(2.34706, 2.05216)
 mouse_filter = 2
 
 [node name="Primary" type="Label" parent="Hud/Ammo"]
 layout_mode = 2
 text = "Ammo"
+label_settings = ExtResource("2_nf4gj")
 
 [node name="Secondary" type="Label" parent="Hud/Ammo"]
 layout_mode = 2
 text = "Ammo"
+label_settings = ExtResource("2_nf4gj")
 
 [node name="HealthBar" type="ProgressBar" parent="Hud"]
 layout_mode = 0
@@ -116,6 +119,7 @@ offset_bottom = 150.0
 layout_mode = 2
 theme = SubResource("Theme_g043x")
 text = "Time"
+label_settings = ExtResource("2_nf4gj")
 
 [node name="Kills" type="HBoxContainer" parent="Hud/timer"]
 layout_mode = 2
@@ -124,11 +128,13 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Kills:"
+label_settings = ExtResource("2_nf4gj")
 
 [node name="KillAmount" type="Label" parent="Hud/timer/Kills"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "0"
+label_settings = ExtResource("2_nf4gj")
 
 [node name="Money" type="HBoxContainer" parent="Hud"]
 layout_mode = 0
@@ -140,11 +146,12 @@ offset_bottom = 792.0
 [node name="MoneyLabel" type="Label" parent="Hud/Money"]
 layout_mode = 2
 text = "COINS: "
+label_settings = ExtResource("2_nf4gj")
 
 [node name="MoneyValue" type="Label" parent="Hud/Money"]
 layout_mode = 2
-text = "0
-"
+text = "0"
+label_settings = ExtResource("2_nf4gj")
 
 [node name="Info" type="Label" parent="."]
 visible = false
