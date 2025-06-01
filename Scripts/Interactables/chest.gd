@@ -6,6 +6,7 @@ var common_items = []
 
 func _ready() -> void:
 	common_items.push_back(preload("res://Scenes/Interactables/Items/Broccoli.tscn"))
+	common_items.push_back(preload("res://Scenes/Interactables/Items/SuspiciousMushroom.tscn"))
 
 func interact() -> bool:
 	var player_money = global.player.inventory.items["coins"]

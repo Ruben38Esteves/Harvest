@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt0ovfbhav0mw"]
+
+[ext_resource type="Script" uid="uid://bbg2cgxj3me1w" path="res://Scripts/Interactables/Items/item_parent.gd" id="1_fi7cx"]
+[ext_resource type="PackedScene" uid="uid://ciia7yn2x5t7h" path="res://Scenes/Interactables/Items/Item.tscn" id="2_dp1y7"]
+[ext_resource type="ArrayMesh" uid="uid://puhybmdg338k" path="res://Models/Items/suspicious_mushroom.tres" id="3_3u4gt"]
+
+[node name="SuspiciousMushroom" type="Node3D"]
+script = ExtResource("1_fi7cx")
+item_type = "suspicious_mushroom"
+
+[node name="Item" parent="." instance=ExtResource("2_dp1y7")]
+light = Color(1, 1, 1, 1)
+
+[node name="Mesh" type="MeshInstance3D" parent="Item/Visual" index="0"]
+transform = Transform3D(60, 0, 0, 0, -2.62268e-06, 60, 0, -60, -2.62268e-06, 0, 0, 0)
+mesh = ExtResource("3_3u4gt")
+
+[editable path="Item"]

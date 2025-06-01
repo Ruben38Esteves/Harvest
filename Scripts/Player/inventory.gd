@@ -4,7 +4,8 @@ extends Node
 
 var items = {
 	"coins":0,
-	"broccoli":0
+	"broccoli":0,
+	"suspicious_mushroom":0
 }
 
 func _ready() -> void:

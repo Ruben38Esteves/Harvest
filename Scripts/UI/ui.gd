@@ -14,7 +14,8 @@ extends Control
 const ITEM_UI = preload("res://Scenes/UI/item_ui.tscn")
 var item_dict = {}
 var item_textures = {
-	"broccoli": "res://Textures/broccoli_sprite.png"
+	"broccoli": "res://Textures/broccoli_sprite.png",
+	"suspicious_mushroom": "res://Textures/mushroom_sprite.png"
 }
 
 var time = 0
@@ -81,9 +82,11 @@ func update_ammo_display(type: String, magazine: int, total: int) -> void:
 			print(type + " is not a weapon type")
 			
 func update_item_display(item: String) -> void:
+	print(item)
 	if item_dict.has(item):
 		item_dict[item].increment_amount()
 	else:
 		var new_item = ITEM_UI.instantiate()
 		item_dict[item] = new_item
 		item_inventory_container.add_child(new_item)
+		new_item.set_icon(item_textures[item])
