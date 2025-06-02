@@ -7,6 +7,7 @@
 [node name="SuspiciousMushroom" type="Node3D"]
 script = ExtResource("1_fi7cx")
 item_type = "suspicious_mushroom"
+item_description = "Increases max HP by 5%"
 
 [node name="Item" parent="." instance=ExtResource("2_dp1y7")]
 light = Color(1, 1, 1, 1)

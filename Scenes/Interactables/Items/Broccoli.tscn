@@ -7,6 +7,7 @@
 [node name="Boccoli" type="Node3D"]
 script = ExtResource("1_mih0y")
 item_type = "broccoli"
+item_description = "Increases Gun damage by 10%"
 
 [node name="Item" parent="." instance=ExtResource("2_3lobp")]
 light = Color(1, 1, 1, 1)
