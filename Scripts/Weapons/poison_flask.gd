@@ -20,11 +20,10 @@ func shoot(gun_aim: RayCast3D):
 		var flask = poison_flask.instantiate()
 		flask.position = gun_aim.global_position
 		player.get_parent().add_child(flask)
-		var impulse = gun_aim.global_transform.basis.z
-		impulse.x = impulse.x * 2.0
-		impulse.z = impulse.z * 2.0
-		flask.apply_impulse(impulse * -5.0)
-		#flask.linear_velocity = flask.linear_velocity * 2.0
+		var impulse = gun_aim.global_transform.basis.z.normalized()
+		impulse.x = impulse.x * 1.5
+		impulse.z = impulse.z * 1.5
+		flask.apply_impulse(impulse * -5.0 + Vector3(0,1.5,0))
 	
 func reload():
 	pass
