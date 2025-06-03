@@ -43,7 +43,7 @@ func _on_fire_rate_timeout():
 	poison_flask_visual.visible = true
 
 func update_ammo_display():
-	secondaryAmmoDisplay.text = str(ammo)
+	global.player.ui.update_ammo_display("secondary", 1, ammo)
 	
 func increase_ammo():
 	ammo += 4
