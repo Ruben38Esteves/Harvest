@@ -15,7 +15,8 @@ const ITEM_UI = preload("res://Scenes/UI/item_ui.tscn")
 var item_dict = {}
 var item_textures = {
 	"broccoli": "res://Textures/broccoli_sprite.png",
-	"suspicious_mushroom": "res://Textures/mushroom_sprite.png"
+	"suspicious_mushroom": "res://Textures/mushroom_sprite.png",
+	"sweet_soda": "res://Textures/soda_sprite.png"
 }
 
 var time = 0

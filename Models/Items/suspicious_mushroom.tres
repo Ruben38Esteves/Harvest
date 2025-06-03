@@ -13,6 +13,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0.402117, 0.202913, 0.124022, 1)
 emission_enabled = true
 emission = Color(0.446657, 0.228043, 0.141465, 1)
+emission_energy_multiplier = 0.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_fkfqo"]
 _surfaces = [{

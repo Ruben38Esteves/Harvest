@@ -3,9 +3,10 @@ extends Node
 @onready var ui: Control = $"../UI"
 
 var items = {
-	"coins":0,
-	"broccoli":0,
-	"suspicious_mushroom":0
+	"coins": 0,
+	"broccoli": 0,
+	"suspicious_mushroom": 0,
+	"sweet_soda": 0,
 }
 
 func _ready() -> void:
