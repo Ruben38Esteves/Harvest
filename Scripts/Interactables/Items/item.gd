@@ -15,7 +15,7 @@ func _ready() -> void:
 	glow.light_color = light
 	var mesh =  visual.get_child(0)
 	if mesh:
-		OUTLINE.set_shader_parameter("outline_color", light)
+		#OUTLINE.set_shader_parameter("outline_color", light)
 		mesh.material_overlay = OUTLINE
 
 func _process(delta):

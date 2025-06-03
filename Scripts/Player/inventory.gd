@@ -1,3 +1,5 @@
+class_name inventory
+
 extends Node
 
 @onready var ui: Control = $"../UI"
@@ -18,10 +20,6 @@ func get_item(item: String) -> void:
 		"coins":
 			items["coins"] = items["coins"] + 10 # hardcoded to always provide 10 coins
 			ui.update_money(items["coins"])
-		"suspicious_mushroom":
-			items["suspicious_mushroom"] = items["suspicious_mushroom"] + 1
-			ui.update_item_display("suspicious_mushroom")
-			global.player.update_max_health()
 		_:
 			items[item] = items[item] + 1
 			ui.update_item_display(item)

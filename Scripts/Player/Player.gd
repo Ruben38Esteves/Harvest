@@ -262,6 +262,11 @@ func recieve_ammo():
 
 
 func get_item(item: String, description: String) -> void:
+	match item:
+		"suspicious_mushroom":
+			update_max_health()
+		"sweet_soda":
+			meelee_weapon.update_attack_speed()
 	inventory.get_item(item)
 	ui.show_info(description)
 

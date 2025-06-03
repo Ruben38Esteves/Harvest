@@ -33,3 +33,7 @@ func _on_area_3d_area_entered(area):
 		
 func clear_enemies_hit() -> void:
 	enemies_hit.clear()
+
+func update_attack_speed() -> void:
+	var sodas = global.inventory.items["sweet_soda"]
+	axe_animation_player.speed_scale = (1.0 + (sodas * 0.1))
