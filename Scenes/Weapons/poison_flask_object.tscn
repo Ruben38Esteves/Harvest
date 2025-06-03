@@ -7,8 +7,8 @@
 radius = 0.0677424
 
 [node name="poison_flask_object" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00152779, 5.96046e-08, 0.000834584)
 collision_layer = 0
+gravity_scale = 0.5
 can_sleep = false
 lock_rotation = true
 script = ExtResource("1_l7d8b")

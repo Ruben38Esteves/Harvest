@@ -6,7 +6,7 @@ var debug
 
 
 var primary_weapon_path = "res://Scenes/Weapons/shotgun.tscn"
-var secondary_weapon_path = "res://Scenes/Weapons/hand_gun.tscn"
+var secondary_weapon_path = "res://Scenes/Weapons/poison_flask.tscn"
 var meelee_weapon_path = "res://Scenes/Weapons/axe.tscn"
 
 # Called when the node enters the scene tree for the first time.
