@@ -2,16 +2,28 @@ extends Control
 
 @onready var crossair: ColorRect = $crossair
 @onready var crossair2: ColorRect = $crossair2
-@onready var info = $Info
 @onready var kill_amount_display: Label = $Hud/timer/Kills/KillAmount
 @onready var world_timer: Timer = $WorldTimer
 @onready var time_label: Label = $Hud/timer/Time
-@onready var money_value: Label = $Hud/Money/MoneyValue
-@onready var primary_ammo_label: Label = $Hud/Ammo/Primary
-@onready var secondary_ammo_label: Label = $Hud/Ammo/Secondary
+@onready var money_value: Label = $Hud/BottomLeft/Money/MoneyValue
+@onready var primary_ammo_label: Label = $Hud/BottomRight/Primary
+@onready var secondary_ammo_label: Label = $Hud/BottomRight/Secondary
+@onready var item_inventory_container: HBoxContainer = $Hud/ItemInventoryContainer
+@onready var info = $Hud/Info
+
+const ITEM_UI = preload("res://Scenes/UI/item_ui.tscn")
+var item_dict = {}
+var item_textures = {
+	"broccoli": "res://Textures/broccoli_sprite.png",
+	"suspicious_mushroom": "res://Textures/mushroom_sprite.png",
+	"sweet_soda": "res://Textures/soda_sprite.png"
+}
 
 var time = 0
 var kill_amount: int = 0
+
+var seconds_str = ""
+var minutes_str = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,10 +34,15 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_info_visibility_changed():
+func show_info(text: String) -> void:
+	info.text = text
+	info.visible = true
 	await get_tree().create_timer(2.0).timeout
 	info.visible = false
+
+#func _on_info_visibility_changed():
+	#await get_tree().create_timer(2.0).timeout
+	#info.visible = false
 
 func set_corsair_location():
 	crossair.position.x = (get_viewport().size.x / 2) - crossair.size.x / 2
@@ -45,9 +62,18 @@ func enemy_killed() -> void:
 
 func _on_world_timer_timeout() -> void:
 	time += 1
-	var minutes = str(time / 60)
-	var seconds = str(time % 60)
-	time_label.text= minutes + ":" + seconds
+	var minutes: int = time / 60
+	var seconds: int = time % 60
+	if seconds < 10:
+		seconds_str = "0" + str(seconds)
+	else:
+		seconds_str = str(seconds)
+	if minutes < 10:
+		minutes_str = "0" + str(minutes)
+	else:
+		minutes_str = str(minutes)
+		
+	time_label.text= minutes_str + ":" + seconds_str
 	
 func update_money(amount: int) -> void:
 	money_value.text = str(amount)
@@ -60,3 +86,13 @@ func update_ammo_display(type: String, magazine: int, total: int) -> void:
 			secondary_ammo_label.text = str(magazine) + "/" + str(total)
 		_:
 			print(type + " is not a weapon type")
+			
+func update_item_display(item: String) -> void:
+	print(item)
+	if item_dict.has(item):
+		item_dict[item].increment_amount()
+	else:
+		var new_item = ITEM_UI.instantiate()
+		item_dict[item] = new_item
+		item_inventory_container.add_child(new_item)
+		new_item.set_icon(item_textures[item])

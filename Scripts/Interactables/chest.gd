@@ -1,31 +1,34 @@
-extends Node3D
+extends interactible
 
-signal chest_opened
-@onready var glow = $glow
-@onready var shader = $body.material.next_pass
-@onready var price_tag = $SubViewport/Label
+var cost: int = 0
+@onready var timer = $Timer
+var common_items = []
 
-var price = 30
+func _ready() -> void:
+	common_items.push_back(preload("res://Scenes/Interactables/Items/Broccoli.tscn"))
+	common_items.push_back(preload("res://Scenes/Interactables/Items/SuspiciousMushroom.tscn"))
+	common_items.push_back(preload("res://Scenes/Interactables/Items/SweetSoda.tscn"))
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	price_tag.text = str(price) + "g"
+func interact() -> bool:
+	var player_money = global.player.inventory.items["coins"]
+	if player_money >= cost:
+		player_money = player_money - cost
+		global.player.inventory.spend_money(cost)
+		timer.start()
+		return true
+	return false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
-func open_chest(money):
-	if money >= price:
-		shader.set_shader_parameter("strength", 0.0)
-		queue_free()
-		emit_signal("chest_opened")
-		return money - price
-	else:
-		return money
-
-func _on_body_chest_used():
-	shader.set_shader_parameter("strength", 0.0)
+func _on_timer_timeout():
+	var random_item = get_random_item()
+	var instance = random_item.instantiate()
+	instance.global_position = position
+	get_parent().add_child(instance)
+	instance.global_position.y = instance.global_position.y +1
+	instance.get_child(0).apply_impulse(Vector3(0,1,0))
 	queue_free()
-	
+
+func get_random_item():
+	randomize()
+	var choice = common_items[randi() % common_items.size()]
+	return choice

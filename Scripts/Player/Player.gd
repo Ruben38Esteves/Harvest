@@ -52,15 +52,12 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var interact_aim = $Head/Camera3D/interact_aim
 
 #stats
-@onready var health_bar = $"UI/Hud/HealthBar"
+@onready var health_bar = $"UI/Hud/BottomLeft/HealthBar"
 @onready var timer = $Timer
 signal player_hit
+const base_health = 100.0
 var maxHealth = 100.0
 var health = 100.0
-
-#money
-var money = 0
-@onready var money_value = $"UI/Hud/Money/MoneyValue"
 
 
 #guns
@@ -85,6 +82,7 @@ var mouse_input
 
 func _ready():
 	global.player = self
+	global.inventory = inventory
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	current_gun = "primary"
 	update_progress_bar()
@@ -203,17 +201,18 @@ func _physics_process(delta):
 	#open chest
 	if Input.is_action_just_pressed("interact"):
 		if interact_aim.is_colliding():
-			if interact_aim.get_collider().is_in_group("chest"):
-				money = interact_aim.get_collider().used(money)
-				money_value.text = str(money)
+			var inter_coll = interact_aim.get_collider()
+			if inter_coll and inter_coll.is_in_group("interactible"):
+				inter_coll.interact()
+					
 	
 	#chest glow
 	var coll = interact_aim.get_collider()
 	if coll != looking_at:
-		if coll != null and coll.is_in_group("chest"):
-			coll.targeted = true
-		if looking_at != null and looking_at.is_in_group("chest"):
-			looking_at.targeted = false
+		if coll != null and coll.is_in_group("interactible"):
+			coll.set_targetted()
+		if looking_at != null and looking_at.is_in_group("interactible"):
+			looking_at.set_untargetted()
 		looking_at = coll
 		
 	weapon_sway(delta)
@@ -261,23 +260,15 @@ func recieve_ammo():
 	elif current_gun == "meelee":
 		primary_weapon.increase_ammo()
 
-func glow_chest(target_chest):
-	target_chest.glow(true)
-	while interact_aim.get_collider() == target_chest:
-		pass
-	target_chest.glow(false)
-	
-func get_money(value):
-	money += value
-	money_value.text = str(money)
 
-func get_item(item: String) -> void:
-	#print("got: " + item)
-	#match item:
-		#"coins":
-			#get_money(10)
+func get_item(item: String, description: String) -> void:
+	match item:
+		"suspicious_mushroom":
+			update_max_health()
+		"sweet_soda":
+			meelee_weapon.update_attack_speed()
 	inventory.get_item(item)
-	
+	ui.show_info(description)
 
 func _on_timer_timeout():
 	if health < maxHealth:
@@ -304,6 +295,10 @@ func crouch() -> void:
 	
 func uncrouch() -> void:
 	animation_player.play("uncrouch")
+	
+func update_max_health() -> void:
+	maxHealth = base_health * ( 1.0 + 0.05 * inventory.items["suspicious_mushroom"])
+	update_progress_bar()
 	
 func _on_zombie_zombie_hit() -> void:
 	ui.enemy_hit()

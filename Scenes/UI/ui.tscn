@@ -1,12 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfdgyti3y6c3w"]
+[gd_scene load_steps=10 format=3 uid="uid://dfdgyti3y6c3w"]
 
 [ext_resource type="Script" uid="uid://cr5npxp108dhq" path="res://Scripts/UI/ui.gd" id="1_6lsb7"]
+[ext_resource type="LabelSettings" uid="uid://03530xa8loou" path="res://Textures/label_settings.tres" id="2_nf4gj"]
 [ext_resource type="Script" uid="uid://b7uc05lnrelap" path="res://Scripts/UI/debug.gd" id="2_pn51r"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5cnb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31hoy"]
-bg_color = Color(0.992157, 0.345098, 0.337255, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_o2crb"]
 subpixel_positioning = 0
@@ -14,6 +10,11 @@ subpixel_positioning = 0
 [sub_resource type="Theme" id="Theme_g043x"]
 default_font = SubResource("SystemFont_o2crb")
 default_font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5cnb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31hoy"]
+bg_color = Color(0.992157, 0.345098, 0.337255, 1)
 
 [sub_resource type="SystemFont" id="SystemFont_oe83k"]
 subpixel_positioning = 0
@@ -24,9 +25,11 @@ font_size = 10
 
 [node name="UI" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_6lsb7")
 
@@ -73,49 +76,51 @@ mouse_filter = 2
 color = Color(0.843137, 0, 0.2, 0.211765)
 
 [node name="Hud" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="Ammo" type="VBoxContainer" parent="Hud"]
-layout_mode = 0
-offset_left = 1416.0
-offset_top = 738.0
-offset_right = 1467.0
-offset_bottom = 788.0
-scale = Vector2(2.34706, 2.05216)
+[node name="BottomRight" type="VBoxContainer" parent="Hud"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -114.0
+offset_top = -134.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
 mouse_filter = 2
 
-[node name="Primary" type="Label" parent="Hud/Ammo"]
+[node name="Primary" type="Label" parent="Hud/BottomRight"]
 layout_mode = 2
 text = "Ammo"
+label_settings = ExtResource("2_nf4gj")
 
-[node name="Secondary" type="Label" parent="Hud/Ammo"]
+[node name="Secondary" type="Label" parent="Hud/BottomRight"]
 layout_mode = 2
 text = "Ammo"
-
-[node name="HealthBar" type="ProgressBar" parent="Hud"]
-layout_mode = 0
-offset_left = 54.0
-offset_top = 810.0
-offset_right = 545.0
-offset_bottom = 833.0
-mouse_filter = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_y5cnb")
-theme_override_styles/fill = SubResource("StyleBoxFlat_31hoy")
+label_settings = ExtResource("2_nf4gj")
 
 [node name="timer" type="VBoxContainer" parent="Hud"]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 44.0
-offset_right = 177.0
-offset_bottom = 150.0
+layout_mode = 1
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 116.0
+offset_bottom = 134.0
 
 [node name="Time" type="Label" parent="Hud/timer"]
 layout_mode = 2
 theme = SubResource("Theme_g043x")
 text = "Time"
+label_settings = ExtResource("2_nf4gj")
 
 [node name="Kills" type="HBoxContainer" parent="Hud/timer"]
 layout_mode = 2
@@ -124,37 +129,70 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Kills:"
+label_settings = ExtResource("2_nf4gj")
 
 [node name="KillAmount" type="Label" parent="Hud/timer/Kills"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "0"
+label_settings = ExtResource("2_nf4gj")
 
-[node name="Money" type="HBoxContainer" parent="Hud"]
-layout_mode = 0
-offset_left = 72.0
-offset_top = 743.0
-offset_right = 144.0
-offset_bottom = 792.0
+[node name="ItemInventoryContainer" type="HBoxContainer" parent="Hud"]
+custom_minimum_size = Vector2(1000, 40)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -500.0
+offset_top = 50.0
+offset_right = 500.0
+offset_bottom = 90.0
+grow_horizontal = 2
+alignment = 1
 
-[node name="MoneyLabel" type="Label" parent="Hud/Money"]
+[node name="BottomLeft" type="VBoxContainer" parent="Hud"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -117.0
+offset_right = 450.0
+offset_bottom = -50.0
+grow_vertical = 0
+
+[node name="Money" type="HBoxContainer" parent="Hud/BottomLeft"]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="Hud/BottomLeft/Money"]
 layout_mode = 2
 text = "COINS: "
+label_settings = ExtResource("2_nf4gj")
 
-[node name="MoneyValue" type="Label" parent="Hud/Money"]
+[node name="MoneyValue" type="Label" parent="Hud/BottomLeft/Money"]
 layout_mode = 2
-text = "0
-"
+text = "0"
+label_settings = ExtResource("2_nf4gj")
 
-[node name="Info" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 746.0
-offset_top = 995.0
-offset_right = 1099.0
-offset_bottom = 1050.0
-theme_override_font_sizes/font_size = 40
-text = "Nothing to Display"
+[node name="HealthBar" type="ProgressBar" parent="Hud/BottomLeft"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_y5cnb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_31hoy")
+
+[node name="Info" type="Label" parent="Hud"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -73.0
+offset_right = 20.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="Player_death_screen" type="ColorRect" parent="."]
 visible = false
@@ -195,5 +233,5 @@ layout_mode = 2
 [node name="WorldTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="visibility_changed" from="Info" to="." method="_on_info_visibility_changed"]
+[connection signal="visibility_changed" from="Hud/Info" to="." method="_on_info_visibility_changed"]
 [connection signal="timeout" from="WorldTimer" to="." method="_on_world_timer_timeout"]

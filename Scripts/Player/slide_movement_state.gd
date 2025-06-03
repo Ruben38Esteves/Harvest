@@ -23,6 +23,11 @@ func update(delta) -> void:
 	if player.velocity.length() <= player.CROUCH_SPEED:
 		should_uncrouch = false
 		state_machine.change_state("CrouchMovementState")
+		
+	# must handle this later, falling after sliding	
+	# what must happen?
+	#if not player.is_on_floor() and not player.slide_check.is_colliding():
+		#state_machine.change_state("FallingMovementState")
 
 func exit() -> void:
 	player.TARGET_FOV = player.BASE_FOV

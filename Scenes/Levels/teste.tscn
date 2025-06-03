@@ -1,15 +1,16 @@
 [gd_scene load_steps=7 format=3 uid="uid://dl7oeur4sc8j3"]
 
 [ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Scenes/player.tscn" id="1_5fy1l"]
-[ext_resource type="PackedScene" uid="uid://v67fguycijs5" path="res://Scenes/Interactables/chest.tscn" id="2_ypbtj"]
-[ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://Scenes/ui.tscn" id="3_svbol"]
-[ext_resource type="PackedScene" uid="uid://ciia7yn2x5t7h" path="res://Scenes/Interactables/Items/Item.tscn" id="4_3ulyl"]
-[ext_resource type="PackedScene" uid="uid://bdp1mtf8ldgtp" path="res://Scenes/Interactables/Items/coins_old.tscn" id="5_5v1in"]
+[ext_resource type="Script" uid="uid://bxy1um66at8yb" path="res://Scripts/Levels/teste.gd" id="1_5v1in"]
+[ext_resource type="PackedScene" uid="uid://cveediuxpkbtu" path="res://Scenes/Interactables/chest.tscn" id="2_ypbtj"]
+[ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://Scenes/UI/ui.tscn" id="3_svbol"]
+[ext_resource type="PackedScene" uid="uid://bdp1mtf8ldgtp" path="res://Scenes/Interactables/Items/coins.tscn" id="5_5v1in"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bswi4"]
 albedo_color = Color(0.662745, 0.380392, 0.129412, 1)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_5v1in")
 
 [node name="UI" parent="." instance=ExtResource("3_svbol")]
 
@@ -24,9 +25,6 @@ material_override = SubResource("StandardMaterial3D_bswi4")
 use_collision = true
 collision_layer = 2
 size = Vector3(110.292, 1, 105.508)
-
-[node name="Node3D" parent="Node3D2" instance=ExtResource("2_ypbtj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05471, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node3D2"]
 transform = Transform3D(0.342036, 0.378666, -0.860014, 0, 0.915213, 0.40297, 0.939687, -0.13783, 0.313036, -12.2698, 6.59911, 16.0333)
@@ -62,8 +60,35 @@ use_collision = true
 collision_layer = 2
 size = Vector3(17.1803, 0.788513, 7.63043)
 
-[node name="Item" parent="Node3D2" instance=ExtResource("4_3ulyl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7302, 3.36771, 8.32588)
+[node name="Coins" parent="Node3D2" instance=ExtResource("5_5v1in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82194, 1.15189, -2.42698)
 
-[node name="batata" parent="." instance=ExtResource("5_5v1in")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.96191, 6.47409, 3.2546)
+[node name="Coins2" parent="Node3D2" instance=ExtResource("5_5v1in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82194, 1.15189, -2.42698)
+
+[node name="Coins3" parent="Node3D2" instance=ExtResource("5_5v1in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82194, 1.15189, -2.42698)
+
+[node name="Coins4" parent="Node3D2" instance=ExtResource("5_5v1in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82194, 1.15189, -2.42698)
+
+[node name="Coins5" parent="Node3D2" instance=ExtResource("5_5v1in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82194, 1.15189, -2.42698)
+
+[node name="Coins6" parent="Node3D2" instance=ExtResource("5_5v1in")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82194, 1.15189, -2.42698)
+
+[node name="Chest" parent="." instance=ExtResource("2_ypbtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112782, 0.501136, 5.93805)
+
+[node name="Chest2" parent="." instance=ExtResource("2_ypbtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3073, 0.501136, 5.93805)
+
+[node name="Chest3" parent="." instance=ExtResource("2_ypbtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.57417, 0.501136, 5.93805)
+
+[node name="Chest4" parent="." instance=ExtResource("2_ypbtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.40307, 0.501136, 5.93805)
+
+[node name="Chest5" parent="." instance=ExtResource("2_ypbtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0467, 0.501136, 5.93805)

@@ -136,6 +136,7 @@ _data = {
 [node name="HandGun" type="Node3D"]
 script = ExtResource("1_ls1vf")
 type = "secondary"
+damage = 20
 fire_rate = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
