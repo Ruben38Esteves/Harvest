@@ -23,6 +23,9 @@ func update(delta) -> void:
 	if player.velocity.length() <= player.CROUCH_SPEED:
 		should_uncrouch = false
 		state_machine.change_state("CrouchMovementState")
+		
+	if not player.is_on_floor():
+		state_machine.change_state("FallingMovementState")
 
 func exit() -> void:
 	player.TARGET_FOV = player.BASE_FOV

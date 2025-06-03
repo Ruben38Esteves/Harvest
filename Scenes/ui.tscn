@@ -180,15 +180,20 @@ mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_y5cnb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_31hoy")
 
-[node name="Info" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 746.0
-offset_top = 995.0
-offset_right = 1099.0
-offset_bottom = 1050.0
-theme_override_font_sizes/font_size = 40
-text = "Nothing to Display"
+[node name="Info" type="Label" parent="Hud"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -73.0
+offset_right = 20.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = ExtResource("2_nf4gj")
 
 [node name="Player_death_screen" type="ColorRect" parent="."]
 visible = false
@@ -229,5 +234,5 @@ layout_mode = 2
 [node name="WorldTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="visibility_changed" from="Info" to="." method="_on_info_visibility_changed"]
+[connection signal="visibility_changed" from="Hud/Info" to="." method="_on_info_visibility_changed"]
 [connection signal="timeout" from="WorldTimer" to="." method="_on_world_timer_timeout"]

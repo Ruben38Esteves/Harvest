@@ -261,9 +261,9 @@ func recieve_ammo():
 		primary_weapon.increase_ammo()
 
 
-func get_item(item: String) -> void:
+func get_item(item: String, description: String) -> void:
 	inventory.get_item(item)
-	
+	ui.show_info(description)
 
 func _on_timer_timeout():
 	if health < maxHealth:

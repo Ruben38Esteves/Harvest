@@ -19,5 +19,5 @@ func _process(delta):
 
 func _on_collectible_area_body_entered(body):
 	if body.is_in_group("player"):
-		body.get_item(get_parent().item_type)
+		body.get_item(get_parent().item_type, get_parent().item_description)
 		get_parent().queue_free()

@@ -2,7 +2,6 @@ extends Control
 
 @onready var crossair: ColorRect = $crossair
 @onready var crossair2: ColorRect = $crossair2
-@onready var info = $Info
 @onready var kill_amount_display: Label = $Hud/timer/Kills/KillAmount
 @onready var world_timer: Timer = $WorldTimer
 @onready var time_label: Label = $Hud/timer/Time
@@ -10,6 +9,7 @@ extends Control
 @onready var primary_ammo_label: Label = $Hud/BottomRight/Primary
 @onready var secondary_ammo_label: Label = $Hud/BottomRight/Secondary
 @onready var item_inventory_container: HBoxContainer = $Hud/ItemInventoryContainer
+@onready var info = $Hud/Info
 
 const ITEM_UI = preload("res://Scenes/UI/item_ui.tscn")
 var item_dict = {}
@@ -33,10 +33,15 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_info_visibility_changed():
+func show_info(text: String) -> void:
+	info.text = text
+	info.visible = true
 	await get_tree().create_timer(2.0).timeout
 	info.visible = false
+
+#func _on_info_visibility_changed():
+	#await get_tree().create_timer(2.0).timeout
+	#info.visible = false
 
 func set_corsair_location():
 	crossair.position.x = (get_viewport().size.x / 2) - crossair.size.x / 2
