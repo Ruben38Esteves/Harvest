@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bc0mp2isk8umx"]
+[gd_scene load_steps=21 format=3 uid="uid://bc0mp2isk8umx"]
 
 [ext_resource type="Script" uid="uid://d1geni2y2h8vb" path="res://Scripts/Enemies/Zombie/zombie.gd" id="1_d7cji"]
 [ext_resource type="Script" uid="uid://hop0kprny4f4" path="res://Scripts/Enemies/Zombie/hitbox.gd" id="2_e5fcn"]
@@ -125,12 +125,6 @@ height = 1.70049
 [sub_resource type="ViewportTexture" id="ViewportTexture_4slyf"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wowr"]
-bg_color = Color(1, 0.345098, 0.254902, 1)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_u3lrr"]
-viewport_path = NodePath(".")
-
 [node name="Zombie" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 6
@@ -186,24 +180,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46584, 0)
 visible = false
 flip_h = false
 texture = SubResource("ViewportTexture_4slyf")
-
-[node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-size = Vector2i(100, 512)
-
-[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
-offset_right = 100.0
-offset_bottom = 15.0
-mouse_filter = 2
-theme_override_styles/fill = SubResource("StyleBoxFlat_6wowr")
-max_value = 3.0
-show_percentage = false
-
-[node name="health_bar" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194256, 1.49489, 0.0296445)
-visible = false
-billboard = 2
-texture = SubResource("ViewportTexture_u3lrr")
 
 [node name="blood_particles" parent="." instance=ExtResource("4_l3le8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
