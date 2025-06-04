@@ -23,3 +23,4 @@ func deactivate() -> void:
 	if not active:
 		return
 	active = false
+	get_parent().status_ended(type)

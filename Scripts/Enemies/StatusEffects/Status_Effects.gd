@@ -2,6 +2,8 @@ class_name status_effects
 
 extends Node
 
+@onready var enemy_health_bar = $"../EnemyHealthBar"
+
 @onready var timer = $Timer
 # statuses
 @onready var poison = $Poison
@@ -11,7 +13,8 @@ var statuses = {}
 func _ready():
 	statuses["poison"] = poison
 	timer.timeout.connect(proc)
-	
+
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -19,6 +22,8 @@ func _process(delta):
 	
 func apply_status(status_name: String) -> void:
 	if statuses.has(status_name):
+		if statuses[status_name].active == false:
+			enemy_health_bar.show_status(status_name)
 		statuses[status_name].activate()
 
 func proc() -> void:
@@ -28,3 +33,6 @@ func proc() -> void:
 			damage += statuses[status_name].proc()
 	if damage != 0:
 		get_parent().hit(damage)
+		
+func status_ended(status_name: String) -> void:
+	enemy_health_bar.hide_status(status_name)
