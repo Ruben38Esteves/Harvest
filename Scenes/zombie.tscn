@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://bc0mp2isk8umx"]
+[gd_scene load_steps=23 format=3 uid="uid://bc0mp2isk8umx"]
 
 [ext_resource type="Script" uid="uid://d1geni2y2h8vb" path="res://Scripts/Enemies/Zombie/zombie.gd" id="1_d7cji"]
 [ext_resource type="Script" uid="uid://hop0kprny4f4" path="res://Scripts/Enemies/Zombie/hitbox.gd" id="2_e5fcn"]
 [ext_resource type="Texture2D" uid="uid://clgplgssg3a8f" path="res://Sprites/attack animt.png" id="2_wi47e"]
+[ext_resource type="PackedScene" uid="uid://ccifv7qhve1yj" path="res://Scenes/UI/EnemyHealthBar.tscn" id="4_4slyf"]
 [ext_resource type="PackedScene" uid="uid://creq00vrl663f" path="res://Scenes/Models/blood_particles.tscn" id="4_l3le8"]
 [ext_resource type="PackedScene" uid="uid://d05y8uyhor4cm" path="res://Scenes/Status_Effects.tscn" id="5_437ox"]
 
@@ -121,11 +122,14 @@ transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition
 radius = 0.396249
 height = 1.70049
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_4slyf"]
+viewport_path = NodePath("SubViewport")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wowr"]
 bg_color = Color(1, 0.345098, 0.254902, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_u3lrr"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath(".")
 
 [node name="Zombie" type="CharacterBody3D"]
 collision_layer = 2
@@ -177,6 +181,12 @@ parameters/conditions/walk = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302943, 0)
 shape = SubResource("CapsuleShape3D_0kvla")
 
+[node name="EnemyHealthBar" parent="." instance=ExtResource("4_4slyf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46584, 0)
+visible = false
+flip_h = false
+texture = SubResource("ViewportTexture_4slyf")
+
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 size = Vector2i(100, 512)
@@ -190,7 +200,7 @@ max_value = 3.0
 show_percentage = false
 
 [node name="health_bar" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194256, -0.937701, 0.0296445)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0194256, 1.49489, 0.0296445)
 visible = false
 billboard = 2
 texture = SubResource("ViewportTexture_u3lrr")

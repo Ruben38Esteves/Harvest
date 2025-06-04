@@ -20,6 +20,7 @@ signal zombie_killed
 @onready var progress_bar = $SubViewport/ProgressBar
 @onready var sprite = $Sprite3D
 @onready var health_bar = $health_bar
+@onready var enemy_health_bar = $EnemyHealthBar
 const blood_particles = preload("res://Scenes/Models/blood_particles.tscn")
 
 #coins utils
@@ -31,8 +32,8 @@ var state_machine
 
 func _ready():
 	state_machine = anim_tree.get("parameters/playback")
-	progress_bar.max_value = health
-	progress_bar.value = health
+	enemy_health_bar.set_max_health(health)
+	enemy_health_bar.set_health(health)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -67,10 +68,10 @@ func _attack_finished():
 # zombie attacked
 func hit(dmg, hit_location):
 	if health == max_health:
-		health_bar.visible = true
+		enemy_health_bar.visible = true
 	health -= dmg
 	emit_signal("zombie_hit")
-	progress_bar.value = health
+	enemy_health_bar.set_health(health)
 	spawn_blood(hit_location)
 	if health <= 0:
 		if !dead:

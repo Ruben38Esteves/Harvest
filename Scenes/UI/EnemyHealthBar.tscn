@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccifv7qhve1yj"]
+
+[ext_resource type="Script" uid="uid://dx8p6gu0ruwpm" path="res://Scripts/UI/enemy_health_bar.gd" id="1_c2fqn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_c2fqn"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n5pse"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c2fqn"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="EnemyHealthBar" type="Sprite3D"]
+flip_h = true
+billboard = 2
+texture = SubResource("ViewportTexture_c2fqn")
+script = ExtResource("1_c2fqn")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(100, 40)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport"]
+custom_minimum_size = Vector2(100, 40)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport/VBoxContainer"]
+custom_minimum_size = Vector2(100, 15)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_n5pse")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c2fqn")
+value = 10.0
+show_percentage = false
