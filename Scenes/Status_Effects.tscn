@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://d05y8uyhor4cm"]
+[gd_scene load_steps=3 format=3 uid="uid://d05y8uyhor4cm"]
 
 [ext_resource type="Script" uid="uid://bngtmkt3nkjsy" path="res://Scripts/Enemies/StatusEffects/Status_Effects.gd" id="1_8hemn"]
+[ext_resource type="Script" uid="uid://xtx8pgcyudmq" path="res://Scripts/Enemies/StatusEffects/status_effect.gd" id="2_x7s66"]
 
 [node name="StatusEffects" type="Node"]
 script = ExtResource("1_8hemn")
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Poison" type="Node" parent="."]
+script = ExtResource("2_x7s66")
+type = "poison"
+damage = 5.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

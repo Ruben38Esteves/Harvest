@@ -4,8 +4,6 @@
 
 [node name="PoisonEffect" type="Node"]
 script = ExtResource("1_hyrbe")
-type = "poison"
-damage = 5.0
 
 [node name="ProcTimer" type="Timer" parent="."]
 

@@ -2,46 +2,29 @@ class_name status_effects
 
 extends Node
 
-@onready var proc_timer: Timer = $ProcTimer
-@onready var duration_timer: Timer = $DurationTimer
-
-var active = false
-@export var type: String = ""
-@export var damage: float = 0
-@export var duration: float = 4
-@export var frequency: float = 1
+@onready var timer = $Timer
+# statuses
+@onready var poison = $Poison
+var statuses = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_duration(duration)
-	set_proc_frequency(frequency)
-	proc_timer.timeout.connect(proc)
-	duration_timer.timeout.connect(deactivate)
+	statuses["poison"] = poison
+	timer.timeout.connect(proc)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
-func set_duration(duration: float) -> void:
-	duration_timer.wait_time = duration
-	
-func set_proc_frequency(frequency: float) -> void:
-	proc_timer.wait_time = 1.0 / frequency
+func apply_status(status_name: String) -> void:
+	if statuses.has(status_name):
+		statuses[status_name].activate()
 
-func activate() -> void:
-	if active:
-		return
-	active = true
-	proc_timer.start()
-	duration_timer.start()
-	
-func deactivate() -> void:
-	if not active:
-		return
-	active = false
-	proc_timer.stop()
-	
 func proc() -> void:
-	print("procced")
-	get_parent().hit(damage)
+	var damage: float = 0
+	for status_name in statuses:
+		if statuses[status_name].active == true:
+			damage += statuses[status_name].proc()
+	if damage != 0:
+		get_parent().hit(damage)

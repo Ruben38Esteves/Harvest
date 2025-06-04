@@ -23,4 +23,4 @@ func _on_timer_timeout():
 func _on_damage_timer_timeout():
 	for i in area_3d.get_overlapping_areas():
 		if i.is_in_group("enemy"):
-			i.hit(damage, position, "poison")
+			i.hit(damage, position, ["poison"])

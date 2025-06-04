@@ -18,10 +18,10 @@ func _ready():
 func _process(delta):
 	pass
 
-func hit(dmg, hit_location = position, status = "none"):
+func hit(dmg, hit_location = position, status: Array = []):
 	parent.hit(calculate_damage(dmg), hit_location, status)
 	
-func melee_hit(dmg, hit_location = position, status = "none"):
+func melee_hit(dmg, hit_location = position, status: Array = []):
 	parent.hit(dmg, hit_location, status)
 	return parent
 	

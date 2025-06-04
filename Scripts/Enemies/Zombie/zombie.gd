@@ -14,7 +14,7 @@ var dead: bool = false
 signal zombie_hit
 signal zombie_killed
 
-@onready var status_effects = $StatusEffects
+
 @onready var nav_agent =$NavigationAgent3D
 @onready var anim_tree = $AnimationTree
 @onready var progress_bar = $SubViewport/ProgressBar
@@ -22,10 +22,8 @@ signal zombie_killed
 @onready var enemy_health_bar = $EnemyHealthBar
 const blood_particles = preload("res://Scenes/Models/blood_particles.tscn")
 
-@onready var poison_effect_node = $PoisonEffect
+@onready var status_effects = $StatusEffects
 
-#statuses
-var statuses = {}
 
 #coins utils
 const COINS = preload("res://Scenes/Interactables/Items/coins.tscn")
@@ -38,10 +36,6 @@ func _ready():
 	state_machine = anim_tree.get("parameters/playback")
 	enemy_health_bar.set_max_health(health)
 	enemy_health_bar.set_health(health)
-	
-	print("PoisonEffect in _ready():", poison_effect_node)
-	
-	statuses["poison"] = poison_effect_node
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -74,7 +68,7 @@ func _attack_finished():
 	
 	
 # zombie attacked
-func hit(dmg, hit_location = position, status: String = "none"):
+func hit(dmg, hit_location = position, status: Array = []):
 	if health == max_health:
 		enemy_health_bar.visible = true
 	health -= dmg
@@ -94,9 +88,8 @@ func hit(dmg, hit_location = position, status: String = "none"):
 		await get_tree().create_timer(0.1).timeout
 		sprite.modulate = Color.WHITE
 		
-		if status!="none":
-			print(status)
-			apply_status(status)
+		for effect in status:
+			status_effects.apply_status(effect)
 
 func spawn_blood(hit_location):
 	var blood = blood_particles.instantiate()
@@ -107,8 +100,6 @@ func spawn_blood(hit_location):
 func pushed(dir, knockback):
 	velocity += dir * knockback
 	
-func apply_status(status: String) -> void:
-	print(status, " is being applied")
-	print(statuses)
-	if statuses.has(status):
-		statuses[status].activate()
+#func apply_status(status: String) -> void:
+	#if statuses.has(status):
+		#statuses[status].activate()
