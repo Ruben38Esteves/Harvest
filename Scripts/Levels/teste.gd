@@ -15,7 +15,7 @@ func spawn_player_weapons():
 	
 	instance = secondary_weapon.instantiate()
 	global.player.secondary.add_child(instance)
-	
+
 	instance = meelee_weapon.instantiate()
 	global.player.meelee.add_child(instance)
 	

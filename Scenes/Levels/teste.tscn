@@ -80,19 +80,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82194, 1.15189, -2.42698)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82194, 1.15189, -2.42698)
 
 [node name="Zombie" parent="Node3D2" instance=ExtResource("5_ucykc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.991475, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 0)
 
 [node name="Zombie2" parent="Node3D2" instance=ExtResource("5_ucykc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36201, 2.4003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 0.802981)
 
 [node name="Zombie3" parent="Node3D2" instance=ExtResource("5_ucykc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.36201, 3.79861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 2.22715)
 
 [node name="Zombie4" parent="Node3D2" instance=ExtResource("5_ucykc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50706, 1.36201, 3.79861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 3.00405)
 
 [node name="Zombie5" parent="Node3D2" instance=ExtResource("5_ucykc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50706, 1.36201, 3.79861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 3.83606)
 
 [node name="Chest" parent="." instance=ExtResource("2_ypbtj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.112782, 0.501136, 5.93805)
