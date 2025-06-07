@@ -9,6 +9,7 @@ var items = {
 	"broccoli": 0,
 	"suspicious_mushroom": 0,
 	"sweet_soda": 0,
+	"fluffy_cotton": 0,
 }
 
 func _ready() -> void:

@@ -11,6 +11,7 @@ item_description = "Attacking after sliding applies chain eletricity"
 metadata/_custom_type_script = "uid://bbg2cgxj3me1w"
 
 [node name="Item" parent="." instance=ExtResource("1_wgyhi")]
+light = Color(1, 1, 1, 1)
 
 [node name="Mesh" type="MeshInstance3D" parent="Item/Visual" index="0"]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
