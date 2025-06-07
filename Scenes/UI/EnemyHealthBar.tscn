@@ -14,6 +14,7 @@ bg_color = Color(1, 0, 0, 1)
 [node name="EnemyHealthBar" type="Sprite3D"]
 flip_h = true
 billboard = 2
+texture_filter = 0
 texture = SubResource("ViewportTexture_c2fqn")
 script = ExtResource("1_c2fqn")
 

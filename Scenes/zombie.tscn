@@ -165,6 +165,7 @@ texture = SubResource("ViewportTexture_4slyf")
 transform = Transform3D(2.74663, 0, 0, 0, 3.09856, 0, 0, 0, 1, 0, 0.44666, 0)
 billboard = 2
 shaded = true
+texture_filter = 0
 texture = ExtResource("2_wi47e")
 hframes = 5
 
