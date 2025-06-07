@@ -90,6 +90,7 @@ func hit(dmg, hit_location = position, status: Array = []):
 		
 		for effect in status:
 			status_effects.apply_status(effect)
+		
 
 func spawn_blood(hit_location):
 	var blood = blood_particles.instantiate()

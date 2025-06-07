@@ -13,6 +13,8 @@ func enter(last_state: String) -> void:
 	player.slide_speed = 12.5
 	player.TARGET_FOV = player.SLIDE_FOV
 	
+	global.inventory.activate_cotton()
+		
 func update(delta) -> void:
 	if Input.is_action_just_released("crouch"):
 		state_machine.change_state("IdleMovementState")

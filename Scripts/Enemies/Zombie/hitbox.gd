@@ -20,6 +20,9 @@ func _process(delta):
 
 func hit(dmg, hit_location = position, status: Array = []):
 	parent.hit(calculate_damage(dmg), hit_location, status)
+	if global.inventory.cotton_active == true:
+		print("chocado")
+		global.inventory.deactivate_cotton()
 	
 func melee_hit(dmg, hit_location = position, status: Array = []):
 	parent.hit(dmg, hit_location, status)
