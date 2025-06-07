@@ -16,7 +16,8 @@ var item_dict = {}
 var item_textures = {
 	"broccoli": "res://Textures/broccoli_sprite.png",
 	"suspicious_mushroom": "res://Textures/mushroom_sprite.png",
-	"sweet_soda": "res://Textures/soda_sprite.png"
+	"sweet_soda": "res://Textures/soda_sprite.png",
+	"fluffy_cotton": "res://Textures/fluffy_cotton_sprite.png",
 }
 
 var time = 0
