@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl7oeur4sc8j3"]
+[gd_scene load_steps=9 format=3 uid="uid://dl7oeur4sc8j3"]
 
 [ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Scenes/player.tscn" id="1_5fy1l"]
 [ext_resource type="Script" uid="uid://bxy1um66at8yb" path="res://Scripts/Levels/teste.gd" id="1_5v1in"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://Scenes/UI/ui.tscn" id="3_svbol"]
 [ext_resource type="PackedScene" uid="uid://bdp1mtf8ldgtp" path="res://Scenes/Interactables/Items/coins.tscn" id="5_5v1in"]
 [ext_resource type="PackedScene" uid="uid://bc0mp2isk8umx" path="res://Scenes/zombie.tscn" id="5_ucykc"]
+[ext_resource type="PackedScene" uid="uid://oxnpxdcxtp32" path="res://Scenes/Interactables/Items/FluffyCotton.tscn" id="7_birvq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bswi4"]
 albedo_color = Color(0.662745, 0.380392, 0.129412, 1)
@@ -83,13 +84,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.82194, 1.15189, -2.42698)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 0)
 
 [node name="Zombie2" parent="Node3D2" instance=ExtResource("5_ucykc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 0.802981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90364, 1.05268, 0.802981)
 
 [node name="Zombie3" parent="Node3D2" instance=ExtResource("5_ucykc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 2.22715)
 
 [node name="Zombie4" parent="Node3D2" instance=ExtResource("5_ucykc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 3.00405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94271, 1.05268, 3.00405)
 
 [node name="Zombie5" parent="Node3D2" instance=ExtResource("5_ucykc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 3.83606)
@@ -108,3 +109,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.40307, 0.501136, 5.93805)
 
 [node name="Chest5" parent="." instance=ExtResource("2_ypbtj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0467, 0.501136, 5.93805)
+
+[node name="FluffyCotton" parent="." instance=ExtResource("7_birvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1457, 1.25179, 1.53247)
