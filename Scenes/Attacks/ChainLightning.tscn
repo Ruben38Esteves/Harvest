@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://7bnvgojs706f"]
+
+[ext_resource type="Script" uid="uid://cfcg76da1rxpc" path="res://Scripts/Attacks/chain_lightning.gd" id="1_qlxml"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fxgbw"]
+radius = 5.0
+
+[sub_resource type="Curve3D" id="Curve3D_qpuii"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mftsn"]
+albedo_color = Color(0, 0, 1, 1)
+emission_enabled = true
+emission = Color(0.561149, 0.704473, 1, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sd0py"]
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_7heue"]
+radius = 0.2
+height = 0.2
+radial_segments = 4
+rings = 4
+
+[node name="ChainLightning" type="Node3D"]
+script = ExtResource("1_qlxml")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_fxgbw")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_qpuii")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Path3D/PathFollow3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_mftsn")
+emitting = false
+lifetime = 0.3
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_sd0py")
+draw_pass_1 = SubResource("SphereMesh_7heue")

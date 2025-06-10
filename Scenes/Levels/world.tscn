@@ -151,7 +151,7 @@ size = Vector3(140, 0.001, 140)
 material = SubResource("StandardMaterial3D_jrnjs")
 
 [node name="crypt2" parent="map/NavigationRegion3D" instance=ExtResource("3_y3fge")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.02447, 0.29872, 6.97187)
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -9.02447, -0.00487387, 6.97187)
 
 [node name="Walls" type="Node3D" parent="map/NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.321468, 0)
