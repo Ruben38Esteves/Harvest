@@ -1,7 +1,9 @@
 extends Node3D
 @onready var path_3d: Path3D = $Path3D
 @onready var area_3d: Area3D = $Area3D
-var length: int = 0
+@onready var timer: Timer = $Timer
+
+var length: int = 1
 var enemies_hit = {}
 
 func _ready() -> void:
@@ -42,5 +44,17 @@ func create_lightning_path(start: Vector3, end: Vector3, segments: int = 10, off
 func _on_timer_timeout() -> void:
 	var next_target = get_closest_body()
 	print(next_target)
-	if next_target!=null:
-		next_target.hit(100)
+	# no more targets
+	if next_target == null:
+		queue_free()
+	next_target.hit(10)
+	length -= 1
+	if length > 0:
+		spread(next_target)
+	else:
+		queue_free()
+		
+func spread(next_target):
+	global_position = next_target.global_position
+	enemies_hit[next_target.get_parent()] = true
+	timer.start()

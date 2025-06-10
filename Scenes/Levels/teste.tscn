@@ -112,3 +112,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0467, 0.501136, 5.93805)
 
 [node name="FluffyCotton" parent="." instance=ExtResource("7_birvq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1457, 1.25179, 1.53247)
+
+[node name="FluffyCotton2" parent="." instance=ExtResource("7_birvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7583, 1.25179, 1.53247)
+
+[node name="FluffyCotton3" parent="." instance=ExtResource("7_birvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2307, 1.25179, 1.53247)

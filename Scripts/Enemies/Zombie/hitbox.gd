@@ -26,6 +26,7 @@ func hit(dmg, hit_location = position, status: Array = []):
 		var instance = chain_lightning.instantiate()
 		instance.global_position = global_position
 		instance.enemies_hit[get_parent()] = true
+		instance.length = global.inventory.items["fluffy_cotton"]
 		get_parent().add_child(instance)
 		global.inventory.deactivate_cotton()
 	
