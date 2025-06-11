@@ -1,3 +1,5 @@
+class_name ui
+
 extends Control
 
 @onready var crossair: ColorRect = $crossair
@@ -5,18 +7,22 @@ extends Control
 @onready var kill_amount_display: Label = $Hud/timer/Kills/KillAmount
 @onready var world_timer: Timer = $WorldTimer
 @onready var time_label: Label = $Hud/timer/Time
-@onready var money_value: Label = $Hud/BottomLeft/Money/MoneyValue
+@onready var money_value: Label = $Hud/timer/Money/MoneyValue
 @onready var primary_ammo_label: Label = $Hud/BottomRight/Primary
 @onready var secondary_ammo_label: Label = $Hud/BottomRight/Secondary
 @onready var item_inventory_container: HBoxContainer = $Hud/ItemInventoryContainer
 @onready var info = $Hud/Info
+
+#buffs
+var buff_indicators = {}
 
 const ITEM_UI = preload("res://Scenes/UI/item_ui.tscn")
 var item_dict = {}
 var item_textures = {
 	"broccoli": "res://Textures/broccoli_sprite.png",
 	"suspicious_mushroom": "res://Textures/mushroom_sprite.png",
-	"sweet_soda": "res://Textures/soda_sprite.png"
+	"sweet_soda": "res://Textures/soda_sprite.png",
+	"fluffy_cotton": "res://Textures/fluffy_cotton_sprite.png",
 }
 
 var time = 0
@@ -28,6 +34,7 @@ var minutes_str = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_corsair_location()
+	buff_indicators["eletricity"] = $Hud/BottomLeft/BuffsContainer/EletricityIndicator
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -96,3 +103,13 @@ func update_item_display(item: String) -> void:
 		item_dict[item] = new_item
 		item_inventory_container.add_child(new_item)
 		new_item.set_icon(item_textures[item])
+		
+func display_buff(buff_name: String) -> void:
+	if not buff_indicators.has(buff_name):
+		return
+	buff_indicators[buff_name].visible = true
+	
+func hide_buff(buff_name: String) -> void:
+	if not buff_indicators.has(buff_name):
+		return
+	buff_indicators[buff_name].visible = false

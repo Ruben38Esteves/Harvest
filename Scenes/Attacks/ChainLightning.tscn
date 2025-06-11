@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://7bnvgojs706f"]
+
+[ext_resource type="Script" uid="uid://cfcg76da1rxpc" path="res://Scripts/Attacks/chain_lightning.gd" id="1_qlxml"]
+[ext_resource type="PackedScene" uid="uid://iaqawiso33rk" path="res://Models/Attacks/Projectile/projectile.tscn" id="2_fxgbw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fxgbw"]
+radius = 5.0
+
+[node name="ChainLightning" type="Node3D"]
+script = ExtResource("1_qlxml")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_fxgbw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="Projectile" parent="." instance=ExtResource("2_fxgbw")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -3,11 +3,13 @@ extends interactible
 var cost: int = 0
 @onready var timer = $Timer
 var common_items = []
+var uncommon_items = []
 
 func _ready() -> void:
 	common_items.push_back(preload("res://Scenes/Interactables/Items/Broccoli.tscn"))
 	common_items.push_back(preload("res://Scenes/Interactables/Items/SuspiciousMushroom.tscn"))
 	common_items.push_back(preload("res://Scenes/Interactables/Items/SweetSoda.tscn"))
+	uncommon_items.push_back(preload("res://Scenes/Interactables/Items/FluffyCotton.tscn"))
 
 func interact() -> bool:
 	var player_money = global.player.inventory.items["coins"]
@@ -30,5 +32,10 @@ func _on_timer_timeout():
 
 func get_random_item():
 	randomize()
-	var choice = common_items[randi() % common_items.size()]
+	var rarity = randf()
+	var choice = null
+	if rarity < 0.3:
+		choice = uncommon_items[randi() % uncommon_items.size()]
+	else:
+		choice = common_items[randi() % common_items.size()]
 	return choice

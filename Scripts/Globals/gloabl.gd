@@ -1,7 +1,7 @@
 extends Node
 
 var player
-var inventory
+var inventory: inventory
 var debug
 
 

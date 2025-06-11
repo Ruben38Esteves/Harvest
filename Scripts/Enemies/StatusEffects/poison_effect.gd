@@ -1,0 +1,3 @@
+class_name poison_effect
+
+extends status_effects

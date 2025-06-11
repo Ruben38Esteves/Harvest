@@ -14,13 +14,16 @@ var dead: bool = false
 signal zombie_hit
 signal zombie_killed
 
-@onready var status_effects = $StatusEffects
+
 @onready var nav_agent =$NavigationAgent3D
 @onready var anim_tree = $AnimationTree
 @onready var progress_bar = $SubViewport/ProgressBar
 @onready var sprite = $Sprite3D
-@onready var health_bar = $health_bar
+@onready var enemy_health_bar = $EnemyHealthBar
 const blood_particles = preload("res://Scenes/Models/blood_particles.tscn")
+
+@onready var status_effects = $StatusEffects
+
 
 #coins utils
 const COINS = preload("res://Scenes/Interactables/Items/coins.tscn")
@@ -31,8 +34,8 @@ var state_machine
 
 func _ready():
 	state_machine = anim_tree.get("parameters/playback")
-	progress_bar.max_value = health
-	progress_bar.value = health
+	enemy_health_bar.set_max_health(health)
+	enemy_health_bar.set_health(health)
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -65,12 +68,12 @@ func _attack_finished():
 	
 	
 # zombie attacked
-func hit(dmg, hit_location):
+func hit(dmg, hit_location = position, status: Array = []):
 	if health == max_health:
-		health_bar.visible = true
+		enemy_health_bar.visible = true
 	health -= dmg
 	emit_signal("zombie_hit")
-	progress_bar.value = health
+	enemy_health_bar.set_health(health)
 	spawn_blood(hit_location)
 	if health <= 0:
 		if !dead:
@@ -84,6 +87,10 @@ func hit(dmg, hit_location):
 		sprite.modulate = Color.DARK_RED
 		await get_tree().create_timer(0.1).timeout
 		sprite.modulate = Color.WHITE
+		
+		for effect in status:
+			status_effects.apply_status(effect)
+		
 
 func spawn_blood(hit_location):
 	var blood = blood_particles.instantiate()
@@ -93,3 +100,7 @@ func spawn_blood(hit_location):
 
 func pushed(dir, knockback):
 	velocity += dir * knockback
+	
+#func apply_status(status: String) -> void:
+	#if statuses.has(status):
+		#statuses[status].activate()

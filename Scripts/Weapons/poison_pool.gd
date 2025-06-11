@@ -4,7 +4,7 @@ extends Node3D
 @onready var timer = $timer
 @onready var collision_shape = $Area3D/CollisionShape3D
 @onready var area_3d = $Area3D
-var damage = 35
+var damage = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -21,8 +21,6 @@ func _on_timer_timeout():
 
 
 func _on_damage_timer_timeout():
-	for i in area_3d.get_overlapping_bodies():
+	for i in area_3d.get_overlapping_areas():
 		if i.is_in_group("enemy"):
-			i.attacked(damage)
-			if i.has_node("StatusEffects"):
-				i.status_effects.get_poisoned()
+			i.hit(damage, position, ["poison"])
