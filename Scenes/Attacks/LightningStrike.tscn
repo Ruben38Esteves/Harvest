@@ -1,69 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjscjibkly5bg"]
+[gd_scene load_steps=4 format=3 uid="uid://cjscjibkly5bg"]
 
-[ext_resource type="Texture2D" uid="uid://cm30be37uabvn" path="res://Textures/Lightning_3_256-sheet.png" id="1_5iyhr"]
 [ext_resource type="Script" uid="uid://bl4ic0t5pe25g" path="res://Scripts/Attacks/lightning_strike.gd" id="2_b5ww6"]
+[ext_resource type="PackedScene" uid="uid://iaqawiso33rk" path="res://Models/Attacks/Projectile/projectile.tscn" id="2_k6tck"]
 
-[sub_resource type="Animation" id="Animation_k6tck"]
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="SphereShape3D" id="SphereShape3D_luv44"]
+radius = 0.119509
 
-[sub_resource type="Animation" id="Animation_b5ww6"]
-resource_name = "strike"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0125, 0.025, 0.0375, 0.05, 0.0625, 0.075, 0.0875, 0.09, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 7]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"despawn"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_luv44"]
-_data = {
-&"RESET": SubResource("Animation_k6tck"),
-&"strike": SubResource("Animation_b5ww6")
-}
-
-[node name="LightningStrike" type="Sprite3D"]
-transform = Transform3D(0.77, 0, 0, 0, 0.5, 0, 0, 0, 1, 1, 0, 0)
-texture_filter = 0
-texture = ExtResource("1_5iyhr")
-hframes = 3
-vframes = 3
+[node name="LightningStrike" type="RigidBody3D"]
 script = ExtResource("2_b5ww6")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_luv44")
-}
-speed_scale = 0.5
+[node name="Projectile" parent="." instance=ExtResource("2_k6tck")]
+transform = Transform3D(0.253352, 0, 0, 0, 0.253352, 0, 0, 0, 0.253352, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_luv44")

@@ -87,10 +87,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90364, 1.05268, 0.802981)
 
 [node name="Zombie3" parent="Node3D2" instance=ExtResource("5_ucykc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 2.22715)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2886, 2.52941, 3.67575)
 
 [node name="Zombie4" parent="Node3D2" instance=ExtResource("5_ucykc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94271, 1.05268, 3.00405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4418, 1.05268, 3.00405)
 
 [node name="Zombie5" parent="Node3D2" instance=ExtResource("5_ucykc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05268, 3.83606)

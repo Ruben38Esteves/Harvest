@@ -1,9 +1,7 @@
-extends Sprite3D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+class_name lightning_strike
+extends RigidBody3D
 
-func _ready() -> void:
-	animation_player.play("strike")
-
-func despawn() -> void:
-	pass
-	#queue_free()
+func set_target(pos: Vector3) -> void:
+	var distance: Vector3 = pos - global_position
+	var duration := 0.1
+	linear_velocity = distance / duration
