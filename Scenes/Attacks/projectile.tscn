@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://iaqawiso33rk"]
+
+[ext_resource type="Shader" uid="uid://dxyegtdrgl0aj" path="res://Shaders/projectile_head.tres" id="1_xvusd"]
+[ext_resource type="ArrayMesh" uid="uid://drppsfycwyrg2" path="res://Models/Attacks/Projectile/head.obj" id="2_ctn7t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvusd"]
+render_priority = 0
+shader = ExtResource("1_xvusd")
+shader_parameter/effect_color = Color(0, 0.713726, 1, 1)
+shader_parameter/Speed = Vector2(0, 4)
+
+[node name="Projectile" type="Node3D"]
+
+[node name="Head" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_xvusd")
+cast_shadow = 0
+mesh = ExtResource("2_ctn7t")
