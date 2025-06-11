@@ -2,7 +2,6 @@ extends Node3D
 @onready var path_3d: Path3D = $Path3D
 @onready var area_3d: Area3D = $Area3D
 @onready var timer: Timer = $Timer
-const LIGHTNING_STRIKE = preload("res://Scenes/Attacks/LightningStrike.tscn")
 @onready var projectile: Node3D = $Projectile
 
 var length: int = 1

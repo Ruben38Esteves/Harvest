@@ -2,7 +2,7 @@ class_name inventory
 
 extends Node
 
-@onready var ui: Control = $"../UI"
+@onready var ui: ui = $"../UI"
 
 var items = {
 	"coins": 0,
@@ -38,6 +38,8 @@ func has_item(item_name: String) -> bool:
 func activate_cotton() -> void:
 	if has_item("fluffy_cotton"):
 		cotton_active = true
+		ui.display_buff("eletricity")
 
 func deactivate_cotton() -> void:
 	cotton_active = false
+	ui.hide_buff("eletricity")
