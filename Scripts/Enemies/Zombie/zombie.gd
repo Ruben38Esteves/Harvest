@@ -23,6 +23,9 @@ signal zombie_killed
 const blood_particles = preload("res://Scenes/Models/blood_particles.tscn")
 
 @onready var status_effects = $StatusEffects
+#new model
+@onready var animation_tree: AnimationTree = $Zombie_Model/AnimationTree
+@onready var zombie_model: Node3D = $Zombie_Model
 
 
 #coins utils
@@ -33,7 +36,7 @@ var state_machine
 @export var attacking: bool = false
 
 func _ready():
-	state_machine = anim_tree.get("parameters/playback")
+	state_machine = animation_tree.get("parameters/playback")
 	enemy_health_bar.set_max_health(health)
 	enemy_health_bar.set_health(health)
 
@@ -44,17 +47,19 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _process(delta):
 	velocity
 	match state_machine.get_current_node():
-		"walk":
+		"Zombie|ZombieRun":
 			nav_agent.set_target_position(global.player.global_transform.origin)
 			var next_nav_point = nav_agent.get_next_path_position()
+			look_at(Vector3(next_nav_point.x,global_position.y,next_nav_point.z))
+			
 			velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
-		"attack":
+		"Zombie|ZombieBite":
 			velocity = Vector3.ZERO
 	
-	anim_tree.set("parameters/conditions/attack", _target_in_range())
-	anim_tree.set("parameters/conditions/walk", !_target_in_range())
+	animation_tree.set("parameters/conditions/attack", _target_in_range())
+	animation_tree.set("parameters/conditions/walk", !_target_in_range())
 	
-	anim_tree.get("parameters/playback")
+	animation_tree.get("parameters/playback")
 	move_and_slide()
 	
 func _target_in_range():

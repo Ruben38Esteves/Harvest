@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bc0mp2isk8umx"]
+[gd_scene load_steps=28 format=3 uid="uid://bc0mp2isk8umx"]
 
 [ext_resource type="Script" uid="uid://d1geni2y2h8vb" path="res://Scripts/Enemies/Zombie/zombie.gd" id="1_d7cji"]
 [ext_resource type="Script" uid="uid://hop0kprny4f4" path="res://Scripts/Enemies/Zombie/hitbox.gd" id="2_e5fcn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccifv7qhve1yj" path="res://Scenes/UI/EnemyHealthBar.tscn" id="4_4slyf"]
 [ext_resource type="PackedScene" uid="uid://d05y8uyhor4cm" path="res://Scenes/Status_Effects.tscn" id="4_5ia6i"]
 [ext_resource type="PackedScene" uid="uid://creq00vrl663f" path="res://Scenes/Models/blood_particles.tscn" id="4_l3le8"]
+[ext_resource type="PackedScene" uid="uid://brdujgeognnyh" path="res://Models/Zombie/Zombie.glb" id="7_5ia6i"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_w2xga"]
 height = 1.14014
@@ -120,10 +121,36 @@ states/attack/position = Vector2(553, 81)
 states/walk/node = SubResource("AnimationNodeAnimation_6pjk8")
 states/walk/position = Vector2(350, 86)
 transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_lh64m"), "walk", "attack", SubResource("AnimationNodeStateMachineTransition_d0for"), "attack", "walk", SubResource("AnimationNodeStateMachineTransition_f0ft4")]
+graph_offset = Vector2(-39.3867, 8.85938)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0kvla"]
 radius = 0.396249
 height = 1.70049
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5ia6i"]
+animation = &"Zombie|ZombieBite"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xx3wb"]
+animation = &"Zombie|ZombieRun"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j0wq0"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hslf5"]
+advance_mode = 2
+advance_condition = &"attack"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u2tw5"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fj6an"]
+states/Zombie|ZombieBite/node = SubResource("AnimationNodeAnimation_5ia6i")
+states/Zombie|ZombieBite/position = Vector2(625.113, 88.2109)
+states/Zombie|ZombieRun/node = SubResource("AnimationNodeAnimation_xx3wb")
+states/Zombie|ZombieRun/position = Vector2(369.773, 100)
+transitions = ["Start", "Zombie|ZombieRun", SubResource("AnimationNodeStateMachineTransition_j0wq0"), "Zombie|ZombieRun", "Zombie|ZombieBite", SubResource("AnimationNodeStateMachineTransition_hslf5"), "Zombie|ZombieBite", "Zombie|ZombieRun", SubResource("AnimationNodeStateMachineTransition_u2tw5")]
 
 [node name="Zombie" type="CharacterBody3D"]
 collision_layer = 2
@@ -131,7 +158,7 @@ collision_mask = 6
 script = ExtResource("1_d7cji")
 
 [node name="Hitbox" type="Area3D" parent="." groups=["enemy"]]
-transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0.0060091, 0.5, -0.0061717)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("2_e5fcn")
@@ -141,7 +168,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109131, 0)
 shape = SubResource("CylinderShape3D_w2xga")
 
 [node name="WeakPoint" type="Area3D" parent="." groups=["enemy"]]
-transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0, 0)
+transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0.606248, 0)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("2_e5fcn")
@@ -151,6 +178,8 @@ dmg_scaling = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936911, 0)
 shape = SubResource("SphereShape3D_4slyf")
 
+[node name="StatusEffects" parent="." instance=ExtResource("4_5ia6i")]
+
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="EnemyHealthBar" parent="." instance=ExtResource("4_4slyf")]
@@ -159,10 +188,9 @@ visible = false
 flip_h = false
 texture = SubResource("ViewportTexture_4slyf")
 
-[node name="StatusEffects" parent="." instance=ExtResource("4_5ia6i")]
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2.74663, 0, 0, 0, 3.09856, 0, 0, 0, 1, 0, 0.44666, 0)
+visible = false
 billboard = 2
 shaded = true
 texture_filter = 0
@@ -181,13 +209,65 @@ parameters/conditions/attack = false
 parameters/conditions/walk = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302943, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88118, 0)
 shape = SubResource("CapsuleShape3D_0kvla")
 
 [node name="blood_particles" parent="." instance=ExtResource("4_l3le8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 one_shot = false
 
+[node name="Zombie_Model" parent="." instance=ExtResource("7_5ia6i")]
+transform = Transform3D(0.221307, 0, 0, 0, 0.221307, 0, 0, 0, 0.221307, 0, 0, 0)
+
+[node name="RootNode" parent="Zombie_Model" index="0"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Zombie_Model/RootNode/Zombie" index="0"]
+bones/0/position = Vector3(0.000121829, 0.0366487, 5.51176e-05)
+bones/0/rotation = Quaternion(-0.00971359, -0.0360293, 0.0148, 0.999194)
+bones/1/rotation = Quaternion(0.244052, 0.0239941, 0.0513504, 0.968104)
+bones/2/rotation = Quaternion(0.0965949, -0.00958313, 0.025971, 0.994939)
+bones/3/rotation = Quaternion(0.0973415, -0.00763272, 0.0234769, 0.994945)
+bones/4/rotation = Quaternion(0.0858957, 0.0170035, -0.0454995, 0.995119)
+bones/5/rotation = Quaternion(-0.298619, 0.0817688, -0.106118, 0.944923)
+bones/8/rotation = Quaternion(-0.604129, -0.386167, 0.604152, -0.347711)
+bones/9/rotation = Quaternion(0.213476, 0.0282305, 0.221765, 0.951027)
+bones/10/rotation = Quaternion(0.0248344, 0.0572941, 0.316974, 0.946376)
+bones/11/rotation = Quaternion(0.00687427, -0.446565, 0.177065, 0.877029)
+bones/12/rotation = Quaternion(0.144447, 0.247275, 0.391354, 0.874547)
+bones/13/rotation = Quaternion(0.00167767, -0.178845, -0.241509, 0.953774)
+bones/14/rotation = Quaternion(-0.0596306, -0.170496, -0.0848242, 0.979888)
+bones/17/rotation = Quaternion(-0.0811974, 0.0149723, 0.0192624, 0.996399)
+bones/18/rotation = Quaternion(0.304298, -0.038773, -0.0831695, 0.948147)
+bones/19/rotation = Quaternion(0.172393, 0.0126272, -0.0523202, 0.983557)
+bones/22/rotation = Quaternion(0.594864, -0.390453, 0.595798, 0.372436)
+bones/23/rotation = Quaternion(0.245089, 0.25585, -0.437913, 0.826259)
+bones/24/rotation = Quaternion(0.0208884, -0.0530031, -0.293456, 0.954273)
+bones/25/rotation = Quaternion(0.0925053, 0.33571, -0.16681, 0.922451)
+bones/26/rotation = Quaternion(0.100554, -0.430937, -0.308537, 0.842014)
+bones/27/rotation = Quaternion(-0.0695333, 0.221322, 0.203297, 0.951237)
+bones/28/rotation = Quaternion(-0.0904903, 0.287704, 0.0292119, 0.952987)
+bones/31/rotation = Quaternion(-0.115609, 0.00187698, -0.0204207, 0.993083)
+bones/32/rotation = Quaternion(0.152593, 0.000838019, 0.0278314, 0.987897)
+bones/33/rotation = Quaternion(0.118015, 0.00543603, 0.0222926, 0.992747)
+bones/36/rotation = Quaternion(0.0549513, 0.385381, 0.918764, -0.065839)
+bones/37/rotation = Quaternion(-0.677542, -0.0468535, 0.040386, 0.732878)
+bones/38/rotation = Quaternion(0.651011, 0.0375913, -6.4743e-05, 0.758137)
+bones/39/rotation = Quaternion(0.315535, -0.0571536, -0.00923823, 0.947146)
+bones/42/rotation = Quaternion(-0.0995313, 0.296846, 0.942194, 0.119354)
+bones/43/rotation = Quaternion(-0.597706, -0.0527256, 0.0158891, 0.799822)
+bones/43/scale = Vector3(1.00001, 0.999913, 1.00008)
+bones/44/rotation = Quaternion(0.773371, -0.0029961, 0.0450902, 0.632341)
+bones/45/rotation = Quaternion(0.263022, -0.00421021, -0.0036337, 0.964774)
+
+[node name="AnimationTree" type="AnimationTree" parent="Zombie_Model"]
+tree_root = SubResource("AnimationNodeStateMachine_fj6an")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/attack = false
+parameters/conditions/walk = false
+
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
 [connection signal="body_hit" from="Hitbox" to="." method="_on_area_3d_body_hit"]
 [connection signal="body_hit" from="WeakPoint" to="." method="_on_area_3d_body_hit"]
+
+[editable path="Zombie_Model"]
