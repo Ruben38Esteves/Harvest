@@ -97,7 +97,7 @@ func load_weapon_variables():
 func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_input = event.relative
-	
+		
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
@@ -155,17 +155,48 @@ func _physics_process(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity.length()
 	camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
 	
+	
 	#attacking
 	if Input.is_action_just_pressed("attack"):
-		if current_gun == "primary":
-			if primary_weapon:
-				primary_weapon.shoot(gun_aim)
-		elif current_gun == "secondary":
-			if secondary_weapon:
-				secondary_weapon.shoot(gun_aim)
-		elif current_gun == "meelee":
-			if meelee_weapon:
-				meelee_weapon.shoot()
+		match current_gun:
+			"primary":
+				if primary_weapon:
+					if primary_weapon.on_release == true:
+						primary_weapon.hold()
+					else:
+						primary_weapon.shoot(gun_aim)
+			"secondary":
+				if secondary_weapon:
+					if secondary_weapon.on_release == true:
+						secondary_weapon.hold()
+					else:
+						secondary_weapon.shoot(gun_aim)
+			"meelee":
+				if meelee_weapon:
+					if meelee_weapon.on_release == true:
+						meelee_weapon.hold()
+					else:
+						meelee_weapon.shoot()
+			_:
+				print(current_gun, " not a valid weapon")
+				
+	if Input.is_action_just_released("attack"):
+		print("aaaaaaaaaaaaaaaa")
+		match current_gun:
+			"primary":
+				if primary_weapon:
+					if primary_weapon.on_release == true:
+						primary_weapon.shoot(gun_aim)
+			"secondary":
+				if secondary_weapon:
+					if secondary_weapon.on_release == true:
+						secondary_weapon.shoot(gun_aim)
+			"meelee":
+				if meelee_weapon:
+					if meelee_weapon.on_release == true:
+						meelee_weapon.shoot()
+			_:
+				print(current_gun, " not a valid weapon")
 	
 	#reload
 	if Input.is_action_just_pressed("reload"):
