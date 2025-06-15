@@ -61,7 +61,7 @@ var health = 100.0
 
 
 #guns
-var current_gun = "primary"
+var current_gun = null
 @onready var gun_aim = $Head/Camera3D/gun_aim
 #primary
 signal increase_rifle_ammo
@@ -84,7 +84,6 @@ func _ready():
 	global.player = self
 	global.inventory = inventory
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	current_gun = "primary"
 	update_progress_bar()
 	default_hands_position = hands.position
 	
@@ -92,7 +91,7 @@ func load_weapon_variables():
 	primary_weapon = primary.get_child(0)
 	secondary_weapon = secondary.get_child(0)
 	meelee_weapon = meelee.get_child(0)
-	
+	current_gun = primary_weapon
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -158,69 +157,77 @@ func _physics_process(delta):
 	
 	#attacking
 	if Input.is_action_just_pressed("attack"):
-		match current_gun:
-			"primary":
-				if primary_weapon:
-					if primary_weapon.on_release == true:
-						primary_weapon.hold()
-					else:
-						primary_weapon.shoot(gun_aim)
-			"secondary":
-				if secondary_weapon:
-					if secondary_weapon.on_release == true:
-						secondary_weapon.hold()
-					else:
-						secondary_weapon.shoot(gun_aim)
-			"meelee":
-				if meelee_weapon:
-					if meelee_weapon.on_release == true:
-						meelee_weapon.hold()
-					else:
-						meelee_weapon.shoot()
-			_:
-				print(current_gun, " not a valid weapon")
+		if current_gun:
+			if current_gun.on_release == true:
+				current_gun.hold()
+			else:
+				current_gun.shoot(gun_aim)
+		#match current_gun:
+			#"primary":
+				#if primary_weapon:
+					#if primary_weapon.on_release == true:
+						#primary_weapon.hold()
+					#else:
+						#primary_weapon.shoot(gun_aim)
+			#"secondary":
+				#if secondary_weapon:
+					#if secondary_weapon.on_release == true:
+						#secondary_weapon.hold()
+					#else:
+						#secondary_weapon.shoot(gun_aim)
+			#"meelee":
+				#if meelee_weapon:
+					#if meelee_weapon.on_release == true:
+						#meelee_weapon.hold()
+					#else:
+						#meelee_weapon.shoot()
+			#_:
+				#print(current_gun, " not a valid weapon")
 				
 	if Input.is_action_just_released("attack"):
-		print("aaaaaaaaaaaaaaaa")
-		match current_gun:
-			"primary":
-				if primary_weapon:
-					if primary_weapon.on_release == true:
-						primary_weapon.shoot(gun_aim)
-			"secondary":
-				if secondary_weapon:
-					if secondary_weapon.on_release == true:
-						secondary_weapon.shoot(gun_aim)
-			"meelee":
-				if meelee_weapon:
-					if meelee_weapon.on_release == true:
-						meelee_weapon.shoot()
-			_:
-				print(current_gun, " not a valid weapon")
+		if current_gun and current_gun.on_release == true:
+			current_gun.shoot(gun_aim)
+		#match current_gun:
+			#"primary":
+				#if primary_weapon:
+					#if primary_weapon.on_release == true:
+						#primary_weapon.shoot(gun_aim)
+			#"secondary":
+				#if secondary_weapon:
+					#if secondary_weapon.on_release == true:
+						#secondary_weapon.shoot(gun_aim)
+			#"meelee":
+				#if meelee_weapon:
+					#if meelee_weapon.on_release == true:
+						#meelee_weapon.shoot()
+			#_:
+				#print(current_gun, " not a valid weapon")
 	
 	#reload
 	if Input.is_action_just_pressed("reload"):
-		if current_gun == "primary":
-			if primary_weapon:
-				primary_weapon.reload()
-		elif current_gun == "secondary":
-			if secondary_weapon:
-				secondary_weapon.reload()
+		if current_gun and current_gun.has_method("reload"):
+			current_gun.reload()
+		#if current_gun == "primary":
+			#if primary_weapon:
+				#primary_weapon.reload()
+		#elif current_gun == "secondary":
+			#if secondary_weapon:
+				#secondary_weapon.reload()
 	
 	
 	#change weapon
 	if Input.is_action_just_pressed("primary"):
-		current_gun = "primary"
+		current_gun = primary_weapon
 		primary.visible = true
 		secondary.visible = false
 		meelee.visible = false
 	elif Input.is_action_just_pressed("secondary"):
-		current_gun = "secondary"
+		current_gun = secondary_weapon
 		primary.visible = false
 		secondary.visible = true
 		meelee.visible = false
 	elif Input.is_action_just_pressed("meelee"):
-		current_gun = "meelee"
+		current_gun = meelee_weapon
 		primary.visible = false
 		secondary.visible = false
 		meelee.visible = true

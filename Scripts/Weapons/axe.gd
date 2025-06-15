@@ -2,6 +2,7 @@ extends Node3D
 @onready var axe_animation_player = $AnimationPlayer
 @onready var axe_hitbox = $axe/Area3D/axe_hitbox
 var damage = 70
+var on_release = false
 
 var enemies_hit = {}
 
@@ -15,10 +16,12 @@ func _process(_delta):
 	pass
 
 
-func shoot():
+func shoot(_gun_aim):
 	if !axe_animation_player.is_playing():
 		axe_animation_player.play("attack")
 
+func hold():
+	pass
 
 func _on_area_3d_area_entered(area):
 	if area.is_in_group("enemy"):
