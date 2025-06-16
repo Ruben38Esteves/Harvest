@@ -162,57 +162,15 @@ func _physics_process(delta):
 				current_gun.hold()
 			else:
 				current_gun.shoot(gun_aim)
-		#match current_gun:
-			#"primary":
-				#if primary_weapon:
-					#if primary_weapon.on_release == true:
-						#primary_weapon.hold()
-					#else:
-						#primary_weapon.shoot(gun_aim)
-			#"secondary":
-				#if secondary_weapon:
-					#if secondary_weapon.on_release == true:
-						#secondary_weapon.hold()
-					#else:
-						#secondary_weapon.shoot(gun_aim)
-			#"meelee":
-				#if meelee_weapon:
-					#if meelee_weapon.on_release == true:
-						#meelee_weapon.hold()
-					#else:
-						#meelee_weapon.shoot()
-			#_:
-				#print(current_gun, " not a valid weapon")
 				
 	if Input.is_action_just_released("attack"):
 		if current_gun and current_gun.on_release == true:
 			current_gun.shoot(gun_aim)
-		#match current_gun:
-			#"primary":
-				#if primary_weapon:
-					#if primary_weapon.on_release == true:
-						#primary_weapon.shoot(gun_aim)
-			#"secondary":
-				#if secondary_weapon:
-					#if secondary_weapon.on_release == true:
-						#secondary_weapon.shoot(gun_aim)
-			#"meelee":
-				#if meelee_weapon:
-					#if meelee_weapon.on_release == true:
-						#meelee_weapon.shoot()
-			#_:
-				#print(current_gun, " not a valid weapon")
 	
 	#reload
 	if Input.is_action_just_pressed("reload"):
 		if current_gun and current_gun.has_method("reload"):
 			current_gun.reload()
-		#if current_gun == "primary":
-			#if primary_weapon:
-				#primary_weapon.reload()
-		#elif current_gun == "secondary":
-			#if secondary_weapon:
-				#secondary_weapon.reload()
 	
 	
 	#change weapon
@@ -236,7 +194,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 		
-	#open chest
+	#interact
 	if Input.is_action_just_pressed("interact"):
 		if interact_aim.is_colliding():
 			var inter_coll = interact_aim.get_collider()
@@ -244,7 +202,7 @@ func _physics_process(delta):
 				inter_coll.interact()
 					
 	
-	#chest glow
+	# set target
 	var coll = interact_aim.get_collider()
 	if coll != looking_at:
 		if coll != null and coll.is_in_group("interactible"):
