@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bbg2cgxj3me1w" path="res://Scripts/Interactables/Items/item_parent.gd" id="1_0yxah"]
 [ext_resource type="PackedScene" uid="uid://ciia7yn2x5t7h" path="res://Scenes/Interactables/Items/Item.tscn" id="1_wgyhi"]
-[ext_resource type="ArrayMesh" uid="uid://cl4yn411jbihu" path="res://Models/Items/fluffy_cotton.tres" id="2_80g8e"]
+[ext_resource type="ArrayMesh" uid="uid://ddgwkgc6rcof0" path="res://Models/Items/fluffy_cotton.tres" id="2_80g8e"]
 
 [node name="FluffyCotton" type="Node3D"]
 script = ExtResource("1_0yxah")
