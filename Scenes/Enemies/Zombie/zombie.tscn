@@ -7,9 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://creq00vrl663f" path="res://Scenes/Models/blood_particles.tscn" id="6_xfkow"]
 [ext_resource type="PackedScene" uid="uid://7euphjf0jyxg" path="res://Models/Zombie/zombie_anim.glb" id="7_j2l4f"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_w2xga"]
-height = 1.14014
-radius = 0.370117
+[sub_resource type="BoxShape3D" id="BoxShape3D_nvpn5"]
+size = Vector3(0.513306, 1.41504, 0.343872)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4slyf"]
 radius = 0.290644
@@ -33,8 +32,8 @@ collision_mask = 0
 script = ExtResource("2_klckg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.109131, 0)
-shape = SubResource("CylinderShape3D_w2xga")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020813, 0.235596, 0.0332642)
+shape = SubResource("BoxShape3D_nvpn5")
 
 [node name="WeakPoint" type="Area3D" parent="." groups=["enemy"]]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0.606248, 0)
@@ -44,7 +43,7 @@ script = ExtResource("2_klckg")
 dmg_scaling = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WeakPoint"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936911, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04236, 0)
 shape = SubResource("SphereShape3D_4slyf")
 
 [node name="StatusEffects" parent="." instance=ExtResource("3_spb8s")]
