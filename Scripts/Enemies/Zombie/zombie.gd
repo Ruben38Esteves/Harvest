@@ -1,3 +1,5 @@
+class_name zombie
+
 extends CharacterBody3D
 
 #stats
@@ -40,6 +42,7 @@ func _ready():
 	#state_machine = animation_tree.get("parameters/playback")
 	enemy_health_bar.set_max_health(health)
 	enemy_health_bar.set_health(health)
+	animation_player.play("Idle")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -61,11 +64,8 @@ func _process(delta):
 	#animation_tree.set("parameters/conditions/walk", !_target_in_range())
 	#
 	#animation_tree.get("parameters/playback")
-	animation_player.play("Run")
-	nav_agent.set_target_position(global.player.global_transform.origin)
-	var next_nav_point = nav_agent.get_next_path_position()
-	look_at(Vector3(next_nav_point.x,global_position.y,next_nav_point.z))
-	velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
+	#animation_player.play("Run")
+	
 	move_and_slide()
 	
 func _target_in_range():
@@ -111,6 +111,15 @@ func spawn_blood(hit_location):
 
 func pushed(dir, knockback):
 	velocity += dir * knockback
+	
+func play_animation(animation_name: String) -> void:
+	animation_player.play(animation_name)
+
+func chase_player() -> void:
+	nav_agent.set_target_position(global.player.global_transform.origin)
+	var next_nav_point = nav_agent.get_next_path_position()
+	look_at(Vector3(next_nav_point.x,global_position.y,next_nav_point.z))
+	velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
 	
 #func apply_status(status: String) -> void:
 	#if statuses.has(status):
