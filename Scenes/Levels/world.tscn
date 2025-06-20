@@ -36,9 +36,9 @@ uv1_triplanar_sharpness = 1.6818
 
 [sub_resource type="Environment" id="Environment_eb27o"]
 background_color = Color(0.109804, 0, 0.811765, 1)
-ambient_light_source = 1
-ambient_light_color = Color(0.152941, 0.247059, 0.792157, 1)
-ambient_light_energy = 0.24
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.05
 glow_enabled = true
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1

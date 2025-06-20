@@ -3,10 +3,11 @@ extends State
 @onready var parent: zombie = $"../.."
 
 func enter(last_state: String) -> void:
-	#parent.play_animation("Idle")
-	pass
+	parent.attacking = true
+	parent.animation_player.play("Attack")
 	
 func update(delta: float) -> void:
-	parent.velocity = Vector3.ZERO
-	if parent.global_position.distance_to(global.player.global_position) < 5.0:
+	if not parent.attacking:
 		state_machine.change_state("RunState")
+	parent.velocity = Vector3.ZERO
+	

@@ -3,7 +3,6 @@ class_name CrouchMovementState
 extends State
 
 @onready var player: CharacterBody3D = $"../.."
-@onready var state_machine: StateMachine = $".."
 var leaving_crouch: bool
 # Called when the node enters the scene tree for the first time.
 func enter(last_state: String) -> void:

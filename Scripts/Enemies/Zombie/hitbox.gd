@@ -1,4 +1,4 @@
-class_name hitbox
+class_name hurtbox
 
 extends Area3D
 

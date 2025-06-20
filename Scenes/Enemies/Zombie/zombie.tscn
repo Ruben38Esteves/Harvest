@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmqibvvywhf4x"]
+[gd_scene load_steps=15 format=3 uid="uid://cmqibvvywhf4x"]
 
 [ext_resource type="Script" uid="uid://d1geni2y2h8vb" path="res://Scripts/Enemies/Zombie/zombie.gd" id="1_vgbyy"]
 [ext_resource type="Script" uid="uid://hop0kprny4f4" path="res://Scripts/Enemies/Zombie/hitbox.gd" id="2_klckg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cb4b366htrngw" path="res://Scripts/Player/state_machine.gd" id="7_klckg"]
 [ext_resource type="Script" uid="uid://ctuajqjgbld71" path="res://Scenes/Enemies/Zombie/idle_state.gd" id="8_spb8s"]
 [ext_resource type="Script" uid="uid://cbn28nybgu1yr" path="res://Scenes/Enemies/Zombie/run_state.gd" id="9_spb8s"]
+[ext_resource type="Script" uid="uid://c803vylkv26cl" path="res://Scenes/Enemies/Zombie/attack_state.gd" id="10_7ciki"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nvpn5"]
 size = Vector3(0.513306, 1.41504, 0.343872)
@@ -28,13 +29,13 @@ collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_vgbyy")
 
-[node name="Hitbox" type="Area3D" parent="." groups=["enemy"]]
+[node name="Hurtbox" type="Area3D" parent="." groups=["enemy"]]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0.0060091, 0.5, -0.0061717)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("2_klckg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020813, 0.235596, 0.0332642)
 shape = SubResource("BoxShape3D_nvpn5")
 
@@ -74,15 +75,15 @@ transform = Transform3D(6.99921e-05, 8.6376e-05, 0.29494, -8.34132e-05, 0.29494,
 bones/1/position = Vector3(-3.15648, -0.364333, -1.14787e-07)
 bones/1/rotation = Quaternion(-1.54543e-08, -1.54543e-08, 0.707107, 0.707107)
 bones/2/rotation = Quaternion(-1.73856e-37, -1.77636e-15, 0, 1)
-bones/3/rotation = Quaternion(-2.79783e-16, 1.7629e-08, -0.130972, 0.991386)
+bones/3/rotation = Quaternion(-3.35971e-16, 1.76289e-08, -0.131208, 0.991355)
 bones/5/rotation = Quaternion(9.49696e-16, 1.50876e-08, -0.112293, 0.993675)
 bones/6/rotation = Quaternion(-0.806586, -0.00635216, -0.0009432, 0.591082)
 bones/7/rotation = Quaternion(-0.55578, -0.0389467, -0.0662396, 0.827771)
-bones/8/rotation = Quaternion(0.0469096, 0.0909885, -0.268401, 0.957853)
+bones/8/rotation = Quaternion(0.0468499, 0.0909977, -0.268059, 0.95795)
 bones/20/position = Vector3(0.857413, -1.25643, -0.754382)
 bones/20/rotation = Quaternion(0.992499, 0.0742986, 0.0851054, -0.0467161)
 bones/21/rotation = Quaternion(-1.06791e-08, 0.596931, 0.802293, 4.65614e-08)
-bones/22/rotation = Quaternion(-0.510556, 0.0142698, -0.0286521, 0.859249)
+bones/22/rotation = Quaternion(-0.510667, 0.0140876, -0.0283743, 0.859195)
 bones/23/rotation = Quaternion(-0.00651433, -0.156517, 0.401957, 0.902159)
 bones/24/rotation = Quaternion(-0.0188034, 0.0014555, 0.00172759, 0.999821)
 bones/35/rotation = Quaternion(0.704077, -0.704077, -0.0653838, -0.0653838)
@@ -106,8 +107,11 @@ script = ExtResource("8_spb8s")
 [node name="RunState" type="Node" parent="StateMachine"]
 script = ExtResource("9_spb8s")
 
-[connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
-[connection signal="body_hit" from="Hitbox" to="." method="_on_area_3d_body_hit"]
+[node name="AttackState" type="Node" parent="StateMachine"]
+script = ExtResource("10_7ciki")
+
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
+[connection signal="body_hit" from="Hurtbox" to="." method="_on_area_3d_body_hit"]
 [connection signal="body_hit" from="WeakPoint" to="." method="_on_area_3d_body_hit"]
 
 [editable path="Body"]

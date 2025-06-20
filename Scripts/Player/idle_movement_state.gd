@@ -3,7 +3,7 @@ class_name IdleMovementState
 extends State
 
 @onready var player: CharacterBody3D = $"../.."
-@onready var state_machine: StateMachine = $".."
+
 
 func update(delta):
 	if not player.is_on_floor():
