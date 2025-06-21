@@ -49,13 +49,6 @@ func _process(delta):
 func _target_in_range():
 	return global_position.distance_to(global.player.global_position) < ATTACK_RANGE
 	
-func _attack_finished():
-	if global_position.distance_to(global.player.global_position) < ATTACK_RANGE + 1.0:
-		var dir = global_position.direction_to(global.player.global_position).normalized()
-		dir.y = 0
-		global.player.hit(dir,ATTACK_KNOCKBACK,damage)
-	
-	
 # zombie attacked
 func hit(dmg, hit_location = position, status: Array = []):
 	if health == max_health:

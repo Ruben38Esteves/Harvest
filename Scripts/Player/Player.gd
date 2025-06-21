@@ -1,3 +1,5 @@
+class_name Player
+
 extends CharacterBody3D
 
 @onready var death_screen = $"UI/Player_death_screen"

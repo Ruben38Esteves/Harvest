@@ -95,6 +95,7 @@ path_height_offset = 0.5
 
 [node name="EnemyHealthBar" parent="." instance=ExtResource("4_7ciki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85304, 0)
+visible = false
 flip_h = false
 texture = SubResource("ViewportTexture_4slyf")
 
@@ -141,8 +142,12 @@ bone_idx = 8
 
 [node name="HitBox" type="Area3D" parent="Body/Zombie/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("parent")]
 transform = Transform3D(0.888853, 1.36975, -2.97142, -0.187451, -3.05274, -1.46331, -3.26656, 0.5479, -0.724571, 0.913893, 2.08906, 1.39921)
+collision_layer = 0
+monitoring = false
+monitorable = false
 script = ExtResource("11_nylgs")
 parent = NodePath("../../../../..")
+one_hit = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Zombie/Skeleton3D/BoneAttachment3D/HitBox"]
 shape = SubResource("SphereShape3D_xfkow")
@@ -181,5 +186,6 @@ script = ExtResource("10_7ciki")
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_area_entered"]
 [connection signal="body_hit" from="Hurtbox" to="." method="_on_area_3d_body_hit"]
 [connection signal="body_hit" from="WeakPoint" to="." method="_on_area_3d_body_hit"]
+[connection signal="body_entered" from="Body/Zombie/Skeleton3D/BoneAttachment3D/HitBox" to="Body/Zombie/Skeleton3D/BoneAttachment3D/HitBox" method="_on_body_entered"]
 
 [editable path="Body"]
