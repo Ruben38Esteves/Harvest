@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cmqibvvywhf4x"]
+[gd_scene load_steps=27 format=3 uid="uid://cmqibvvywhf4x"]
 
 [ext_resource type="Script" uid="uid://d1geni2y2h8vb" path="res://Scripts/Enemies/Zombie/zombie.gd" id="1_vgbyy"]
 [ext_resource type="Script" uid="uid://hop0kprny4f4" path="res://Scripts/Enemies/Zombie/hitbox.gd" id="2_klckg"]
@@ -10,6 +10,10 @@
 [ext_resource type="Script" uid="uid://ctuajqjgbld71" path="res://Scenes/Enemies/Zombie/idle_state.gd" id="8_spb8s"]
 [ext_resource type="Script" uid="uid://cbn28nybgu1yr" path="res://Scenes/Enemies/Zombie/run_state.gd" id="9_spb8s"]
 [ext_resource type="Script" uid="uid://c803vylkv26cl" path="res://Scenes/Enemies/Zombie/attack_state.gd" id="10_7ciki"]
+[ext_resource type="Script" uid="uid://belewtuks7db1" path="res://Scenes/Enemies/hit_box.gd" id="11_nylgs"]
+[ext_resource type="Shader" uid="uid://bbwx6624u4twb" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="12_icwh1"]
+[ext_resource type="Shader" uid="uid://btos81i7j1djd" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="13_oyx48"]
+[ext_resource type="Script" uid="uid://c8mqt671ky4j6" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="15_b1pgq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nvpn5"]
 size = Vector3(0.513306, 1.41504, 0.343872)
@@ -24,26 +28,60 @@ viewport_path = NodePath("SubViewport")
 radius = 0.396249
 height = 1.70049
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_xfkow"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i8iu1"]
+shader = ExtResource("12_icwh1")
+
+[sub_resource type="Gradient" id="Gradient_icwh1"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oyx48"]
+gradient = SubResource("Gradient_icwh1")
+
+[sub_resource type="Curve" id="Curve_b3yhp"]
+bake_resolution = 16
+_data = [Vector2(0, 0.168539), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b1pgq"]
+curve = SubResource("Curve_b3yhp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fxtnw"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("13_oyx48")
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_oyx48")
+shader_parameter/curve = SubResource("CurveTexture_b1pgq")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 40
+
+[sub_resource type="QuadMesh" id="QuadMesh_70w3q"]
+material = SubResource("ShaderMaterial_fxtnw")
+
 [node name="Zombie" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 6
 script = ExtResource("1_vgbyy")
 
-[node name="Hurtbox" type="Area3D" parent="." groups=["enemy"]]
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("parent") groups=["enemy"]]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0.0060091, 0.5, -0.0061717)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("2_klckg")
+parent = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020813, 0.235596, 0.0332642)
 shape = SubResource("BoxShape3D_nvpn5")
 
-[node name="WeakPoint" type="Area3D" parent="." groups=["enemy"]]
+[node name="WeakPoint" type="Area3D" parent="." node_paths=PackedStringArray("parent") groups=["enemy"]]
 transform = Transform3D(1.05, 0, 0, 0, 1.05, 0, 0, 0, 1.05, 0, 0.606248, 0)
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("2_klckg")
+parent = NodePath("..")
 dmg_scaling = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WeakPoint"]
@@ -95,6 +133,36 @@ bones/40/rotation = Quaternion(0.0122784, -0.092158, 0.347678, 0.932993)
 bones/43/rotation = Quaternion(-0.680192, 0.1576, 0.156981, 0.698469)
 bones/44/rotation = Quaternion(0.0122784, 0.0921579, -0.347678, 0.932993)
 bones/48/position = Vector3(-0.264507, -0.254034, 0.297219)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Zombie/Skeleton3D" index="1"]
+transform = Transform3D(0.877237, 0.436571, 0.199652, 0.400698, -0.894932, 0.19631, 0.264378, -0.0922106, -0.960001, -0.302627, 3.69218, -0.661589)
+bone_name = "arm_lower.l"
+bone_idx = 8
+
+[node name="HitBox" type="Area3D" parent="Body/Zombie/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("parent")]
+transform = Transform3D(0.888853, 1.36975, -2.97142, -0.187451, -3.05274, -1.46331, -3.26656, 0.5479, -0.724571, 0.913893, 2.08906, 1.39921)
+script = ExtResource("11_nylgs")
+parent = NodePath("../../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Zombie/Skeleton3D/BoneAttachment3D/HitBox"]
+shape = SubResource("SphereShape3D_xfkow")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="Body/Zombie/Skeleton3D/BoneAttachment3D/HitBox"]
+transform = Transform3D(1, -1.71713e-09, 0, 8.76753e-09, 1, 9.31323e-10, 1.86265e-09, -9.31323e-10, 1, 0.164878, 0.0187492, 0.0122876)
+visible = false
+amount = 10
+lifetime = 10.0
+explosiveness = 1.0
+fixed_fps = 144
+process_material = SubResource("ShaderMaterial_i8iu1")
+draw_pass_1 = SubResource("QuadMesh_70w3q")
+script = ExtResource("15_b1pgq")
+length = 10
+length_seconds = 0.0694444
+color_ramp = SubResource("GradientTexture1D_oyx48")
+curve = SubResource("CurveTexture_b1pgq")
+_defaults_have_been_set = true
+metadata/_custom_type_script = "uid://c8mqt671ky4j6"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("7_klckg")

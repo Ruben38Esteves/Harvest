@@ -228,9 +228,9 @@ func weapon_sway(delta):
 		#hands.position.x = lerp(hands.position.x, default_hands_position.x + (hands / 75), 5 * delta)
 		#hands.position.z = lerp(hands.position.z, default_hands_position.z + (hands.velocity.z / 75), 5 * delta)
 	
-func hit(dir,knockback,damage):
+func hit(damage, knockback = Vector3.ZERO):
 	emit_signal("player_hit")
-	velocity += dir * knockback
+	velocity += knockback
 	health -= damage
 	update_progress_bar()
 	

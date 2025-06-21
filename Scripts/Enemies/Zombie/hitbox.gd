@@ -3,14 +3,14 @@ class_name hurtbox
 extends Area3D
 
 signal body_hit(delta)
-var parent = null
+@export var parent: CharacterBody3D
 
 @export var dmg_scaling: float = 1.0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	parent = get_parent()
+	pass
 	#self.area_entered.connect(_on_area_entered)
 
 
