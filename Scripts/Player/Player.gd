@@ -229,7 +229,7 @@ func weapon_sway(delta):
 		hands.rotation.y = lerp(hands.rotation.y, (mouse_input.x / 100) * weapon_rotation, 5 * delta)
 		#hands.position.x = lerp(hands.position.x, default_hands_position.x + (hands / 75), 5 * delta)
 		#hands.position.z = lerp(hands.position.z, default_hands_position.z + (hands.velocity.z / 75), 5 * delta)
-	
+
 func hit(damage, knockback = Vector3.ZERO):
 	emit_signal("player_hit")
 	velocity += knockback

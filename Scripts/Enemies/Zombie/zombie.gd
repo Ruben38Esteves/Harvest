@@ -6,8 +6,8 @@ extends CharacterBody3D
 const SPEED = 4.0
 const JUMP_VELOCITY = 4.5
 const ATTACK_RANGE = 1.5
-var max_health = 100
-var health = 100
+var max_health = 500
+var health = 500
 const ATTACK_KNOCKBACK = 10.0
 var damage = 10
 var dead: bool = false
@@ -25,6 +25,7 @@ const blood_particles = preload("res://Scenes/Models/blood_particles.tscn")
 #new model
 @onready var body = $Body
 @onready var animation_player = $Body/AnimationPlayer
+@onready var mesh_animation_player = $Body/Zombie/MeshAnimationPlayer
 
 #coins utils
 const COINS = preload("res://Scenes/Interactables/Items/coins.tscn")
@@ -66,9 +67,7 @@ func hit(dmg, hit_location = position, status: Array = []):
 			self.get_parent().add_child(instance)
 			queue_free()
 	else:
-		#sprite.modulate = Color.DARK_RED
-		await get_tree().create_timer(0.1).timeout
-		#sprite.modulate = Color.WHITE
+		mesh_animation_player.play("hit_flash")
 		
 		for effect in status:
 			status_effects.apply_status(effect)

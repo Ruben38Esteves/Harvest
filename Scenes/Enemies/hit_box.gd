@@ -4,6 +4,7 @@ extends Area3D
 
 @export var parent: CharacterBody3D
 @export var one_hit: bool
+@export var damage: float
 var player_hit: bool = false
 
 func reset_player_hit() -> void:

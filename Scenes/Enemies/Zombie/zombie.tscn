@@ -1,16 +1,16 @@
-[gd_scene load_steps=27 format=3 uid="uid://cmqibvvywhf4x"]
+[gd_scene load_steps=30 format=3 uid="uid://cmqibvvywhf4x"]
 
 [ext_resource type="Script" uid="uid://d1geni2y2h8vb" path="res://Scripts/Enemies/Zombie/zombie.gd" id="1_vgbyy"]
 [ext_resource type="Script" uid="uid://hop0kprny4f4" path="res://Scripts/Enemies/Zombie/hitbox.gd" id="2_klckg"]
 [ext_resource type="PackedScene" uid="uid://d05y8uyhor4cm" path="res://Scenes/Status_Effects.tscn" id="3_spb8s"]
 [ext_resource type="PackedScene" uid="uid://ccifv7qhve1yj" path="res://Scenes/UI/EnemyHealthBar.tscn" id="4_7ciki"]
 [ext_resource type="PackedScene" uid="uid://creq00vrl663f" path="res://Scenes/Models/blood_particles.tscn" id="6_xfkow"]
+[ext_resource type="Script" uid="uid://bdxpygbykvxn0" path="res://Scenes/Enemies/Zombie/zombie_attack.gd" id="7_i8iu1"]
 [ext_resource type="PackedScene" uid="uid://7euphjf0jyxg" path="res://Models/Zombie/zombie_anim.glb" id="7_j2l4f"]
 [ext_resource type="Script" uid="uid://cb4b366htrngw" path="res://Scripts/Player/state_machine.gd" id="7_klckg"]
 [ext_resource type="Script" uid="uid://ctuajqjgbld71" path="res://Scenes/Enemies/Zombie/idle_state.gd" id="8_spb8s"]
 [ext_resource type="Script" uid="uid://cbn28nybgu1yr" path="res://Scenes/Enemies/Zombie/run_state.gd" id="9_spb8s"]
 [ext_resource type="Script" uid="uid://c803vylkv26cl" path="res://Scenes/Enemies/Zombie/attack_state.gd" id="10_7ciki"]
-[ext_resource type="Script" uid="uid://belewtuks7db1" path="res://Scenes/Enemies/hit_box.gd" id="11_nylgs"]
 [ext_resource type="Shader" uid="uid://bbwx6624u4twb" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="12_icwh1"]
 [ext_resource type="Shader" uid="uid://btos81i7j1djd" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="13_oyx48"]
 [ext_resource type="Script" uid="uid://c8mqt671ky4j6" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="15_b1pgq"]
@@ -59,6 +59,43 @@ shader_parameter/flags = 40
 
 [sub_resource type="QuadMesh" id="QuadMesh_70w3q"]
 material = SubResource("ShaderMaterial_fxtnw")
+
+[sub_resource type="Animation" id="Animation_i8iu1"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D/Zombie_Model:mesh:surface_0/material:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_icwh1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton3D/Zombie_Model:mesh:surface_0/material:emission")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oyx48"]
+_data = {
+&"RESET": SubResource("Animation_icwh1"),
+&"hit_flash": SubResource("Animation_i8iu1")
+}
 
 [node name="Zombie" type="CharacterBody3D"]
 collision_layer = 2
@@ -136,7 +173,7 @@ bones/44/rotation = Quaternion(0.0122784, 0.0921579, -0.347678, 0.932993)
 bones/48/position = Vector3(-0.264507, -0.254034, 0.297219)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Zombie/Skeleton3D" index="1"]
-transform = Transform3D(0.877237, 0.436571, 0.199652, 0.400698, -0.894932, 0.19631, 0.264378, -0.0922106, -0.960001, -0.302627, 3.69218, -0.661589)
+transform = Transform3D(0.877238, 0.43657, 0.199652, 0.400697, -0.894932, 0.19631, 0.264378, -0.0922105, -0.960001, -0.302627, 3.69218, -0.661588)
 bone_name = "arm_lower.l"
 bone_idx = 8
 
@@ -145,9 +182,10 @@ transform = Transform3D(0.888853, 1.36975, -2.97142, -0.187451, -3.05274, -1.463
 collision_layer = 0
 monitoring = false
 monitorable = false
-script = ExtResource("11_nylgs")
+script = ExtResource("7_i8iu1")
 parent = NodePath("../../../../..")
 one_hit = true
+damage = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Body/Zombie/Skeleton3D/BoneAttachment3D/HitBox"]
 shape = SubResource("SphereShape3D_xfkow")
@@ -155,19 +193,24 @@ shape = SubResource("SphereShape3D_xfkow")
 [node name="GPUTrail3D" type="GPUParticles3D" parent="Body/Zombie/Skeleton3D/BoneAttachment3D/HitBox"]
 transform = Transform3D(1, -1.71713e-09, 0, 8.76753e-09, 1, 9.31323e-10, 1.86265e-09, -9.31323e-10, 1, 0.164878, 0.0187492, 0.0122876)
 visible = false
-amount = 10
-lifetime = 10.0
+amount = 9
+lifetime = 9.0
 explosiveness = 1.0
 fixed_fps = 144
 process_material = SubResource("ShaderMaterial_i8iu1")
 draw_pass_1 = SubResource("QuadMesh_70w3q")
 script = ExtResource("15_b1pgq")
-length = 10
-length_seconds = 0.0694444
+length = 9
+length_seconds = 0.0625
 color_ramp = SubResource("GradientTexture1D_oyx48")
 curve = SubResource("CurveTexture_b1pgq")
 _defaults_have_been_set = true
 metadata/_custom_type_script = "uid://c8mqt671ky4j6"
+
+[node name="MeshAnimationPlayer" type="AnimationPlayer" parent="Body/Zombie" index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_oyx48")
+}
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("7_klckg")
