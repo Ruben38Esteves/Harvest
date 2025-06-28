@@ -46,8 +46,8 @@ func _on_timer_timeout() -> void:
 		
 func spread(next_target):
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", next_target.get_parent().global_position, 0.1)
-	projectile.look_at(next_target.get_parent().global_position)
+	tween.tween_property(self, "global_position", next_target.global_position, 0.1)
+	projectile.look_at(next_target.global_position)
 	#global_position = next_target.global_position
 	enemies_hit[next_target.get_parent()] = true
 	timer.start()

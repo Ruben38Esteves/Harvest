@@ -3,7 +3,9 @@ class_name zombie
 extends CharacterBody3D
 
 #stats
-const SPEED = 4.0
+var speed = 0.0
+const RUN_SPEED = 4.0
+const WALK_SPEED = 1.0
 const JUMP_VELOCITY = 4.5
 const ATTACK_RANGE = 1.5
 var max_health = 500
@@ -26,7 +28,7 @@ const blood_particles = preload("res://Scenes/Models/blood_particles.tscn")
 @onready var body = $Body
 @onready var animation_player = $Body/AnimationPlayer
 @onready var mesh_animation_player = $Body/Zombie/MeshAnimationPlayer
-
+var next_nav_point = null
 #coins utils
 const COINS = preload("res://Scenes/Interactables/Items/coins.tscn")
 var instance
@@ -45,6 +47,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _process(delta):
 	velocity
+	if next_nav_point != null:
+		look_at(Vector3(next_nav_point.x,global_position.y,next_nav_point.z))
+		velocity = (next_nav_point - global_transform.origin).normalized() * speed
+	
 	move_and_slide()
 	
 func _target_in_range():
@@ -87,9 +93,7 @@ func play_animation(animation_name: String) -> void:
 
 func chase_player() -> void:
 	nav_agent.set_target_position(global.player.global_transform.origin)
-	var next_nav_point = nav_agent.get_next_path_position()
-	look_at(Vector3(next_nav_point.x,global_position.y,next_nav_point.z))
-	velocity = (next_nav_point - global_transform.origin).normalized() * SPEED
+	next_nav_point = nav_agent.get_next_path_position()
 	
 #func apply_status(status: String) -> void:
 	#if statuses.has(status):

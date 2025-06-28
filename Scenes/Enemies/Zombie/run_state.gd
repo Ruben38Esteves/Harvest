@@ -5,6 +5,7 @@ extends State
 
 func enter(last_state: String) -> void:
 	parent.play_animation("Run")
+	parent.speed = parent.RUN_SPEED
 	
 func update(delta: float) -> void:
 	parent.chase_player()

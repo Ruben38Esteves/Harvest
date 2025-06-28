@@ -3,6 +3,7 @@ extends State
 @onready var parent: zombie = $"../.."
 
 func enter(last_state: String) -> void:
+	parent.next_nav_point = null
 	parent.attacking = true
 	parent.animation_player.play("Attack")
 	
