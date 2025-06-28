@@ -10,4 +10,7 @@ func enter(last_state: String) -> void:
 	parent.speed = parent.WALK_SPEED
 	
 func update(delta: float) -> void:
-	pass
+	if parent.hurt:
+		state_machine.change_state("RunState")
+	if parent.global_position.distance_to(global.player.global_position) < 10.0:
+		state_machine.change_state("RunState")

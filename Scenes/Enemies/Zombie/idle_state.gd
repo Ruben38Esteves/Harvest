@@ -9,6 +9,8 @@ func enter(last_state: String) -> void:
 func update(delta: float) -> void:
 	parent.velocity = Vector3.ZERO
 	time_passed += delta
+	if parent.hurt:
+		state_machine.change_state("RunState")
 	if parent.global_position.distance_to(global.player.global_position) < 5.0:
 		state_machine.change_state("RunState")
 	if time_passed > 3.0:

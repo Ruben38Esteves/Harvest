@@ -29,6 +29,7 @@ const blood_particles = preload("res://Scenes/Models/blood_particles.tscn")
 @onready var animation_player = $Body/AnimationPlayer
 @onready var mesh_animation_player = $Body/Zombie/MeshAnimationPlayer
 var next_nav_point = null
+var hurt: bool = false
 #coins utils
 const COINS = preload("res://Scenes/Interactables/Items/coins.tscn")
 var instance
@@ -73,6 +74,8 @@ func hit(dmg, hit_location = position, status: Array = []):
 			self.get_parent().add_child(instance)
 			queue_free()
 	else:
+		if not hurt:
+			hurt = true
 		mesh_animation_player.play("hit_flash")
 		
 		for effect in status:
