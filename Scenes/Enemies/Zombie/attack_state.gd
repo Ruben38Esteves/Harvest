@@ -9,6 +9,6 @@ func enter(last_state: String) -> void:
 	
 func update(delta: float) -> void:
 	if not parent.attacking:
-		state_machine.change_state("RunState")
+		state_machine.change_state("IdleState")
 	parent.velocity = Vector3.ZERO
 	
