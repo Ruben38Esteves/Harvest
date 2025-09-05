@@ -13,7 +13,7 @@ var health = 500
 const ATTACK_KNOCKBACK = 10.0
 var damage = 10
 var dead: bool = false
-var attacking: bool = false
+@export var attacking: bool = false
 
 #signals
 signal zombie_hit
