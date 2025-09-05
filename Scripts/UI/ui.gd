@@ -4,6 +4,9 @@ extends Control
 
 @onready var crossair: ColorRect = $crossair
 @onready var crossair2: ColorRect = $crossair2
+@onready var color_rect: ColorRect = $ColorRect
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 @onready var kill_amount_display: Label = $Hud/timer/Kills/KillAmount
 @onready var world_timer: Timer = $WorldTimer
 @onready var time_label: Label = $Hud/timer/Time
@@ -113,3 +116,6 @@ func hide_buff(buff_name: String) -> void:
 	if not buff_indicators.has(buff_name):
 		return
 	buff_indicators[buff_name].visible = false
+	
+func show_hit() -> void:
+	animation_player.play("hurt")

@@ -235,6 +235,7 @@ func hit(damage, knockback = Vector3.ZERO):
 	velocity += knockback
 	health -= damage
 	update_progress_bar()
+	ui.show_hit()
 	
 func update_progress_bar():
 	health_bar.max_value = maxHealth
