@@ -144,10 +144,10 @@ func _physics_process(delta):
 			last_direction = direction
 			downhill = slide_check.is_colliding()
 		else:
-			#velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			#velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
-			velocity.x = 0
-			velocity.z = 0
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+			#velocity.x = 0
+			#velocity.z = 0
 		#head bob
 		t_bob += delta * velocity.length() * float(is_on_floor())
 		camera_3d.transform.origin = _head_bob(t_bob)
