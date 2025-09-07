@@ -2,6 +2,7 @@ class_name State
 
 extends Node
 
+@onready var state_machine: StateMachine = $".."
 signal transition(new_state_name: StringName)
 
 func enter(last_state: String) -> void:

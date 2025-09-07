@@ -12,6 +12,7 @@ var player = null
 @export var magazineAmmo = 8
 @export var magazineAmmoMax = 8
 @export var fire_rate: float = 1
+@export var on_release: bool = false
 var can_fire_gun = true
 
 
@@ -38,6 +39,8 @@ func shoot(aim):
 			if target.is_in_group("enemy"):
 				target.hit(damage,aim.get_collision_point())
 
+func hold():
+	pass
 		
 func reload():
 	if !gun_anim.is_playing() and gunAmmo > 0 and magazineAmmo < magazineAmmoMax:

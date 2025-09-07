@@ -1,6 +1,7 @@
 class_name poison_flask_weapon
 
 extends gun
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var poison_flask_visual = $poison_flask
 var can_fire = true
@@ -12,6 +13,7 @@ func _process(delta):
 
 func shoot(gun_aim: RayCast3D):
 	if can_fire and gunAmmo > 0:
+		animation_player.play("RESET")
 		can_fire = false
 		fire_rate_timer.start()
 		gunAmmo -= 1
@@ -24,6 +26,10 @@ func shoot(gun_aim: RayCast3D):
 		impulse.x = impulse.x * 1.5
 		impulse.z = impulse.z * 1.5
 		flask.apply_impulse(impulse * -5.0 + Vector3(0,1.5,0))
+		
+func hold():
+	if can_fire and gunAmmo > 0:
+		animation_player.play("hold")
 	
 func reload():
 	pass

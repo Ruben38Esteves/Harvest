@@ -13,7 +13,7 @@ extends Node3D
 @onready var player_meelee = $map/Player/Head/Camera3D/Hands/Meelee
 
 #loads
-var zombie = load("res://Scenes/zombie.tscn")
+var zombie = load("res://Scenes/Enemies/Zombie/zombie.tscn")
 var chest = load("res://Scenes/Interactables/chest.tscn")
 var instance
 

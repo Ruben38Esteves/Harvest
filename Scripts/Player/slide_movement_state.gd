@@ -3,7 +3,6 @@ class_name SlideMovementState
 extends State
 
 @onready var player: CharacterBody3D = $"../.."
-@onready var state_machine: StateMachine = $".."
 var should_uncrouch: bool
 
 func enter(last_state: String) -> void:

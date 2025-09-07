@@ -1,3 +1,5 @@
+class_name Player
+
 extends CharacterBody3D
 
 @onready var death_screen = $"UI/Player_death_screen"
@@ -61,7 +63,7 @@ var health = 100.0
 
 
 #guns
-var current_gun = "primary"
+var current_gun = null
 @onready var gun_aim = $Head/Camera3D/gun_aim
 #primary
 signal increase_rifle_ammo
@@ -84,7 +86,6 @@ func _ready():
 	global.player = self
 	global.inventory = inventory
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	current_gun = "primary"
 	update_progress_bar()
 	default_hands_position = hands.position
 	
@@ -92,12 +93,12 @@ func load_weapon_variables():
 	primary_weapon = primary.get_child(0)
 	secondary_weapon = secondary.get_child(0)
 	meelee_weapon = meelee.get_child(0)
-	
+	current_gun = primary_weapon
 	
 func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_input = event.relative
-	
+		
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
@@ -143,10 +144,10 @@ func _physics_process(delta):
 			last_direction = direction
 			downhill = slide_check.is_colliding()
 		else:
-			#velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
-			#velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
-			velocity.x = 0
-			velocity.z = 0
+			velocity.x = lerp(velocity.x, direction.x * speed, delta * 7.0)
+			velocity.z = lerp(velocity.z, direction.z * speed, delta * 7.0)
+			#velocity.x = 0
+			#velocity.z = 0
 		#head bob
 		t_bob += delta * velocity.length() * float(is_on_floor())
 		camera_3d.transform.origin = _head_bob(t_bob)
@@ -155,41 +156,38 @@ func _physics_process(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity.length()
 	camera_3d.fov = lerp(camera_3d.fov,target_fov, delta * 8.0)
 	
+	
 	#attacking
 	if Input.is_action_just_pressed("attack"):
-		if current_gun == "primary":
-			if primary_weapon:
-				primary_weapon.shoot(gun_aim)
-		elif current_gun == "secondary":
-			if secondary_weapon:
-				secondary_weapon.shoot(gun_aim)
-		elif current_gun == "meelee":
-			if meelee_weapon:
-				meelee_weapon.shoot()
+		if current_gun:
+			if current_gun.on_release == true:
+				current_gun.hold()
+			else:
+				current_gun.shoot(gun_aim)
+				
+	if Input.is_action_just_released("attack"):
+		if current_gun and current_gun.on_release == true:
+			current_gun.shoot(gun_aim)
 	
 	#reload
 	if Input.is_action_just_pressed("reload"):
-		if current_gun == "primary":
-			if primary_weapon:
-				primary_weapon.reload()
-		elif current_gun == "secondary":
-			if secondary_weapon:
-				secondary_weapon.reload()
+		if current_gun and current_gun.has_method("reload"):
+			current_gun.reload()
 	
 	
 	#change weapon
 	if Input.is_action_just_pressed("primary"):
-		current_gun = "primary"
+		current_gun = primary_weapon
 		primary.visible = true
 		secondary.visible = false
 		meelee.visible = false
 	elif Input.is_action_just_pressed("secondary"):
-		current_gun = "secondary"
+		current_gun = secondary_weapon
 		primary.visible = false
 		secondary.visible = true
 		meelee.visible = false
 	elif Input.is_action_just_pressed("meelee"):
-		current_gun = "meelee"
+		current_gun = meelee_weapon
 		primary.visible = false
 		secondary.visible = false
 		meelee.visible = true
@@ -198,7 +196,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 		
-	#open chest
+	#interact
 	if Input.is_action_just_pressed("interact"):
 		if interact_aim.is_colliding():
 			var inter_coll = interact_aim.get_collider()
@@ -206,7 +204,7 @@ func _physics_process(delta):
 				inter_coll.interact()
 					
 	
-	#chest glow
+	# set target
 	var coll = interact_aim.get_collider()
 	if coll != looking_at:
 		if coll != null and coll.is_in_group("interactible"):
@@ -231,12 +229,13 @@ func weapon_sway(delta):
 		hands.rotation.y = lerp(hands.rotation.y, (mouse_input.x / 100) * weapon_rotation, 5 * delta)
 		#hands.position.x = lerp(hands.position.x, default_hands_position.x + (hands / 75), 5 * delta)
 		#hands.position.z = lerp(hands.position.z, default_hands_position.z + (hands.velocity.z / 75), 5 * delta)
-	
-func hit(dir,knockback,damage):
+
+func hit(damage, knockback = Vector3.ZERO):
 	emit_signal("player_hit")
-	velocity += dir * knockback
+	velocity += knockback
 	health -= damage
 	update_progress_bar()
+	ui.show_hit()
 	
 func update_progress_bar():
 	health_bar.max_value = maxHealth
