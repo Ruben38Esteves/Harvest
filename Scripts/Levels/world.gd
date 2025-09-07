@@ -78,6 +78,7 @@ func _on_zombie_spawn_timer_timeout():
 	instance.global_position = spawn_point
 	instance.zombie_hit.connect(_on_zombie_zombie_hit)
 	instance.zombie_killed.connect(_on_zombie_zombie_killed)
+	instance.set_stats(1000)
 	navigation_region.add_child(instance)
 
 func _on_zombie_zombie_hit():

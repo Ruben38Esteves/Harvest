@@ -211,7 +211,7 @@ bones/48/position = Vector3(-0.264507, -0.254034, 0.297219)
 mesh = SubResource("ArrayMesh_icwh1")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Body/Zombie/Skeleton3D" index="1"]
-transform = Transform3D(0.877237, 0.436571, 0.199652, 0.400698, -0.894932, 0.19631, 0.264378, -0.0922106, -0.960001, -0.302627, 3.69218, -0.661589)
+transform = Transform3D(0.877238, 0.43657, 0.199652, 0.400697, -0.894932, 0.19631, 0.264378, -0.0922105, -0.960001, -0.302627, 3.69218, -0.661588)
 bone_name = "arm_lower.l"
 bone_idx = 8
 
