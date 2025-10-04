@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Scenes/player.tscn" id="2_w2b36"]
 [ext_resource type="PackedScene" uid="uid://bwtnayq7yv0sp" path="res://Models/Shotgun/shotgun_3d.glb" id="3_raeva"]
 [ext_resource type="PackedScene" uid="uid://c523b5442lwar" path="res://Models/Rifle/rifle-3d.glb" id="4_6tymq"]
-[ext_resource type="PackedScene" uid="uid://6fmadp4jv4mf" path="res://Models/Gun/gun_3d.glb" id="5_vtacp"]
+[ext_resource type="Script" uid="uid://d0imd2hwlhvly" path="res://Weapons/HandGun/hand_gun.gd" id="5_rhdxs"]
 [ext_resource type="PackedScene" uid="uid://2p2f5hrqtc7f" path="res://Models/PoisonFlask/poison_flask.glb" id="6_ix4sj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0x4m"]
@@ -92,8 +92,9 @@ light_energy = 10.0
 spot_range = 6.56156
 spot_angle = 16.27
 
-[node name="gun_3d" parent="map/secondaries/play_gun" instance=ExtResource("5_vtacp")]
-transform = Transform3D(-1.13331e-08, 0.259271, -1.13331e-08, 0, -1.13331e-08, -0.259271, -0.259271, -1.13331e-08, 4.95385e-16, -0.297067, 1.32773, -0.224807)
+[node name="hand_gun" type="Node3D" parent="map/secondaries/play_gun"]
+script = ExtResource("5_rhdxs")
+metadata/_custom_type_script = "uid://d0imd2hwlhvly"
 
 [node name="play_poison" type="Area3D" parent="map/secondaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
