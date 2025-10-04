@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cjyysejwq25n6"]
+[gd_scene load_steps=21 format=4 uid="uid://cjyysejwq25n6"]
 
 [ext_resource type="Texture2D" uid="uid://chaqe2ef4ymd0" path="res://Sprites/696.jpg" id="1_d128w"]
 [ext_resource type="Script" uid="uid://6y71g52thvpt" path="res://Scripts/Levels/world.gd" id="1_m3k4x"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" uid="uid://btt2ymfmcwcva" path="res://addons/simplegrasstextured/shaders/grass.gdshader" id="8_wb4wb"]
 [ext_resource type="Texture2D" uid="uid://c4ggdp0kg5wjk" path="res://addons/simplegrasstextured/textures/grassbushcc008.png" id="9_humg3"]
 [ext_resource type="Script" uid="uid://ck23d2qrf5wng" path="res://addons/simplegrasstextured/grass.gd" id="10_rko6k"]
+[ext_resource type="PackedScene" uid="uid://bcuqc64buoxlm" path="res://Models/Tree/DeadTree_1.tscn" id="11_ur3n5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8gs4"]
 albedo_color = Color(1, 1, 0, 1)
@@ -45,7 +46,7 @@ volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(0.188235, 0.188235, 0.180392, 1)
 volumetric_fog_emission = Color(0.223529, 0.227451, 0.219608, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1kpqf"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5i7js"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("8_wb4wb")
@@ -80,7 +81,7 @@ _surfaces = [{
 "format": 34359742495,
 "index_count": 12,
 "index_data": PackedByteArray("AAABAAIAAwABAAAABAAFAAYABwAFAAQA"),
-"material": SubResource("ShaderMaterial_1kpqf"),
+"material": SubResource("ShaderMaterial_5i7js"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 8,
@@ -398,6 +399,9 @@ autostart = true
 
 [node name="WordClock" type="Timer" parent="."]
 autostart = true
+
+[node name="DeadTree1" parent="." instance=ExtResource("11_ur3n5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5415244, 0.00049996376, -1.9241736)
 
 [connection signal="add_ammo" from="." to="map/Player" method="_on_world_add_ammo"]
 [connection signal="player_hit" from="map/Player" to="." method="_on_player_player_hit"]

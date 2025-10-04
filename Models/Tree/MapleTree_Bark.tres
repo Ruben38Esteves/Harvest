@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://blvp1aknl217n"]
+
+[ext_resource type="Texture2D" uid="uid://ctphlqkessq3h" path="res://Models/Tree/Dead Trees_MapleTree_Bark.png" id="1_rmkkc"]
+[ext_resource type="Texture2D" uid="uid://cwq7cqhdfeu5h" path="res://Models/Tree/Dead Trees_MapleTree_Bark_Normal.png" id="2_reugy"]
+
+[resource]
+resource_name = "MapleTree_Bark"
+albedo_texture = ExtResource("1_rmkkc")
+metallic_specular = 0.0
+roughness = 0.30151135
+normal_enabled = true
+normal_texture = ExtResource("2_reugy")
+metadata/extras = {
+"fromFBX": {
+"isTruePBR": false,
+"shadingModel": "Phong"
+}
+}
