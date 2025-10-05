@@ -1,19 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://blh67i3ewcfbr"]
+[gd_scene load_steps=12 format=3 uid="uid://blh67i3ewcfbr"]
 
 [ext_resource type="Material" uid="uid://cypdluo8t4sc7" path="res://Terrain/Scenery/Decorations/Ground/GroundMat.tres" id="1_djy6p"]
 [ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Player/player.tscn" id="2_61edo"]
+[ext_resource type="PackedScene" uid="uid://duflf3vkcx5nv" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_tree_2.tscn" id="3_sbj07"]
+[ext_resource type="PackedScene" uid="uid://nt1ah2cqk1or" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_tree_2_1.tscn" id="4_cflld"]
+[ext_resource type="PackedScene" uid="uid://co53hst68goch" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_tree_3.tscn" id="5_o4w43"]
+[ext_resource type="PackedScene" uid="uid://dyam731cxcuts" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_tree_4.tscn" id="6_iov5i"]
+[ext_resource type="PackedScene" uid="uid://c3fhrglfsksep" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_dead_tree_1.tscn" id="7_xsc8r"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_og4op"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_61edo"]
 size = Vector3(70.71, 35.36, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2rbq0"]
+size = Vector3(155.66838, 44.727753, 1.5522308)
+
 [sub_resource type="Environment" id="Environment_og4op"]
 background_mode = 1
 background_color = Color(0, 0, 0.14901961, 1)
 ambient_light_source = 2
 ambient_light_color = Color(0.47788018, 0.47788012, 0.47788012, 1)
-ambient_light_energy = 0.1
+ambient_light_energy = 0.5
 ssao_enabled = true
 fog_enabled = true
 fog_light_color = Color(0, 0.015686275, 0.06666667, 1)
@@ -80,13 +88,2090 @@ material = ExtResource("1_djy6p")
 
 [node name="Trees" type="Node3D" parent="map/Terrain"]
 
+[node name="TreeWall" type="StaticBody3D" parent="map/Terrain/Trees"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/Terrain/Trees/TreeWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.891323, 23.95531, -123.312416)
+shape = SubResource("BoxShape3D_2rbq0")
+
+[node name="RetroTree2" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.95332, 4.2622175, -123.36393)
+
+[node name="RetroTree21" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.51383, 4.2622175, -123.26917)
+
+[node name="RetroTree3" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.62926, 4.2622166, -123.22543)
+
+[node name="RetroTree4" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.18183, 4.262218, -123.58769)
+
+[node name="RetroDeadTree1" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.37973, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree3" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.81233, 4.2622175, -123.532776)
+
+[node name="RetroTree5" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.89552, 4.2622175, -123.36393)
+
+[node name="RetroTree22" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.45603, 4.2622175, -123.26917)
+
+[node name="RetroTree6" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.57146, 4.2622166, -123.22543)
+
+[node name="RetroTree7" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.12403, 4.262218, -123.58769)
+
+[node name="RetroDeadTree2" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.32193, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree4" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.75453, 4.2622175, -123.532776)
+
+[node name="RetroTree8" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.748604, 4.2622175, -123.36393)
+
+[node name="RetroTree23" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.30911, 4.2622175, -123.26917)
+
+[node name="RetroTree9" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.42454, 4.2622166, -123.22543)
+
+[node name="RetroTree10" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.97711, 4.262218, -123.58769)
+
+[node name="RetroDeadTree5" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.17501, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree6" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.60761, 4.2622175, -123.532776)
+
+[node name="RetroTree11" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.77895, 4.2622175, -123.36393)
+
+[node name="RetroTree24" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.33946, 4.2622175, -123.26917)
+
+[node name="RetroTree12" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.45489, 4.2622166, -123.22543)
+
+[node name="RetroTree13" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.00746, 4.262218, -123.58769)
+
+[node name="RetroDeadTree7" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.20536, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree8" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.63796, 4.2622175, -123.532776)
+
+[node name="RetroTree14" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.240875, 4.2622175, -123.36393)
+
+[node name="RetroTree25" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.801384, 4.2622175, -123.26917)
+
+[node name="RetroTree15" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.91681, 4.2622166, -123.22543)
+
+[node name="RetroTree16" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.46938, 4.262218, -123.58769)
+
+[node name="RetroDeadTree9" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.66728, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree10" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.099884, 4.2622175, -123.532776)
+
+[node name="RetroTree17" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.183075, 4.2622175, -123.36393)
+
+[node name="RetroTree26" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.74358, 4.2622175, -123.26917)
+
+[node name="RetroTree18" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.85901, 4.2622166, -123.22543)
+
+[node name="RetroTree19" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.41158, 4.262218, -123.58769)
+
+[node name="RetroDeadTree11" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.60948, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree12" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.04208, 4.2622175, -123.532776)
+
+[node name="RetroTree20" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.036156, 4.2622175, -123.36393)
+
+[node name="RetroTree27" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.596664, 4.2622175, -123.26917)
+
+[node name="RetroTree28" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.71209, 4.2622166, -123.22543)
+
+[node name="RetroTree29" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.26466, 4.262218, -123.58769)
+
+[node name="RetroDeadTree13" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.46256, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree14" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.895164, 4.2622175, -123.532776)
+
+[node name="RetroTree30" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.066505, 4.2622175, -123.36393)
+
+[node name="RetroTree31" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.627014, 4.2622175, -123.26917)
+
+[node name="RetroTree32" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.74244, 4.2622166, -123.22543)
+
+[node name="RetroTree33" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.29501, 4.262218, -123.58769)
+
+[node name="RetroDeadTree15" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.49291, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree16" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.925514, 4.2622175, -123.532776)
+
+[node name="RetroTree34" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.01528, 4.2622175, -123.36393)
+
+[node name="RetroTree35" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.57579, 4.2622175, -123.26917)
+
+[node name="RetroTree36" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.691216, 4.2622166, -123.22543)
+
+[node name="RetroTree37" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.24379, 4.262218, -123.58769)
+
+[node name="RetroDeadTree17" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.44169, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree18" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.87429, 4.2622175, -123.532776)
+
+[node name="RetroTree38" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.95748, 4.2622175, -123.36393)
+
+[node name="RetroTree39" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.51799, 4.2622175, -123.26917)
+
+[node name="RetroTree40" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.633415, 4.2622166, -123.22543)
+
+[node name="RetroTree41" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.18599, 4.262218, -123.58769)
+
+[node name="RetroDeadTree19" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.38389, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree20" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.81649, 4.2622175, -123.532776)
+
+[node name="RetroTree42" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.81056, 4.2622175, -123.36393)
+
+[node name="RetroTree43" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.37107, 4.2622175, -123.26917)
+
+[node name="RetroTree44" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.486496, 4.2622166, -123.22543)
+
+[node name="RetroTree45" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.03907, 4.262218, -123.58769)
+
+[node name="RetroDeadTree21" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.23697, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree22" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.66957, 4.2622175, -123.532776)
+
+[node name="RetroTree46" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.84091, 4.2622175, -123.36393)
+
+[node name="RetroTree47" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.40142, 4.2622175, -123.26917)
+
+[node name="RetroTree48" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.516846, 4.2622166, -123.22543)
+
+[node name="RetroTree49" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.06942, 4.262218, -123.58769)
+
+[node name="RetroDeadTree23" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.26732, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree24" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.69992, 4.2622175, -123.532776)
+
+[node name="RetroTree50" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.39609, 4.2622175, -123.36393)
+
+[node name="RetroTree51" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.9566, 4.2622175, -123.26917)
+
+[node name="RetroTree52" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.072025, 4.2622166, -123.22543)
+
+[node name="RetroTree53" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.6246, 4.262218, -123.58769)
+
+[node name="RetroDeadTree25" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.8225, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree26" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.2551, 4.2622175, -123.532776)
+
+[node name="RetroTree54" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.33829, 4.2622175, -123.36393)
+
+[node name="RetroTree55" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.8988, 4.2622175, -123.26917)
+
+[node name="RetroTree56" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.014225, 4.2622166, -123.22543)
+
+[node name="RetroTree57" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.5668, 4.262218, -123.58769)
+
+[node name="RetroDeadTree27" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.764698, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree28" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.1973, 4.2622175, -123.532776)
+
+[node name="RetroTree58" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.191372, 4.2622175, -123.36393)
+
+[node name="RetroTree59" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.75188, 4.2622175, -123.26917)
+
+[node name="RetroTree60" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.867306, 4.2622166, -123.22543)
+
+[node name="RetroTree61" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.41988, 4.262218, -123.58769)
+
+[node name="RetroDeadTree29" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.61778, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree30" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.05038, 4.2622175, -123.532776)
+
+[node name="RetroTree62" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.22172, 4.2622175, -123.36393)
+
+[node name="RetroTree63" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.78223, 4.2622175, -123.26917)
+
+[node name="RetroTree64" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.897655, 4.2622166, -123.22543)
+
+[node name="RetroTree65" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.45023, 4.262218, -123.58769)
+
+[node name="RetroDeadTree31" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.64813, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree32" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.08073, 4.2622175, -123.532776)
+
+[node name="RetroTree66" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.61125, 4.2622175, -123.36393)
+
+[node name="RetroTree67" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.17176, 4.2622175, -123.26917)
+
+[node name="RetroTree68" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.287186, 4.2622166, -123.22543)
+
+[node name="RetroTree69" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.83976, 4.262218, -123.58769)
+
+[node name="RetroDeadTree33" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.03766, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree34" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.47026, 4.2622175, -123.532776)
+
+[node name="RetroTree70" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.55345, 4.2622175, -123.36393)
+
+[node name="RetroTree71" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.11396, 4.2622175, -123.26917)
+
+[node name="RetroTree72" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.229387, 4.2622166, -123.22543)
+
+[node name="RetroTree73" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.78196, 4.262218, -123.58769)
+
+[node name="RetroDeadTree35" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.979858, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree36" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.41246, 4.2622175, -123.532776)
+
+[node name="RetroTree74" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.406534, 4.2622175, -123.36393)
+
+[node name="RetroTree75" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.967043, 4.2622175, -123.26917)
+
+[node name="RetroTree76" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.082468, 4.2622166, -123.22543)
+
+[node name="RetroTree77" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.635042, 4.262218, -123.58769)
+
+[node name="RetroDeadTree37" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.832941, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree38" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.265543, 4.2622175, -123.532776)
+
+[node name="RetroTree78" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.436884, 4.2622175, -123.36393)
+
+[node name="RetroTree79" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.997393, 4.2622175, -123.26917)
+
+[node name="RetroTree80" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.112818, 4.2622166, -123.22543)
+
+[node name="RetroTree81" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.665392, 4.262218, -123.58769)
+
+[node name="RetroDeadTree39" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.86329, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree40" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.295893, 4.2622175, -123.532776)
+
+[node name="RetroTree82" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.800905, 4.2622175, -123.36393)
+
+[node name="RetroTree83" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.361414, 4.2622175, -123.26917)
+
+[node name="RetroTree84" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.476839, 4.2622166, -123.22543)
+
+[node name="RetroTree85" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.029413, 4.262218, -123.58769)
+
+[node name="RetroDeadTree41" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.227312, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree42" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.659914, 4.2622175, -123.532776)
+
+[node name="RetroTree86" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.743105, 4.2622175, -123.36393)
+
+[node name="RetroTree87" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.303614, 4.2622175, -123.26917)
+
+[node name="RetroTree88" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.419041, 4.2622166, -123.22543)
+
+[node name="RetroTree89" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.971613, 4.262218, -123.58769)
+
+[node name="RetroDeadTree43" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.169512, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree44" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.602114, 4.2622175, -123.532776)
+
+[node name="RetroTree90" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.596188, 4.2622175, -123.36393)
+
+[node name="RetroTree91" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1566963, 4.2622175, -123.26917)
+
+[node name="RetroTree92" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2721214, 4.2622166, -123.22543)
+
+[node name="RetroTree93" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8246956, 4.262218, -123.58769)
+
+[node name="RetroDeadTree45" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0225945, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree46" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.455196, 4.2622175, -123.532776)
+
+[node name="RetroTree94" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6265373, 4.2622175, -123.36393)
+
+[node name="RetroTree95" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.187046, 4.2622175, -123.26917)
+
+[node name="RetroTree96" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30247116, 4.2622166, -123.22543)
+
+[node name="RetroTree97" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8550453, 4.262218, -123.58769)
+
+[node name="RetroDeadTree47" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0529442, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree48" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.485546, 4.2622175, -123.532776)
+
+[node name="RetroTree98" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7291584, 4.2622175, -123.36393)
+
+[node name="RetroTree99" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1686497, 4.2622175, -123.26917)
+
+[node name="RetroTree100" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0532246, 4.2622166, -123.22543)
+
+[node name="RetroTree101" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5006504, 4.262218, -123.58769)
+
+[node name="RetroDeadTree49" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3027515, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree50" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8701496, 4.2622175, -123.532776)
+
+[node name="RetroTree102" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7869587, 4.2622175, -123.36393)
+
+[node name="RetroTree103" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.22645, 4.2622175, -123.26917)
+
+[node name="RetroTree104" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.111023, 4.2622166, -123.22543)
+
+[node name="RetroTree105" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5584507, 4.262218, -123.58769)
+
+[node name="RetroDeadTree51" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.360552, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree52" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92795, 4.2622175, -123.532776)
+
+[node name="RetroTree106" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.933876, 4.2622175, -123.36393)
+
+[node name="RetroTree107" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.373367, 4.2622175, -123.26917)
+
+[node name="RetroTree108" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.257942, 4.2622166, -123.22543)
+
+[node name="RetroTree109" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.705368, 4.262218, -123.58769)
+
+[node name="RetroDeadTree53" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.507469, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree54" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.074867, 4.2622175, -123.532776)
+
+[node name="RetroTree110" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.903526, 4.2622175, -123.36393)
+
+[node name="RetroTree111" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.343018, 4.2622175, -123.26917)
+
+[node name="RetroTree112" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.227592, 4.2622166, -123.22543)
+
+[node name="RetroTree113" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.675018, 4.262218, -123.58769)
+
+[node name="RetroDeadTree55" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.47712, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree56" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.044518, 4.2622175, -123.532776)
+
+[node name="RetroTree115" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.19614, 4.262218, -123.58769)
+
+[node name="RetroDeadTree57" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.998241, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree58" parent="map/Terrain/Trees/TreeWall" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.56564, 4.2622175, -123.532776)
+
+[node name="TreeWall3" type="StaticBody3D" parent="map/Terrain/Trees"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -96.292694, 1.5520859, -100.190796)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/Terrain/Trees/TreeWall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.885265, 19.579254, -123.31241)
+shape = SubResource("BoxShape3D_2rbq0")
+
+[node name="RetroTree50" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.16405, -0.6196506, -122.108795)
+
+[node name="RetroDeadTree25" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.590458, -0.39449072, -122.17168)
+
+[node name="RetroTree21" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.28179, -1.5656042, -122.014046)
+
+[node name="RetroTree3" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.39722, -1.5656042, -121.97031)
+
+[node name="RetroTree4" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.94979, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree1" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.14769, -1.5656042, -122.17168)
+
+[node name="RetroTree5" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.66348, -1.5656042, -122.1088)
+
+[node name="RetroTree22" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.22399, -1.5656042, -122.014046)
+
+[node name="RetroTree6" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.33942, -1.5656042, -121.97031)
+
+[node name="RetroTree7" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.89199, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree2" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.08989, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree4" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.52249, -1.5656042, -122.27765)
+
+[node name="RetroTree8" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.51656, -1.5656042, -122.1088)
+
+[node name="RetroTree23" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.07707, -1.5656042, -122.014046)
+
+[node name="RetroTree9" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.1925, -1.5656042, -121.97031)
+
+[node name="RetroTree10" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.74507, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree5" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.94297, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree6" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.37557, -1.5656042, -122.27765)
+
+[node name="RetroTree11" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.54691, -1.5656042, -122.1088)
+
+[node name="RetroTree24" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.10742, -1.5656042, -122.014046)
+
+[node name="RetroTree12" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.22285, -1.5656042, -121.97031)
+
+[node name="RetroTree13" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.77542, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree7" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.97332, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree8" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.40592, -1.5656042, -122.27765)
+
+[node name="RetroTree14" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.008835, -1.5656042, -122.1088)
+
+[node name="RetroTree25" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.56934, -1.5656042, -122.014046)
+
+[node name="RetroTree15" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.68477, -1.5656042, -121.97031)
+
+[node name="RetroTree16" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.23734, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree9" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.43524, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree10" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.86784, -1.5656042, -122.27765)
+
+[node name="RetroTree17" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.951035, -1.5656042, -122.1088)
+
+[node name="RetroTree26" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.51154, -1.5656042, -122.014046)
+
+[node name="RetroTree18" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.62697, -1.5656042, -121.97031)
+
+[node name="RetroTree19" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.17954, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree11" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.37744, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree12" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.81004, -1.5656042, -122.27765)
+
+[node name="RetroTree20" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.804115, -1.5656042, -122.1088)
+
+[node name="RetroTree27" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.364624, -1.5656042, -122.014046)
+
+[node name="RetroTree28" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.48005, -1.5656042, -121.97031)
+
+[node name="RetroTree29" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.03262, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree13" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.23052, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree14" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.663124, -1.5656042, -122.27765)
+
+[node name="RetroTree30" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.834465, -1.5656042, -122.1088)
+
+[node name="RetroTree31" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.39497, -1.5656042, -122.014046)
+
+[node name="RetroTree32" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.5104, -1.5656042, -121.97031)
+
+[node name="RetroTree33" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.06297, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree15" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.26087, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree16" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.693474, -1.5656042, -122.27765)
+
+[node name="RetroTree34" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.78324, -1.5656042, -122.1088)
+
+[node name="RetroTree35" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.34375, -1.5656042, -122.014046)
+
+[node name="RetroTree36" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.459175, -1.5656042, -121.97031)
+
+[node name="RetroTree37" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.01175, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree17" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.20965, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree18" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.64225, -1.5656042, -122.27765)
+
+[node name="RetroTree38" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.72544, -1.5656042, -122.1088)
+
+[node name="RetroTree39" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.28595, -1.5656042, -122.014046)
+
+[node name="RetroTree40" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.401375, -1.5656042, -121.97031)
+
+[node name="RetroTree41" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.95395, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree19" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.15185, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree20" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.58445, -1.5656042, -122.27765)
+
+[node name="RetroTree42" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.57852, -1.5307984, -122.1088)
+
+[node name="RetroTree43" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.13903, -1.4048601, -122.014046)
+
+[node name="RetroTree44" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.254456, -1.2399808, -121.97031)
+
+[node name="RetroTree45" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.80703, -1.4633026, -122.332565)
+
+[node name="RetroDeadTree21" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.00493, -1.3056387, -122.17168)
+
+[node name="RetroDeadTree22" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.43753, -1.5656042, -122.27765)
+
+[node name="RetroTree46" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.60887, -1.0960104, -122.1088)
+
+[node name="RetroTree47" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.169376, -0.9700718, -122.01404)
+
+[node name="RetroTree48" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.28481, -0.8051932, -121.97031)
+
+[node name="RetroTree49" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.837376, -1.028514, -122.332565)
+
+[node name="RetroDeadTree23" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.03528, -0.87085044, -122.17168)
+
+[node name="RetroDeadTree24" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.46788, -1.1711644, -122.27765)
+
+[node name="RetroTree51" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.72456, -0.49371135, -122.01404)
+
+[node name="RetroTree52" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.83999, -0.32883346, -121.97031)
+
+[node name="RetroTree53" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.39256, -0.5521543, -122.332565)
+
+[node name="RetroDeadTree26" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.02306, -0.6948049, -122.27765)
+
+[node name="RetroTree54" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.10625, -0.17715085, -122.108795)
+
+[node name="RetroTree55" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.66676, -0.051211715, -122.01404)
+
+[node name="RetroTree56" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.78219, 0.11366725, -121.97031)
+
+[node name="RetroTree57" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.33476, -0.10965371, -122.332565)
+
+[node name="RetroDeadTree27" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.532658, 0.048009396, -122.17168)
+
+[node name="RetroDeadTree28" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.96526, -0.2523048, -122.27765)
+
+[node name="RetroTree58" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.95933, 0.27314603, -122.108795)
+
+[node name="RetroTree59" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.51984, 0.39908552, -122.01404)
+
+[node name="RetroTree60" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.63527, 0.5639641, -121.97031)
+
+[node name="RetroTree61" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.18784, 0.3406427, -122.332565)
+
+[node name="RetroDeadTree29" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.38574, 0.49830627, -122.17168)
+
+[node name="RetroDeadTree30" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.81834, 0.19799256, -122.27765)
+
+[node name="RetroTree62" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.98968, 0.7079344, -122.108795)
+
+[node name="RetroTree63" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.55019, 0.8338733, -122.01404)
+
+[node name="RetroTree64" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.66562, 0.9987521, -121.97031)
+
+[node name="RetroTree65" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.21819, 0.7754309, -122.332565)
+
+[node name="RetroDeadTree31" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.41609, 0.9330945, -122.17168)
+
+[node name="RetroDeadTree32" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.84869, 0.63278055, -122.27765)
+
+[node name="RetroTree66" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.37921, 1.1987867, -122.1088)
+
+[node name="RetroTree67" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.93972, 1.3247256, -122.014046)
+
+[node name="RetroTree68" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.05515, 1.4896045, -121.97031)
+
+[node name="RetroTree69" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.60772, 1.266283, -122.332565)
+
+[node name="RetroDeadTree33" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.80562, 1.4239473, -122.17168)
+
+[node name="RetroDeadTree34" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.23822, 1.1236329, -122.27765)
+
+[node name="RetroTree70" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.32141, 1.6412866, -122.1088)
+
+[node name="RetroTree71" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.881927, 1.7672262, -122.014046)
+
+[node name="RetroTree72" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.99736, 1.9321041, -121.97031)
+
+[node name="RetroTree73" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.54992, 1.7087836, -122.332565)
+
+[node name="RetroDeadTree35" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.747818, 1.8664474, -122.17168)
+
+[node name="RetroDeadTree36" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.18042, 1.5661335, -122.27765)
+
+[node name="RetroTree74" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1745, 2.0915833, -122.1088)
+
+[node name="RetroTree75" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.735016, 2.2175226, -122.014046)
+
+[node name="RetroTree76" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.850433, 2.3824015, -121.97031)
+
+[node name="RetroTree77" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.403015, 2.15908, -122.332565)
+
+[node name="RetroDeadTree37" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.600906, 2.3167439, -122.17168)
+
+[node name="RetroDeadTree38" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.033508, 2.0164301, -122.27765)
+
+[node name="RetroTree78" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.20485, 2.526372, -122.1088)
+
+[node name="RetroTree79" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.765366, 2.6523108, -122.014046)
+
+[node name="RetroTree80" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.880783, 2.6966124, -121.97031)
+
+[node name="RetroTree81" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.433365, 2.5938683, -122.332565)
+
+[node name="RetroDeadTree39" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.631256, 2.7515316, -122.17168)
+
+[node name="RetroDeadTree40" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.063858, 2.4512177, -122.27765)
+
+[node name="RetroTree82" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.568878, 2.6966124, -122.1088)
+
+[node name="RetroTree83" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.12938, 2.6966124, -122.014046)
+
+[node name="RetroTree84" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.244804, 2.6966124, -121.97031)
+
+[node name="RetroTree85" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.797379, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree41" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.995285, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree42" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.427887, 2.6966124, -122.27765)
+
+[node name="RetroTree86" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.51107, 2.6966124, -122.1088)
+
+[node name="RetroTree87" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.071579, 2.6966124, -122.014046)
+
+[node name="RetroTree88" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.187004, 2.6966124, -121.97031)
+
+[node name="RetroTree89" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.739578, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree43" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.937477, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree44" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.370079, 2.6966124, -122.27765)
+
+[node name="RetroTree90" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.364151, 2.6966124, -122.1088)
+
+[node name="RetroTree91" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9246597, 2.6966124, -122.014046)
+
+[node name="RetroTree92" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.040085, 2.6966124, -121.97031)
+
+[node name="RetroTree93" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.592659, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree45" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.790558, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree46" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.22316, 2.6966124, -122.27765)
+
+[node name="RetroTree94" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3945007, 2.6966124, -122.1088)
+
+[node name="RetroTree95" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95500946, 2.6966124, -122.014046)
+
+[node name="RetroTree96" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9295654, 2.6966124, -121.97031)
+
+[node name="RetroTree97" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6230087, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree47" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1790924, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree48" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2535095, 2.6966124, -122.27765)
+
+[node name="RetroTree98" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.961197, 2.6966124, -122.1088)
+
+[node name="RetroTree99" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.400688, 2.6966124, -122.014046)
+
+[node name="RetroTree100" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.285263, 2.6966124, -121.97031)
+
+[node name="RetroTree101" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.732689, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree49" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53479, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree50" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.102188, 2.6966124, -122.27765)
+
+[node name="RetroTree102" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.018997, 2.6966124, -122.1088)
+
+[node name="RetroTree103" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.458488, 2.6966124, -122.014046)
+
+[node name="RetroTree104" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.343063, 2.6966124, -121.97031)
+
+[node name="RetroTree105" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.790489, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree51" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.59259, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree52" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1599884, 2.6966124, -122.27765)
+
+[node name="RetroTree106" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.165916, 2.6966124, -122.1088)
+
+[node name="RetroTree107" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.605408, 2.6966124, -122.014046)
+
+[node name="RetroTree108" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.489983, 2.6966124, -121.97031)
+
+[node name="RetroTree109" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.937408, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree53" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.73951, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree54" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.306908, 2.6966124, -122.27765)
+
+[node name="RetroTree110" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.13556, 2.6966124, -122.1088)
+
+[node name="RetroTree111" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.575058, 2.6966124, -122.014046)
+
+[node name="RetroTree112" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.459625, 2.6966124, -121.97031)
+
+[node name="RetroTree113" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.907059, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree55" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.709152, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree56" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.27655, 2.6966124, -122.27765)
+
+[node name="RetroTree114" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.980743, 2.6966124, -121.97031)
+
+[node name="RetroTree115" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.428177, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree57" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.23027, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree58" parent="map/Terrain/Trees/TreeWall3" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.797668, 2.6966124, -122.27765)
+
+[node name="TreeWall4" type="StaticBody3D" parent="map/Terrain/Trees"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 146.636, 1.553, -95.241)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/Terrain/Trees/TreeWall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.885254, 18.691666, -123.31241)
+shape = SubResource("BoxShape3D_2rbq0")
+
+[node name="RetroTree50" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.16405, -0.6196506, -122.108795)
+
+[node name="RetroDeadTree25" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.590458, -0.39449072, -122.17168)
+
+[node name="RetroTree21" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.28179, -1.5656042, -122.014046)
+
+[node name="RetroTree3" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.39722, -1.5656042, -121.97031)
+
+[node name="RetroTree4" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.94979, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree1" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.14769, -1.5656042, -122.17168)
+
+[node name="RetroTree5" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.66348, -1.5656042, -122.1088)
+
+[node name="RetroTree22" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.22399, -1.5656042, -122.014046)
+
+[node name="RetroTree6" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.33942, -1.5656042, -121.97031)
+
+[node name="RetroTree7" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.89199, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree2" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.08989, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree4" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.52249, -1.5656042, -122.27765)
+
+[node name="RetroTree8" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.51656, -1.5656042, -122.1088)
+
+[node name="RetroTree23" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.07707, -1.5656042, -122.014046)
+
+[node name="RetroTree9" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.1925, -1.5656042, -121.97031)
+
+[node name="RetroTree10" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.74507, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree5" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.94297, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree6" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.37557, -1.5656042, -122.27765)
+
+[node name="RetroTree11" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.54691, -1.5656042, -122.1088)
+
+[node name="RetroTree24" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.10742, -1.5656042, -122.014046)
+
+[node name="RetroTree12" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.22285, -1.5656042, -121.97031)
+
+[node name="RetroTree13" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.77542, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree7" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.97332, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree8" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.40592, -1.5656042, -122.27765)
+
+[node name="RetroTree14" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.008835, -1.5656042, -122.1088)
+
+[node name="RetroTree25" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.56934, -1.5656042, -122.014046)
+
+[node name="RetroTree15" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.68477, -1.5656042, -121.97031)
+
+[node name="RetroTree16" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.23734, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree9" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.43524, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree10" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.86784, -1.5656042, -122.27765)
+
+[node name="RetroTree17" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.951035, -1.5656042, -122.1088)
+
+[node name="RetroTree26" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.51154, -1.5656042, -122.014046)
+
+[node name="RetroTree18" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.62697, -1.5656042, -121.97031)
+
+[node name="RetroTree19" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.17954, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree11" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.37744, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree12" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.81004, -1.5656042, -122.27765)
+
+[node name="RetroTree20" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.804115, -1.5656042, -122.1088)
+
+[node name="RetroTree27" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.364624, -1.5656042, -122.014046)
+
+[node name="RetroTree28" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.48005, -1.5656042, -121.97031)
+
+[node name="RetroTree29" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.03262, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree13" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.23052, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree14" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.663124, -1.5656042, -122.27765)
+
+[node name="RetroTree30" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.834465, -1.5656042, -122.1088)
+
+[node name="RetroTree31" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.39497, -1.5656042, -122.014046)
+
+[node name="RetroTree32" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.5104, -1.5656042, -121.97031)
+
+[node name="RetroTree33" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.06297, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree15" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.26087, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree16" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.693474, -1.5656042, -122.27765)
+
+[node name="RetroTree34" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.78324, -1.5656042, -122.1088)
+
+[node name="RetroTree35" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.34375, -1.5656042, -122.014046)
+
+[node name="RetroTree36" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.459175, -1.5656042, -121.97031)
+
+[node name="RetroTree37" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.01175, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree17" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.20965, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree18" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.64225, -1.5656042, -122.27765)
+
+[node name="RetroTree38" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.72544, -1.5656042, -122.1088)
+
+[node name="RetroTree39" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.28595, -1.5656042, -122.014046)
+
+[node name="RetroTree40" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.401375, -1.5656042, -121.97031)
+
+[node name="RetroTree41" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.95395, -1.5656042, -122.332565)
+
+[node name="RetroDeadTree19" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.15185, -1.5656042, -122.17168)
+
+[node name="RetroDeadTree20" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.58445, -1.5656042, -122.27765)
+
+[node name="RetroTree42" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.57852, -1.5307984, -122.1088)
+
+[node name="RetroTree43" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.13903, -1.4048601, -122.014046)
+
+[node name="RetroTree44" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.254456, -1.2399808, -121.97031)
+
+[node name="RetroTree45" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.80703, -1.4633026, -122.332565)
+
+[node name="RetroDeadTree21" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.00493, -1.3056387, -122.17168)
+
+[node name="RetroDeadTree22" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.43753, -1.5656042, -122.27765)
+
+[node name="RetroTree46" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.60887, -1.0960104, -122.1088)
+
+[node name="RetroTree47" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.169376, -0.9700718, -122.01404)
+
+[node name="RetroTree48" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.28481, -0.8051932, -121.97031)
+
+[node name="RetroTree49" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.837376, -1.028514, -122.332565)
+
+[node name="RetroDeadTree23" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.03528, -0.87085044, -122.17168)
+
+[node name="RetroDeadTree24" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.46788, -1.1711644, -122.27765)
+
+[node name="RetroTree51" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.72456, -0.49371135, -122.01404)
+
+[node name="RetroTree52" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.83999, -0.32883346, -121.97031)
+
+[node name="RetroTree53" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.39256, -0.5521543, -122.332565)
+
+[node name="RetroDeadTree26" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.02306, -0.6948049, -122.27765)
+
+[node name="RetroTree54" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.10625, -0.17715085, -122.108795)
+
+[node name="RetroTree55" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.66676, -0.051211715, -122.01404)
+
+[node name="RetroTree56" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.78219, 0.11366725, -121.97031)
+
+[node name="RetroTree57" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.33476, -0.10965371, -122.332565)
+
+[node name="RetroDeadTree27" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.532658, 0.048009396, -122.17168)
+
+[node name="RetroDeadTree28" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.96526, -0.2523048, -122.27765)
+
+[node name="RetroTree58" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.95933, 0.27314603, -122.108795)
+
+[node name="RetroTree59" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.51984, 0.39908552, -122.01404)
+
+[node name="RetroTree60" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.63527, 0.5639641, -121.97031)
+
+[node name="RetroTree61" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.18784, 0.3406427, -122.332565)
+
+[node name="RetroDeadTree29" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.38574, 0.49830627, -122.17168)
+
+[node name="RetroDeadTree30" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.81834, 0.19799256, -122.27765)
+
+[node name="RetroTree62" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.98968, 0.7079344, -122.108795)
+
+[node name="RetroTree63" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.55019, 0.8338733, -122.01404)
+
+[node name="RetroTree64" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.66562, 0.9987521, -121.97031)
+
+[node name="RetroTree65" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.21819, 0.7754309, -122.332565)
+
+[node name="RetroDeadTree31" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.41609, 0.9330945, -122.17168)
+
+[node name="RetroDeadTree32" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.84869, 0.63278055, -122.27765)
+
+[node name="RetroTree66" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.37921, 1.1987867, -122.1088)
+
+[node name="RetroTree67" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.93972, 1.3247256, -122.014046)
+
+[node name="RetroTree68" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.05515, 1.4896045, -121.97031)
+
+[node name="RetroTree69" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.60772, 1.266283, -122.332565)
+
+[node name="RetroDeadTree33" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.80562, 1.4239473, -122.17168)
+
+[node name="RetroDeadTree34" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.23822, 1.1236329, -122.27765)
+
+[node name="RetroTree70" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.32141, 1.6412866, -122.1088)
+
+[node name="RetroTree71" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.881927, 1.7672262, -122.014046)
+
+[node name="RetroTree72" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.99736, 1.9321041, -121.97031)
+
+[node name="RetroTree73" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.54992, 1.7087836, -122.332565)
+
+[node name="RetroDeadTree35" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.747818, 1.8664474, -122.17168)
+
+[node name="RetroDeadTree36" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.18042, 1.5661335, -122.27765)
+
+[node name="RetroTree74" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1745, 2.0915833, -122.1088)
+
+[node name="RetroTree75" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.735016, 2.2175226, -122.014046)
+
+[node name="RetroTree76" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.850433, 2.3824015, -121.97031)
+
+[node name="RetroTree77" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.403015, 2.15908, -122.332565)
+
+[node name="RetroDeadTree37" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.600906, 2.3167439, -122.17168)
+
+[node name="RetroDeadTree38" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.033508, 2.0164301, -122.27765)
+
+[node name="RetroTree78" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.20485, 2.526372, -122.1088)
+
+[node name="RetroTree79" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.765366, 2.6523108, -122.014046)
+
+[node name="RetroTree80" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.880783, 2.6966124, -121.97031)
+
+[node name="RetroTree81" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.433365, 2.5938683, -122.332565)
+
+[node name="RetroDeadTree39" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.631256, 2.7515316, -122.17168)
+
+[node name="RetroDeadTree40" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.063858, 2.4512177, -122.27765)
+
+[node name="RetroTree82" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.568878, 2.6966124, -122.1088)
+
+[node name="RetroTree83" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.12938, 2.6966124, -122.014046)
+
+[node name="RetroTree84" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.244804, 2.6966124, -121.97031)
+
+[node name="RetroTree85" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.797379, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree41" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.995285, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree42" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.427887, 2.6966124, -122.27765)
+
+[node name="RetroTree86" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.51107, 2.6966124, -122.1088)
+
+[node name="RetroTree87" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.071579, 2.6966124, -122.014046)
+
+[node name="RetroTree88" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.187004, 2.6966124, -121.97031)
+
+[node name="RetroTree89" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.739578, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree43" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.937477, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree44" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.370079, 2.6966124, -122.27765)
+
+[node name="RetroTree90" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.364151, 2.6966124, -122.1088)
+
+[node name="RetroTree91" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9246597, 2.6966124, -122.014046)
+
+[node name="RetroTree92" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.040085, 2.6966124, -121.97031)
+
+[node name="RetroTree93" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.592659, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree45" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.790558, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree46" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.22316, 2.6966124, -122.27765)
+
+[node name="RetroTree94" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3945007, 2.6966124, -122.1088)
+
+[node name="RetroTree95" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95500946, 2.6966124, -122.014046)
+
+[node name="RetroTree96" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9295654, 2.6966124, -121.97031)
+
+[node name="RetroTree97" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6230087, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree47" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1790924, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree48" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2535095, 2.6966124, -122.27765)
+
+[node name="RetroTree98" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.961197, 2.6966124, -122.1088)
+
+[node name="RetroTree99" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.400688, 2.6966124, -122.014046)
+
+[node name="RetroTree100" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.285263, 2.6966124, -121.97031)
+
+[node name="RetroTree101" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.732689, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree49" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.53479, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree50" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.102188, 2.6966124, -122.27765)
+
+[node name="RetroTree102" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.018997, 2.6966124, -122.1088)
+
+[node name="RetroTree103" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.458488, 2.6966124, -122.014046)
+
+[node name="RetroTree104" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.343063, 2.6966124, -121.97031)
+
+[node name="RetroTree105" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.790489, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree51" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.59259, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree52" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1599884, 2.6966124, -122.27765)
+
+[node name="RetroTree106" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.165916, 2.6966124, -122.1088)
+
+[node name="RetroTree107" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.605408, 2.6966124, -122.014046)
+
+[node name="RetroTree108" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.489983, 2.6966124, -121.97031)
+
+[node name="RetroTree109" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.937408, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree53" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.73951, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree54" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.306908, 2.6966124, -122.27765)
+
+[node name="RetroTree110" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.13556, 2.6966124, -122.1088)
+
+[node name="RetroTree111" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.575058, 2.6966124, -122.014046)
+
+[node name="RetroTree112" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.459625, 2.6966124, -121.97031)
+
+[node name="RetroTree113" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.907059, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree55" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.709152, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree56" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.27655, 2.6966124, -122.27765)
+
+[node name="RetroTree114" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.980743, 2.6966124, -121.97031)
+
+[node name="RetroTree115" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.428177, 2.6966124, -122.332565)
+
+[node name="RetroDeadTree57" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.23027, 2.6966124, -122.17168)
+
+[node name="RetroDeadTree58" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.797668, 2.6966124, -122.27765)
+
+[node name="TreeWall2" type="StaticBody3D" parent="map/Terrain/Trees"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -246.12317, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="map/Terrain/Trees/TreeWall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.95292, 18.691666, -123.00652)
+shape = SubResource("BoxShape3D_2rbq0")
+
+[node name="RetroTree2" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.95332, 4.2622175, -123.36393)
+
+[node name="RetroTree21" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.51383, 4.2622175, -123.26917)
+
+[node name="RetroTree3" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.62926, 4.2622166, -123.22543)
+
+[node name="RetroTree4" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.18183, 4.262218, -123.58769)
+
+[node name="RetroDeadTree1" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.37973, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree3" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.81233, 4.2622175, -123.532776)
+
+[node name="RetroTree5" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.89552, 4.2622175, -123.36393)
+
+[node name="RetroTree22" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.45603, 4.2622175, -123.26917)
+
+[node name="RetroTree6" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.57146, 4.2622166, -123.22543)
+
+[node name="RetroTree7" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.12403, 4.262218, -123.58769)
+
+[node name="RetroDeadTree2" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.32193, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree4" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.75453, 4.2622175, -123.532776)
+
+[node name="RetroTree8" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.748604, 4.2622175, -123.36393)
+
+[node name="RetroTree23" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.30911, 4.2622175, -123.26917)
+
+[node name="RetroTree9" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.42454, 4.2622166, -123.22543)
+
+[node name="RetroTree10" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.97711, 4.262218, -123.58769)
+
+[node name="RetroDeadTree5" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.17501, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree6" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.60761, 4.2622175, -123.532776)
+
+[node name="RetroTree11" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.77895, 4.2622175, -123.36393)
+
+[node name="RetroTree24" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.33946, 4.2622175, -123.26917)
+
+[node name="RetroTree12" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.45489, 4.2622166, -123.22543)
+
+[node name="RetroTree13" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.00746, 4.262218, -123.58769)
+
+[node name="RetroDeadTree7" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.20536, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree8" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.63796, 4.2622175, -123.532776)
+
+[node name="RetroTree14" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.240875, 4.2622175, -123.36393)
+
+[node name="RetroTree25" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.801384, 4.2622175, -123.26917)
+
+[node name="RetroTree15" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.91681, 4.2622166, -123.22543)
+
+[node name="RetroTree16" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.46938, 4.262218, -123.58769)
+
+[node name="RetroDeadTree9" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.66728, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree10" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.099884, 4.2622175, -123.532776)
+
+[node name="RetroTree17" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.183075, 4.2622175, -123.36393)
+
+[node name="RetroTree26" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -94.74358, 4.2622175, -123.26917)
+
+[node name="RetroTree18" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.85901, 4.2622166, -123.22543)
+
+[node name="RetroTree19" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.41158, 4.262218, -123.58769)
+
+[node name="RetroDeadTree11" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.60948, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree12" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.04208, 4.2622175, -123.532776)
+
+[node name="RetroTree20" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.036156, 4.2622175, -123.36393)
+
+[node name="RetroTree27" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -89.596664, 4.2622175, -123.26917)
+
+[node name="RetroTree28" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.71209, 4.2622166, -123.22543)
+
+[node name="RetroTree29" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.26466, 4.262218, -123.58769)
+
+[node name="RetroDeadTree13" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.46256, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree14" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.895164, 4.2622175, -123.532776)
+
+[node name="RetroTree30" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.066505, 4.2622175, -123.36393)
+
+[node name="RetroTree31" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.627014, 4.2622175, -123.26917)
+
+[node name="RetroTree32" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.74244, 4.2622166, -123.22543)
+
+[node name="RetroTree33" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.29501, 4.262218, -123.58769)
+
+[node name="RetroDeadTree15" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.49291, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree16" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.925514, 4.2622175, -123.532776)
+
+[node name="RetroTree34" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.01528, 4.2622175, -123.36393)
+
+[node name="RetroTree35" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.57579, 4.2622175, -123.26917)
+
+[node name="RetroTree36" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.691216, 4.2622166, -123.22543)
+
+[node name="RetroTree37" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.24379, 4.262218, -123.58769)
+
+[node name="RetroDeadTree17" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.44169, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree18" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.87429, 4.2622175, -123.532776)
+
+[node name="RetroTree38" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.95748, 4.2622175, -123.36393)
+
+[node name="RetroTree39" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.51799, 4.2622175, -123.26917)
+
+[node name="RetroTree40" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.633415, 4.2622166, -123.22543)
+
+[node name="RetroTree41" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.18599, 4.262218, -123.58769)
+
+[node name="RetroDeadTree19" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.38389, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree20" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.81649, 4.2622175, -123.532776)
+
+[node name="RetroTree42" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.81056, 4.2622175, -123.36393)
+
+[node name="RetroTree43" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.37107, 4.2622175, -123.26917)
+
+[node name="RetroTree44" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.486496, 4.2622166, -123.22543)
+
+[node name="RetroTree45" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.03907, 4.262218, -123.58769)
+
+[node name="RetroDeadTree21" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.23697, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree22" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.66957, 4.2622175, -123.532776)
+
+[node name="RetroTree46" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.84091, 4.2622175, -123.36393)
+
+[node name="RetroTree47" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.40142, 4.2622175, -123.26917)
+
+[node name="RetroTree48" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.516846, 4.2622166, -123.22543)
+
+[node name="RetroTree49" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.06942, 4.262218, -123.58769)
+
+[node name="RetroDeadTree23" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.26732, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree24" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.69992, 4.2622175, -123.532776)
+
+[node name="RetroTree50" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.39609, 4.2622175, -123.36393)
+
+[node name="RetroTree51" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.9566, 4.2622175, -123.26917)
+
+[node name="RetroTree52" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.072025, 4.2622166, -123.22543)
+
+[node name="RetroTree53" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.6246, 4.262218, -123.58769)
+
+[node name="RetroDeadTree25" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.8225, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree26" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.2551, 4.2622175, -123.532776)
+
+[node name="RetroTree54" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.33829, 4.2622175, -123.36393)
+
+[node name="RetroTree55" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.8988, 4.2622175, -123.26917)
+
+[node name="RetroTree56" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.014225, 4.2622166, -123.22543)
+
+[node name="RetroTree57" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.5668, 4.262218, -123.58769)
+
+[node name="RetroDeadTree27" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.764698, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree28" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.1973, 4.2622175, -123.532776)
+
+[node name="RetroTree58" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.191372, 4.2622175, -123.36393)
+
+[node name="RetroTree59" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.75188, 4.2622175, -123.26917)
+
+[node name="RetroTree60" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.867306, 4.2622166, -123.22543)
+
+[node name="RetroTree61" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.41988, 4.262218, -123.58769)
+
+[node name="RetroDeadTree29" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.61778, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree30" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.05038, 4.2622175, -123.532776)
+
+[node name="RetroTree62" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.22172, 4.2622175, -123.36393)
+
+[node name="RetroTree63" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.78223, 4.2622175, -123.26917)
+
+[node name="RetroTree64" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.897655, 4.2622166, -123.22543)
+
+[node name="RetroTree65" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.45023, 4.262218, -123.58769)
+
+[node name="RetroDeadTree31" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.64813, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree32" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.08073, 4.2622175, -123.532776)
+
+[node name="RetroTree66" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.61125, 4.2622175, -123.36393)
+
+[node name="RetroTree67" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.17176, 4.2622175, -123.26917)
+
+[node name="RetroTree68" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.287186, 4.2622166, -123.22543)
+
+[node name="RetroTree69" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.83976, 4.262218, -123.58769)
+
+[node name="RetroDeadTree33" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.03766, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree34" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.47026, 4.2622175, -123.532776)
+
+[node name="RetroTree70" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.55345, 4.2622175, -123.36393)
+
+[node name="RetroTree71" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.11396, 4.2622175, -123.26917)
+
+[node name="RetroTree72" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.229387, 4.2622166, -123.22543)
+
+[node name="RetroTree73" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.78196, 4.262218, -123.58769)
+
+[node name="RetroDeadTree35" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.979858, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree36" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.41246, 4.2622175, -123.532776)
+
+[node name="RetroTree74" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.406534, 4.2622175, -123.36393)
+
+[node name="RetroTree75" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.967043, 4.2622175, -123.26917)
+
+[node name="RetroTree76" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.082468, 4.2622166, -123.22543)
+
+[node name="RetroTree77" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.635042, 4.262218, -123.58769)
+
+[node name="RetroDeadTree37" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.832941, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree38" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.265543, 4.2622175, -123.532776)
+
+[node name="RetroTree78" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.436884, 4.2622175, -123.36393)
+
+[node name="RetroTree79" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.997393, 4.2622175, -123.26917)
+
+[node name="RetroTree80" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.112818, 4.2622166, -123.22543)
+
+[node name="RetroTree81" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.665392, 4.262218, -123.58769)
+
+[node name="RetroDeadTree39" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.86329, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree40" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.295893, 4.2622175, -123.532776)
+
+[node name="RetroTree82" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.800905, 4.2622175, -123.36393)
+
+[node name="RetroTree83" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.361414, 4.2622175, -123.26917)
+
+[node name="RetroTree84" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.476839, 4.2622166, -123.22543)
+
+[node name="RetroTree85" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.029413, 4.262218, -123.58769)
+
+[node name="RetroDeadTree41" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.227312, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree42" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.659914, 4.2622175, -123.532776)
+
+[node name="RetroTree86" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.743105, 4.2622175, -123.36393)
+
+[node name="RetroTree87" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.303614, 4.2622175, -123.26917)
+
+[node name="RetroTree88" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.419041, 4.2622166, -123.22543)
+
+[node name="RetroTree89" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.971613, 4.262218, -123.58769)
+
+[node name="RetroDeadTree43" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.169512, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree44" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.602114, 4.2622175, -123.532776)
+
+[node name="RetroTree90" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.596188, 4.2622175, -123.36393)
+
+[node name="RetroTree91" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1566963, 4.2622175, -123.26917)
+
+[node name="RetroTree92" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2721214, 4.2622166, -123.22543)
+
+[node name="RetroTree93" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8246956, 4.262218, -123.58769)
+
+[node name="RetroDeadTree45" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0225945, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree46" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.455196, 4.2622175, -123.532776)
+
+[node name="RetroTree94" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6265373, 4.2622175, -123.36393)
+
+[node name="RetroTree95" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.187046, 4.2622175, -123.26917)
+
+[node name="RetroTree96" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.30247116, 4.2622166, -123.22543)
+
+[node name="RetroTree97" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8550453, 4.262218, -123.58769)
+
+[node name="RetroDeadTree47" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0529442, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree48" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.485546, 4.2622175, -123.532776)
+
+[node name="RetroTree98" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7291584, 4.2622175, -123.36393)
+
+[node name="RetroTree99" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1686497, 4.2622175, -123.26917)
+
+[node name="RetroTree100" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0532246, 4.2622166, -123.22543)
+
+[node name="RetroTree101" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5006504, 4.262218, -123.58769)
+
+[node name="RetroDeadTree49" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3027515, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree50" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8701496, 4.2622175, -123.532776)
+
+[node name="RetroTree102" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.7869587, 4.2622175, -123.36393)
+
+[node name="RetroTree103" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.22645, 4.2622175, -123.26917)
+
+[node name="RetroTree104" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.111023, 4.2622166, -123.22543)
+
+[node name="RetroTree105" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5584507, 4.262218, -123.58769)
+
+[node name="RetroDeadTree51" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.360552, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree52" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92795, 4.2622175, -123.532776)
+
+[node name="RetroTree106" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.933876, 4.2622175, -123.36393)
+
+[node name="RetroTree107" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.373367, 4.2622175, -123.26917)
+
+[node name="RetroTree108" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.257942, 4.2622166, -123.22543)
+
+[node name="RetroTree109" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.705368, 4.262218, -123.58769)
+
+[node name="RetroDeadTree53" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.507469, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree54" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.074867, 4.2622175, -123.532776)
+
+[node name="RetroTree110" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("3_sbj07")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.903526, 4.2622175, -123.36393)
+
+[node name="RetroTree111" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("4_cflld")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.343018, 4.2622175, -123.26917)
+
+[node name="RetroTree112" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.227592, 4.2622166, -123.22543)
+
+[node name="RetroTree113" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.675018, 4.262218, -123.58769)
+
+[node name="RetroDeadTree55" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.47712, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree56" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.044518, 4.2622175, -123.532776)
+
+[node name="RetroTree114" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("5_o4w43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.748714, 4.2622166, -123.22543)
+
+[node name="RetroTree115" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("6_iov5i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.19614, 4.262218, -123.58769)
+
+[node name="RetroDeadTree57" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.998241, 4.2622175, -123.4268)
+
+[node name="RetroDeadTree58" parent="map/Terrain/Trees/TreeWall2" instance=ExtResource("7_xsc8r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.56564, 4.2622175, -123.532776)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="map/Terrain"]
 transform = Transform3D(-4.0414644e-08, 0.3809897, -0.92457926, 1.6653589e-08, 0.92457926, 0.3809897, 1, 0, -4.371139e-08, -9.192165, 9.734332, 0)
 light_energy = 0.15
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_61edo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19266436, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.89949, 4.488323, 17.51146)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_og4op")
