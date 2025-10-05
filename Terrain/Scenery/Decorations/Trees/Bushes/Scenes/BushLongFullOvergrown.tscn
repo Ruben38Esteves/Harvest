@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=4 uid="uid://dau756w56gywr"]
+
+[ext_resource type="Texture2D" uid="uid://xpbpyoihggim" path="res://Terrain/Scenery/Decorations/Trees/Bushes/Models/bush_long_full_overgrown_dead_hedge_open_bottom_dead.png" id="1_44e1m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_046bb"]
+size = Vector3(3, 1.4951172, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3ves"]
+resource_name = "bush_dead"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_44e1m")
+texture_filter = 2
+texture_repeat = false
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ilqjb"]
+_surfaces = [{
+"aabb": AABB(-0.0010794401, -0.03059977, -0.53947103, 2.0021582, 1.0611991, 1.0789421),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABgAHAAgABgAJAAcACgAGAAgACgAIAAsADAANAA4ADAAPAA0AEAARABIAEAATABEA"),
+"name": "bush_dead",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("DwRBwiH6AAC//L095oIAAI79vT3w/wAAPwNBwhh9AADv+7093QUAAHACQcIOAAAAzwCLUwl9AABg/nOs6wUAAC//c6z1ggAAAACLUwAAAACeAYtTE/oAAP//c6z//wAAqwMAANG9AABT/P//LUIAAFP8AAAtQgAAqwP//9G9AACHAAAAnFEAAHf///9irgAAd/8AAGKuAACHAP//nFEAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2k0ch"]
+resource_name = "bush_long_full_overgrown_dead_Plane_036"
+_surfaces = [{
+"aabb": AABB(-0.0010794401, -0.03059977, -0.53947103, 2.0021582, 1.0611991, 1.0789421),
+"attribute_data": PackedByteArray("zdv/+zEwxsAxMP/7zdvGwIMs/7972zj7e9v/v4MsOPsxLv+/zdk4+83Z/78xLjj7e93/+4MuxsCDLv/7e93GwOSqIpgaYYb6GmEimOSqhvofqaiV32IB/d9iqJUfqQH9"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_o3ves"),
+"name": "bush_dead",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("DwRBwiH6OQi//L095oI5CI79vT3w/zkIPwNBwhh9OQjPAItTCX3KP2D+c6zrBco/L/9zrPWCyj8AAItTAADKPz8DQcIYfQk/7/u9Pd0FCT+//L095oIJP3ACQcIOAAk/ngGLUxP67AQv/3Os9YLsBP//c6z//+wEzwCLUwl97ASrAwAA0b3//1P8//8tQv//U/wAAC1C//+rA///0b3//4cAAACcUf//d////2Ku//93/wAAYq7//4cA//+cUf//LTzwBy088ActPPAHLTzwB2T15JNk9eSTZPXkk2T15JNa5MJyWuTCclrkwnJa5MJyBnrovAZ66LwGeui8BnrovOOO/3/jjv9/447/f+OO/3+rdP9/q3T/f6t0/3+rdP9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ilqjb")
+
+[node name="BushLongFullOvergrown" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7524414, 0)
+shape = SubResource("BoxShape3D_046bb")
+
+[node name="bush_long_full_overgrown_dead" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.5, 0, 0)
+mesh = SubResource("ArrayMesh_2k0ch")
+skeleton = NodePath("")

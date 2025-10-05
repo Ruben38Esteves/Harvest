@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://blh67i3ewcfbr"]
+[gd_scene load_steps=16 format=3 uid="uid://blh67i3ewcfbr"]
 
 [ext_resource type="Material" uid="uid://cypdluo8t4sc7" path="res://Terrain/Scenery/Decorations/Ground/GroundMat.tres" id="1_djy6p"]
 [ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Player/player.tscn" id="2_61edo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://nt1ah2cqk1or" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_tree_2_1.tscn" id="4_cflld"]
 [ext_resource type="PackedScene" uid="uid://co53hst68goch" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_tree_3.tscn" id="5_o4w43"]
 [ext_resource type="PackedScene" uid="uid://dyam731cxcuts" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_tree_4.tscn" id="6_iov5i"]
+[ext_resource type="PackedScene" uid="uid://dau756w56gywr" path="res://Terrain/Scenery/Decorations/Trees/Bushes/Scenes/BushLongFullOvergrown.tscn" id="7_3m4ml"]
 [ext_resource type="PackedScene" uid="uid://c3fhrglfsksep" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_dead_tree_1.tscn" id="7_xsc8r"]
 [ext_resource type="Texture2D" uid="uid://b0aaqj2icqwgm" path="res://Textures/PSX_NIGHTSKY.hdr" id="8_bf7gg"]
 
@@ -47,38 +48,38 @@ navigation_mesh = SubResource("NavigationMesh_og4op")
 [node name="GroundGroup" type="Node3D" parent="map/Terrain"]
 
 [node name="Ground" type="CSGBox3D" parent="map/Terrain/GroundGroup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.8897095, -0.25, 5.044861)
 use_collision = true
 collision_layer = 2
-size = Vector3(50, 0.5, 50)
+size = Vector3(57.77942, 0.5, 60.08972)
 material = ExtResource("1_djy6p")
 
 [node name="Ground4" type="CSGBox3D" parent="map/Terrain/GroundGroup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.800821, 4.0122166, -99.58659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.93461, 4.0122166, -104.89348)
 use_collision = true
 collision_layer = 2
-size = Vector3(99.60449, 0.5, 50)
+size = Vector3(109.336914, 0.5, 60.61377)
 material = ExtResource("1_djy6p")
 
 [node name="Ground5" type="CSGBox3D" parent="map/Terrain/GroundGroup"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.31267, 4.0122166, -49.5542)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.93024, 4.0122166, -48.696716)
 use_collision = true
 collision_layer = 2
-size = Vector3(50.675415, 0.5, 149.35547)
+size = Vector3(71.91055, 0.5, 173.63782)
 material = ExtResource("1_djy6p")
 
 [node name="Ground2" type="CSGBox3D" parent="map/Terrain/GroundGroup"]
-transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 0, 1.919, -49.887)
+transform = Transform3D(1, 0, 0, 0, 0.9961947, -0.08715574, 0, 0.08715574, 0.9961947, 4.5168457, 1.919, -49.887)
 use_collision = true
 collision_layer = 2
-size = Vector3(50, 0.5, 50)
+size = Vector3(59.03369, 0.5, 50)
 material = ExtResource("1_djy6p")
 
 [node name="Ground3" type="CSGBox3D" parent="map/Terrain/GroundGroup"]
-transform = Transform3D(-4.371139e-08, 0.08715574, 0.9961947, 0, 0.9961947, -0.08715574, -1, -3.8096983e-09, -4.3545054e-08, -49.77926, 1.9095738, -5.5879354e-09)
+transform = Transform3D(-4.371139e-08, 0.08715574, 0.9961947, 0, 0.9961947, -0.08715574, -1, -3.8096983e-09, -4.3545054e-08, -49.77926, 1.9095738, 6.7473145)
 use_collision = true
 collision_layer = 2
-size = Vector3(50, 0.5, 49.78369)
+size = Vector3(63.49463, 0.5, 49.78369)
 material = ExtResource("1_djy6p")
 
 [node name="CSGMesh3D" type="CSGMesh3D" parent="map/Terrain/GroundGroup"]
@@ -1153,9 +1154,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.28179, -1.5656042, -122.
 [node name="RetroTree3" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("5_o4w43")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.39722, -1.5656042, -121.97031)
 
-[node name="RetroTree4" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("6_iov5i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.94979, -1.5656042, -122.332565)
-
 [node name="RetroDeadTree1" parent="map/Terrain/Trees/TreeWall4" instance=ExtResource("7_xsc8r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.14769, -1.5656042, -122.17168)
 
@@ -2179,8 +2177,997 @@ transform = Transform3D(-4.0414644e-08, 0.3809897, -0.92457926, 1.6653589e-08, 0
 light_energy = 0.15
 shadow_enabled = true
 
+[node name="Bushes" type="Node3D" parent="map/Terrain"]
+
+[node name="BushWall1" type="Node3D" parent="map/Terrain/Bushes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.078514, 4.6035433, -51.409996)
+
+[node name="BushLongFullOvergrown" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -71.37086)
+
+[node name="BushLongFullOvergrown2" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -68.700096)
+
+[node name="BushLongFullOvergrown3" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -66.106026)
+
+[node name="BushLongFullOvergrown4" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -63.435257)
+
+[node name="BushLongFullOvergrown5" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -60.764496)
+
+[node name="BushLongFullOvergrown6" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -58.170425)
+
+[node name="BushLongFullOvergrown7" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -55.80755)
+
+[node name="BushLongFullOvergrown8" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -53.136787)
+
+[node name="BushLongFullOvergrown9" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -50.542717)
+
+[node name="BushLongFullOvergrown10" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -47.87195)
+
+[node name="BushLongFullOvergrown11" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -45.201187)
+
+[node name="BushLongFullOvergrown12" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -42.607117)
+
+[node name="BushLongFullOvergrown13" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -40.09999)
+
+[node name="BushLongFullOvergrown14" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -37.42923)
+
+[node name="BushLongFullOvergrown15" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -34.83516)
+
+[node name="BushLongFullOvergrown16" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -32.16439)
+
+[node name="BushLongFullOvergrown17" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -29.49363)
+
+[node name="BushLongFullOvergrown18" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -26.899559)
+
+[node name="BushLongFullOvergrown19" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -24.629875)
+
+[node name="BushLongFullOvergrown20" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -21.959114)
+
+[node name="BushLongFullOvergrown21" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -19.365044)
+
+[node name="BushLongFullOvergrown22" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -16.694283)
+
+[node name="BushLongFullOvergrown23" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -14.023521)
+
+[node name="BushLongFullOvergrown24" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -11.429447)
+
+[node name="BushLongFullOvergrown25" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -9.156391)
+
+[node name="BushLongFullOvergrown26" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -6.48563)
+
+[node name="BushLongFullOvergrown27" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -3.8915596)
+
+[node name="BushLongFullOvergrown28" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -1.2207985)
+
+[node name="BushLongFullOvergrown29" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 1.4499626)
+
+[node name="BushLongFullOvergrown30" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 4.044037)
+
+[node name="BushLongFullOvergrown31" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 6.2076035)
+
+[node name="BushLongFullOvergrown32" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 8.878365)
+
+[node name="BushLongFullOvergrown33" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 11.472435)
+
+[node name="BushLongFullOvergrown34" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 14.143196)
+
+[node name="BushLongFullOvergrown35" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 16.813957)
+
+[node name="BushLongFullOvergrown36" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 19.408031)
+
+[node name="BushLongFullOvergrown37" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 21.711647)
+
+[node name="BushLongFullOvergrown38" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 24.382408)
+
+[node name="BushLongFullOvergrown39" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 26.976479)
+
+[node name="BushLongFullOvergrown40" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 29.64724)
+
+[node name="BushLongFullOvergrown41" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 32.318)
+
+[node name="BushLongFullOvergrown42" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 34.912075)
+
+[node name="BushLongFullOvergrown43" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 37.10351)
+
+[node name="BushLongFullOvergrown44" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 39.774273)
+
+[node name="BushLongFullOvergrown45" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 42.368343)
+
+[node name="BushLongFullOvergrown46" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 45.039104)
+
+[node name="BushLongFullOvergrown47" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 47.709866)
+
+[node name="BushLongFullOvergrown48" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 50.30394)
+
+[node name="BushLongFullOvergrown49" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 52.227966)
+
+[node name="BushLongFullOvergrown50" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 54.898727)
+
+[node name="BushLongFullOvergrown51" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 57.492798)
+
+[node name="BushLongFullOvergrown52" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 60.16356)
+
+[node name="BushLongFullOvergrown53" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 62.83432)
+
+[node name="BushLongFullOvergrown54" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 65.42839)
+
+[node name="BushLongFullOvergrown55" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 52.227966)
+
+[node name="BushLongFullOvergrown56" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 54.898727)
+
+[node name="BushLongFullOvergrown57" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 57.492798)
+
+[node name="BushLongFullOvergrown58" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 60.16356)
+
+[node name="BushLongFullOvergrown59" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 62.83432)
+
+[node name="BushLongFullOvergrown60" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 65.42839)
+
+[node name="BushLongFullOvergrown61" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 67.70471)
+
+[node name="BushLongFullOvergrown62" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 70.29878)
+
+[node name="BushLongFullOvergrown63" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 72.96954)
+
+[node name="BushLongFullOvergrown64" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 75.640305)
+
+[node name="BushLongFullOvergrown65" parent="map/Terrain/Bushes/BushWall1" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 78.234375)
+
+[node name="BushWall2" type="Node3D" parent="map/Terrain/Bushes"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.648804, 4.6035433, -122.67251)
+
+[node name="BushLongFullOvergrown" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -71.37086)
+
+[node name="BushLongFullOvergrown2" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -68.700096)
+
+[node name="BushLongFullOvergrown3" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -66.106026)
+
+[node name="BushLongFullOvergrown4" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -63.435257)
+
+[node name="BushLongFullOvergrown5" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -60.764496)
+
+[node name="BushLongFullOvergrown6" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -58.170425)
+
+[node name="BushLongFullOvergrown7" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -55.80755)
+
+[node name="BushLongFullOvergrown8" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -53.136787)
+
+[node name="BushLongFullOvergrown9" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -50.542717)
+
+[node name="BushLongFullOvergrown10" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -47.87195)
+
+[node name="BushLongFullOvergrown11" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -45.201187)
+
+[node name="BushLongFullOvergrown12" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -42.607117)
+
+[node name="BushLongFullOvergrown13" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -40.09999)
+
+[node name="BushLongFullOvergrown14" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -37.42923)
+
+[node name="BushLongFullOvergrown15" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -34.83516)
+
+[node name="BushLongFullOvergrown16" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -32.16439)
+
+[node name="BushLongFullOvergrown17" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -29.49363)
+
+[node name="BushLongFullOvergrown18" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -26.899559)
+
+[node name="BushLongFullOvergrown19" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -24.629875)
+
+[node name="BushLongFullOvergrown20" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -21.959114)
+
+[node name="BushLongFullOvergrown21" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -19.365044)
+
+[node name="BushLongFullOvergrown22" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -16.694283)
+
+[node name="BushLongFullOvergrown23" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -14.023521)
+
+[node name="BushLongFullOvergrown24" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -11.429447)
+
+[node name="BushLongFullOvergrown25" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -9.156391)
+
+[node name="BushLongFullOvergrown26" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -6.48563)
+
+[node name="BushLongFullOvergrown27" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -3.8915596)
+
+[node name="BushLongFullOvergrown28" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -1.2207985)
+
+[node name="BushLongFullOvergrown29" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 1.4499626)
+
+[node name="BushLongFullOvergrown30" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 4.044037)
+
+[node name="BushLongFullOvergrown31" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 6.2076035)
+
+[node name="BushLongFullOvergrown32" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 8.878365)
+
+[node name="BushLongFullOvergrown33" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 11.472435)
+
+[node name="BushLongFullOvergrown34" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 14.143196)
+
+[node name="BushLongFullOvergrown35" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 16.813957)
+
+[node name="BushLongFullOvergrown36" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 19.408031)
+
+[node name="BushLongFullOvergrown37" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 21.711647)
+
+[node name="BushLongFullOvergrown38" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 24.382408)
+
+[node name="BushLongFullOvergrown39" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 26.976479)
+
+[node name="BushLongFullOvergrown40" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 29.64724)
+
+[node name="BushLongFullOvergrown41" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 32.318)
+
+[node name="BushLongFullOvergrown42" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 34.912075)
+
+[node name="BushLongFullOvergrown43" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 37.10351)
+
+[node name="BushLongFullOvergrown44" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 39.774273)
+
+[node name="BushLongFullOvergrown45" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 42.368343)
+
+[node name="BushLongFullOvergrown46" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 45.039104)
+
+[node name="BushLongFullOvergrown47" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 47.709866)
+
+[node name="BushLongFullOvergrown48" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 50.30394)
+
+[node name="BushLongFullOvergrown49" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 52.227966)
+
+[node name="BushLongFullOvergrown50" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 54.898727)
+
+[node name="BushLongFullOvergrown51" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 57.492798)
+
+[node name="BushLongFullOvergrown52" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 60.16356)
+
+[node name="BushLongFullOvergrown53" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 62.83432)
+
+[node name="BushLongFullOvergrown54" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 65.42839)
+
+[node name="BushLongFullOvergrown55" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 52.227966)
+
+[node name="BushLongFullOvergrown56" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 54.898727)
+
+[node name="BushLongFullOvergrown57" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 57.492798)
+
+[node name="BushLongFullOvergrown58" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 60.16356)
+
+[node name="BushLongFullOvergrown59" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 62.83432)
+
+[node name="BushLongFullOvergrown60" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 65.42839)
+
+[node name="BushLongFullOvergrown61" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 67.70471)
+
+[node name="BushLongFullOvergrown62" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 70.29878)
+
+[node name="BushLongFullOvergrown63" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 72.96954)
+
+[node name="BushLongFullOvergrown64" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 75.640305)
+
+[node name="BushLongFullOvergrown65" parent="map/Terrain/Bushes/BushWall2" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, 78.234375)
+
+[node name="BushWall4" type="Node3D" parent="map/Terrain/Bushes"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.648804, 2.383662, 24.573832)
+
+[node name="BushLongFullOvergrown" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -71.37086)
+
+[node name="BushLongFullOvergrown2" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -68.700096)
+
+[node name="BushLongFullOvergrown3" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -66.106026)
+
+[node name="BushLongFullOvergrown4" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -63.435257)
+
+[node name="BushLongFullOvergrown5" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -60.764496)
+
+[node name="BushLongFullOvergrown6" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -58.170425)
+
+[node name="BushLongFullOvergrown7" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -55.80755)
+
+[node name="BushLongFullOvergrown8" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -53.136787)
+
+[node name="BushLongFullOvergrown9" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -50.542717)
+
+[node name="BushLongFullOvergrown10" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -47.87195)
+
+[node name="BushLongFullOvergrown11" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -45.201187)
+
+[node name="BushLongFullOvergrown12" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -42.607117)
+
+[node name="BushLongFullOvergrown13" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -40.09999)
+
+[node name="BushLongFullOvergrown14" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -37.42923)
+
+[node name="BushLongFullOvergrown15" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -34.83516)
+
+[node name="BushLongFullOvergrown16" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -32.16439)
+
+[node name="BushLongFullOvergrown17" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -29.49363)
+
+[node name="BushLongFullOvergrown18" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -26.899559)
+
+[node name="BushLongFullOvergrown19" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -24.629875)
+
+[node name="BushLongFullOvergrown20" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -21.959114)
+
+[node name="BushLongFullOvergrown21" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -19.365044)
+
+[node name="BushLongFullOvergrown22" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -16.694283)
+
+[node name="BushLongFullOvergrown23" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -14.023521)
+
+[node name="BushLongFullOvergrown24" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -11.429447)
+
+[node name="BushLongFullOvergrown25" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.27720308, -9.156391)
+
+[node name="BushLongFullOvergrown26" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, 0.5904558, -6.48563)
+
+[node name="BushLongFullOvergrown27" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, 0.36350393, -3.8915596)
+
+[node name="BushLongFullOvergrown28" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, 0.12984252, -1.2207985)
+
+[node name="BushLongFullOvergrown29" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.103818655, 1.4499626)
+
+[node name="BushLongFullOvergrown30" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.33077073, 4.044037)
+
+[node name="BushLongFullOvergrown31" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.5200584, 6.2076035)
+
+[node name="BushLongFullOvergrown32" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.7537197, 8.878365)
+
+[node name="BushLongFullOvergrown33" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -0.9806714, 11.472435)
+
+[node name="BushLongFullOvergrown34" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -1.2143328, 14.143196)
+
+[node name="BushLongFullOvergrown35" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -1.4479942, 16.813957)
+
+[node name="BushLongFullOvergrown36" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -1.674946, 19.408031)
+
+[node name="BushLongFullOvergrown37" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -1.876486, 21.711645)
+
+[node name="BushLongFullOvergrown38" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670948, -2.1101475, 24.382406)
+
+[node name="BushLongFullOvergrown39" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670948, -2.337099, 26.976477)
+
+[node name="BushLongFullOvergrown40" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670948, -2.3885446, 29.647238)
+
+[node name="BushLongFullOvergrown41" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 32.318)
+
+[node name="BushLongFullOvergrown42" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 34.91207)
+
+[node name="BushLongFullOvergrown43" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 37.10351)
+
+[node name="BushLongFullOvergrown44" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 39.774273)
+
+[node name="BushLongFullOvergrown45" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 42.368343)
+
+[node name="BushLongFullOvergrown46" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 45.039104)
+
+[node name="BushLongFullOvergrown47" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 47.709866)
+
+[node name="BushLongFullOvergrown48" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 50.30394)
+
+[node name="BushLongFullOvergrown49" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 52.227966)
+
+[node name="BushLongFullOvergrown50" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 54.898727)
+
+[node name="BushLongFullOvergrown51" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 57.492798)
+
+[node name="BushLongFullOvergrown52" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 60.16356)
+
+[node name="BushLongFullOvergrown53" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 62.83432)
+
+[node name="BushLongFullOvergrown54" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670948, -2.3885446, 65.42839)
+
+[node name="BushLongFullOvergrown55" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 52.227966)
+
+[node name="BushLongFullOvergrown56" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 54.898727)
+
+[node name="BushLongFullOvergrown57" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 57.492798)
+
+[node name="BushLongFullOvergrown58" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 60.16356)
+
+[node name="BushLongFullOvergrown59" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 62.83432)
+
+[node name="BushLongFullOvergrown60" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670948, -2.3885446, 65.42839)
+
+[node name="BushLongFullOvergrown61" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670948, -2.3885446, 67.70471)
+
+[node name="BushLongFullOvergrown62" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670948, -2.3885446, 70.29878)
+
+[node name="BushLongFullOvergrown63" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670948, -2.3885446, 72.96954)
+
+[node name="BushLongFullOvergrown64" parent="map/Terrain/Bushes/BushWall4" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.5670929, -2.3885446, 75.640305)
+
+[node name="BushWall3" type="Node3D" parent="map/Terrain/Bushes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.156612, 4.6035433, -54.81736)
+
+[node name="BushLongFullOvergrown" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -71.37086)
+
+[node name="BushLongFullOvergrown2" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -68.700096)
+
+[node name="BushLongFullOvergrown3" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -66.106026)
+
+[node name="BushLongFullOvergrown4" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -63.435257)
+
+[node name="BushLongFullOvergrown5" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -60.764496)
+
+[node name="BushLongFullOvergrown6" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -58.170425)
+
+[node name="BushLongFullOvergrown7" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -55.80755)
+
+[node name="BushLongFullOvergrown8" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -53.136787)
+
+[node name="BushLongFullOvergrown9" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -50.542717)
+
+[node name="BushLongFullOvergrown10" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -47.87195)
+
+[node name="BushLongFullOvergrown11" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -45.201187)
+
+[node name="BushLongFullOvergrown12" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -42.607117)
+
+[node name="BushLongFullOvergrown13" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -40.09999)
+
+[node name="BushLongFullOvergrown14" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -37.42923)
+
+[node name="BushLongFullOvergrown15" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -34.83516)
+
+[node name="BushLongFullOvergrown16" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -32.16439)
+
+[node name="BushLongFullOvergrown17" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -29.49363)
+
+[node name="BushLongFullOvergrown18" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -26.899559)
+
+[node name="BushLongFullOvergrown19" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -24.629875)
+
+[node name="BushLongFullOvergrown20" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -21.959114)
+
+[node name="BushLongFullOvergrown21" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.31289864, -19.365044)
+
+[node name="BushLongFullOvergrown22" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.5465603, -16.694283)
+
+[node name="BushLongFullOvergrown23" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.780221, -14.023521)
+
+[node name="BushLongFullOvergrown24" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -1.0071731, -11.429451)
+
+[node name="BushLongFullOvergrown25" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -1.2060394, -9.156391)
+
+[node name="BushLongFullOvergrown26" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -1.4397013, -6.48563)
+
+[node name="BushLongFullOvergrown27" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -1.6666529, -3.8915596)
+
+[node name="BushLongFullOvergrown28" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -1.9003143, -1.2207985)
+
+[node name="BushLongFullOvergrown29" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -2.133976, 1.4499626)
+
+[node name="BushLongFullOvergrown30" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -2.3609276, 4.044037)
+
+[node name="BushLongFullOvergrown31" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -2.5502152, 6.2076035)
+
+[node name="BushLongFullOvergrown32" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -2.7838767, 8.878365)
+
+[node name="BushLongFullOvergrown33" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -3.010828, 11.472435)
+
+[node name="BushLongFullOvergrown34" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -3.2444901, 14.143196)
+
+[node name="BushLongFullOvergrown35" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -3.4781508, 16.813957)
+
+[node name="BushLongFullOvergrown36" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -3.705103, 19.408031)
+
+[node name="BushLongFullOvergrown37" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -3.9066432, 21.711647)
+
+[node name="BushLongFullOvergrown38" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.1403046, 24.382408)
+
+[node name="BushLongFullOvergrown39" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.367256, 26.976479)
+
+[node name="BushLongFullOvergrown40" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.600918, 29.64724)
+
+[node name="BushLongFullOvergrown41" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 32.318)
+
+[node name="BushLongFullOvergrown42" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 34.912075)
+
+[node name="BushLongFullOvergrown43" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 37.10351)
+
+[node name="BushLongFullOvergrown44" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 39.774273)
+
+[node name="BushLongFullOvergrown45" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 42.368343)
+
+[node name="BushLongFullOvergrown46" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 45.039104)
+
+[node name="BushLongFullOvergrown47" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 47.709866)
+
+[node name="BushLongFullOvergrown48" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 50.30394)
+
+[node name="BushLongFullOvergrown49" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 52.227966)
+
+[node name="BushLongFullOvergrown50" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 54.898727)
+
+[node name="BushLongFullOvergrown51" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 57.492798)
+
+[node name="BushLongFullOvergrown52" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 60.16356)
+
+[node name="BushLongFullOvergrown53" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 62.83432)
+
+[node name="BushLongFullOvergrown54" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 65.42839)
+
+[node name="BushLongFullOvergrown55" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 52.227966)
+
+[node name="BushLongFullOvergrown56" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 54.898727)
+
+[node name="BushLongFullOvergrown57" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 57.492798)
+
+[node name="BushLongFullOvergrown58" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 60.16356)
+
+[node name="BushLongFullOvergrown59" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 62.83432)
+
+[node name="BushLongFullOvergrown60" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 65.42839)
+
+[node name="BushLongFullOvergrown61" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 67.70471)
+
+[node name="BushLongFullOvergrown62" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 70.29878)
+
+[node name="BushLongFullOvergrown63" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 72.96954)
+
+[node name="BushLongFullOvergrown64" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 75.640305)
+
+[node name="BushLongFullOvergrown65" parent="map/Terrain/Bushes/BushWall3" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 78.234375)
+
+[node name="BushWall5" type="Node3D" parent="map/Terrain/Bushes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.156612, 6.274375, -54.81736)
+
+[node name="BushLongFullOvergrown" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -71.37086)
+
+[node name="BushLongFullOvergrown2" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -68.700096)
+
+[node name="BushLongFullOvergrown3" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -66.106026)
+
+[node name="BushLongFullOvergrown4" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -63.435257)
+
+[node name="BushLongFullOvergrown5" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -60.764496)
+
+[node name="BushLongFullOvergrown6" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -58.170425)
+
+[node name="BushLongFullOvergrown7" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -55.80755)
+
+[node name="BushLongFullOvergrown8" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -53.136787)
+
+[node name="BushLongFullOvergrown9" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -50.542717)
+
+[node name="BushLongFullOvergrown10" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -47.87195)
+
+[node name="BushLongFullOvergrown11" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -45.201187)
+
+[node name="BushLongFullOvergrown12" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -42.607117)
+
+[node name="BushLongFullOvergrown13" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -40.09999)
+
+[node name="BushLongFullOvergrown14" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -37.42923)
+
+[node name="BushLongFullOvergrown15" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -34.83516)
+
+[node name="BushLongFullOvergrown16" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -32.16439)
+
+[node name="BushLongFullOvergrown17" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -29.49363)
+
+[node name="BushLongFullOvergrown18" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -26.899559)
+
+[node name="BushLongFullOvergrown19" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -24.629875)
+
+[node name="BushLongFullOvergrown20" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.34620953, -21.959114)
+
+[node name="BushLongFullOvergrown21" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.31289864, -19.365044)
+
+[node name="BushLongFullOvergrown22" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.5465603, -16.694283)
+
+[node name="BushLongFullOvergrown23" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -0.780221, -14.023521)
+
+[node name="BushLongFullOvergrown24" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -1.0071731, -11.429451)
+
+[node name="BushLongFullOvergrown25" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -1.2060394, -9.156391)
+
+[node name="BushLongFullOvergrown26" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -1.4397013, -6.48563)
+
+[node name="BushLongFullOvergrown27" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -1.6666529, -3.8915596)
+
+[node name="BushLongFullOvergrown28" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -1.9003143, -1.2207985)
+
+[node name="BushLongFullOvergrown29" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -2.133976, 1.4499626)
+
+[node name="BushLongFullOvergrown30" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -2.3609276, 4.044037)
+
+[node name="BushLongFullOvergrown31" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -2.5502152, 6.2076035)
+
+[node name="BushLongFullOvergrown32" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -2.7838767, 8.878365)
+
+[node name="BushLongFullOvergrown33" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -3.010828, 11.472435)
+
+[node name="BushLongFullOvergrown34" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -3.2444901, 14.143196)
+
+[node name="BushLongFullOvergrown35" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -3.4781508, 16.813957)
+
+[node name="BushLongFullOvergrown36" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -3.705103, 19.408031)
+
+[node name="BushLongFullOvergrown37" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -3.9066432, 21.711647)
+
+[node name="BushLongFullOvergrown38" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.1403046, 24.382408)
+
+[node name="BushLongFullOvergrown39" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.367256, 26.976479)
+
+[node name="BushLongFullOvergrown40" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.600918, 29.64724)
+
+[node name="BushLongFullOvergrown41" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 32.318)
+
+[node name="BushLongFullOvergrown42" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 34.912075)
+
+[node name="BushLongFullOvergrown43" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 37.10351)
+
+[node name="BushLongFullOvergrown44" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 39.774273)
+
+[node name="BushLongFullOvergrown45" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 42.368343)
+
+[node name="BushLongFullOvergrown46" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 45.039104)
+
+[node name="BushLongFullOvergrown47" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 47.709866)
+
+[node name="BushLongFullOvergrown48" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 50.30394)
+
+[node name="BushLongFullOvergrown49" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 52.227966)
+
+[node name="BushLongFullOvergrown50" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 54.898727)
+
+[node name="BushLongFullOvergrown51" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 57.492798)
+
+[node name="BushLongFullOvergrown52" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 60.16356)
+
+[node name="BushLongFullOvergrown53" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 62.83432)
+
+[node name="BushLongFullOvergrown54" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 65.42839)
+
+[node name="BushLongFullOvergrown55" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 52.227966)
+
+[node name="BushLongFullOvergrown56" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 54.898727)
+
+[node name="BushLongFullOvergrown57" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 57.492798)
+
+[node name="BushLongFullOvergrown58" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 60.16356)
+
+[node name="BushLongFullOvergrown59" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 62.83432)
+
+[node name="BushLongFullOvergrown60" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 65.42839)
+
+[node name="BushLongFullOvergrown61" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 67.70471)
+
+[node name="BushLongFullOvergrown62" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 70.29878)
+
+[node name="BushLongFullOvergrown63" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 72.96954)
+
+[node name="BushLongFullOvergrown64" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 75.640305)
+
+[node name="BushLongFullOvergrown65" parent="map/Terrain/Bushes/BushWall5" instance=ExtResource("7_3m4ml")]
+transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017452383, 1.0824928, -4.6084256, 78.234375)
+
 [node name="Player" parent="." instance=ExtResource("2_61edo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.89949, 4.488323, 17.51146)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2765045, 4.488323, 10.898506)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_og4op")
