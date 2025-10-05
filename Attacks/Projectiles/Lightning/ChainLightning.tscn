@@ -1,0 +1,81 @@
+[gd_scene load_steps=15 format=3 uid="uid://7bnvgojs706f"]
+
+[ext_resource type="Script" uid="uid://cfcg76da1rxpc" path="res://Attacks/Projectiles/Lightning/chain_lightning.gd" id="1_qlxml"]
+[ext_resource type="PackedScene" uid="uid://iaqawiso33rk" path="res://Attacks/Projectiles/Lightning/projectile.tscn" id="2_fxgbw"]
+[ext_resource type="Shader" uid="uid://bbwx6624u4twb" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="3_7heue"]
+[ext_resource type="Shader" uid="uid://btos81i7j1djd" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="4_wsygt"]
+[ext_resource type="Texture2D" uid="uid://8fgmw7vjqvm7" path="res://Textures/spark_07.png" id="5_46fqp"]
+[ext_resource type="Script" uid="uid://c8mqt671ky4j6" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="6_dqjwg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fxgbw"]
+radius = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h0vs6"]
+shader = ExtResource("3_7heue")
+
+[sub_resource type="Gradient" id="Gradient_2so41"]
+colors = PackedColorArray(0, 0.466806, 0.850537, 1, 0, 0.466667, 0.85098, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dahwe"]
+gradient = SubResource("Gradient_2so41")
+
+[sub_resource type="Curve" id="Curve_ymix2"]
+bake_resolution = 16
+_data = [Vector2(0, 0.707865), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7qh7a"]
+curve = SubResource("Curve_ymix2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c62ne"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_wsygt")
+shader_parameter/tex = ExtResource("5_46fqp")
+shader_parameter/uv_offset = Vector2(0.763257, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_dahwe")
+shader_parameter/curve = SubResource("CurveTexture_7qh7a")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 44
+
+[sub_resource type="QuadMesh" id="QuadMesh_isqm3"]
+material = SubResource("ShaderMaterial_c62ne")
+
+[node name="ChainLightning" type="Node3D"]
+script = ExtResource("1_qlxml")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_fxgbw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="Projectile" parent="." instance=ExtResource("2_fxgbw")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="Projectile"]
+transform = Transform3D(6.66667, 0, 0, 0, 6.66667, 0, 0, 0, 6.66667, -0.423405, 0, 0)
+amount = 200
+lifetime = 200.0
+explosiveness = 1.0
+fixed_fps = 144
+process_material = SubResource("ShaderMaterial_h0vs6")
+draw_pass_1 = SubResource("QuadMesh_isqm3")
+script = ExtResource("6_dqjwg")
+length = 200
+length_seconds = 1.38889
+texture = ExtResource("5_46fqp")
+scroll = Vector2(1, 0)
+color_ramp = SubResource("GradientTexture1D_dahwe")
+curve = SubResource("CurveTexture_7qh7a")
+billboard = true
+_defaults_have_been_set = true
+metadata/_custom_type_script = "uid://c8mqt671ky4j6"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

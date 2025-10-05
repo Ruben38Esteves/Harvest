@@ -12,12 +12,12 @@ config_version=5
 
 config/name="Harvest"
 run/main_scene="uid://dl7oeur4sc8j3"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://bmheylxku8ond"
 
 [autoload]
 
-global="*res://Scripts/Globals/gloabl.gd"
+global="*res://gloabl.gd"
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 
 [display]
@@ -28,7 +28,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GPUTrail-main/plugin.cfg", "res://addons/godot-vim/plugin.cfg", "res://addons/simplegrasstextured/plugin.cfg")
+enabled=PackedStringArray("res://addons/GPUTrail-main/plugin.cfg", "res://addons/simplegrasstextured/plugin.cfg")
 
 [global_group]
 
@@ -116,7 +116,7 @@ debug={
 
 sgt_player_position={
 "type": "vec3",
-"value": Vector3(1e+06, 1e+06, 1e+06)
+"value": Vector3(1000000, 1000000, 1000000)
 }
 sgt_player_mov={
 "type": "vec3",

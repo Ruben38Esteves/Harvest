@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://oxnpxdcxtp32"]
+
+[ext_resource type="Script" uid="uid://bbg2cgxj3me1w" path="res://Items/item_parent.gd" id="1_0yxah"]
+[ext_resource type="PackedScene" uid="uid://ciia7yn2x5t7h" path="res://Items/Item.tscn" id="1_wgyhi"]
+[ext_resource type="ArrayMesh" uid="uid://ddgwkgc6rcof0" path="res://Items/FluffyCotton/fluffy_cotton.tres" id="2_80g8e"]
+
+[node name="FluffyCotton" type="Node3D"]
+script = ExtResource("1_0yxah")
+item_type = "fluffy_cotton"
+item_description = "Attacking after sliding applies chain eletricity"
+metadata/_custom_type_script = "uid://bbg2cgxj3me1w"
+
+[node name="Item" parent="." instance=ExtResource("1_wgyhi")]
+light = Color(1, 1, 1, 1)
+
+[node name="Mesh" type="MeshInstance3D" parent="Item/Visual" index="0"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = ExtResource("2_80g8e")
+
+[editable path="Item"]

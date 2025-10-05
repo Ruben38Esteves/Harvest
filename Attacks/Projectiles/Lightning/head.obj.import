@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://drppsfycwyrg2"
+path="res://.godot/imported/head.obj-263b6a1c81f9ddee0ab3541b625030ca.mesh"
+
+[deps]
+
+files=["res://.godot/imported/head.obj-263b6a1c81f9ddee0ab3541b625030ca.mesh"]
+
+source_file="res://Attacks/Projectiles/Lightning/head.obj"
+dest_files=["res://.godot/imported/head.obj-263b6a1c81f9ddee0ab3541b625030ca.mesh", "res://.godot/imported/head.obj-263b6a1c81f9ddee0ab3541b625030ca.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
