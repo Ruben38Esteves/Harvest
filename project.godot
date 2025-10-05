@@ -19,6 +19,7 @@ config/icon="uid://bmheylxku8ond"
 
 global="*res://gloabl.gd"
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
+signals="*res://signals.gd"
 
 [display]
 
