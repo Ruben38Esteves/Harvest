@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://yiegv82j5rpw"]
-
-[ext_resource type="PackedScene" uid="uid://3pgwqfgfjum" path="res://Models/Tree/Dead Trees.glb" id="1_8ebup"]
-
-[node name="Root Scene" instance=ExtResource("1_8ebup")]
-
-[node name="RootNode" parent="." index="0"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

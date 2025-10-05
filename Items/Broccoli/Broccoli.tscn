@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cguyq6bnrjru1"]
+
+[ext_resource type="Script" uid="uid://bbg2cgxj3me1w" path="res://Items/item_parent.gd" id="1_mih0y"]
+[ext_resource type="PackedScene" uid="uid://ciia7yn2x5t7h" path="res://Items/Item.tscn" id="2_3lobp"]
+[ext_resource type="ArrayMesh" uid="uid://cp6tx6w34hrxc" path="res://Items/Broccoli/broccoli.tres" id="3_mih0y"]
+
+[node name="Boccoli" type="Node3D"]
+script = ExtResource("1_mih0y")
+item_type = "broccoli"
+item_description = "Increases Gun damage by 10%"
+
+[node name="Item" parent="." instance=ExtResource("2_3lobp")]
+light = Color(1, 1, 1, 1)
+
+[node name="Mesh" type="MeshInstance3D" parent="Item/Visual" index="0"]
+transform = Transform3D(35, 0, 0, 0, -1.5299e-06, 35, 0, -35, -1.5299e-06, 0, 0, 0)
+mesh = ExtResource("3_mih0y")
+
+[editable path="Item"]

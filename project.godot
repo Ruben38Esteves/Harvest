@@ -17,7 +17,7 @@ config/icon="uid://bmheylxku8ond"
 
 [autoload]
 
-global="*res://Scripts/Globals/gloabl.gd"
+global="*res://gloabl.gd"
 SimpleGrass="*res://addons/simplegrasstextured/singleton.tscn"
 
 [display]

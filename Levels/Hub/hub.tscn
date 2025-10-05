@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://bx2loysi17l6q"]
 
-[ext_resource type="Script" uid="uid://bha80u38rfic" path="res://Scripts/Levels/hub.gd" id="1_p5eo4"]
-[ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Scenes/player.tscn" id="2_w2b36"]
-[ext_resource type="PackedScene" uid="uid://bwtnayq7yv0sp" path="res://Models/Shotgun/shotgun_3d.glb" id="3_raeva"]
-[ext_resource type="PackedScene" uid="uid://c523b5442lwar" path="res://Models/Rifle/rifle-3d.glb" id="4_6tymq"]
-[ext_resource type="Script" uid="uid://d0imd2hwlhvly" path="res://Weapons/HandGun/hand_gun.gd" id="5_rhdxs"]
-[ext_resource type="PackedScene" uid="uid://2p2f5hrqtc7f" path="res://Models/PoisonFlask/poison_flask.glb" id="6_ix4sj"]
+[ext_resource type="Script" uid="uid://bha80u38rfic" path="res://Levels/Hub/hub.gd" id="1_p5eo4"]
+[ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Player/player.tscn" id="2_w2b36"]
+[ext_resource type="PackedScene" uid="uid://bwtnayq7yv0sp" path="res://Weapons/Shotgun/shotgun_3d.glb" id="3_raeva"]
+[ext_resource type="PackedScene" uid="uid://c523b5442lwar" path="res://Weapons/Rifle/rifle-3d.glb" id="4_6tymq"]
+[ext_resource type="PackedScene" uid="uid://dhpofhpsiejai" path="res://Weapons/HandGun/new_gun.glb" id="5_rhdxs"]
+[ext_resource type="PackedScene" uid="uid://2p2f5hrqtc7f" path="res://Weapons/PoisonFlask/poison_flask.glb" id="6_ix4sj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0x4m"]
 albedo_color = Color(0.752941, 0.282353, 0.203922, 1)
@@ -92,9 +92,8 @@ light_energy = 10.0
 spot_range = 6.56156
 spot_angle = 16.27
 
-[node name="hand_gun" type="Node3D" parent="map/secondaries/play_gun"]
-script = ExtResource("5_rhdxs")
-metadata/_custom_type_script = "uid://d0imd2hwlhvly"
+[node name="new_gun" parent="map/secondaries/play_gun" instance=ExtResource("5_rhdxs")]
+transform = Transform3D(8.742278e-09, -0.2, -1.7484556e-08, -0.2, -8.742278e-09, 0, -7.642742e-16, 1.7484556e-08, -0.2, 0.020921946, 1.6963787, 0.04277897)
 
 [node name="play_poison" type="Area3D" parent="map/secondaries"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7)
