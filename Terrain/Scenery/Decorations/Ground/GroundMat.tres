@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cypdluo8t4sc7"]
+
+[ext_resource type="Texture2D" uid="uid://dsvd8eyrymx8y" path="res://Terrain/Scenery/Decorations/Ground/GrassDirt_03.png" id="1_bpvj4"]
+
+[resource]
+resource_name = "GroundMat"
+albedo_texture = ExtResource("1_bpvj4")
+metallic_specular = 0.0
+uv1_scale = Vector3(100, 100, 100)

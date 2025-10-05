@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://blhwo5lqn0ujk"]
+
+[ext_resource type="Texture2D" uid="uid://doxhjgwteoy8b" path="res://Terrain/Scenery/Decorations/Trees/Pine/PineTree_Bark_NormalTree.png" id="1_syket"]
+[ext_resource type="Texture2D" uid="uid://ct2ig8boi0eah" path="res://Terrain/Scenery/Decorations/Trees/Pine/PineTree_Bark_NormalTree_Normal.png" id="2_5q8oq"]
+
+[resource]
+resource_name = "Bark_NormalTree"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_syket")
+normal_enabled = true
+normal_texture = ExtResource("2_5q8oq")
+ao_enabled = true
+metadata/extras = {
+"fromFBX": {
+"isTruePBR": false,
+"shadingModel": "Phong"
+}
+}
