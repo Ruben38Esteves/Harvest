@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://blh67i3ewcfbr"]
+[gd_scene load_steps=15 format=3 uid="uid://blh67i3ewcfbr"]
 
 [ext_resource type="Material" uid="uid://cypdluo8t4sc7" path="res://Terrain/Scenery/Decorations/Ground/GroundMat.tres" id="1_djy6p"]
 [ext_resource type="PackedScene" uid="uid://d1y3no0s41hhe" path="res://Player/player.tscn" id="2_61edo"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://co53hst68goch" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_tree_3.tscn" id="5_o4w43"]
 [ext_resource type="PackedScene" uid="uid://dyam731cxcuts" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_tree_4.tscn" id="6_iov5i"]
 [ext_resource type="PackedScene" uid="uid://c3fhrglfsksep" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_dead_tree_1.tscn" id="7_xsc8r"]
+[ext_resource type="Texture2D" uid="uid://b0aaqj2icqwgm" path="res://Textures/PSX_NIGHTSKY.hdr" id="8_bf7gg"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_og4op"]
 
@@ -16,9 +17,16 @@ size = Vector3(70.71, 35.36, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2rbq0"]
 size = Vector3(155.66838, 44.727753, 1.5522308)
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3m4ml"]
+panorama = ExtResource("8_bf7gg")
+
+[sub_resource type="Sky" id="Sky_sbj07"]
+sky_material = SubResource("PanoramaSkyMaterial_3m4ml")
+
 [sub_resource type="Environment" id="Environment_og4op"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0, 0, 0.14901961, 1)
+sky = SubResource("Sky_sbj07")
 ambient_light_source = 2
 ambient_light_color = Color(0.47788018, 0.47788012, 0.47788012, 1)
 ambient_light_energy = 0.5
@@ -26,6 +34,7 @@ ssao_enabled = true
 fog_enabled = true
 fog_light_color = Color(0, 0.015686275, 0.06666667, 1)
 fog_density = 0.02
+fog_sky_affect = 0.5
 
 [node name="Woods" type="Node3D"]
 
