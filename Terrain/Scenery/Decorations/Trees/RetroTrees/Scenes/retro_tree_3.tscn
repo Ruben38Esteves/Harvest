@@ -102,6 +102,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0nos6")
 
 [node name="RetroTree3" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

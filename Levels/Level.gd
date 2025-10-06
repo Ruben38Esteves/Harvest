@@ -76,7 +76,7 @@ func _on_zombie_spawn_timer_timeout():
 		
 	#var spawn_point = NavigationServer3D.map_get_random_point(nav_region, 1, false)
 	instance = zombie.instantiate() 
-	instance.global_position = spawn_point
+	instance.global_position = spawn_point - (Vector3.UP * 0.1)
 	#instance.zombie_hit.connect(_on_zombie_zombie_hit)
 	#instance.zombie_killed.connect(_on_zombie_zombie_killed)
 	instance.set_stats(1)

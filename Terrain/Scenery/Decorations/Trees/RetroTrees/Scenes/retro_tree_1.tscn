@@ -80,6 +80,7 @@ height = 2.0892487
 radius = 0.14697266
 
 [node name="RetroTree1" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 2
 
 [node name="tree_rt_1" type="MeshInstance3D" parent="."]
