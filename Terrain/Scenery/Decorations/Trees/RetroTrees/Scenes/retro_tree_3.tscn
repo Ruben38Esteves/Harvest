@@ -110,6 +110,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7136574, 0)
 shape = SubResource("CylinderShape3D_th2g3")
 
 [node name="tree_rt_3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, -8.742278e-08, -2, 0, 2, -8.742278e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_v66lf")
 skeleton = NodePath("")
