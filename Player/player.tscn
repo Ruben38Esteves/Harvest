@@ -266,8 +266,8 @@ visible = false
 
 [node name="FlashLight" type="SpotLight3D" parent="Head/Camera3D/Hands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1586045)
-light_color = Color(0.8630232, 0.874825, 3.85046e-07, 1)
-light_energy = 2.0
+light_color = Color(0.8583326, 0.86616683, 0.6581135, 1)
+light_energy = 4.0
 light_size = 1.0
 shadow_enabled = true
 distance_fade_enabled = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://blh67i3ewcfbr"]
+[gd_scene load_steps=23 format=3 uid="uid://blh67i3ewcfbr"]
 
 [ext_resource type="Script" uid="uid://ddlvbv5lat544" path="res://Levels/Woods/woods.gd" id="1_2tpof"]
 [ext_resource type="Material" uid="uid://cypdluo8t4sc7" path="res://Terrain/Scenery/Decorations/Ground/GroundMat.tres" id="1_djy6p"]
@@ -10,7 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://dau756w56gywr" path="res://Terrain/Scenery/Decorations/Trees/Bushes/Scenes/BushLongFullOvergrown.tscn" id="7_3m4ml"]
 [ext_resource type="PackedScene" uid="uid://c3fhrglfsksep" path="res://Terrain/Scenery/Decorations/Trees/RetroTrees/Scenes/retro_dead_tree_1.tscn" id="7_xsc8r"]
 [ext_resource type="Texture2D" uid="uid://b0aaqj2icqwgm" path="res://Textures/PSX_NIGHTSKY.hdr" id="8_bf7gg"]
+[ext_resource type="PackedScene" uid="uid://bjj5til6qo0vu" path="res://Terrain/Scenery/Buildings/RetroHouses/Scenes/RetroHouse2.tscn" id="9_2tpof"]
+[ext_resource type="PackedScene" uid="uid://dxdm2nksqyaqn" path="res://Terrain/Scenery/Buildings/RetroHouses/Scenes/RetroHouse3.tscn" id="10_2jbdm"]
 [ext_resource type="PackedScene" uid="uid://dr4s5i42072pb" path="res://Terrain/Scenery/Buildings/RetroHouses/Scenes/RetroHouse1.tscn" id="11_6oyrw"]
+[ext_resource type="PackedScene" uid="uid://tp1a4wnbgs1l" path="res://Terrain/Scenery/Decorations/SurvivalPSX/Scenes/Tent.tscn" id="12_agr3u"]
+[ext_resource type="PackedScene" uid="uid://cci8lalirc2pn" path="res://Terrain/Scenery/Decorations/SurvivalPSX/Scenes/Bonfire.tscn" id="13_ufodb"]
+[ext_resource type="PackedScene" uid="uid://fpx8lq2pggml" path="res://Terrain/Scenery/Decorations/SurvivalPSX/Scenes/SleepingBag_Open.tscn" id="14_v6q21"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_og4op"]
 
@@ -33,12 +38,12 @@ background_energy_multiplier = 0.2
 sky = SubResource("Sky_sbj07")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.1
+ambient_light_energy = 0.05
 ssao_enabled = true
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
 fog_light_energy = 2.0
-fog_density = 0.1
+fog_density = 0.25
 fog_sky_affect = 0.5
 
 [node name="Woods" type="Node3D" node_paths=PackedStringArray("nav_region", "zombie_spawn_timer")]
@@ -2183,7 +2188,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.56564, 4.2622175, -123.532
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="map/Terrain"]
 transform = Transform3D(-4.0414644e-08, 0.3809897, -0.92457926, 1.6653589e-08, 0.92457926, 0.3809897, 1, 0, -4.371139e-08, -9.192165, 9.734332, 0)
-light_color = Color(1, 1, 0.07058824, 1)
 light_energy = 0.08
 shadow_enabled = true
 
@@ -2980,6 +2984,34 @@ transform = Transform3D(0.017452383, 0, 0.9998477, 0, 1, 0, -0.9998477, 0, 0.017
 
 [node name="Houses" type="Node3D" parent="map/Terrain"]
 
+[node name="RetroHouse2" parent="map/Terrain/Houses" instance=ExtResource("9_2tpof")]
+transform = Transform3D(0.8767184, 0, -0.4810041, 0, 1, 0, 0.4810041, 0, 0.8767184, -3.3857536, 4.2622166, -100.0422)
+
+[node name="RetroHouse3" parent="map/Terrain/Houses" instance=ExtResource("10_2jbdm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.89558, 4.262226, -104.332924)
+
+[node name="RetroHouse1" parent="map/Terrain/Houses" instance=ExtResource("11_6oyrw")]
+transform = Transform3D(0.2557832, 0, -0.9667342, 0, 1, 0, 0.9667342, 0, 0.2557832, 7.148714, 4.2622166, -86.76945)
+
+[node name="Camp1" type="Node3D" parent="map/Terrain"]
+
+[node name="Tent" parent="map/Terrain/Camp1" instance=ExtResource("12_agr3u")]
+transform = Transform3D(0.9050127, 0, -0.42538443, 0, 1, 0, 0.42538443, 0, 0.9050127, -69.84039, 4.2622166, -79.88447)
+
+[node name="Bonfire" parent="map/Terrain/Camp1" instance=ExtResource("13_ufodb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.475746, 4.6871395, -77.840805)
+
+[node name="Camp2" type="Node3D" parent="map/Terrain"]
+
+[node name="SleepingBagOpen" parent="map/Terrain/Camp2" instance=ExtResource("14_v6q21")]
+transform = Transform3D(0.98272926, 0, 0.18504919, 0, 1, 0, -0.18504919, 0, 0.98272926, -19.56723, -9.536743e-07, -19.552425)
+
+[node name="SleepingBagOpen2" parent="map/Terrain/Camp2" instance=ExtResource("14_v6q21")]
+transform = Transform3D(0.65640146, 0, 0.7544118, 0, 1, 0, -0.7544118, 0, 0.65640146, -17.679375, 4.7683716e-07, -20.2529)
+
+[node name="Bonfire" parent="map/Terrain/Camp2" instance=ExtResource("13_ufodb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.686234, 0.42492372, -18.090366)
+
 [node name="Player" parent="." instance=ExtResource("2_61edo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.888855, 1.4498482, 10.898506)
 
@@ -2989,6 +3021,3 @@ environment = SubResource("Environment_og4op")
 [node name="ZombieSpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
-
-[node name="RetroHouse1" parent="." instance=ExtResource("11_6oyrw")]
-transform = Transform3D(-0.50327635, 0, 0.86412555, 0, 1, 0, -0.86412555, 0, -0.50327635, 2.3731174, 0, 4.55101)
