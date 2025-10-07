@@ -76,6 +76,9 @@ var secondary_weapon
 #meelee
 @onready var meelee = $Head/Camera3D/Hands/Meelee
 var meelee_weapon
+#flashlight
+@onready var flash_light: SpotLight3D = $Head/Camera3D/Hands/FlashLight
+
 
 
 #utils
@@ -213,6 +216,10 @@ func _physics_process(delta):
 			looking_at.set_untargetted()
 		looking_at = coll
 		
+	#flashlight
+	if Input.is_action_just_pressed("flashlight"):
+		toggle_flashlight()
+		
 	weapon_sway(delta)
 	move_and_slide()
 	
@@ -304,3 +311,6 @@ func _on_zombie_zombie_hit() -> void:
 	
 func _on_zombie_zombie_killed() -> void:
 	ui.enemy_killed()
+	
+func toggle_flashlight() -> void:
+	flash_light.visible = not flash_light.visible

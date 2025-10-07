@@ -264,6 +264,19 @@ visible = false
 transform = Transform3D(0.982574, 0.185872, 0, -0.185872, 0.982574, 0, 0, 0, 1, 0.375439, -0.287582, -0.34927)
 visible = false
 
+[node name="FlashLight" type="SpotLight3D" parent="Head/Camera3D/Hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1586045)
+light_color = Color(0.8630232, 0.874825, 3.85046e-07, 1)
+light_energy = 2.0
+light_size = 1.0
+shadow_enabled = true
+distance_fade_enabled = true
+distance_fade_begin = 10.0
+spot_range = 25.0
+spot_attenuation = 2.0
+spot_angle = 30.0
+spot_angle_attenuation = 2.143545
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
