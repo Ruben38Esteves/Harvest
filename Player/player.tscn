@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bp3mljhyqo5fr" path="res://Player/Player.gd" id="1_mh2q7"]
 [ext_resource type="PackedScene" uid="uid://dfdgyti3y6c3w" path="res://UI/Player/ui.tscn" id="2_gymyn"]
-[ext_resource type="Script" uid="uid://cb4b366htrngw" path="res://Player/MovementStateMachine/state_machine.gd" id="2_lsekj"]
+[ext_resource type="Script" uid="uid://crxl1t2t1u2d8" path="res://Player/player_movement_state_machine.gd" id="3_apopc"]
 [ext_resource type="Script" uid="uid://cqlnw1f3fumtd" path="res://Player/MovementStateMachine/idle_movement_state.gd" id="3_laixl"]
 [ext_resource type="Script" uid="uid://b5o4qduoc4vtn" path="res://Player/MovementStateMachine/walking_movement_state.gd" id="4_bv8s6"]
 [ext_resource type="Script" uid="uid://dyb3sw4w01jhw" path="res://Player/MovementStateMachine/sprint_movement_state.gd" id="5_kma33"]
@@ -275,7 +275,7 @@ collision_mask = 2
 debug_shape_thickness = 5
 
 [node name="MovementStateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
-script = ExtResource("2_lsekj")
+script = ExtResource("3_apopc")
 CURRENT_STATE = NodePath("IdleMovementState")
 
 [node name="IdleMovementState" type="Node" parent="MovementStateMachine"]

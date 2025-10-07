@@ -9,7 +9,7 @@ func update(delta):
 	if not player.is_on_floor():
 		state_machine.change_state("FallingMovementState")
 	# start moving
-	if player.velocity.length() > 0.0 and player.is_on_floor():
+	if player.velocity.length() > 0.1 and player.is_on_floor():
 		state_machine.change_state("WalkingMovementState")
 	# jump 
 	if Input.is_action_just_pressed("jump"):

@@ -6,7 +6,6 @@
 resource_name = "house4"
 cull_mode = 2
 albedo_texture = ExtResource("1_lnb58")
-metallic = 1.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_cmxdp"]
 _surfaces = [{
