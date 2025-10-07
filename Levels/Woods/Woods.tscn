@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://blh67i3ewcfbr"]
+[gd_scene load_steps=24 format=3 uid="uid://blh67i3ewcfbr"]
 
 [ext_resource type="Script" uid="uid://ddlvbv5lat544" path="res://Levels/Woods/woods.gd" id="1_2tpof"]
 [ext_resource type="Material" uid="uid://cypdluo8t4sc7" path="res://Terrain/Scenery/Decorations/Ground/GroundMat.tres" id="1_djy6p"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://tp1a4wnbgs1l" path="res://Terrain/Scenery/Decorations/SurvivalPSX/Scenes/Tent.tscn" id="12_agr3u"]
 [ext_resource type="PackedScene" uid="uid://cci8lalirc2pn" path="res://Terrain/Scenery/Decorations/SurvivalPSX/Scenes/Bonfire.tscn" id="13_ufodb"]
 [ext_resource type="PackedScene" uid="uid://fpx8lq2pggml" path="res://Terrain/Scenery/Decorations/SurvivalPSX/Scenes/SleepingBag_Open.tscn" id="14_v6q21"]
+[ext_resource type="PackedScene" uid="uid://vafrbh0bxhmt" path="res://Terrain/Scenery/Decorations/PSXIndustrialPack/Scenes/Warehouse.tscn" id="15_ufodb"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_og4op"]
 
@@ -38,7 +39,7 @@ background_energy_multiplier = 0.2
 sky = SubResource("Sky_sbj07")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.05
+ambient_light_energy = 0.1
 ssao_enabled = true
 fog_enabled = true
 fog_light_color = Color(0, 0, 0, 1)
@@ -3012,8 +3013,19 @@ transform = Transform3D(0.65640146, 0, 0.7544118, 0, 1, 0, -0.7544118, 0, 0.6564
 [node name="Bonfire" parent="map/Terrain/Camp2" instance=ExtResource("13_ufodb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.686234, 0.42492372, -18.090366)
 
+[node name="Warehouses" type="Node3D" parent="map/Terrain"]
+
+[node name="Warehouse" parent="map/Terrain/Warehouses" instance=ExtResource("15_ufodb")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 10.379301, 0.0069208145, 2.5842094)
+
+[node name="Warehouse2" parent="map/Terrain/Warehouses" instance=ExtResource("15_ufodb")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 10.379301, 0.0069208145, 8.713184)
+
+[node name="Warehouse3" parent="map/Terrain/Warehouses" instance=ExtResource("15_ufodb")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 10.379301, 0.0069208145, -4.286742)
+
 [node name="Player" parent="." instance=ExtResource("2_61edo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.888855, 1.4498482, 10.898506)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.534952, 1.4498482, -13.062407)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_og4op")
